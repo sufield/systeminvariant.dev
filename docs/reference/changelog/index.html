@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/changelog" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Changelog | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/reference/changelog"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Changelog | Stave"><meta data-rh="true" name="description" content="All notable changes to this project will be documented in this file."><meta data-rh="true" property="og:description" content="All notable changes to this project will be documented in this file."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/reference/changelog"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/reference/changelog" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/reference/changelog" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Reference","item":"https://stave.dev/docs/reference"},{"@type":"ListItem","position":2,"name":"Changelog","item":"https://stave.dev/docs/reference/changelog"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.aebbb64c.css">
+<script src="/assets/js/runtime~main.d5341b07.js" defer="defer"></script>
+<script src="/assets/js/main.dcaf12a7.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><b class="navbar__title text--truncate">Stave</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/sufield/stave" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/tutorials"><span title="Tutorials" class="categoryLinkLabel_W154">Tutorials</span></a><button aria-label="Expand sidebar category &#x27;Tutorials&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/how-to"><span title="How-to Guides" class="categoryLinkLabel_W154">How-to Guides</span></a><button aria-label="Expand sidebar category &#x27;How-to Guides&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/reference"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a><button aria-label="Collapse sidebar category &#x27;Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/config-file"><span title="Configuration" class="linkLabel_WmDU">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/limits"><span title="Limits" class="linkLabel_WmDU">Limits</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-obs"><span title="obs.v0.1" class="linkLabel_WmDU">obs.v0.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/observation-export-schema"><span title="Observation Export Schema" class="linkLabel_WmDU">Observation Export Schema</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-out"><span title="out.v0.1" class="linkLabel_WmDU">out.v0.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/stability"><span title="Stability" class="linkLabel_WmDU">Stability</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/evaluation-semantics"><span title="Evaluation Semantics" class="linkLabel_WmDU">Evaluation Semantics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-ctrl"><span title="ctrl.v1" class="linkLabel_WmDU">ctrl.v1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/severity-thresholds"><span title="Severity Thresholds" class="linkLabel_WmDU">Severity Thresholds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/observation-contract"><span title="Observation Contract" class="linkLabel_WmDU">Observation Contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/output-and-severity"><span title="Output &amp; Severity" class="linkLabel_WmDU">Output &amp; Severity</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/output-formats"><span title="Output Formats" class="linkLabel_WmDU">Output Formats</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-diagnose"><span title="diagnose.v1" class="linkLabel_WmDU">diagnose.v1</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/reference/cli-reference/_index"><span title="CLI Reference" class="categoryLinkLabel_W154">CLI Reference</span></a><button aria-label="Expand sidebar category &#x27;CLI Reference&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/reference/invariants-reference/_index"><span title="Controls Reference" class="categoryLinkLabel_W154">Controls Reference</span></a><button aria-label="Expand sidebar category &#x27;Controls Reference&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/fact-export"><span title="Fact Export" class="linkLabel_WmDU">Fact Export</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/changelog"><span title="Changelog" class="linkLabel_WmDU">Changelog</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/command-reference"><span title="Command Reference" class="linkLabel_WmDU">Command Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/compliance-owasp-nhi"><span title="OWASP Non-Human Identity Top 10 — Stave coverage" class="linkLabel_WmDU">OWASP Non-Human Identity Top 10 — Stave coverage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/contracts"><span title="Contract-First Schemas" class="linkLabel_WmDU">Contract-First Schemas</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/evaluation-engine-capabilities"><span title="Engine Capabilities" class="linkLabel_WmDU">Engine Capabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/glossary"><span title="Stave Terminology Glossary" class="linkLabel_WmDU">Stave Terminology Glossary</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/hippa-cli"><span title="HIPAA CLI Evidence" class="linkLabel_WmDU">HIPAA CLI Evidence</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/hippa-table"><span title="HIPAA Control Mapping" class="linkLabel_WmDU">HIPAA Control Mapping</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/iam-permissions"><span title="Minimum IAM Permissions for S3 Observation Collection" class="linkLabel_WmDU">Minimum IAM Permissions for S3 Observation Collection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/identity-blast-radius"><span title="Identity Blast Radius" class="linkLabel_WmDU">Identity Blast Radius</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/operator-contract"><span title="Operator Contract" class="linkLabel_WmDU">Operator Contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scope-and-support"><span title="Scope and support" class="linkLabel_WmDU">Scope and support</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/security-policy"><span title="Security Policy" class="linkLabel_WmDU">Security Policy</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/explanation"><span title="Explanation" class="categoryLinkLabel_W154">Explanation</span></a><button aria-label="Expand sidebar category &#x27;Explanation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/challenge/cases/"><span title="Challenge" class="categoryLinkLabel_W154">Challenge</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/demos/"><span title="Demos" class="categoryLinkLabel_W154">Demos</span></a><button aria-label="Expand sidebar category &#x27;Demos&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/positioning/vs-scanners"><span title="Positioning" class="categoryLinkLabel_W154">Positioning</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference"><span>Reference</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Changelog</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Changelog</h1></header>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/" target="_blank" rel="noopener noreferrer" class="">Keep a Changelog</a>,
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html" target="_blank" rel="noopener noreferrer" class="">Semantic Versioning</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="unreleased">[Unreleased]<a href="#unreleased" class="hash-link" aria-label="Direct link to [Unreleased]" title="Direct link to [Unreleased]" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="architecture--library">Architecture &amp; Library<a href="#architecture--library" class="hash-link" aria-label="Direct link to Architecture &amp; Library" title="Direct link to Architecture &amp; Library" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong>Chain-engine untangle: data types relocated to
+<code>internal/core/findings/</code>.</strong> The chain-engine output types
+(<code>CompoundFinding</code>, <code>ExposureRank</code>, <code>ScoreBreakdown</code>,
+<code>ThresholdItem</code> / <code>ThresholdItems</code> / <code>ThresholdStatus</code> /
+<code>ThresholdSummary</code> / <code>ThresholdFilter</code> and constants) moved
+out of <code>internal/core/evaluation/risk/</code> into a new leaf
+package <code>internal/core/findings/</code>. <code>report/</code> no longer
+imports <code>risk/</code>; the structural cycle that prevented the
+chain engine from being separable is gone. <code>risk/</code> retains
+producer logic (<code>DetectChains</code>, <code>RankExposures</code>, formula
+helpers, threshold pipeline). The 13-commit sequence is
+tracked in <code>may8.md</code>; the final-cleanup commit deleted all
+transitional aliases in <code>risk/</code>. Nothing in the user-facing
+YAML or output shape changed — code-organization win that
+unblocks future chain-engine substitution.</p>
+</li>
+<li class="">
+<p><strong>Public sentinel errors for facade-bar commands:
+<code>stave.ErrInvalidInput</code> and <code>stave.ErrFailingTests</code>.</strong> Commands
+that have migrated to the <code>pkg/stave</code> facade cannot import
+<code>internal/cli/ui</code> per their architecture tests. The two
+public sentinels in <code>pkg/stave/errors.go</code> give them a way
+to communicate &quot;this was a user-input error&quot; (→ exit code 2)
+and &quot;tests completed but some failed&quot; (→ exit code 3) without
+violating the facade rule. Wrap with
+<code>fmt.Errorf(&quot;... : %w&quot;, stave.ErrInvalidInput)</code>. The
+exit-code mapping happens in <code>internal/cli/ui.ExitCode</code> via
+<code>errors.Is</code>. Reusable by every future facade-bar migration.</p>
+</li>
+<li class="">
+<p><strong><code>pkg/stave</code> facade migration: 6 commands at the bar.</strong>
+<code>cmd/stave-mcp/</code>, <code>cmd/gaps/</code>, <code>cmd/readiness/</code>,
+<code>cmd/score/</code>, <code>cmd/exportinvariants/</code>, and <code>cmd/test/</code> now
+import only <code>pkg/stave</code>, <code>cmd/cmdutil</code>, cobra, and the
+standard library. Each has an <code>architecture_test.go</code> that
+fails the build if any file in the command&#x27;s directory
+reintroduces an <code>internal/*</code> import. New public helpers
+landed in <code>pkg/stave/</code> to enable the migrations:
+<code>LoadAssessment</code>, <code>LoadAssessments</code>, <code>SortAssessmentsByTime</code>,
+<code>BuiltinChainBudget</code>, <code>ParseWeights</code>, <code>RunControlTests</code>,
+plus the type aliases <code>ScoreMover</code>, <code>TrendPoint</code>,
+<code>TestResult</code>, <code>TestCaseResult</code>, <code>TestSummary</code>. Future
+facade-bar migrations get correct exit codes and shared
+helpers for free. Migration plan + tracker:
+<code>docs/architecture/pkg-stave-facade.md</code>.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="added">Added<a href="#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Phase 7 — CIA-derived intensional detection (G0–G6 +
+closeout candidates B and D).</strong> Soufflé Datalog reasoning
+over the IAM access graph that detects Confidentiality and
+Integrity violations <em>intensionally</em> — derived from
+reachability + sensitivity, not from a pattern catalog.
+Catches the <strong>novel violation class</strong> that pattern-based
+scanners miss by construction. Lives at
+<code>reasoning/souffle/iam/</code> (schema.dl + rules.dl +
+action_classes.dl + Go extractor / validator / findings
+emitter). G3 added the authorization model
+(<code>docs/authorization-model.md</code> + <code>stave-authorization.yaml</code>
+default with Owner/Team + DataClassification PII/PHI/PCI).
+G4–G5 added <code>violation_c</code> and <code>violation_i</code> queries that
+emit PostureFindings with <code>control_id</code> =
+<code>CIA.C.UNAUTHORIZED_READ</code> / <code>CIA.I.UNAUTHORIZED_WRITE</code>.
+G6 triaged the first round of novel violations and added
+Shape-B fixtures (Capital One pattern + Cognito-anon
+pattern). Closeout D shipped Powerpipe CIA rendering at
+<code>powerpipe-mod-stave/benchmarks/cia_findings.pp</code>. Full
+rationale + structural finding (&quot;~95% of catalog fires on
+Shape-A escalation booleans, not access-graph edges&quot;) in
+<code>docs/coverage/cia-novel-violations.md</code> +
+<code>aws-compound-authoring.md</code> status marker. Phase 7 is the
+structural defensibility tier the substrate framing
+(stave-guide/explanation/reasoning-contract.md) points at —
+the CIA intensional layer is what no framework-coverage
+mod can replicate.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="changed">Changed<a href="#changed" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong><code>docs/comparison/aws-compliance-mod.md</code> refreshed against
+current catalog (2026-05-26).</strong> Numbers: 95.5% atomic
+(3,784 of 3,962) / 4.5% compound (178 of 3,962) — was 96/4
+in the previous snapshot. Ghost-reference controls: 104
+across 18 AWS services with per-service breakdown — was
+&quot;~100 across 11 services.&quot; Footnote now includes total
+catalog size (3,962), compound chain count (597), and
+asset-schema count (109); explicit verification date;
+honest framing on the AWS compound authoring plan target
+(Phase 1 + Phase 7 shipped, ~8.6% headline target wasn&#x27;t
+met because catalog grew faster than compound — see
+<code>may8.md</code>). Pointer added to the substrate-vs-implementation
+framing that reduces the foundational weight on the
+share-percentage argument.</p>
+</li>
+<li class="">
+<p><strong>Lambda-2 — environment-variable security, KMS deepening,
+and Secrets Manager integration (6 new controls, 3 chains).</strong>
+Second Lambda gap-closure iteration. Closes the
+credential-handling surface around Lambda environment
+variables. Spec asked for ~8 controls; one duplicated
+<code>CTL.LAMBDA.ENV.ENCRYPT.001</code> (which already covers
+AWS-managed-key vs CMK encryption), so 6 distinct
+additions shipped. KMS (1):
+<code>ENV.KMS.EXTERNAL</code> (function uses a KMS key owned by an
+external AWS account; the external owner can disable
+the key, schedule deletion, or revoke decrypt rights and
+break the function with no recourse on this side; same
+pattern as CTL.S3.ENCRYPT.KMS.OWNERSHIP.001 and the RDS
+external-key concept, high). Secrets management (3):
+<code>SECRETS.NOTMANAGED</code> (raw credentials in env vars rather
+than Secrets Manager / SSM SecureString references; four
+exposure problems compound — disclosure surface, version
+persistence, audit invisibility, rotation friction;
+distinct from CTL.LAMBDA.ENV.SECRETS.001 which detects
+the pattern, this control checks for the management
+alternative, high), <code>SECRETS.BROKEN.REF</code> (env var
+references a Secrets Manager ARN or SSM parameter the
+execution role cannot fetch; runtime AccessDeniedException
+on every cold start; cross-resource reasoning joins env
+references against role policy grants, high),
+<code>SECRETS.SSM.INSECURE</code> (env var references an SSM
+String-typed parameter holding a credential; plaintext
+at rest, single-action gating, no kms:Decrypt, no
+per-fetch audit, medium). Env var deepening (2):
+<code>ENV.VISIBLE.VERSIONS</code> (older published versions retain
+immutable env-block snapshots that diverge from the
+current version; credentials in past env blocks remain
+readable forever via lambda:GetFunction on the
+version-qualified ARN, medium), <code>ENV.EXCESSIVE</code> (env-var
+count exceeds the audit threshold; configuration
+sprawl drives audit, rotation, and disclosure costs
+linearly, low). Chains: <code>lambda_credential_exposure</code>
+(existing CTL.LAMBDA.ENV.SECRETS.001 + SECRETS.NOTMANAGED</p>
+<ul>
+<li class="">existing CTL.LAMBDA.ENV.ENCRYPT.001 — credentials in
+env vars on multiple defense dimensions failing at
+once), <code>lambda_secrets_broken</code> (BROKEN.REF OR
+SSM.INSECURE OR Lambda-1&#x27;s GHOST.KMS — any single
+break in the secrets-fetch chain at runtime),
+<code>lambda_credential_history</code> (VISIBLE.VERSIONS + existing
+CTL.LAMBDA.ENV.SECRETS.001 — credential patterns now
+AND immutable version snapshots that retain past ones).
+18 e2e fixtures including <code>secrets-notmanaged-multi-fail</code>
+(4 raw credential keys at once) and
+<code>secrets-broken-ref-wrongscope-fail</code> (role grants
+GetSecretValue on an old version of the secret while
+the env var references the new one). 6 triage overrides.
+Lambda secrets coverage: pattern detection only →
+comprehensive (management method + key quality +
+permission alignment + storage type + version
+history + sprawl).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Lambda-1 — ghost references, function URL security,
+and resource policy deepening (6 new controls, 4 chains).</strong>
+First Lambda gap-closure iteration. Extends the
+ghost-reference family to serverless compute.
+Spec asked for ~10 controls; four duplicated existing
+catalog entries (CTL.LAMBDA.URL.AUTH.001 covered
+URL.NOAUTH; CTL.LAMBDA.URL.CORS.001 covered URL.CORS;
+CTL.LAMBDA.LAYER.GHOST.001 covered GHOST.LAYER;
+CTL.LAMBDA.TRIGGER.GHOST.001 covered GHOST.ESM), so 6
+distinct additions shipped. Ghost references (4):
+<code>GHOST.ROLE</code> (function references a deleted execution
+role; cannot assume the role on invocation, every
+trigger fires into total failure while the console
+reads &quot;Active,&quot; critical), <code>GHOST.VPC</code>
+(VPC-configured function references a deleted subnet
+or SG; ENI creation fails on cold start while warm
+invocations continue, producing the hardest-to-
+diagnose intermittent-failure pattern, high),
+<code>GHOST.KMS</code> (deleted or pending-deletion KMS key for
+environment-variable encryption; KMS:Decrypt fails on
+every cold start before the handler runs, high),
+<code>GHOST.DLQ</code> (DLQ ARN points at a deleted queue or
+topic; failed asynchronous events vanish silently —
+no error propagation, no notification, the
+reprocessing-from-DLQ workflow has no input, high;
+distinct from CTL.LAMBDA.DLQ.001 which catches the
+&quot;no DLQ at all&quot; case). Resource policy (2):
+<code>POLICY.CROSSACCOUNT</code> (cross-account grant without
+aws:PrincipalOrgID, aws:SourceAccount, or
+aws:SourceArn condition; compromise blast radius
+equals the entire named external account, high),
+<code>POLICY.ACCUMULATED</code> (resource policy past the
+audit threshold; lambda:AddPermission accretes
+statements that are rarely removed and the function&#x27;s
+invocation surface becomes unauditable, medium).
+Chains: <code>lambda_ghost_cascade</code> (≥2 of role / VPC /
+KMS / DLQ ghosts plus the existing
+CTL.LAMBDA.LAYER.GHOST.001 — systematic
+decommissioning failure, threshold 2, compound
+critical), <code>lambda_public_exposure</code> (any of existing
+CTL.LAMBDA.URL.AUTH.001, CTL.LAMBDA.URL.CORS.001, or
+CTL.LAMBDA.INVOKE.PUBLIC.001 — threshold 1, fast-
+firing on any single public path), <code>lambda_invocation_sprawl</code>
+(POLICY.ACCUMULATED + (POLICY.CROSSACCOUNT OR existing
+CTL.IAM.ESCALATE.EDITLAMBDA.001) — unauditable plus
+unscoped or further-expandable), <code>lambda_silent_failure</code>
+(GHOST.DLQ OR existing CTL.LAMBDA.TRIGGER.GHOST.001 —
+threshold 1, both cause silent data loss). 15 e2e
+fixtures including 3 variants: ghost-role-active-fail
+(function with active triggers receiving 50 events/min
+while every invocation fails), ghost-vpc-sgonly-fail
+(subnet-only-deleted vs SG-only-deleted distinction),
+and ghost-dlq-sns-fail (DLQ pointing at deleted SNS
+topic vs SQS). 6 triage overrides. Ghost reference
+total in catalog: 48 → 54.</p>
+</li>
+<li class="">
+<p><strong>RDS-6 — Aurora-specific, HA, and lifecycle controls
+(8 new controls, 3 chains).</strong> Sixth and final RDS
+gap-closure iteration. Closes the Aurora-specific
+surface (cluster topology, MySQL backtrack, serverless
+v1, Global Database secondary encryption), the HA
+surface beyond Multi-AZ (read-replica AZ placement,
+read-replica config drift), and the instance-lifecycle
+surface (storage type, instance generation). All 8
+controls net-new — no overlap with existing RDS
+catalog. Aurora (4): <code>AURORA.SINGLEINSTANCE</code> (Aurora
+cluster with no reader has worse availability than
+Multi-AZ standard RDS — must provision a fresh
+instance on writer failure where Multi-AZ RDS has a
+pre-warmed standby, high), <code>AURORA.BACKTRACK</code> (Aurora
+MySQL without backtrack — recovery from operator-
+caused destructive incidents reverts to multi-hour
+snapshot-restore-and-cutover; Aurora MySQL only,
+PostgreSQL gated out, medium), <code>AURORA.SERVERLESS.V1</code>
+(cluster on Aurora Serverless v1 with cold-start
+cliff plus missing IAM auth / Performance Insights /
+read replicas / Global DB; v1 EOL announced,
+medium), <code>AURORA.GLOBAL.UNENCRYPTED</code> (Global Database
+secondary cluster unencrypted — primary&#x27;s
+cross-region replication becomes the path that
+takes data out of encrypted storage, high). HA (2):
+<code>HA.REPLICA.SAMEAZ</code> (read replica in same AZ as
+primary — AZ event takes both offline; the most
+common AWS outage class is single-AZ, medium),
+<code>HA.REPLICA.CONFIG</code> (replica security configuration
+drifts from primary — broader SG, weaker parameter
+group, public flag mismatch — replica becomes the
+soft target for the same data, high). Lifecycle (2):
+<code>LIFECYCLE.STORAGETYPE</code> (gp2 instead of gp3 —
+burst-credit-exhaustion latency cliffs misattributed
+to application bugs, low), <code>LIFECYCLE.GENERATION</code>
+(db.m4 / db.r4 / db.t2 / db.m3 — Xen-era hypervisor
+surface inherits the XSA CVE class same as
+CTL.EC2.NITRO.001 catches on EC2, plus an
+instance-family retirement deadline, medium).
+Chains: <code>rds_aurora_single_point</code> (single-instance
+Aurora + no cluster deletion protection — uses
+existing CTL.RDS.CLUSTER.DELETION.PROTECT.001;
+cluster is one API call from irrecoverable, threshold
+2, compound critical), <code>rds_replica_exposure</code>
+(REPLICA.CONFIG drift OR REPLICA.SAMEAZ; threshold 1
+fast-firing on any replica defect),
+<code>rds_aurora_dr_gap</code> (GLOBAL.UNENCRYPTED OR no
+cross-region path — uses RDS-5&#x27;s
+CTL.RDS.BACKUP.CROSSREGION.001). 19 e2e fixtures
+including 4 engine-gate variants
+(singleinstance-postgres-fail asserts both Aurora
+engines are caught, backtrack-pg-pass asserts the
+PostgreSQL gate skips the control), and a 3-diff
+REPLICA.CONFIG variant exercising compound drift.
+8 triage overrides. Final RDS iteration; the 6
+iterations together added 45 net-new RDS controls.</p>
+</li>
+<li class="">
+<p><strong>RDS-5 — backup deepening, cross-region DR, and
+snapshot sharing security (7 new controls, 3 chains).</strong>
+Fifth RDS gap-closure iteration. Closes the data-
+resilience and snapshot-boundary surface that the
+earlier RDS iterations did not reach. Spec asked for
+~8 controls; one duplicated <code>CTL.RDS.ENCRYPT.BACKUP.001</code>
+(RDS-1&#x27;s automated-backup encryption check), so 7
+distinct additions shipped. Backup (3):
+<code>BACKUP.RETENTION.COMPLIANCE</code> (compliance-tagged
+instance with retention below the framework floor —
+PCI 1y, HIPAA 6y, SOX 7y; fires only when the
+obligation is present, high), <code>BACKUP.CROSSREGION</code>
+(no cross-region recovery path of any kind — no
+AWS Backup cross-region copy, no automated-backup
+replication, no cross-region read replica; regional
+outage = total data unavailability, medium),
+<code>BACKUP.CROSSREGION.ENCRYPT</code> (cross-region copy
+unencrypted at destination because copy operation
+omitted <code>--kms-key-id</code>; source-region audit reads
+encrypted but the off-region copy is plaintext,
+high). Snapshot sharing (4):
+<code>SNAPSHOT.UNENCRYPTED.SHARED</code> (snapshot shared with
+named accounts in plaintext; receiving account
+restores and reads everything, distinct from
+CTL.RDS.SNAPSHOT.PUBLIC.001 which catches <code>all</code>,
+high), <code>SNAPSHOT.CROSSENV</code> (production-tagged
+snapshot shared with non-production account; same
+pattern as CTL.EC2.EBS.CROSSENV.SNAPSHOT.001 in
+the database domain, high), <code>SNAPSHOT.AWSKEY.SHARED</code>
+(snapshot encrypted with aws/rds is shared
+cross-account; the share appears successful but
+restore fails with KMS access-denied — operational
+failure disguised as successful sharing, surfacing
+during DR rehearsals and audit-copy workflows,
+medium), <code>SNAPSHOT.STALE</code> (manual snapshot &gt; 365
+days old; cost accumulation plus retention vs
+deletion-policy gap for GDPR / HIPAA endpoints,
+low). Chains: <code>rds_backup_failure</code> (existing
+ENCRYPT.BACKUP + (no cross-region OR retention
+below compliance) = backup posture broken on
+multiple dimensions), <code>rds_snapshot_leakage</code>
+(UNENCRYPTED.SHARED OR CROSSENV OR existing
+SNAPSHOT.PUBLIC; threshold 1, fast-firing for
+any sharing-boundary breach), <code>rds_snapshot_unusable</code>
+(AWSKEY.SHARED OR CROSSREGION.ENCRYPT off; backup
+exists but is either inaccessible or insecure).
+17 e2e fixtures including a no-obligation gate
+variant (RETENTION.COMPLIANCE asserts non-regulated
+workloads are not flagged), an automated-snapshot
+gate variant (STALE asserts the type-gate skips
+RDS-managed automated snapshots), and a compound
+CROSSENV-plus-unencrypted variant. 7 triage
+overrides. RDS backup / snapshot coverage:
+partial → comprehensive.</p>
+</li>
+<li class="">
+<p><strong>RDS-4 — authentication, Secrets Manager integration,
+and RDS Proxy security (6 new controls, 3 chains).</strong>
+Fourth RDS gap-closure iteration. Closes the credential-
+lifecycle and Proxy-security surface that RDS-1/2/3 did
+not cover. Spec asked for ~8 controls; three duplicated
+existing catalog entries (CTL.RDS.IAMAUTH.001 covered
+IAM.ENFORCE; CTL.SECRETS.ROTATION.001 covered the
+generic SM rotation case which the proposed RDS-specific
+variant subsumes; CTL.SECRETSMANAGER.POLICY.PUBLIC.001
+covered SECRET.POLICY&#x27;s public-policy core), so 6
+distinct additions shipped. Authentication (3):
+<code>AUTH.MASTERUSER</code> (master username matches a well-known
+default — admin / root / postgres / sa / master /
+dbadmin / mysql / oracle — handing the attacker half
+the credential pair for free; remediation requires
+instance recreation since engines have no master-
+rename, medium), <code>AUTH.MASTERPASSWORD.AGE</code> (master
+password not rotated within 90 days; long-lived admin
+credentials accumulate exposure across shell history,
+config repos, build artifacts, and rotated-out team
+members, high), <code>SECRET.EXISTS</code> (database credentials
+not in Secrets Manager — therefore in config files,
+ECS task definitions, Lambda env vars, SSM Parameter
+Store as String, or hardcoded; multiple copies, no
+rotation, no audit, high). RDS Proxy (3): <code>PROXY.IAM</code>
+(Proxy does not require IAM auth on client connections;
+applications still hold the database password defeating
+the centralization that motivated the Proxy, medium),
+<code>PROXY.TLS</code> (Proxy backend connection not TLS-required;
+same false-encryption pattern as CDN-to-S3-origin and
+Cloudflare Flexible mode — client side TLS terminates
+at the Proxy and the Proxy-to-DB hop carries credentials
+and query data plaintext through the VPC where any
+same-VPC observer reads them, high), <code>PROXY.EXPOSURE</code>
+(Proxy SG permits ingress beyond app tier; the Proxy&#x27;s
+own auth/TLS defenses fire against every reachable
+principal instead of the curated app tier, medium).
+Chains: <code>rds_credential_lifecycle</code> (no SM secret +
+(no rotation OR stale master password) — uses existing
+CTL.SECRETS.ROTATION.001), <code>rds_auth_weakness</code> (no IAM
+auth + (predictable username OR public secret policy)
+— uses existing CTL.RDS.IAMAUTH.001 +
+CTL.SECRETSMANAGER.POLICY.PUBLIC.001), <code>rds_proxy_insecure</code>
+(no backend TLS + (no IAM OR broad SG)). 14 e2e fixtures
+including engine-specific MASTERUSER variants
+(admin / postgres) and a Proxy false-TLS variant
+asserting client-side TLS does not redeem backend
+plaintext. 6 triage overrides. RDS Proxy coverage:
+1 (ghost) → 4 controls. RDS auth coverage: partial →
+comprehensive.</p>
+</li>
+<li class="">
+<p><strong>RDS-3 — ghost references and orphaned resources
+(8 new controls, 3 chains).</strong> Third RDS gap-closure
+iteration. Extends Stave&#x27;s ghost-reference pattern
+(cross-inventory existence checks) to the database
+domain. All 8 controls net-new — no overlap with
+the existing RDS catalog. Ghost references (6):
+<code>GHOST.SUBNETGROUP</code> (DB subnet group references a
+deleted subnet → Multi-AZ failover places standby in
+a non-existent subnet during the AZ outage that
+triggered the failover, high), <code>GHOST.PARAMGROUP</code>
+(instance references a deleted parameter group →
+silent regression to permissive engine defaults
+while the console reads healthy, high),
+<code>GHOST.OPTIONGROUP</code> (deleted option group → Oracle
+TDE / SQL Server audit / S3 integration silently
+disable, medium), <code>GHOST.EVENTSNS</code> (event
+subscription targets a deleted SNS topic → events
+fire, notifications drop into the void; same pattern
+as CTL.CLOUDWATCH.ALARM.GHOST.001 on the RDS side,
+high), <code>GHOST.PROXYSECRET</code> (RDS Proxy references a
+deleted Secrets Manager secret → DELAYED failure on
+pool refresh hours after the secret deletion,
+critical — the only critical in the iteration and
+the most dangerous ghost pattern in the catalog),
+<code>GHOST.SG</code> (instance attaches a deleted security
+group → undefined network policy at next
+modification; distinct from CTL.VPC.SG.GHOST.001
+which catches the SG-rule side, high). Orphaned
+resources (2): <code>ORPHAN.SNAPSHOT</code> (snapshot whose
+source instance has been deleted → full database
+contents readable to any principal with
+rds:RestoreDBInstanceFromDBSnapshot rights, medium),
+<code>ORPHAN.SUBNETGROUP</code> (DB subnet group with zero
+associated instances → cleanup-incomplete signal,
+pins underlying VPC subnets, low). Chains:
+<code>rds_ghost_cascade</code> (≥2 of subnetgroup / paramgroup
+/ eventsns / sg ghosts = systematic decommissioning
+failure), <code>rds_proxy_failure</code> (proxy secret OR
+proxy SG ghost = either alone causes Proxy failure
+with delayed surfacing), <code>rds_decommission_incomplete</code>
+(orphan snapshot + (orphan subnetgroup OR ghost
+paramgroup) = data + config + settings all
+un-cleaned). 19 e2e fixtures including
+proxysecret-active-fail (delayed failure with
+active connections), subnetgroup-allghost-fail
+(complete placement failure), and
+orphan-snapshot-unencrypted-fail (compound). 8
+triage overrides. Ghost reference total in the
+catalog: 42 → 48.</p>
+</li>
+<li class="">
+<p><strong>RDS-2 — logging deepening, CloudWatch alarms, and event
+subscriptions (10 new controls, 3 chains).</strong> Second RDS
+gap-closure iteration. Closes the operational-monitoring
+surface that RDS-1 (TLS / encryption / parameter group)
+did not reach. All 10 planned controls were net-new
+after dedup against existing CTL.RDS.MONITORING.001
+(Enhanced Monitoring boolean), CTL.RDS.PERFORMANCE.INSIGHTS.001
+(PI + KMS boolean), CTL.RDS.EVENTS.001 (generic critical
+subscription boolean), CTL.RDS.LOG.001 (audit boolean),
+and CTL.RDS.CLUSTER.LOGGING.001 (Aurora cluster scope) —
+the new controls deepen those areas with specific
+configuration checks. Monitoring (4): <code>MONITORING.INTERVAL</code>
+(Enhanced Monitoring interval &gt; 15s collapses short-event
+visibility, medium), <code>PERFINSIGHTS.RETENTION</code> (PI retention
+below 7-day free-tier baseline collapses trend / regression
+/ forensics window, low), <code>ALARM.CPU</code> (no CPUUtilization
+alarm; spike from runaway query, connection storm, SQL-
+injected cryptominer, or DoS detected via app symptom
+instead, medium), <code>ALARM.CONNECTIONS</code> (no
+DatabaseConnections alarm; Lambda cold-start storm
+saturates max_connections without warning, medium).
+Alarms (2): <code>ALARM.STORAGE</code> (no FreeStorageSpace alarm;
+read-only transition arrives without warning and writes
+fail mid-transaction, high — only high-severity alarm
+control), <code>ALARM.REPLICATION</code> (no ReplicaLag alarm on
+instances with read replicas; stale-read incidents
+present as application data-quality bugs). Logging (2):
+<code>LOG.RETENTION</code> (CloudWatch log group retention below
+framework floor; PCI 1y, HIPAA 6y, SOX 7y, audit data
+unrecoverable, medium), <code>LOG.SLOWQUERY</code> (slow-query log
+disabled; performance + SQL-injection + DoS signals
+collapse to a single dull &quot;slow database&quot; symptom,
+medium). Events (2): <code>EVENTS.DELETION</code> (no deletion
+event subscription; pairs with deletion protection as
+detective control when preventive control is bypassed
+by drift, high), <code>EVENTS.SECURITY</code> (no security-event
+subscription; SG / parameter / configuration / certificate
+changes detected only via CloudTrail mining, medium).
+Chains: <code>rds_monitoring_blind</code> (no CPU + (no storage OR
+no connections) = three primary load signals
+unmonitored), <code>rds_audit_incomplete</code> (slow-query off +
+(short retention OR no export) = audit chain broken at
+multiple points), <code>rds_event_gap</code> (no deletion-event +
+(no security-event OR no deletion protection) = change
+detection plus preventive control both gone). 22 e2e
+fixtures including engine variants (slow-query MySQL +
+PostgreSQL pass) and scope-gate variants (replication
+alarm standalone pass for instances without replicas).
+10 triage overrides. RDS monitoring coverage: partial →
+comprehensive.</p>
+</li>
+<li class="">
+<p><strong>RDS-1 — TLS, encryption, and parameter-group security
+(6 new controls, 3 chains).</strong> First RDS gap-closure
+iteration. Closes the database-engine-configuration
+surface that VPC, IAM, and generic-encryption controls
+do not reach. Prompt spec asked for ~10 controls; four
+turned out to duplicate existing ones (<code>CTL.RDS.SSL.001</code>
+and <code>CTL.RDS.SSL.ENFORCE.001</code> covered TLS.ENFORCE;
+<code>CTL.RDS.PARAM.GROUP.001</code> covered PARAM.DEFAULT;
+<code>CTL.RDS.LOG.001</code> covered PARAM.LOGGING;
+<code>CTL.RDS.PERFORMANCE.INSIGHTS.001</code> covered
+ENCRYPT.PI), so shipped 6 distinct additions.
+TLS (2): <code>TLS.VERSION</code> (instance accepts TLS 1.0/1.1
+→ sub-modern transport encryption + downgrade path
+attacks, medium), <code>TLS.CACERT</code> (outdated AWS-issued CA
+certificate → pending TLS connection failure cliff at
+CA rotation, with emergency-mode disabled-verification
+regression risk, medium). Encryption (2):
+<code>ENCRYPT.CMK</code> (instance encrypted with aws/rds shared
+key instead of CMK → no disable, no key-policy audit,
+no cross-account snapshot share, medium),
+<code>ENCRYPT.BACKUP</code> (automated backups stored
+unencrypted while live instance reports encrypted →
+recoverable plaintext copy of the database
+unnoticeable in console, high). Parameter group (2):
+<code>PARAM.PASSWORDHASH</code> (PostgreSQL password_encryption
+set to md5 instead of scram-sha-256 → unsalted
+catalog-level password compromise via public rainbow
+tables, medium), <code>PARAM.LOGEXPORT</code> (instance does
+not export logs to CloudWatch → audit data invisible
+to centralized logging, alerting, and SIEM, distinct
+from existing CTL.RDS.CLUSTER.LOGGING.001 which
+covers Aurora clusters, high). Chains:
+<code>rds_plaintext_database</code> (TLS not enforced + at-rest
+not encrypted OR backup not encrypted = plaintext
+reachable through more than one channel),
+<code>rds_audit_blind</code> (audit logging off + log export
+off OR default parameter group = compromise leaves
+no record of data accessed), <code>rds_encryption_weak</code>
+(aws/rds key + deprecated TLS OR md5 password hash
+= encryption that does not survive serious adversary
+review). 13 e2e fixtures (12 base pass/fail +
+passwordhash-mysql-pass variant asserting the control
+is a no-op on non-PostgreSQL engines). 6 triage
+overrides. RDS parameter-level security: 0 → 4
+controls (combined with existing PARAM.GROUP / LOG).</p>
+</li>
+<li class="">
+<p><strong>EC2-6 — key pair lifecycle and remaining EC2 gaps
+(6 new controls, 2 chains).</strong> Final EC2 gap-closure
+iteration. Closes the API-observable key-pair surface
+(most key-pair gaps — password auth, root login,
+authorized_keys, host key verification — are OS-level
+and not visible from the EC2 / SSM API; this iteration
+covers what is visible) plus addressable LT/ASG drift.
+Key pair lifecycle (3): <code>KEYPAIR.SHARED</code> (key pair
+shared across &gt; 5 instances → blast radius of one
+leaked private half is N instances and rotation is
+rarely paid in practice, medium), <code>KEYPAIR.NOKEY.SSHOPEN</code>
+(no key pair attached but SG allows port 22 →
+ambiguous SSH plane, either brute-forceable, invisibly
+authorized post-launch, or gratuitously exposed,
+medium), <code>KEYPAIR.SSM.PREFERRED</code> (SSM-managed instance
+also has key pair + SG SSH → redundant attack surface
+when SSM provides better auth, audit, and revocation,
+low). Launch template / ASG drift (3):
+<code>LT.VERSION.STALE</code> (LT default version != latest →
+authored hardening not in effect; new launches use
+older config, medium), <code>ASG.LAUNCHCONFIG</code> (ASG on
+legacy launch configuration → no IMDSv2 enforcement,
+no version history, no mixed-instance support, medium),
+<code>LT.PUBLICIP</code> (LT forces AssociatePublicIpAddress=true
+→ overrides subnet architecture, instances designed for
+private subnets launch internet-facing, high). Chains:
+<code>ec2_ssh_attack_surface</code> (SHARED + NOKEY-SSHOPEN +
+broad SG CIDR = high blast radius AND easy to reach),
+<code>ec2_lt_security_drift</code> (LT stale + forces public IP</p>
+<ul>
+<li class="">ghost AMI = template is the source of truth and
+multiple drift signals reproduce on every launch).
+13 e2e fixtures (12 base pass/fail + extreme-50-instance
+variant for KEYPAIR.SHARED). 6 triage overrides.
+EC2 gap closure complete: 6 iterations, 47 net-new
+controls (≈8 per iteration; spec asked for ~58 but
+duplicates against existing catalog dropped each
+iteration).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>EC2-5 — trusted platform and network exposure deepening
+(7 new controls, 3 chains).</strong> Fifth EC2 gap-closure
+iteration. Opens the trusted-platform domain (was 0
+controls) and deepens network exposure beyond the
+security-group surface that VPC-1 / VPC-7 covered.
+Prompt spec asked for ~8 controls; one turned out to
+duplicate an existing one (<code>CTL.EC2.NETWORK.DIRECT.001</code>
+covered DIRECTEXPOSE), so shipped 7 distinct additions.
+Trusted platform (4): <code>NITRO</code> (Xen-based instance type
+inherits the historical Xen XSA CVE class and is gated
+out of Nitro-only hardening features, medium),
+<code>SECUREBOOT</code> (UEFI-capable instance without Secure Boot
+→ bootkit / rootkit persistence below the OS-level
+detection threshold, medium), <code>NITROTPM</code> (NitroTPM-
+capable instance without it → no hardware-rooted
+attestation, EBS-detach-and-read attacks remain viable,
+low), <code>TENANCY.SENSITIVE</code> (compliance-tagged workload
+on shared tenancy → contractual / framework gap even
+when technical isolation is sufficient, medium).
+Network exposure deepening (3): <code>NETWORK.DUALHOMED</code>
+(instance with ENIs in two security zones IS the bridge
+between them — architectural segmentation bypass with
+no audit trail, high), <code>NETWORK.SRCDSTCHECK</code> (source/
+destination check disabled on a non-NAT/VPN/appliance
+→ instance can route, proxy, and address-spoof at
+kernel level, high), <code>NETWORK.MULTIPLE.SG</code> (instance
+with &gt; 5 SGs has effective rule set as union of
+hundreds of rules, exceeding practical reviewability,
+medium). Chains: <code>ec2_hardware_security_gap</code> (non-Nitro</p>
+<ul>
+<li class="">Secure Boot off OR sensitive-on-shared-tenancy =
+layered hardware defenses removed),
+<code>ec2_network_pivot</code> (DUALHOMED OR SRCDSTCHECK = each
+alone makes the instance a kernel-level pivot point),
+<code>ec2_direct_exposure</code> (DIRECT + MULTIPLE.SG +
+HIGHPORTS = no upstream LB protection AND unauditable
+local rules AND known-risky services exposed). 18 e2e
+fixtures (12 base pass/fail + 6 variants:
+nitro-t2-fail, dualhomed-3tier-fail, srcdstcheck-nat-pass,
+tenancy-nonsensitive-pass + 2 redundant pass cases).
+7 triage overrides. Trusted platform: 0 → 4 controls.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>EC2-4 — instance lifecycle and orphaned resources
+(6 new controls, 3 chains).</strong> Fourth EC2 gap-closure
+iteration. Closes the post-termination decommission-leak
+surface and the long-lived-instance retirement surface.
+Prompt spec asked for ~8 controls; two turned out to
+duplicate existing ones (<code>CTL.EC2.INSTANCE.AGE.001</code>
+covered RUNNING.AGED; <code>CTL.CLOUDWATCH.ALARM.GHOST.001</code>
+covered GHOST.ALARM), so shipped 6 distinct additions.
+Instance lifecycle (2): <code>INSTANCE.STOPPED.AGED</code> (stopped</p>
+<blockquote>
+<p>decommission threshold accumulates EBS, ENIs, IAM
+attachments, all readable on a single Start, medium),
+<code>INSTANCE.EOL</code> (running on retired instance family →
+capped security primitives now and unrecoverable on next
+AZ failover, medium). Orphaned resources (3):
+<code>ENI.ORPHAN</code> (detached &gt; threshold → IP/SG-quota leak,
+attach-back lateral movement, low), <code>SNAPSHOT.AMI.DEREGISTERED</code>
+(AMI deregistration leaves snapshots → indefinite
+historical-state retention readable to anyone with
+CreateVolume, medium), <code>KEYPAIR.ORPHAN</code> (key pair with
+no current users → persistent SSH backdoor potential
+via re-launched AMIs, medium). Resource-side ghost (1):
+<code>ROUTE53.HEALTHCHECK.GHOST</code> (health check whose target
+was deleted → alert fatigue + cross-tenant probe risk
+on reissued IPs, low) — resource-side twin of
+CTL.ROUTE53.DANGLING (DNS-record side). Chains:
+<code>ec2_dormant_attack_surface</code> (long-stopped instance +
+orphan ENI/keypair = forgotten access path),
+<code>ec2_decommission_incomplete</code> (snapshot + ENI + keypair
+artifacts together prove cleanup workflow stopped after
+AMI deregistration), <code>ec2_permanent_vulnerability</code>
+(EOL family + aged + unmanaged = no remediation pipeline
+before the EOL deadline). 12 e2e fixtures. 6 triage
+overrides.</p>
+</blockquote>
+</li>
+<li class="">
+<p><strong>EC2-1 — launch template ghost references and AMI security
+(6 new controls, 3 chains).</strong> First EC2 gap-closure
+iteration. Extends the ghost-reference pattern to launch
+templates — Stave&#x27;s architectural moat now covers the
+compute supply chain in addition to S3, IAM, KMS, VPC,
+EventBridge, CloudWatch, Route53, GitHub CODEOWNERS, and
+ELB. Prompt spec asked for ~10 controls; three turned out
+to duplicate existing ones (<code>CTL.EC2.AMI.GHOST.001</code> covered
+LT.GHOST.AMI; <code>CTL.EC2.AMI.CURRENCY.001</code> covered both
+AMI.STALE and AMI.DEPRECATED), so shipped 6 distinct
+additions. Launch-template ghosts (4): <code>LT.GHOST.SG</code>
+(deleted SG → silent posture downgrade to default SG when
+instances launch, high), <code>LT.GHOST.KEYPAIR</code> (deleted key
+pair → unmanageable instance, medium), <code>LT.GHOST.SUBNET</code>
+(deleted subnet → AZ redundancy loss or launch failure,
+high), <code>LT.GHOST.PROFILE</code> (deleted instance profile →
+runtime IAM credential failure invisible to EC2 health
+checks, high). AMI security (2): <code>AMI.UNTRUSTED</code> (AMI from
+account outside the trusted publisher set — supply-chain
+compromise via base image, high), <code>AMI.ENCRYPTION</code> (AMI
+EBS snapshots not encrypted — data-at-rest exposure on
+every instance launched from it, medium). Chains:
+<code>ec2_lt_ghost_cascade</code> (multiple LT ghost references
+indicate systematic decommissioning failure),
+<code>ec2_ami_supply_chain</code> (untrusted AMI + stale or
+unencrypted), <code>ec2_scale_out_failure</code> (deregistered AMI OR
+stale AMI — both compromise auto-scaling safety). 13 e2e
+fixtures (12 base + amazon-pass variant for AMI.UNTRUSTED
+asserting Amazon-published AMIs are trusted). 6 triage
+overrides. Ghost reference total across catalog: 37 → 41.
+Docs and README regenerated (1392 controls).</p>
+</li>
+<li class="">
+<p><strong>VPC-8 — lateral movement, network segmentation, and IPv6
+controls (8 controls, 3 chains). Final VPC iteration.</strong> Closes
+the category-14 (lateral movement) and category-12 (IPv6)
+clusters; completes the eight-iteration VPC gap-closure
+programme.
+Segmentation (5): <code>SEGMENT.ENVMIX</code> (production and non-
+production share network path, high), <code>SEGMENT.TIERING</code>
+(web/app/data tiers in same subnet, medium), <code>SEGMENT.BASTION</code>
+(bastion has unrestricted internal egress, high),
+<code>SEGMENT.EASTWEST</code> (TGW inter-VPC traffic uninspected, medium),
+<code>SEGMENT.LAMBDA</code> (VPC-attached Lambda has unrestricted SG
+egress, medium).
+IPv6 (3): <code>IPV6.EGRESSONLY</code> (IPv6 VPC without egress-only IGW
+— bidirectional internet exposure since IPv6 has no NAT,
+high), <code>IPV6.ROUTE.PUBLIC</code> (subnet private on IPv4 but public
+on IPv6 — the most deceptive IPv6 misconfiguration, high),
+<code>IPV6.NACL</code> (NACL IPv6 rules don&#x27;t match IPv4 restrictions —
+the parity gap at the NACL layer, medium).
+Chains: <code>vpc_lateral_movement</code> (envmix + bastion or eastwest),
+<code>vpc_ipv6_shadow_exposure</code> (no EIGW + ROUTE.PUBLIC or SG IPv6
+parity gap), <code>vpc_segmentation_failure</code> (no tiering + default
+NACL or default SG in use).
+18 e2e fixtures (16 base + two worst-case variants:
+envmix-tgw with cross-VPC environment mixing via TGW, and
+ipv6-route-public-natigw with NAT for IPv4 but IGW for IPv6).
+8 triage overrides. Docs and README regenerated (1386 controls).</p>
+</li>
+<li class="">
+<p><strong>refactor: extract capability vocabulary from core engine.</strong>
+Moved <code>ValidCapabilities</code> from <code>internal/core/controldef/</code> to
+<code>internal/builtin/capabilities/</code>. Core now defines the
+<code>CapabilityRegistry</code> contract; the catalog layer provides the
+data. After this change, no domain expansion (AWS, M365,
+Cloudflare, EKS, GCP, Azure, or any future domain) requires
+modifying <code>internal/core/</code>. 108 domain-expansion commits, zero
+core changes — that pattern now extends to any new
+attack-path capability strings as well. <code>Validate()</code> is now
+structural-only; vocabulary is checked via the new
+<code>ValidateCapabilities(registry)</code> method. 12 production
+callers updated to thread the registry through; tests use
+locally-declared registries instead of the previously-global
+vocabulary.</p>
+</li>
+<li class="">
+<p><strong>VPC-7 — load balancer ghost references, DNS firewall, and
+Network ACL controls (9 controls, 3 chains).</strong> Combines three
+smaller gap clusters from categories 2 (NACLs), 8 (DNS), and
+9 (ELB). ELB ghost family: <code>TARGET.GHOST</code> (deregistered or
+terminated targets remain registered, medium), <code>LISTENER.GHOST</code>
+(listener rule forwards to a deleted target group — silent
+502/503, high), <code>CERT.GHOST</code> (expired or deleted ACM cert on
+HTTPS listener — public TLS failure, high), <code>SG.GHOST</code> (LB
+references a deleted security group — inconsistent firewall
+state, high). DNS firewall: <code>DNSFIREWALL.ENABLED</code> (no Route53
+Resolver DNS Firewall rule group on VPC, medium),
+<code>DNSFIREWALL.MANAGEDLISTS</code> (DNS Firewall present but no AWS
+managed threat-intel lists, medium). NACL: <code>DEFAULT.INUSE</code>
+(subnet uses default allow-all NACL — no subnet-level
+defense-in-depth, medium), <code>RULE.ORDER</code> (deny rules ordered
+after matching allow rules — never evaluate, medium),
+<code>UNRESTRICTED</code> (custom NACL allows all traffic — defense-in-
+depth theater, medium). Chains: <code>elb_ghost_cascade</code>
+(multiple LB ghost references — systematic decommissioning
+failure), <code>vpc_dns_exfiltration</code> (no DNS firewall + unrestricted
+DNS egress or no flow logs), <code>vpc_nacl_false_confidence</code>
+(ineffective deny rules OR allow-all custom NACL — appears
+filtered, isn&#x27;t). 20 e2e fixtures (18 base + 2 worst-case
+variants: target-ghost-total with every target a ghost and
+cert-ghost-deleted distinguished from merely expired).
+9 triage overrides. Docs and README regenerated (1378 controls).</p>
+</li>
+<li class="">
+<p><strong>VPC-6 — flow log deepening and VPC endpoint coverage (9 controls,
+3 chains).</strong> Closes the category-7 flow-log cluster and the
+category-6 endpoint cluster. Prompt spec asked for 10 controls;
+<code>MISSING.S3</code> was a duplicate of the existing
+<code>CTL.VPC.ENDPOINT.S3.001</code>, so shipped 9. Flow-log additions:
+<code>SUBNET</code> (sensitive subnet with no coverage at either subnet or
+VPC scope, medium), <code>STATUS</code> (flow log configured but not ACTIVE —
+the &quot;everything appears to work&quot; pattern, high), <code>FORMAT</code> (default
+format omits pkt-srcaddr/tcp-flags/etc. needed for forensics,
+medium), <code>DESTINATION.SECURE</code> (public/unencrypted/deletable/low-
+retention destination, high, OR predicate across four dimensions),
+<code>BIDIRECTIONAL</code> (TrafficType is ACCEPT or REJECT only — half the
+record missing, medium). Endpoint additions:
+<code>MISSING.CRITICAL</code> (missing interface endpoint for one or more of
+KMS/Secrets Manager/STS/SSM/CloudWatch Logs/ECR, medium),
+<code>SG.BROAD</code> (endpoint SG permits full VPC CIDR rather than specific
+workload SGs, medium), <code>DNS</code> (Private DNS disabled — endpoint
+bypassed because standard service DNS routes to public IP, low).
+Chains: <code>vpc_flow_visibility_gap</code> (flow logs not active + partial
+capture or insecure destination), <code>vpc_endpoint_bypass</code> (no
+Private DNS + broad SG or anonymous policy), <code>vpc_private_subnet_leakage</code>
+(missing S3 gateway or critical interface endpoints + unrestricted
+egress). 18 e2e fixtures (16 base + 2 worst-case variants:
+status-deliver-error with ACTIVE status but ERROR delivery, and
+endpoint-many-missing with all six critical endpoints absent).
+8 triage overrides. Docs and README regenerated (1369 controls).</p>
+</li>
+<li class="">
+<p><strong>VPC-5 — AWS Network Firewall deepening (5 controls, 3 chains).</strong>
+Closes the Network Firewall gap cluster in category 10. Prompt
+spec asked for 8 controls; three turned out to duplicate existing
+ones (<code>CTL.VPC.NETWORK.FIREWALL.001</code> covered ENABLED,
+<code>CTL.NETFIREWALL.MULTIAZ.001</code> covered SINGLEAZ, <code>CTL.NETFIREWALL.LOG.001</code>
+covered LOGGING), so shipped 5 distinct additions. New controls:
+<code>ROUTING</code> (firewall deployed but route tables bypass it — the
+&quot;smoke detector not connected to power&quot; pattern, critical),
+<code>RULES.STATEFUL</code> (no stateful rule groups — packet filter, not
+connection-aware firewall, high), <code>RULES.PERMISSIVE</code> (allow-any
+rule inside a rule group short-circuits inspection, high),
+<code>MODE</code> (stateful default is ALERT — detection without
+prevention, high), <code>TLS</code> (no TLS inspection — HTTPS content
+bypass, medium). Chains: <code>netfirewall_ineffective</code>
+(routing-bypass + alert-mode or no-logging — security theater),
+<code>netfirewall_content_blind</code> (no TLS + no stateful = blind to
+both content and context), <code>vpc_no_inspection</code> (no firewall +
+no flow logs or unrestricted egress). 12 e2e fixtures (10 base</p>
+<ul>
+<li class="">two worst-case variants: routing-silent with configured-looking
+rules, mode-suricata with 1247 stateful rules still in alert).
+5 triage overrides. Docs and README regenerated (1361 controls).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>VPC-4 — internet connectivity and subnet architecture controls
+(10 controls, 3 chains).</strong> Closes the category-4 internet-connectivity
+gaps and subnet-architecture gaps from category 3. Covers the
+&quot;public-by-default&quot; failure mode (main route table with IGW route +
+subnet <code>MapPublicIpOnLaunch</code>) and the database-in-public-subnet
+pattern. New controls: <code>IGW.UNNECESSARY</code> (latent IGW attachment,
+medium), <code>NAT.SINGLEAZ</code> (single-AZ egress bottleneck, medium),
+<code>NAT.LOGGING</code> (egress choke-point unlogged, medium), <code>EIP.ORPHANED</code>
+(unassociated Elastic IP, low), <code>EIP.EXCESSIVE</code> (multiple EIPs on
+one instance, medium), <code>SUBNET.AUTOPUBLIC</code> (<code>MapPublicIpOnLaunch</code>
+subnet default, high), <code>SUBNET.PRIVATEDB</code> (database subnet has IGW
+route, high), <code>ROUTETABLE.MAIN.PUBLIC</code> (main route table has IGW
+route, high), <code>ROUTETABLE.ORPHANED</code> (unassociated route table,
+low), <code>DEFAULT.RESOURCES</code> (workloads in default VPC, high). Chains:
+<code>vpc_default_exposure</code> (resources in default VPC + auto-public-IP
+or default SG in use), <code>vpc_public_by_default</code> (main-RT IGW route +
+subnet auto-public), <code>vpc_database_exposure</code> (database in public
+subnet OR <code>CTL.RDS.PUBLIC.001</code>). 20 e2e fixtures, 10 triage
+overrides, docs and README regenerated (1356 controls).</p>
+</li>
+<li class="">
+<p><strong>VPC-3 — VPN, Client VPN, and Direct Connect controls (8 controls, 3
+chains).</strong> Closes the hybrid-connectivity gap cluster in the VPC
+taxonomy. Site-to-site VPN: <code>ENCRYPTION.WEAK</code> (sub-AES-256 cipher
+suites, high), <code>TUNNEL.DOWN</code> (redundancy loss or connectivity outage,
+high), <code>PSK</code> (shared-secret peer authentication, medium), <code>LOGGING</code>
+(tunnel event log disabled, medium). Client VPN: <code>AUTH</code> (all-traffic
+allow with no authorization rules, high), <code>LOGGING</code> (connection log
+disabled, high), <code>SPLITTUNNEL</code> (client bridges VPC and internet,
+medium). Direct Connect: <code>ENCRYPTION</code> (no VPN overlay and no MACsec,
+high). Chains: <code>vpc_vpn_compromise</code> (weak cipher + no log or PSK),
+<code>vpc_clientvpn_exposure</code> (all-traffic + no log or split tunnel),
+<code>vpc_hybrid_unencrypted</code> (any unencrypted hybrid path). 18 e2e
+fixtures, 8 triage overrides, docs and README regenerated
+(1346 controls).</p>
+</li>
+<li class="">
+<p><strong>VPC-2 — peering and Transit Gateway controls (9 controls, 3 chains).</strong>
+Closes the largest remaining cluster in the VPC taxonomy: cross-VPC
+connectivity. Peering coverage adds <code>CROSSACCOUNT</code> (peer outside the
+organization, high), <code>BIDIRECTIONAL</code> (return routes not required by the
+use case, medium), <code>PENDING</code> (stale pending-acceptance request, medium),
+and <code>DNS</code> (resolution disabled, low). Transit Gateway coverage adds
+<code>ROUTING.ALLTOALL</code> (segmentation collapse, high), <code>FLOWLOGS</code> (central
+hub unlogged, high), <code>PROPAGATION</code> (VPN/DX route injection risk,
+medium), <code>BLACKHOLE</code> (silent traffic loss, medium), and
+<code>ATTACHMENT.ISOLATED</code> (isolated VPC attached to a shared hub, medium).
+Chains: <code>vpc_peering_exposure</code> (cross-account peer + broad routing),
+<code>vpc_tgw_segmentation_failure</code> (all-to-all + unlogged or isolated
+attachment), <code>vpc_transit_ghost</code> (blackhole routes + endpoint ghost
+refs). Skipped <code>PEERING.ROUTING.BROAD</code> — duplicates the existing
+<code>CTL.VPC.PEERING.ROUTES.001</code> (same field, same check). 18 e2e fixtures,
+9 triage overrides, docs and README regenerated (1337 controls).</p>
+</li>
+<li class="">
+<p><strong>DELTA section on findings.</strong> Mechanically derived fix paths computed
+from the predicate and observed values. Each DeltaPath shows the
+property label (from registry), current observed value, and the fix
+action (operator inversion). For AND predicates, independent fix paths
+shown with &quot;any ONE eliminates this finding&quot; header. Uses the same
+property registry as defect derivation. Coverage: 672/675 controls.
+Counterfactual verified: applying the delta&#x27;s suggested change
+eliminates the finding. Renders in both text and JSON output.</p>
+</li>
+<li class="">
+<p><strong>Predicate-derived defect descriptions.</strong> Controls without per-control
+defect overrides now get mechanically generated DEFECT text from their
+predicate tree. A property-path registry maps observation fields to
+domain-meaningful labels (150+ overrides, algorithmic fallback for the
+rest). Combined with operator-phrase mapping, the derivation produces
+accurate sentences like &quot;EBS volume encryption is not enabled&quot; or
+&quot;S3 BlockPublicAcls setting is not enabled.&quot; Coverage: 672 of 675
+controls (99.6%) now have defect descriptions — 121 from per-control
+overrides, 551 from derivation, 3 not derivable (complex predicates).
+Per-control overrides still take precedence. Derivation runs in shared
+core, used by both CLI and library.</p>
+</li>
+<li class="">
+<p><strong>Family template inheritance verified end-to-end.</strong> Targeted test
+(<code>TestApply_FamilyTemplateInheritance</code>) confirms 42 of 54 findings
+inherit family-level infection/failure from the builtin catalog, 12
+retain per-control overrides. Inheritance works through the embedded
+<code>_triage/</code> tree loaded by the builtin ControlStore. File-based loader
+applies triage when <code>_triage/</code> exists in the controls directory;
+self-contained fixtures without <code>_triage/</code> fall back to inline fields
+(backward compatible).</p>
+</li>
+<li class="">
+<p><strong>Triage separation: <code>_triage/</code> directory with family templates and
+per-control overrides.</strong> Security definitions (predicate,
+classification, severity) and troubleshooting context (defect,
+infection, failure) now live in separate files. 121 per-control
+overrides extracted from control YAMLs into
+<code>controls/_triage/overrides/</code>. 47 family-level templates authored
+in <code>controls/_triage/families/</code>, providing infection/failure prose
+for every control family. Engine joins both trees at runtime with
+per-field inheritance: override &gt; family template &gt; empty. Coverage:
+121 controls have full per-control triage (override); remaining
+554 inherit family-level infection/failure. The <code>_triage/</code> directory
+is <code>_</code>-prefixed so the control scanner skips it during YAML
+discovery.</p>
+</li>
+<li class="">
+<p><strong>Defect/infection/failure metadata on 40 IAM controls</strong> —
+CRED (7), TRUST (6), ROLE (6), IDENTITY (6), ROOT (5), SCP (4),
+PASSWORD (4), ZT (2) sub-families authored. Covers credential
+lifecycle (rotation, expiry, dormancy, recurrence), trust policy
+hardening (confused deputy, OIDC scoping, source-ARN conditions,
+external ID), role hygiene (category mixing, intent tags, permission
+drift, break-glass TTL), blast radius analysis (resource threshold,
+cross-account, chain depth, sensitive resource concentration), root
+account hardening (MFA, access keys, usage), SCP guardrails
+(dangerous allows, OU coverage, identity creation), password policy,
+and zero trust principles. 0 flagged as ambiguous. 1 golden updated
+(e2e-hipaa-cross-domain, additive only — ROOT controls). Total
+authored: 121 of 675 controls (17.9%). Remaining IAM: 20 controls
+across smaller sub-families. Next iteration: complete remaining IAM
+(20 controls) then pivot to K8S (64 controls).</p>
+</li>
+<li class="">
+<p><strong>Defect/infection/failure metadata on 38 IAM controls</strong> —
+IAM.ESCALATE (22) and IAM.POLICY (16) sub-families authored. Covers
+all Rhino Security Labs privilege-escalation techniques (PassRole
+chains, self-modification, credential manipulation, trust policy
+rewriting, group-hop escalation), plus policy hygiene controls
+(admin wildcard, NotAction shadow logic, separation of duties,
+ghost references, inline policies, MFA enforcement). 0 controls
+flagged as ambiguous. 0 goldens updated (IAM controls not exercised
+by existing fixtures). Total authored: 81 of 675 controls (12.0%).
+Next iteration: remaining IAM sub-families (62 controls) or pivot
+to K8S (64 controls).</p>
+</li>
+<li class="">
+<p><strong>Defect/infection/failure metadata on all 29 CTL.EC2 controls</strong> —
+complete EC2 family authored in one iteration. Each control now carries
+<code>defect</code>, <code>infection</code>, and <code>failure</code> prose enabling adopters to triage
+findings without external reference. Covers: encryption (EBS volumes,
+snapshots, Nitro Enclaves), network exposure (public IPs, IMDSv2,
+security groups, VPC endpoints, subnets, default VPC), identity
+(instance profiles, IAM roles, user-data credentials), audit (detailed
+monitoring, SSM session logging), governance (launch templates, SSM
+management), resilience (ASG health checks, termination protection),
+and version currency (AMI age). Total authored: 43 of 675 controls
+(14 S3 + IAM + Lambda prior + 29 EC2 this iteration). No case
+programs affected (none exercise EC2 controls). 1 golden file updated
+(e2e-hipaa-cross-domain, additive only). Next iteration: IAM
+sub-families (ESCALATE + POLICY, ~38 controls).</p>
+</li>
+<li class="">
+<p><strong>Three per-service IAM privilege-escalation controls</strong> grounded in
+three disclosed incidents. Each detects a distinct privesc path
+where a principal can invoke a service whose role exceeds the
+principal&#x27;s effective permissions. Per-service framing was chosen
+over a generalized predicate so service-specific preconditions
+(<code>CAPABILITY_IAM</code> for CloudFormation, source-repo write for
+CodeBuild) can gate the finding and suppress the CI/CD-pipeline
+false-positive class.</p>
+<ul>
+<li class=""><code>CTL.IAM.ESCALATE.PASSROLE.CREATESTACK.001</code> — <code>iam:PassRole</code>
+plus <code>cloudformation:CreateStack</code> without a <code>CAPABILITY_IAM</code>
+denial. Grounded in the Yani disclosure (Sep 2022).
+CCM: <code>CCC-04</code>, <code>IAM-05</code>, <code>IAM-16</code>.</li>
+<li class=""><code>CTL.IAM.ESCALATE.PASSROLE.RUNINSTANCES.001</code> — <code>iam:PassRole</code>
+plus <code>ec2:RunInstances</code> on an instance-profile role whose
+permissions exceed the principal&#x27;s. Grounded in the Security
+Shenanigans disclosure (Oct 2020). CCM: <code>IAM-05</code>, <code>IAM-16</code>.</li>
+<li class=""><code>CTL.IAM.ESCALATE.STARTBUILD.001</code> — <code>codebuild:StartBuild</code>
+plus source-repo write on a project whose service role exceeds
+the principal&#x27;s. Non-PassRole variant. Grounded in the HTB
+Business CTF disclosure (Jun 2025). CCM: <code>AIS-06</code>, <code>IAM-05</code>,
+<code>IAM-16</code>.
+Observation contract (consumed by the controls) extends
+<code>identity.escalation</code> with per-vector objects: <code>passrole_createstack</code>,
+<code>passrole_runinstances</code>, <code>startbuild_source_write</code>. Each carries
+<code>present</code>, <code>target_role</code>, <code>permission_delta</code>, and vector-specific
+fields (<code>via_capability_iam</code>, <code>target_project</code>, <code>source_type</code>).
+Extractor work to populate these fields lives outside this repo;
+fixtures carry the shape hand-authored.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>CCM v4 mapping metadata on controls</strong> — optional <code>compliance.ccm_v4</code>
+list on <code>ctrl.v1</code> accepting CSA CCM v4 control IDs in <code>DOMAIN-NN</code>
+form (e.g., <code>IAM-05</code>, <code>CCC-07</code>). Absence = not yet mapped; empty list
+= no CCM mapping applicable. 630 / 630 built-in controls back-filled
+via directory + function inference (100% coverage). Reference at
+<code>docs/reference/ccm-v4-controls.md</code>.</p>
+</li>
+<li class="">
+<p><strong>CCM v4 mappings propagate to evaluation findings</strong> — additive
+<code>control_compliance_ccm_v4</code> field on each finding in <code>out.v0.1</code>
+output; no change to the existing <code>control_compliance</code> map or any
+other framework mappings (SOC 2, PCI, NIST, FedRAMP, ISO, HIPAA, CIS).</p>
+</li>
+<li class="">
+<p><strong>CCM v4 mappings carried in OCSF export</strong> — populated into the
+OCSF 1.1 <code>compliance.requirements</code> array as <code>CCM:&lt;ID&gt;</code> strings so
+downstream SIEMs can filter by framework prefix. No change to other
+OCSF fields. Wire-format <code>schema_version</code> stays at <code>out.v0.1</code> since
+the change is additive under the 0.1.x contract.</p>
+</li>
+<li class="">
+<p><code>stave config delete &lt;key&gt;</code> — remove a project config key, reverting to default</p>
+</li>
+<li class="">
+<p>Severity levels populated on all 43 S3 controls (10 critical, 20 high, 11 medium, 2 low)</p>
+</li>
+<li class="">
+<p>Compliance metadata (<code>compliance</code> field) on control definitions — maps framework names to control IDs</p>
+</li>
+<li class="">
+<p>Compliance mappings on 8 key controls (CIS AWS v1.4.0, PCI DSS v3.2.1, SOC 2)</p>
+</li>
+<li class="">
+<p><code>--min-severity</code> flag on <code>apply</code> — filter controls by minimum severity level</p>
+</li>
+<li class="">
+<p><code>--control-id</code> flag on <code>apply</code> — run a single specific control</p>
+</li>
+<li class="">
+<p><code>--exclude-control-id</code> flag on <code>apply</code> — exclude specific controls (repeatable)</p>
+</li>
+<li class="">
+<p><code>--compliance</code> flag on <code>apply</code> — run only controls with a mapping for the given framework</p>
+</li>
+<li class="">
+<p><code>stave report</code> severity breakdown section (findings by severity table)</p>
+</li>
+<li class="">
+<p><code>stave report</code> compliance summary section (framework → findings count + controls)</p>
+</li>
+<li class="">
+<p>SEVERITY column in report TSV output</p>
+</li>
+<li class="">
+<p><code>control_severity</code> and <code>control_compliance</code> fields in evaluation findings output</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="changed-1">Changed<a href="#changed-1" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Breaking:</strong> Removed <code>--out</code> flag from <code>apply</code>, <code>check</code>, <code>verify</code>, <code>ci diff</code>,
+<code>ci baseline check</code>, <code>report</code>, <code>ci gate</code>, <code>snapshot diff</code>, <code>snapshot upcoming</code>,
+and <code>snapshot status</code>/<code>snapshot risk</code> (formerly <code>snapshot hygiene</code>). Use shell redirection (<code>&gt; file</code>) instead. Commands that
+create files (<code>generate</code>, <code>ingest</code>, <code>ci baseline save</code>, <code>enforce</code>, <code>ci fix-loop</code>)
+keep <code>--out</code> unchanged.</li>
+<li class=""><strong>Breaking:</strong> Removed <code>--summary-out</code> flag from <code>snapshot upcoming</code>. Pipe output
+to capture: <code>stave snapshot upcoming &gt; &quot;$GITHUB_STEP_SUMMARY&quot;</code>.</li>
+<li class=""><strong>Breaking:</strong> Removed <code>-O</code> shorthand from <code>ci gate</code>.</li>
+<li class=""><strong>Breaking:</strong> Removed <code>-o</code> shorthand from <code>--out</code> flag on enforce, fix-loop, verify,
+ci diff, generate, report, baseline, and ingest. <code>-o</code> now consistently means
+<code>--observations</code> across all commands.</li>
+<li class=""><strong>Breaking:</strong> Removed <code>-i</code> shorthand from <code>--input</code> on ingest. <code>-i</code> now consistently
+means <code>--controls</code>.</li>
+<li class=""><strong>Breaking:</strong> Removed <code>-s</code> shorthand from <code>--step</code> on template. <code>-s</code> now consistently
+means <code>--sort</code>.</li>
+<li class=""><code>stave report --format json</code> now includes <code>findings_by_severity</code> and <code>compliance_summary</code> aggregations</li>
+<li class="">S3 extractor functions now accept <code>context.Context</code> for cancellation support,
+consistent with observation and control loaders</li>
+<li class="">Enabled <code>goimports</code> formatter in golangci-lint configuration</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="001---2026-02-17">[0.0.1] - 2026-02-17<a href="#001---2026-02-17" class="hash-link" aria-label="Direct link to [0.0.1] - 2026-02-17" title="Direct link to [0.0.1] - 2026-02-17" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="added-1">Added<a href="#added-1" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added" translate="no">​</a></h3>
+<ul>
+<li class="">Core evaluation engine with duration tracking and recurrence detection</li>
+<li class="">40 S3 controls covering public exposure, ACL, encryption, versioning, access logging, lifecycle, object lock, tenant isolation, and write scope</li>
+<li class="">CLI commands: validate, apply, diagnose, ingest --profile aws-s3, apply --profile aws-s3, verify, enforce, report, counterfactual, capabilities, alias, trace</li>
+<li class=""><code>--template</code> flag on apply, diagnose, and validate for custom output formatting</li>
+<li class="">Command alias system (<code>stave alias set|list|delete</code>) with user config storage</li>
+<li class="">JSON and text output formats</li>
+<li class="">Observation schema (obs.v0.1) and control DSL (ctrl.v1)</li>
+<li class="">Terraform plan extraction for S3 assets</li>
+<li class="">Golden-file E2E test framework with 95+ test cases</li>
+<li class="">OpenSSF Scorecard, signed releases, SLSA provenance, SBOM</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/fact-export"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Fact Export</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/command-reference"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Command Reference</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#unreleased" class="table-of-contents__link toc-highlight">[Unreleased]</a><ul><li><a href="#architecture--library" class="table-of-contents__link toc-highlight">Architecture &amp; Library</a></li><li><a href="#added" class="table-of-contents__link toc-highlight">Added</a></li><li><a href="#changed" class="table-of-contents__link toc-highlight">Changed</a></li><li><a href="#changed-1" class="table-of-contents__link toc-highlight">Changed</a></li></ul></li><li><a href="#001---2026-02-17" class="table-of-contents__link toc-highlight">[0.0.1] - 2026-02-17</a><ul><li><a href="#added-1" class="table-of-contents__link toc-highlight">Added</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
+</body>
+</html>

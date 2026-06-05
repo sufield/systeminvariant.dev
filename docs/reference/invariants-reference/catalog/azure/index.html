@@ -1,0 +1,1568 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/invariants-reference/catalog/azure" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">AZURE controls | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/reference/invariants-reference/catalog/azure"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="AZURE controls | Stave"><meta data-rh="true" name="description" content="CTL.AZURE.ACR.ADMIN.001"><meta data-rh="true" property="og:description" content="CTL.AZURE.ACR.ADMIN.001"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/reference/invariants-reference/catalog/azure"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/reference/invariants-reference/catalog/azure" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/reference/invariants-reference/catalog/azure" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Reference","item":"https://stave.dev/docs/reference"},{"@type":"ListItem","position":2,"name":"Controls Reference","item":"https://stave.dev/docs/reference/invariants-reference/_index"},{"@type":"ListItem","position":3,"name":"Full Control Catalog (by service)","item":"https://stave.dev/docs/reference/invariants-reference/catalog/"},{"@type":"ListItem","position":4,"name":"AZURE (141)","item":"https://stave.dev/docs/reference/invariants-reference/catalog/azure"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.aebbb64c.css">
+<script src="/assets/js/runtime~main.d5341b07.js" defer="defer"></script>
+<script src="/assets/js/main.dcaf12a7.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><b class="navbar__title text--truncate">Stave</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/sufield/stave" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/tutorials"><span title="Tutorials" class="categoryLinkLabel_W154">Tutorials</span></a><button aria-label="Expand sidebar category &#x27;Tutorials&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/how-to"><span title="How-to Guides" class="categoryLinkLabel_W154">How-to Guides</span></a><button aria-label="Expand sidebar category &#x27;How-to Guides&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/reference"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a><button aria-label="Collapse sidebar category &#x27;Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/config-file"><span title="Configuration" class="linkLabel_WmDU">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/limits"><span title="Limits" class="linkLabel_WmDU">Limits</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-obs"><span title="obs.v0.1" class="linkLabel_WmDU">obs.v0.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/observation-export-schema"><span title="Observation Export Schema" class="linkLabel_WmDU">Observation Export Schema</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-out"><span title="out.v0.1" class="linkLabel_WmDU">out.v0.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/stability"><span title="Stability" class="linkLabel_WmDU">Stability</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/evaluation-semantics"><span title="Evaluation Semantics" class="linkLabel_WmDU">Evaluation Semantics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-ctrl"><span title="ctrl.v1" class="linkLabel_WmDU">ctrl.v1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/severity-thresholds"><span title="Severity Thresholds" class="linkLabel_WmDU">Severity Thresholds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/observation-contract"><span title="Observation Contract" class="linkLabel_WmDU">Observation Contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/output-and-severity"><span title="Output &amp; Severity" class="linkLabel_WmDU">Output &amp; Severity</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/output-formats"><span title="Output Formats" class="linkLabel_WmDU">Output Formats</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-diagnose"><span title="diagnose.v1" class="linkLabel_WmDU">diagnose.v1</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/reference/cli-reference/_index"><span title="CLI Reference" class="categoryLinkLabel_W154">CLI Reference</span></a><button aria-label="Expand sidebar category &#x27;CLI Reference&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/reference/invariants-reference/_index"><span title="Controls Reference" class="categoryLinkLabel_W154">Controls Reference</span></a><button aria-label="Collapse sidebar category &#x27;Controls Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/public-access/inv-s3-public-001"><span title="Public Access" class="categoryLinkLabel_W154">Public Access</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/access-control/inv-s3-access-001"><span title="Access Control" class="categoryLinkLabel_W154">Access Control</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/acl-escalation/inv-s3-acl-escalation-001"><span title="ACL Escalation" class="categoryLinkLabel_W154">ACL Escalation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/encryption/inv-s3-encrypt-001"><span title="Encryption" class="categoryLinkLabel_W154">Encryption</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/logging/inv-s3-log-001"><span title="Logging" class="categoryLinkLabel_W154">Logging</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/lifecycle-governance/inv-s3-governance-001"><span title="Lifecycle &amp; Governance" class="categoryLinkLabel_W154">Lifecycle &amp; Governance</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/compliance/inv-s3-bucket-takeover-001"><span title="Compliance" class="categoryLinkLabel_W154">Compliance</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/reference/invariants-reference/catalog/"><span title="Full Control Catalog (by service)" class="categoryLinkLabel_W154">Full Control Catalog (by service)</span></a><button aria-label="Collapse sidebar category &#x27;Full Control Catalog (by service)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/acm"><span title="ACM (3)" class="linkLabel_WmDU">ACM (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ad"><span title="AD (40)" class="linkLabel_WmDU">AD (40)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/apigateway"><span title="APIGATEWAY (105)" class="linkLabel_WmDU">APIGATEWAY (105)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/apigw2"><span title="APIGW2 (2)" class="linkLabel_WmDU">APIGW2 (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/appstream"><span title="APPSTREAM (1)" class="linkLabel_WmDU">APPSTREAM (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/athena"><span title="ATHENA (1)" class="linkLabel_WmDU">ATHENA (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/autoscaling"><span title="AUTOSCALING (3)" class="linkLabel_WmDU">AUTOSCALING (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/invariants-reference/catalog/azure"><span title="AZURE (141)" class="linkLabel_WmDU">AZURE (141)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/backup"><span title="BACKUP (10)" class="linkLabel_WmDU">BACKUP (10)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/beanstalk"><span title="BEANSTALK (2)" class="linkLabel_WmDU">BEANSTALK (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/bedrock"><span title="BEDROCK (24)" class="linkLabel_WmDU">BEDROCK (24)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cfn"><span title="CFN (1)" class="linkLabel_WmDU">CFN (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cisco"><span title="CISCO (30)" class="linkLabel_WmDU">CISCO (30)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudflare"><span title="CLOUDFLARE (29)" class="linkLabel_WmDU">CLOUDFLARE (29)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudformation"><span title="CLOUDFORMATION (7)" class="linkLabel_WmDU">CLOUDFORMATION (7)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudfront"><span title="CLOUDFRONT (71)" class="linkLabel_WmDU">CLOUDFRONT (71)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudtrail"><span title="CLOUDTRAIL (48)" class="linkLabel_WmDU">CLOUDTRAIL (48)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudwatch"><span title="CLOUDWATCH (66)" class="linkLabel_WmDU">CLOUDWATCH (66)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/codebuild"><span title="CODEBUILD (12)" class="linkLabel_WmDU">CODEBUILD (12)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/codecommit"><span title="CODECOMMIT (2)" class="linkLabel_WmDU">CODECOMMIT (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cognito"><span title="COGNITO (104)" class="linkLabel_WmDU">COGNITO (104)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/config"><span title="CONFIG (50)" class="linkLabel_WmDU">CONFIG (50)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dms"><span title="DMS (6)" class="linkLabel_WmDU">DMS (6)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dns"><span title="DNS (3)" class="linkLabel_WmDU">DNS (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/documentdb"><span title="DOCUMENTDB (18)" class="linkLabel_WmDU">DOCUMENTDB (18)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dynamodb"><span title="DYNAMODB (35)" class="linkLabel_WmDU">DYNAMODB (35)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ec2"><span title="EC2 (98)" class="linkLabel_WmDU">EC2 (98)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ecr"><span title="ECR (10)" class="linkLabel_WmDU">ECR (10)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ecs"><span title="ECS (48)" class="linkLabel_WmDU">ECS (48)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/efs"><span title="EFS (13)" class="linkLabel_WmDU">EFS (13)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/eks"><span title="EKS (115)" class="linkLabel_WmDU">EKS (115)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/elasticache"><span title="ELASTICACHE (4)" class="linkLabel_WmDU">ELASTICACHE (4)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/elb"><span title="ELB (75)" class="linkLabel_WmDU">ELB (75)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/emr"><span title="EMR (5)" class="linkLabel_WmDU">EMR (5)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/eventbridge"><span title="EVENTBRIDGE (96)" class="linkLabel_WmDU">EVENTBRIDGE (96)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/exposure"><span title="EXPOSURE (11)" class="linkLabel_WmDU">EXPOSURE (11)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/gcp"><span title="GCP (72)" class="linkLabel_WmDU">GCP (72)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/gcs"><span title="GCS (7)" class="linkLabel_WmDU">GCS (7)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ghost"><span title="GHOST (2)" class="linkLabel_WmDU">GHOST (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/github"><span title="GITHUB (22)" class="linkLabel_WmDU">GITHUB (22)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/glue"><span title="GLUE (12)" class="linkLabel_WmDU">GLUE (12)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/guardduty"><span title="GUARDDUTY (6)" class="linkLabel_WmDU">GUARDDUTY (6)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/guardrail"><span title="GUARDRAIL (1)" class="linkLabel_WmDU">GUARDRAIL (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/iam"><span title="IAM (184)" class="linkLabel_WmDU">IAM (184)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/inspector"><span title="INSPECTOR (1)" class="linkLabel_WmDU">INSPECTOR (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/k8s"><span title="K8S (68)" class="linkLabel_WmDU">K8S (68)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/kinesis"><span title="KINESIS (2)" class="linkLabel_WmDU">KINESIS (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/kms"><span title="KMS (45)" class="linkLabel_WmDU">KMS (45)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lambda"><span title="LAMBDA (58)" class="linkLabel_WmDU">LAMBDA (58)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lifecycle"><span title="LIFECYCLE (1)" class="linkLabel_WmDU">LIFECYCLE (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lightsail"><span title="LIGHTSAIL (2)" class="linkLabel_WmDU">LIGHTSAIL (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/m365"><span title="M365 (73)" class="linkLabel_WmDU">M365 (73)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/macie"><span title="MACIE (1)" class="linkLabel_WmDU">MACIE (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/meta"><span title="META (1)" class="linkLabel_WmDU">META (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/mq"><span title="MQ (1)" class="linkLabel_WmDU">MQ (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/msk"><span title="MSK (9)" class="linkLabel_WmDU">MSK (9)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/neptune"><span title="NEPTUNE (19)" class="linkLabel_WmDU">NEPTUNE (19)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/netfirewall"><span title="NETFIREWALL (11)" class="linkLabel_WmDU">NETFIREWALL (11)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/opensearch"><span title="OPENSEARCH (132)" class="linkLabel_WmDU">OPENSEARCH (132)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/org"><span title="ORG (1)" class="linkLabel_WmDU">ORG (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ram"><span title="RAM (1)" class="linkLabel_WmDU">RAM (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/rds"><span title="RDS (68)" class="linkLabel_WmDU">RDS (68)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/redshift"><span title="REDSHIFT (26)" class="linkLabel_WmDU">REDSHIFT (26)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/route53"><span title="ROUTE53 (50)" class="linkLabel_WmDU">ROUTE53 (50)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/s3"><span title="S3 (124)" class="linkLabel_WmDU">S3 (124)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sagemaker"><span title="SAGEMAKER (25)" class="linkLabel_WmDU">SAGEMAKER (25)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secret"><span title="SECRET (3)" class="linkLabel_WmDU">SECRET (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secrets"><span title="SECRETS (31)" class="linkLabel_WmDU">SECRETS (31)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secretsmanager"><span title="SECRETSMANAGER (4)" class="linkLabel_WmDU">SECRETSMANAGER (4)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/securityhub"><span title="SECURITYHUB (3)" class="linkLabel_WmDU">SECURITYHUB (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/shield"><span title="SHIELD (1)" class="linkLabel_WmDU">SHIELD (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sns"><span title="SNS (37)" class="linkLabel_WmDU">SNS (37)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sqs"><span title="SQS (37)" class="linkLabel_WmDU">SQS (37)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ssm"><span title="SSM (8)" class="linkLabel_WmDU">SSM (8)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/stepfunctions"><span title="STEPFUNCTIONS (113)" class="linkLabel_WmDU">STEPFUNCTIONS (113)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/vpc"><span title="VPC (78)" class="linkLabel_WmDU">VPC (78)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/vsphere"><span title="VSPHERE (35)" class="linkLabel_WmDU">VSPHERE (35)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/waf"><span title="WAF (8)" class="linkLabel_WmDU">WAF (8)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/workspaces"><span title="WORKSPACES (1)" class="linkLabel_WmDU">WORKSPACES (1)</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/fact-export"><span title="Fact Export" class="linkLabel_WmDU">Fact Export</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/changelog"><span title="Changelog" class="linkLabel_WmDU">Changelog</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/command-reference"><span title="Command Reference" class="linkLabel_WmDU">Command Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/compliance-owasp-nhi"><span title="OWASP Non-Human Identity Top 10 — Stave coverage" class="linkLabel_WmDU">OWASP Non-Human Identity Top 10 — Stave coverage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/contracts"><span title="Contract-First Schemas" class="linkLabel_WmDU">Contract-First Schemas</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/evaluation-engine-capabilities"><span title="Engine Capabilities" class="linkLabel_WmDU">Engine Capabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/glossary"><span title="Stave Terminology Glossary" class="linkLabel_WmDU">Stave Terminology Glossary</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/hippa-cli"><span title="HIPAA CLI Evidence" class="linkLabel_WmDU">HIPAA CLI Evidence</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/hippa-table"><span title="HIPAA Control Mapping" class="linkLabel_WmDU">HIPAA Control Mapping</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/iam-permissions"><span title="Minimum IAM Permissions for S3 Observation Collection" class="linkLabel_WmDU">Minimum IAM Permissions for S3 Observation Collection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/identity-blast-radius"><span title="Identity Blast Radius" class="linkLabel_WmDU">Identity Blast Radius</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/operator-contract"><span title="Operator Contract" class="linkLabel_WmDU">Operator Contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scope-and-support"><span title="Scope and support" class="linkLabel_WmDU">Scope and support</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/security-policy"><span title="Security Policy" class="linkLabel_WmDU">Security Policy</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/explanation"><span title="Explanation" class="categoryLinkLabel_W154">Explanation</span></a><button aria-label="Expand sidebar category &#x27;Explanation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/challenge/cases/"><span title="Challenge" class="categoryLinkLabel_W154">Challenge</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/demos/"><span title="Demos" class="categoryLinkLabel_W154">Demos</span></a><button aria-label="Expand sidebar category &#x27;Demos&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/positioning/vs-scanners"><span title="Positioning" class="categoryLinkLabel_W154">Positioning</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference"><span>Reference</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference/invariants-reference/_index"><span>Controls Reference</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference/invariants-reference/catalog/"><span>Full Control Catalog (by service)</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">AZURE (141)</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AZURE controls (141)</h1></header>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureacradmin001">CTL.AZURE.ACR.ADMIN.001<a href="#ctlazureacradmin001" class="hash-link" aria-label="Direct link to CTL.AZURE.ACR.ADMIN.001" title="Direct link to CTL.AZURE.ACR.ADMIN.001" translate="no">​</a></h3>
+<p><strong>Container Registry Admin User Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.15; nist_800_53_r5: AC-6; soc2: CC6.1;</li>
+</ul>
+<p>Admin user provides a single shared credential with full push/pull access to all repositories. Not scoped, not auditable per-user, not integrated with RBAC.</p>
+<p><strong>Remediation:</strong> Disable admin user and use RBAC with Entra ID.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureacranon001">CTL.AZURE.ACR.ANON.001<a href="#ctlazureacranon001" class="hash-link" aria-label="Direct link to CTL.AZURE.ACR.ANON.001" title="Direct link to CTL.AZURE.ACR.ANON.001" translate="no">​</a></h3>
+<p><strong>Container Registry Anonymous Pull Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.16; nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>Anonymous pull allows any unauthenticated client to pull images. Application code, configuration, and potentially embedded secrets are publicly accessible.</p>
+<p><strong>Remediation:</strong> Disable anonymous pull.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureacrnetwork001">CTL.AZURE.ACR.NETWORK.001<a href="#ctlazureacrnetwork001" class="hash-link" aria-label="Direct link to CTL.AZURE.ACR.NETWORK.001" title="Direct link to CTL.AZURE.ACR.NETWORK.001" translate="no">​</a></h3>
+<p><strong>Container Registry Public Network Access Unrestricted</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.17; nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Public network access enabled with default Allow action. Registry accessible from any IP without firewall rules.</p>
+<p><strong>Remediation:</strong> Set network default action to Deny and configure firewall rules or private endpoints.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureacrscan001">CTL.AZURE.ACR.SCAN.001<a href="#ctlazureacrscan001" class="hash-link" aria-label="Direct link to CTL.AZURE.ACR.SCAN.001" title="Direct link to CTL.AZURE.ACR.SCAN.001" translate="no">​</a></h3>
+<p><strong>Container Registry Image Scanning Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SI-2; soc2: CC7.1;</li>
+</ul>
+<p>Image vulnerability scanning not enabled. Pushed images are not scanned for known CVEs before deployment.</p>
+<p><strong>Remediation:</strong> Enable Defender for Container Registries or integrate image scanning.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureacrtrust001">CTL.AZURE.ACR.TRUST.001<a href="#ctlazureacrtrust001" class="hash-link" aria-label="Direct link to CTL.AZURE.ACR.TRUST.001" title="Direct link to CTL.AZURE.ACR.TRUST.001" translate="no">​</a></h3>
+<p><strong>Container Registry Content Trust Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SI-7; soc2: CC7.1;</li>
+</ul>
+<p>Content trust (Docker Content Trust / Notary) not enabled. Images are not signed — no verification that pushed images come from trusted publishers. Requires Premium SKU.</p>
+<p><strong>Remediation:</strong> Enable content trust (requires Premium SKU).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureactivitylogexport001">CTL.AZURE.ACTIVITYLOG.EXPORT.001<a href="#ctlazureactivitylogexport001" class="hash-link" aria-label="Direct link to CTL.AZURE.ACTIVITYLOG.EXPORT.001" title="Direct link to CTL.AZURE.ACTIVITYLOG.EXPORT.001" translate="no">​</a></h3>
+<p><strong>Activity Log Not Exported to Storage or Log Analytics</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 5.1.2; hipaa: 164.312(b); nist_800_53_r5: AU-6; pci_dss_v4: 10.2; soc2: CC7.2;</li>
+</ul>
+<p>Activity Log data retained only in portal (90-day default). Without export, historical audit data is permanently lost.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureactivitylogretention001">CTL.AZURE.ACTIVITYLOG.RETENTION.001<a href="#ctlazureactivitylogretention001" class="hash-link" aria-label="Direct link to CTL.AZURE.ACTIVITYLOG.RETENTION.001" title="Direct link to CTL.AZURE.ACTIVITYLOG.RETENTION.001" translate="no">​</a></h3>
+<p><strong>Activity Log Retention Below 365 Days</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 5.1.3; hipaa: 164.312(b); nist_800_53_r5: AU-12; pci_dss_v4: 10.7; soc2: CC7.2;</li>
+</ul>
+<p>Activity Log exported but retention under 365 days. Compliance frameworks require one-year minimum audit log retention.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureaisearchidentity001">CTL.AZURE.AISEARCH.IDENTITY.001<a href="#ctlazureaisearchidentity001" class="hash-link" aria-label="Direct link to CTL.AZURE.AISEARCH.IDENTITY.001" title="Direct link to CTL.AZURE.AISEARCH.IDENTITY.001" translate="no">​</a></h3>
+<p><strong>AI Search Without Managed Identity</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: IA-5; soc2: CC6.1;</li>
+</ul>
+<p>No managed identity configured. The search service must use stored credentials to access data sources.</p>
+<p><strong>Remediation:</strong> Configure a managed identity for the search service.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureaisearchnetwork001">CTL.AZURE.AISEARCH.NETWORK.001<a href="#ctlazureaisearchnetwork001" class="hash-link" aria-label="Direct link to CTL.AZURE.AISEARCH.NETWORK.001" title="Direct link to CTL.AZURE.AISEARCH.NETWORK.001" translate="no">​</a></h3>
+<p><strong>AI Search Public Network Access Unrestricted</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Azure AI Search service accessible from the public internet. Search indexes may contain sensitive data extracted from documents and databases.</p>
+<p><strong>Remediation:</strong> Restrict public network access and use private endpoints.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureaksnetwork001">CTL.AZURE.AKS.NETWORK.001<a href="#ctlazureaksnetwork001" class="hash-link" aria-label="Direct link to CTL.AZURE.AKS.NETWORK.001" title="Direct link to CTL.AZURE.AKS.NETWORK.001" translate="no">​</a></h3>
+<p><strong>AKS Must Use Azure CNI Network Plugin</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.1;</li>
+</ul>
+<p>AKS clusters should use Azure CNI for VNet-native pod networking enabling NSG rules and network policies on pods.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureaksprivate001">CTL.AZURE.AKS.PRIVATE.001<a href="#ctlazureaksprivate001" class="hash-link" aria-label="Direct link to CTL.AZURE.AKS.PRIVATE.001" title="Direct link to CTL.AZURE.AKS.PRIVATE.001" translate="no">​</a></h3>
+<p><strong>AKS API Server Must Not Be Publicly Accessible</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.1;</li>
+</ul>
+<p>AKS cluster API server must not be accessible from the public internet without authorized IP range restrictions.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureaksrbac001">CTL.AZURE.AKS.RBAC.001<a href="#ctlazureaksrbac001" class="hash-link" aria-label="Direct link to CTL.AZURE.AKS.RBAC.001" title="Direct link to CTL.AZURE.AKS.RBAC.001" translate="no">​</a></h3>
+<p><strong>AKS Must Integrate with Entra ID for RBAC</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>AKS clusters must integrate with Entra ID for centralized identity and Conditional Access enforcement on cluster access.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureaksversion001">CTL.AZURE.AKS.VERSION.001<a href="#ctlazureaksversion001" class="hash-link" aria-label="Direct link to CTL.AZURE.AKS.VERSION.001" title="Direct link to CTL.AZURE.AKS.VERSION.001" translate="no">​</a></h3>
+<p><strong>AKS Must Run a Supported Kubernetes Version</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SI-2; soc2: CC6.1;</li>
+</ul>
+<p>AKS clusters must run a Kubernetes version within the Azure-supported window. Unsupported versions receive no security patches.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurealertghost001">CTL.AZURE.ALERT.GHOST.001<a href="#ctlazurealertghost001" class="hash-link" aria-label="Direct link to CTL.AZURE.ALERT.GHOST.001" title="Direct link to CTL.AZURE.ALERT.GHOST.001" translate="no">​</a></h3>
+<p><strong>Alert Rule Targets Deleted Action Group</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-5; soc2: CC7.2;</li>
+</ul>
+<p>Azure Monitor alert rule references a deleted action group. The alert fires but notifications go nowhere. The system appears active — the alert exists, the condition evaluates — but delivery is silently broken.</p>
+<p><strong>Remediation:</strong> Update the alert rule to reference a valid action group.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureapimhttps001">CTL.AZURE.APIM.HTTPS.001<a href="#ctlazureapimhttps001" class="hash-link" aria-label="Direct link to CTL.AZURE.APIM.HTTPS.001" title="Direct link to CTL.AZURE.APIM.HTTPS.001" translate="no">​</a></h3>
+<p><strong>API Management Backend Not HTTPS-Only</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.20; nist_800_53_r5: SC-8; pci_dss_v4: 4.1; soc2: CC6.7;</li>
+</ul>
+<p>APIM forwards requests to backend services over HTTP. Traffic between APIM and the backend is unencrypted even when the client-to-APIM connection uses HTTPS.</p>
+<p><strong>Remediation:</strong> Enforce HTTPS for all backend connections.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureapimidentity001">CTL.AZURE.APIM.IDENTITY.001<a href="#ctlazureapimidentity001" class="hash-link" aria-label="Direct link to CTL.AZURE.APIM.IDENTITY.001" title="Direct link to CTL.AZURE.APIM.IDENTITY.001" translate="no">​</a></h3>
+<p><strong>API Management Without Managed Identity</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: IA-5; soc2: CC6.1;</li>
+</ul>
+<p>No managed identity configured. APIM must use stored credentials to access backend services and Azure resources.</p>
+<p><strong>Remediation:</strong> Configure a system-assigned or user-assigned managed identity.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureapimmanagement001">CTL.AZURE.APIM.MANAGEMENT.001<a href="#ctlazureapimmanagement001" class="hash-link" aria-label="Direct link to CTL.AZURE.APIM.MANAGEMENT.001" title="Direct link to CTL.AZURE.APIM.MANAGEMENT.001" translate="no">​</a></h3>
+<p><strong>API Management Management API Publicly Accessible</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>Management API publicly accessible. An attacker with management credentials can modify API configurations, add data-exfiltrating policies, or redirect traffic.</p>
+<p><strong>Remediation:</strong> Restrict management API access to VNet or private endpoint.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappauth001">CTL.AZURE.APP.AUTH.001<a href="#ctlazureappauth001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.AUTH.001" title="Direct link to CTL.AZURE.APP.AUTH.001" translate="no">​</a></h3>
+<p><strong>App Service Authentication Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.1; hipaa: 164.312(d); nist_800_53_r5: AC-3; pci_dss_v4: 7.2.1; soc2: CC6.1;</li>
+</ul>
+<p>App Service has no authentication configured (EasyAuth). The application is accessible without identity verification.</p>
+<p><strong>Remediation:</strong> Enable App Service Authentication (EasyAuth) with an identity provider.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappclientcert001">CTL.AZURE.APP.CLIENTCERT.001<a href="#ctlazureappclientcert001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.CLIENTCERT.001" title="Direct link to CTL.AZURE.APP.CLIENTCERT.001" translate="no">​</a></h3>
+<p><strong>App Service Client Certificates Not Required</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.9; nist_800_53_r5: IA-3; soc2: CC6.1;</li>
+</ul>
+<p>Client certificates not enabled or not set to Required mode. No mTLS verification of connecting clients.</p>
+<p><strong>Remediation:</strong> Enable client certificates in Required mode.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappcors001">CTL.AZURE.APP.CORS.001<a href="#ctlazureappcors001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.CORS.001" title="Direct link to CTL.AZURE.APP.CORS.001" translate="no">​</a></h3>
+<p><strong>App Service CORS Allows All Origins</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.6; nist_800_53_r5: AC-4; soc2: CC6.1;</li>
+</ul>
+<p>CORS configuration allows requests from any origin (*). Cross-origin requests from any website are permitted.</p>
+<p><strong>Remediation:</strong> Replace wildcard (*) with specific trusted origins.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappdebug001">CTL.AZURE.APP.DEBUG.001<a href="#ctlazureappdebug001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.DEBUG.001" title="Direct link to CTL.AZURE.APP.DEBUG.001" translate="no">​</a></h3>
+<p><strong>App Service Remote Debugging Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.5; nist_800_53_r5: CM-7; soc2: CC6.1;</li>
+</ul>
+<p>Remote debugging enabled in production. The debugging endpoint provides code-level access to the running application.</p>
+<p><strong>Remediation:</strong> Disable remote debugging.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappftp001">CTL.AZURE.APP.FTP.001<a href="#ctlazureappftp001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.FTP.001" title="Direct link to CTL.AZURE.APP.FTP.001" translate="no">​</a></h3>
+<p><strong>App Service FTP Not Disabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.4; nist_800_53_r5: SC-8; soc2: CC6.1;</li>
+</ul>
+<p>Unencrypted FTP permitted (state AllAllowed). Deployment credentials and packages transmitted in plaintext.</p>
+<p><strong>Remediation:</strong> Set FTP state to Disabled or FtpsOnly.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureapphttps001">CTL.AZURE.APP.HTTPS.001<a href="#ctlazureapphttps001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.HTTPS.001" title="Direct link to CTL.AZURE.APP.HTTPS.001" translate="no">​</a></h3>
+<p><strong>App Service Does Not Enforce HTTPS</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.2; hipaa: 164.312(e)(1); nist_800_53_r5: SC-8; pci_dss_v4: 4.2.1; soc2: CC6.1;</li>
+</ul>
+<p>App Service accepts HTTP connections. Traffic between clients and the application is not encrypted.</p>
+<p><strong>Remediation:</strong> Enable HTTPS Only in App Service configuration.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappidentity001">CTL.AZURE.APP.IDENTITY.001<a href="#ctlazureappidentity001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.IDENTITY.001" title="Direct link to CTL.AZURE.APP.IDENTITY.001" translate="no">​</a></h3>
+<p><strong>App Service Without Managed Identity</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.10; nist_800_53_r5: IA-5; soc2: CC6.1;</li>
+</ul>
+<p>No managed identity configured. The application uses stored credentials instead of automatic credential rotation.</p>
+<p><strong>Remediation:</strong> Configure a system-assigned or user-assigned managed identity.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappinsights001">CTL.AZURE.APP.INSIGHTS.001<a href="#ctlazureappinsights001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.INSIGHTS.001" title="Direct link to CTL.AZURE.APP.INSIGHTS.001" translate="no">​</a></h3>
+<p><strong>App Service Without Application Insights</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-6; soc2: CC7.2;</li>
+</ul>
+<p>Application Insights not configured. No application performance monitoring, request tracing, or dependency tracking.</p>
+<p><strong>Remediation:</strong> Configure Application Insights.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureapplog001">CTL.AZURE.APP.LOG.001<a href="#ctlazureapplog001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.LOG.001" title="Direct link to CTL.AZURE.APP.LOG.001" translate="no">​</a></h3>
+<p><strong>App Service Diagnostic Logging Disabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.11; nist_800_53_r5: AU-2; soc2: CC7.2;</li>
+</ul>
+<p>Diagnostic logging not enabled. Application errors, request logs, and platform events are not captured for investigation.</p>
+<p><strong>Remediation:</strong> Enable diagnostic logging.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappnetwork001">CTL.AZURE.APP.NETWORK.001<a href="#ctlazureappnetwork001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.NETWORK.001" title="Direct link to CTL.AZURE.APP.NETWORK.001" translate="no">​</a></h3>
+<p><strong>App Service Public Network Access Without Restrictions</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.7; nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>Public network access enabled with no IP restrictions or VNet integration. The application accepts connections from any IP.</p>
+<p><strong>Remediation:</strong> Configure IP restrictions, VNet integration, or private endpoints.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappprivate001">CTL.AZURE.APP.PRIVATE.001<a href="#ctlazureappprivate001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.PRIVATE.001" title="Direct link to CTL.AZURE.APP.PRIVATE.001" translate="no">​</a></h3>
+<p><strong>App Service Without Private Endpoint</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.8; nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>No private endpoint configured. Traffic between the VNet and the application traverses the public internet.</p>
+<p><strong>Remediation:</strong> Configure a private endpoint for the App Service.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappruntime001">CTL.AZURE.APP.RUNTIME.001<a href="#ctlazureappruntime001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.RUNTIME.001" title="Direct link to CTL.AZURE.APP.RUNTIME.001" translate="no">​</a></h3>
+<p><strong>App Service Running Deprecated Runtime Version</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.12; nist_800_53_r5: SI-2; soc2: CC7.1;</li>
+</ul>
+<p>App Service runs a deprecated runtime version that receives no security patches.</p>
+<p><strong>Remediation:</strong> Upgrade to a supported runtime version.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureapptls001">CTL.AZURE.APP.TLS.001<a href="#ctlazureapptls001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.TLS.001" title="Direct link to CTL.AZURE.APP.TLS.001" translate="no">​</a></h3>
+<p><strong>App Service TLS Minimum Version Below 1.2</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 9.3; nist_800_53_r5: SC-8; pci_dss_v4: 4.2.1; soc2: CC6.1;</li>
+</ul>
+<p>App Service accepts TLS 1.0 or 1.1 connections with known vulnerabilities (BEAST, POODLE, CRIME).</p>
+<p><strong>Remediation:</strong> Set minimum TLS version to 1.2.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappvnet001">CTL.AZURE.APP.VNET.001<a href="#ctlazureappvnet001" class="hash-link" aria-label="Direct link to CTL.AZURE.APP.VNET.001" title="Direct link to CTL.AZURE.APP.VNET.001" translate="no">​</a></h3>
+<p><strong>App Service Not Integrated with VNet</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>App Service not integrated with a VNet. Cannot access VNet resources over private connections.</p>
+<p><strong>Remediation:</strong> Configure VNet integration.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureappinsightsconfigured001">CTL.AZURE.APPINSIGHTS.CONFIGURED.001<a href="#ctlazureappinsightsconfigured001" class="hash-link" aria-label="Direct link to CTL.AZURE.APPINSIGHTS.CONFIGURED.001" title="Direct link to CTL.AZURE.APPINSIGHTS.CONFIGURED.001" translate="no">​</a></h3>
+<p><strong>Application Insights Not Configured for Web App</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-6; soc2: CC7.2;</li>
+</ul>
+<p>Application Insights not configured. No application performance monitoring, request tracing, or dependency failure detection.</p>
+<p><strong>Remediation:</strong> Configure Application Insights for the web application.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurecosmosencrypt001">CTL.AZURE.COSMOS.ENCRYPT.001<a href="#ctlazurecosmosencrypt001" class="hash-link" aria-label="Direct link to CTL.AZURE.COSMOS.ENCRYPT.001" title="Direct link to CTL.AZURE.COSMOS.ENCRYPT.001" translate="no">​</a></h3>
+<p><strong>Cosmos DB Must Use Customer-Managed Key</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>Cosmos DB uses service-managed encryption without Key Vault integration.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurecosmosnetwork001">CTL.AZURE.COSMOS.NETWORK.001<a href="#ctlazurecosmosnetwork001" class="hash-link" aria-label="Direct link to CTL.AZURE.COSMOS.NETWORK.001" title="Direct link to CTL.AZURE.COSMOS.NETWORK.001" translate="no">​</a></h3>
+<p><strong>Cosmos DB Must Not Allow Public Network Access</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.1;</li>
+</ul>
+<p>Cosmos DB accepts public internet connections without restrictions.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredatabricksnoip001">CTL.AZURE.DATABRICKS.NOIP.001<a href="#ctlazuredatabricksnoip001" class="hash-link" aria-label="Direct link to CTL.AZURE.DATABRICKS.NOIP.001" title="Direct link to CTL.AZURE.DATABRICKS.NOIP.001" translate="no">​</a></h3>
+<p><strong>Databricks Clusters Without No-Public-IP</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Cluster nodes have public IP addresses. Nodes are directly addressable from the internet. No-public-IP mode restricts nodes to private IPs only.</p>
+<p><strong>Remediation:</strong> Enable no-public-IP mode for Databricks clusters.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredatabrickspublic001">CTL.AZURE.DATABRICKS.PUBLIC.001<a href="#ctlazuredatabrickspublic001" class="hash-link" aria-label="Direct link to CTL.AZURE.DATABRICKS.PUBLIC.001" title="Direct link to CTL.AZURE.DATABRICKS.PUBLIC.001" translate="no">​</a></h3>
+<p><strong>Databricks Workspace Public Network Access Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>Public network access allows connections from any IP. Notebook UI, REST API, and cluster management are internet-accessible.</p>
+<p><strong>Remediation:</strong> Disable public network access.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredatabricksvnet001">CTL.AZURE.DATABRICKS.VNET.001<a href="#ctlazuredatabricksvnet001" class="hash-link" aria-label="Direct link to CTL.AZURE.DATABRICKS.VNET.001" title="Direct link to CTL.AZURE.DATABRICKS.VNET.001" translate="no">​</a></h3>
+<p><strong>Databricks Workspace Not VNet Injected</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Workspace not deployed into a customer VNet. No control over network security groups, route tables, or private endpoints for the workspace&#x27;s compute.</p>
+<p><strong>Remediation:</strong> Deploy the workspace into a customer VNet.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureddos001">CTL.AZURE.DDOS.001<a href="#ctlazureddos001" class="hash-link" aria-label="Direct link to CTL.AZURE.DDOS.001" title="Direct link to CTL.AZURE.DDOS.001" translate="no">​</a></h3>
+<p><strong>VNet Must Have DDoS Protection Standard Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-5; soc2: A1.1;</li>
+</ul>
+<p>Azure VNets must have DDoS Protection Standard enabled. Basic protection provides limited mitigation for volumetric attacks only.</p>
+<p><strong>Remediation:</strong> Enable DDoS Protection Standard on the VNet.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefenderarm001">CTL.AZURE.DEFENDER.ARM.001<a href="#ctlazuredefenderarm001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.ARM.001" title="Direct link to CTL.AZURE.DEFENDER.ARM.001" translate="no">​</a></h3>
+<p><strong>Defender for ARM Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.7; nist_800_53_r5: SI-4; soc2: CC7.1;</li>
+</ul>
+<p>Defender for Azure Resource Manager not enabled. No detection of anomalous ARM operations (mass deletions, suspicious deployments, lateral movement).</p>
+<p><strong>Remediation:</strong> Enable Defender for ARM at Standard tier.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefenderautoprovisioning001">CTL.AZURE.DEFENDER.AUTOPROVISIONING.001<a href="#ctlazuredefenderautoprovisioning001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.AUTOPROVISIONING.001" title="Direct link to CTL.AZURE.DEFENDER.AUTOPROVISIONING.001" translate="no">​</a></h3>
+<p><strong>Defender Auto-Provisioning Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.15; nist_800_53_r5: SI-4; soc2: CC7.1;</li>
+</ul>
+<p>Auto-provisioning disabled. New VMs and resources are not automatically enrolled in Defender monitoring.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefendercontact001">CTL.AZURE.DEFENDER.CONTACT.001<a href="#ctlazuredefendercontact001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.CONTACT.001" title="Direct link to CTL.AZURE.DEFENDER.CONTACT.001" translate="no">​</a></h3>
+<p><strong>Defender Security Contact Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.19; nist_800_53_r5: AU-6; soc2: CC7.3;</li>
+</ul>
+<p>No email contact for Defender alerts. Security alerts generated but not delivered to the security team.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefendercontainers001">CTL.AZURE.DEFENDER.CONTAINERS.001<a href="#ctlazuredefendercontainers001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.CONTAINERS.001" title="Direct link to CTL.AZURE.DEFENDER.CONTAINERS.001" translate="no">​</a></h3>
+<p><strong>Defender for Containers Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.5; nist_800_53_r5: SI-4; soc2: CC7.1;</li>
+</ul>
+<p>Defender for Containers not enabled. No container image vulnerability scanning, no runtime threat detection for AKS.</p>
+<p><strong>Remediation:</strong> Enable Defender for Containers at Standard tier.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefenderenabled001">CTL.AZURE.DEFENDER.ENABLED.001<a href="#ctlazuredefenderenabled001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.ENABLED.001" title="Direct link to CTL.AZURE.DEFENDER.ENABLED.001" translate="no">​</a></h3>
+<p><strong>Microsoft Defender for Cloud Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.1; hipaa: 164.308(a)(1)(ii)(D); nist_800_53_r5: SI-4; pci_dss_v4: 10.1; soc2: CC7.1;</li>
+</ul>
+<p>Defender not enabled or on Free tier. No threat detection or advanced security capabilities active for this resource type.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefenderexport001">CTL.AZURE.DEFENDER.EXPORT.001<a href="#ctlazuredefenderexport001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.EXPORT.001" title="Direct link to CTL.AZURE.DEFENDER.EXPORT.001" translate="no">​</a></h3>
+<p><strong>Defender Continuous Export Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.20; nist_800_53_r5: AU-6; soc2: CC7.2;</li>
+</ul>
+<p>Defender findings not exported to Log Analytics or Event Hub. Findings exist only in the portal with no SIEM integration or automated response capability.</p>
+<p><strong>Remediation:</strong> Configure continuous export to Log Analytics or Event Hub.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefenderkeyvault001">CTL.AZURE.DEFENDER.KEYVAULT.001<a href="#ctlazuredefenderkeyvault001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.KEYVAULT.001" title="Direct link to CTL.AZURE.DEFENDER.KEYVAULT.001" translate="no">​</a></h3>
+<p><strong>Defender for Key Vault Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.6; nist_800_53_r5: SI-4; soc2: CC7.1;</li>
+</ul>
+<p>Defender for Key Vault not enabled. No detection of anomalous key access patterns, unusual secret retrieval, or suspicious management operations.</p>
+<p><strong>Remediation:</strong> Enable Defender for Key Vault at Standard tier.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefenderservers001">CTL.AZURE.DEFENDER.SERVERS.001<a href="#ctlazuredefenderservers001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.SERVERS.001" title="Direct link to CTL.AZURE.DEFENDER.SERVERS.001" translate="no">​</a></h3>
+<p><strong>Defender for Servers Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.2; nist_800_53_r5: SI-4; soc2: CC7.1;</li>
+</ul>
+<p>Defender Standard for Servers not enabled. No vulnerability assessment, file integrity monitoring, or adaptive application controls on VMs.</p>
+<p><strong>Remediation:</strong> Enable Defender for Servers at Standard tier.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefendersql001">CTL.AZURE.DEFENDER.SQL.001<a href="#ctlazuredefendersql001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.SQL.001" title="Direct link to CTL.AZURE.DEFENDER.SQL.001" translate="no">​</a></h3>
+<p><strong>Defender for SQL Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.3; nist_800_53_r5: SI-4; soc2: CC7.1;</li>
+</ul>
+<p>Defender for SQL Servers not enabled. No SQL threat detection for injection attempts, anomalous access, or brute force.</p>
+<p><strong>Remediation:</strong> Enable Defender for SQL Servers at Standard tier.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefenderstorage001">CTL.AZURE.DEFENDER.STORAGE.001<a href="#ctlazuredefenderstorage001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.STORAGE.001" title="Direct link to CTL.AZURE.DEFENDER.STORAGE.001" translate="no">​</a></h3>
+<p><strong>Defender for Storage Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 2.1.4; nist_800_53_r5: SI-4; soc2: CC7.1;</li>
+</ul>
+<p>Defender for Storage not enabled. No malware scanning for uploaded blobs, no anomalous access detection.</p>
+<p><strong>Remediation:</strong> Enable Defender for Storage at Standard tier.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuredefendersuppression001">CTL.AZURE.DEFENDER.SUPPRESSION.001<a href="#ctlazuredefendersuppression001" class="hash-link" aria-label="Direct link to CTL.AZURE.DEFENDER.SUPPRESSION.001" title="Direct link to CTL.AZURE.DEFENDER.SUPPRESSION.001" translate="no">​</a></h3>
+<p><strong>Defender Alert Suppression Rules Overly Broad</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SI-4; soc2: CC7.2;</li>
+</ul>
+<p>Alert suppression rules silence security alerts. Findings are generated but suppressed before reaching the security team.</p>
+<p><strong>Remediation:</strong> Review and narrow suppression rules.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurediagnostic001">CTL.AZURE.DIAGNOSTIC.001<a href="#ctlazurediagnostic001" class="hash-link" aria-label="Direct link to CTL.AZURE.DIAGNOSTIC.001" title="Direct link to CTL.AZURE.DIAGNOSTIC.001" translate="no">​</a></h3>
+<p><strong>Diagnostic Settings Not Configured on Key Resources</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 5.1.5; nist_800_53_r5: AU-2; pci_dss_v4: 10.3; soc2: CC7.2;</li>
+</ul>
+<p>Critical resource types lack diagnostic settings. Resource-level logs and metrics are not captured for investigation or alerting.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureentraappreg001">CTL.AZURE.ENTRA.APPREG.001<a href="#ctlazureentraappreg001" class="hash-link" aria-label="Direct link to CTL.AZURE.ENTRA.APPREG.001" title="Direct link to CTL.AZURE.ENTRA.APPREG.001" translate="no">​</a></h3>
+<p><strong>Entra ID App Registrations Not Restricted</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 1.11; nist_800_53_r5: AC-6; soc2: CC6.1;</li>
+</ul>
+<p>Any user can register applications in Entra ID. App registrations create service principals with credentials outside the normal provisioning process.</p>
+<p><strong>Remediation:</strong> Restrict app registrations to administrators.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureentrapasswordban001">CTL.AZURE.ENTRA.PASSWORDBAN.001<a href="#ctlazureentrapasswordban001" class="hash-link" aria-label="Direct link to CTL.AZURE.ENTRA.PASSWORDBAN.001" title="Direct link to CTL.AZURE.ENTRA.PASSWORDBAN.001" translate="no">​</a></h3>
+<p><strong>Entra ID Custom Banned Password List Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 1.7; nist_800_53_r5: IA-5; soc2: CC6.1;</li>
+</ul>
+<p>No custom banned password list. Users can set passwords containing company name, product names, or common organizational terms.</p>
+<p><strong>Remediation:</strong> Configure a custom banned password list in Entra ID.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureentrasigninrisk001">CTL.AZURE.ENTRA.SIGNINRISK.001<a href="#ctlazureentrasigninrisk001" class="hash-link" aria-label="Direct link to CTL.AZURE.ENTRA.SIGNINRISK.001" title="Direct link to CTL.AZURE.ENTRA.SIGNINRISK.001" translate="no">​</a></h3>
+<p><strong>Entra ID Sign-In Risk Policy Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 1.2.6; nist_800_53_r5: AC-7; soc2: CC6.1;</li>
+</ul>
+<p>No sign-in risk policy. Risky sign-ins (impossible travel, anonymous IP, malware-linked IP) are not blocked or challenged with MFA. Requires Entra ID P2 license.</p>
+<p><strong>Remediation:</strong> Configure a sign-in risk policy in Entra ID Identity Protection.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureentrasspr001">CTL.AZURE.ENTRA.SSPR.001<a href="#ctlazureentrasspr001" class="hash-link" aria-label="Direct link to CTL.AZURE.ENTRA.SSPR.001" title="Direct link to CTL.AZURE.ENTRA.SSPR.001" translate="no">​</a></h3>
+<p><strong>Self-Service Password Reset Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 1.6; nist_800_53_r5: IA-5; soc2: CC6.1;</li>
+</ul>
+<p>Self-service password reset not enabled. Users must contact IT, leading to insecure workarounds.</p>
+<p><strong>Remediation:</strong> Enable self-service password reset for all users.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureentrauserrisk001">CTL.AZURE.ENTRA.USERRISK.001<a href="#ctlazureentrauserrisk001" class="hash-link" aria-label="Direct link to CTL.AZURE.ENTRA.USERRISK.001" title="Direct link to CTL.AZURE.ENTRA.USERRISK.001" translate="no">​</a></h3>
+<p><strong>Entra ID User Risk Policy Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 1.2.7; nist_800_53_r5: AC-7; soc2: CC6.1;</li>
+</ul>
+<p>No user risk policy. Users flagged as compromised (leaked credentials, anomalous behavior) are not forced to change password or blocked. Requires Entra ID P2 license.</p>
+<p><strong>Remediation:</strong> Configure a user risk policy in Entra ID Identity Protection.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurefirewalllog001">CTL.AZURE.FIREWALL.LOG.001<a href="#ctlazurefirewalllog001" class="hash-link" aria-label="Direct link to CTL.AZURE.FIREWALL.LOG.001" title="Direct link to CTL.AZURE.FIREWALL.LOG.001" translate="no">​</a></h3>
+<p><strong>Azure Firewall Must Have Diagnostic Logging Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-2; soc2: CC7.1;</li>
+</ul>
+<p>Azure Firewall must have diagnostic logging enabled. Without logging, inspected traffic produces no audit trail.</p>
+<p><strong>Remediation:</strong> Enable diagnostic settings for AzureFirewallApplicationRule and AzureFirewallNetworkRule logs.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurefirewallpolicy001">CTL.AZURE.FIREWALL.POLICY.001<a href="#ctlazurefirewallpolicy001" class="hash-link" aria-label="Direct link to CTL.AZURE.FIREWALL.POLICY.001" title="Direct link to CTL.AZURE.FIREWALL.POLICY.001" translate="no">​</a></h3>
+<p><strong>Azure Firewall Must Have Policy with Rules</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Azure Firewall must have a firewall policy attached with configured rules. A firewall without a policy or with an empty policy sits in the network path but inspects nothing.</p>
+<p><strong>Remediation:</strong> Attach a firewall policy with network and application rules.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurefunctionauth001">CTL.AZURE.FUNCTION.AUTH.001<a href="#ctlazurefunctionauth001" class="hash-link" aria-label="Direct link to CTL.AZURE.FUNCTION.AUTH.001" title="Direct link to CTL.AZURE.FUNCTION.AUTH.001" translate="no">​</a></h3>
+<p><strong>Azure Function App Must Have Authentication Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-3; pci_dss_v4.0: 7.2.1; soc2: CC6.1;</li>
+</ul>
+<p>Azure Function apps must have authentication (App Service Auth) enabled. Without authentication, the function is publicly invocable without credentials — the Azure equivalent of AWS Lambda function URLs with AuthType NONE.</p>
+<p><strong>Remediation:</strong> Enable App Service Authentication (EasyAuth) with an identity provider.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurefunctionruntime001">CTL.AZURE.FUNCTION.RUNTIME.001<a href="#ctlazurefunctionruntime001" class="hash-link" aria-label="Direct link to CTL.AZURE.FUNCTION.RUNTIME.001" title="Direct link to CTL.AZURE.FUNCTION.RUNTIME.001" translate="no">​</a></h3>
+<p><strong>Azure Function App Must Not Run Deprecated Runtime</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SI-2; soc2: CC7.1;</li>
+</ul>
+<p>Azure Function apps must run a supported runtime version. Deprecated runtimes receive no security patches.</p>
+<p><strong>Remediation:</strong> Upgrade to a supported runtime version.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentitybreakglass001">CTL.AZURE.IDENTITY.BREAKGLASS.001<a href="#ctlazureidentitybreakglass001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.BREAKGLASS.001" title="Direct link to CTL.AZURE.IDENTITY.BREAKGLASS.001" translate="no">​</a></h3>
+<p><strong>Break-Glass Account Must Be Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-2; soc2: CC6.1;</li>
+</ul>
+<p>At least one break-glass (emergency access) account must exist with Global Administrator role, excluded from Conditional Access policies, and monitored for usage. Without a break-glass account, a Conditional Access misconfiguration or MFA outage can lock out all administrators.</p>
+<p><strong>Remediation:</strong> Create a break-glass account per Microsoft guidance.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentityconditional001">CTL.AZURE.IDENTITY.CONDITIONAL.001<a href="#ctlazureidentityconditional001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.CONDITIONAL.001" title="Direct link to CTL.AZURE.IDENTITY.CONDITIONAL.001" translate="no">​</a></h3>
+<p><strong>Privileged Roles Must Have Conditional Access Policy</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>All privileged Entra ID roles must be covered by a Conditional Access policy enforcing MFA, compliant device, and trusted location requirements. Without Conditional Access, privileged authentication has no context-based restrictions.</p>
+<p><strong>Remediation:</strong> Create a Conditional Access policy targeting privileged directory roles.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentityguest001">CTL.AZURE.IDENTITY.GUEST.001<a href="#ctlazureidentityguest001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.GUEST.001" title="Direct link to CTL.AZURE.IDENTITY.GUEST.001" translate="no">​</a></h3>
+<p><strong>Guest Users Must Not Have Privileged Role Assignments</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-6(5); soc2: CC6.1;</li>
+</ul>
+<p>External guest users in Entra ID must not be assigned privileged roles (Owner, Contributor, User Access Administrator). Guest accounts are managed outside the organization&#x27;s directory.</p>
+<p><strong>Remediation:</strong> Remove privileged roles from guest accounts. Use scoped Reader or custom roles.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentitymanaged001">CTL.AZURE.IDENTITY.MANAGED.001<a href="#ctlazureidentitymanaged001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.MANAGED.001" title="Direct link to CTL.AZURE.IDENTITY.MANAGED.001" translate="no">​</a></h3>
+<p><strong>User-Assigned Managed Identity Must Not Be Shared Across Services</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-6; soc2: CC6.1;</li>
+</ul>
+<p>User-assigned managed identities shared across multiple services expand blast radius. A compromise of any service grants the identity&#x27;s permissions to the attacker across all services sharing it.</p>
+<p><strong>Remediation:</strong> Create dedicated managed identities per service with scoped permissions.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentitymfa001">CTL.AZURE.IDENTITY.MFA.001<a href="#ctlazureidentitymfa001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.MFA.001" title="Direct link to CTL.AZURE.IDENTITY.MFA.001" translate="no">​</a></h3>
+<p><strong>MFA Must Be Enforced for Privileged Users</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: IA-2(1); pci_dss_v4.0: 8.4.1; soc2: CC6.1;</li>
+</ul>
+<p>All users with privileged Entra ID roles (Global Administrator, Security Administrator, Privileged Role Administrator) must have MFA enforced. Without MFA, credential stuffing or phishing compromises the most powerful accounts.</p>
+<p><strong>Remediation:</strong> Enable MFA via Conditional Access policy or per-user MFA settings.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentitypim001">CTL.AZURE.IDENTITY.PIM.001<a href="#ctlazureidentitypim001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.PIM.001" title="Direct link to CTL.AZURE.IDENTITY.PIM.001" translate="no">​</a></h3>
+<p><strong>Admin Roles Must Use Privileged Identity Management</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-6(5); soc2: CC6.1;</li>
+</ul>
+<p>Privileged Entra ID roles must use PIM for just-in-time activation rather than permanent assignment. Permanent admin assignments create always-active high-privilege accounts.</p>
+<p><strong>Remediation:</strong> Convert permanent assignments to PIM eligible assignments.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentityspexpiry001">CTL.AZURE.IDENTITY.SP.EXPIRY.001<a href="#ctlazureidentityspexpiry001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.SP.EXPIRY.001" title="Direct link to CTL.AZURE.IDENTITY.SP.EXPIRY.001" translate="no">​</a></h3>
+<p><strong>Service Principal Credentials Must Not Be Near Expiry</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: IA-5; owasp_nhi: NHI7; soc2: CC6.1;</li>
+</ul>
+<p>Service principal credentials (certificates or secrets) must not be approaching expiration. Expired credentials cause authentication failures for automated services.</p>
+<p><strong>Remediation:</strong> Rotate the credential before expiration.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentityspsecret001">CTL.AZURE.IDENTITY.SP.SECRET.001<a href="#ctlazureidentityspsecret001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.SP.SECRET.001" title="Direct link to CTL.AZURE.IDENTITY.SP.SECRET.001" translate="no">​</a></h3>
+<p><strong>Service Principals Must Use Certificate Credentials</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: IA-5; soc2: CC6.1;</li>
+</ul>
+<p>Service principals must use certificate-based credentials instead of client secrets. Client secrets are long-lived strings that can be leaked in logs, config files, or source code.</p>
+<p><strong>Remediation:</strong> Replace client secret with certificate credential from Key Vault.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureidentitystale001">CTL.AZURE.IDENTITY.STALE.001<a href="#ctlazureidentitystale001" class="hash-link" aria-label="Direct link to CTL.AZURE.IDENTITY.STALE.001" title="Direct link to CTL.AZURE.IDENTITY.STALE.001" translate="no">​</a></h3>
+<p><strong>Inactive Users Must Not Have Active Role Assignments</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-2; owasp_nhi: NHI1; soc2: CC6.1;</li>
+</ul>
+<p>Users inactive for over 90 days must not retain active RBAC role assignments. Dormant accounts with active permissions are exploitation targets — the account owner isn&#x27;t monitoring activity.</p>
+<p><strong>Remediation:</strong> Remove role assignments from inactive accounts or disable the accounts.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultghost001">CTL.AZURE.KEYVAULT.GHOST.001<a href="#ctlazurekeyvaultghost001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.GHOST.001" title="Direct link to CTL.AZURE.KEYVAULT.GHOST.001" translate="no">​</a></h3>
+<p><strong>Key Vault Access Policy References Deleted Principal</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 8.5; hipaa: 164.312(a)(1); nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>Key Vault access policy grants key, secret, or certificate permissions to a principal that no longer exists in Entra ID.</p>
+<p><strong>Remediation:</strong> Remove the orphaned access policy.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultkeyexpiry001">CTL.AZURE.KEYVAULT.KEY.EXPIRY.001<a href="#ctlazurekeyvaultkeyexpiry001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.KEY.EXPIRY.001" title="Direct link to CTL.AZURE.KEYVAULT.KEY.EXPIRY.001" translate="no">​</a></h3>
+<p><strong>Key Vault Keys Without Expiration Date</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 8.1; nist_800_53_r5: SC-12; owasp_nhi: NHI7; soc2: CC6.1;</li>
+</ul>
+<p>Keys without expiration dates persist indefinitely. No forced rotation — a compromised key remains valid forever.</p>
+<p><strong>Remediation:</strong> Set expiration dates on all keys.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultkeysize001">CTL.AZURE.KEYVAULT.KEYSIZE.001<a href="#ctlazurekeyvaultkeysize001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.KEYSIZE.001" title="Direct link to CTL.AZURE.KEYVAULT.KEYSIZE.001" translate="no">​</a></h3>
+<p><strong>Key Vault RSA Key Below Minimum Size</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 8.7; nist_800_53_r5: SC-12; soc2: CC6.1;</li>
+</ul>
+<p>RSA key size below 2048 bits. Keys below this threshold are considered cryptographically weak by current standards.</p>
+<p><strong>Remediation:</strong> Generate new keys with RSA 2048 or higher.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultnetwork001">CTL.AZURE.KEYVAULT.NETWORK.001<a href="#ctlazurekeyvaultnetwork001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.NETWORK.001" title="Direct link to CTL.AZURE.KEYVAULT.NETWORK.001" translate="no">​</a></h3>
+<p><strong>Key Vault Must Not Be Accessible from Public Network</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; pci_dss_v4.0: 3.4.1; soc2: CC6.1;</li>
+</ul>
+<p>Azure Key Vault network default action must be Deny. Key Vault stores encryption keys, secrets, and certificates — the trust anchor for all Azure encryption. Public access exposes the key store to any internet host.</p>
+<p><strong>Remediation:</strong> Set network default action to Deny and configure VNet rules or private endpoints.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultprivate001">CTL.AZURE.KEYVAULT.PRIVATE.001<a href="#ctlazurekeyvaultprivate001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.PRIVATE.001" title="Direct link to CTL.AZURE.KEYVAULT.PRIVATE.001" translate="no">​</a></h3>
+<p><strong>Key Vault Without Private Endpoint</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 8.6; nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>No private endpoint configured. Key Vault traffic traverses the public internet.</p>
+<p><strong>Remediation:</strong> Configure a private endpoint for the Key Vault.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultpurge001">CTL.AZURE.KEYVAULT.PURGE.001<a href="#ctlazurekeyvaultpurge001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.PURGE.001" title="Direct link to CTL.AZURE.KEYVAULT.PURGE.001" translate="no">​</a></h3>
+<p><strong>Key Vault Keys and Secrets Must Have Expiry Dates</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: IA-5; soc2: CC6.1;</li>
+</ul>
+<p>Keys and secrets stored in Key Vault must have expiry dates set. Non-expiring credentials remain valid indefinitely if compromised.</p>
+<p><strong>Remediation:</strong> Set expiry dates on all keys and secrets.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultrbac001">CTL.AZURE.KEYVAULT.RBAC.001<a href="#ctlazurekeyvaultrbac001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.RBAC.001" title="Direct link to CTL.AZURE.KEYVAULT.RBAC.001" translate="no">​</a></h3>
+<p><strong>Key Vault Using Access Policies Instead of RBAC</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 8.4; nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>Key Vault uses vault access policies instead of Azure RBAC. Access policies are per-vault and don&#x27;t integrate with Conditional Access or PIM. RBAC provides centralized, auditable, policy-enforced access control.</p>
+<p><strong>Remediation:</strong> Switch to Azure RBAC authorization model.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultrotation001">CTL.AZURE.KEYVAULT.ROTATION.001<a href="#ctlazurekeyvaultrotation001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.ROTATION.001" title="Direct link to CTL.AZURE.KEYVAULT.ROTATION.001" translate="no">​</a></h3>
+<p><strong>Key Vault Key Rotation Policy Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 8.3; nist_800_53_r5: SC-12; owasp_nhi: NHI7; soc2: CC6.1;</li>
+</ul>
+<p>No automated key rotation policy. Keys must be rotated manually — manual processes are forgotten and keys accumulate age.</p>
+<p><strong>Remediation:</strong> Configure an automated key rotation policy.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultsecretexpiry001">CTL.AZURE.KEYVAULT.SECRET.EXPIRY.001<a href="#ctlazurekeyvaultsecretexpiry001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.SECRET.EXPIRY.001" title="Direct link to CTL.AZURE.KEYVAULT.SECRET.EXPIRY.001" translate="no">​</a></h3>
+<p><strong>Key Vault Secrets Without Expiration Date</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 8.2; nist_800_53_r5: SC-12; owasp_nhi: NHI7; soc2: CC6.1;</li>
+</ul>
+<p>Secrets (passwords, API keys, connection strings) without expiration persist indefinitely without forced rotation.</p>
+<p><strong>Remediation:</strong> Set expiration dates on all secrets.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurekeyvaultsoftdelete001">CTL.AZURE.KEYVAULT.SOFTDELETE.001<a href="#ctlazurekeyvaultsoftdelete001" class="hash-link" aria-label="Direct link to CTL.AZURE.KEYVAULT.SOFTDELETE.001" title="Direct link to CTL.AZURE.KEYVAULT.SOFTDELETE.001" translate="no">​</a></h3>
+<p><strong>Key Vault Must Have Soft Delete and Purge Protection</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: CP-9; soc2: A1.1;</li>
+</ul>
+<p>Azure Key Vault must have both soft delete and purge protection enabled. Without these, deleted keys, secrets, and certificates are permanently lost with no recovery window.</p>
+<p><strong>Remediation:</strong> Enable soft delete and purge protection on the Key Vault.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureloganalytics001">CTL.AZURE.LOG.ANALYTICS.001<a href="#ctlazureloganalytics001" class="hash-link" aria-label="Direct link to CTL.AZURE.LOG.ANALYTICS.001" title="Direct link to CTL.AZURE.LOG.ANALYTICS.001" translate="no">​</a></h3>
+<p><strong>No Log Analytics Workspace Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 5.1.1; hipaa: 164.312(b); nist_800_53_r5: AU-6; pci_dss_v4: 10.3; soc2: CC7.2;</li>
+</ul>
+<p>No Log Analytics workspace in the subscription. Monitoring data is fragmented with no central query or correlation capability.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazureloganalyticsaccess001">CTL.AZURE.LOGANALYTICS.ACCESS.001<a href="#ctlazureloganalyticsaccess001" class="hash-link" aria-label="Direct link to CTL.AZURE.LOGANALYTICS.ACCESS.001" title="Direct link to CTL.AZURE.LOGANALYTICS.ACCESS.001" translate="no">​</a></h3>
+<p><strong>Log Analytics Workspace Allows Internet Ingestion or Query</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 5.1.4; nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>Log Analytics workspace allows data ingestion or query access from the public internet. Security logs are queryable from outside the organization&#x27;s network.</p>
+<p><strong>Remediation:</strong> Disable internet ingestion and query access; use private link.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuremonitoralerts001">CTL.AZURE.MONITOR.ALERTS.001<a href="#ctlazuremonitoralerts001" class="hash-link" aria-label="Direct link to CTL.AZURE.MONITOR.ALERTS.001" title="Direct link to CTL.AZURE.MONITOR.ALERTS.001" translate="no">​</a></h3>
+<p><strong>No Alerts Configured for Critical Admin Operations</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 5.2.1; hipaa: 164.308(a)(1)(ii)(D); nist_800_53_r5: AU-6; pci_dss_v4: 10.2; soc2: CC7.2;</li>
+</ul>
+<p>No Azure Monitor alert rules for critical admin operations. Role assignments, policy changes, and security resource modifications do not generate real-time alerts.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuremonitoralertscis001">CTL.AZURE.MONITOR.ALERTS.CIS.001<a href="#ctlazuremonitoralertscis001" class="hash-link" aria-label="Direct link to CTL.AZURE.MONITOR.ALERTS.CIS.001" title="Direct link to CTL.AZURE.MONITOR.ALERTS.CIS.001" translate="no">​</a></h3>
+<p><strong>CIS-Required Activity Log Alerts Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 5.2.1; hipaa: 164.308(a)(1)(ii)(D); nist_800_53_r5: AU-6; pci_dss_v4: 10.2; soc2: CC7.2;</li>
+</ul>
+<p>One or more CIS Azure Benchmark-required Activity Log alerts are missing. Required operations: Create Policy Assignment, Create/Update/Delete NSG, Create/Update/Delete NSG Rule, Create/Update/Delete Security Solution, Create/Update/Delete SQL Server Firewall Rule.</p>
+<p><strong>Remediation:</strong> Configure Activity Log alerts for all CIS-required operations.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuremysqlaudit001">CTL.AZURE.MYSQL.AUDIT.001<a href="#ctlazuremysqlaudit001" class="hash-link" aria-label="Direct link to CTL.AZURE.MYSQL.AUDIT.001" title="Direct link to CTL.AZURE.MYSQL.AUDIT.001" translate="no">​</a></h3>
+<p><strong>MySQL Audit Log Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.4.4; hipaa: 164.312(b); nist_800_53_r5: AU-2; pci_dss_v4: 10.2; soc2: CC7.1;</li>
+</ul>
+<p>Audit logging not enabled. Database operations are not recorded for forensic investigation or compliance.</p>
+<p><strong>Remediation:</strong> Enable audit logging on the MySQL server.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuremysqlencrypt001">CTL.AZURE.MYSQL.ENCRYPT.001<a href="#ctlazuremysqlencrypt001" class="hash-link" aria-label="Direct link to CTL.AZURE.MYSQL.ENCRYPT.001" title="Direct link to CTL.AZURE.MYSQL.ENCRYPT.001" translate="no">​</a></h3>
+<p><strong>MySQL Infrastructure Encryption Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.4.6; nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>Infrastructure-level double encryption not enabled. Data encrypted at the storage layer only — no second encryption layer.</p>
+<p><strong>Remediation:</strong> Enable infrastructure encryption on the MySQL server.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuremysqlfirewall001">CTL.AZURE.MYSQL.FIREWALL.001<a href="#ctlazuremysqlfirewall001" class="hash-link" aria-label="Direct link to CTL.AZURE.MYSQL.FIREWALL.001" title="Direct link to CTL.AZURE.MYSQL.FIREWALL.001" translate="no">​</a></h3>
+<p><strong>MySQL Firewall Allows All Azure IPs</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.4.3; nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>Firewall rule allows 0.0.0.0-255.255.255.255 or AllowAllAzureIps. Permits connections from ANY Azure IP globally, not just the organization&#x27;s resources.</p>
+<p><strong>Remediation:</strong> Remove the allow-all rule and configure specific IP ranges.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuremysqlpublic001">CTL.AZURE.MYSQL.PUBLIC.001<a href="#ctlazuremysqlpublic001" class="hash-link" aria-label="Direct link to CTL.AZURE.MYSQL.PUBLIC.001" title="Direct link to CTL.AZURE.MYSQL.PUBLIC.001" translate="no">​</a></h3>
+<p><strong>MySQL Public Network Access Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.4.2; hipaa: 164.312(a)(1); nist_800_53_r5: AC-4; pci_dss_v4: 1.3; soc2: CC6.6;</li>
+</ul>
+<p>Server accepts connections from the public internet. Database is directly reachable without VNet or private endpoint restriction.</p>
+<p><strong>Remediation:</strong> Disable public network access and use private endpoints.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuremysqlssl001">CTL.AZURE.MYSQL.SSL.001<a href="#ctlazuremysqlssl001" class="hash-link" aria-label="Direct link to CTL.AZURE.MYSQL.SSL.001" title="Direct link to CTL.AZURE.MYSQL.SSL.001" translate="no">​</a></h3>
+<p><strong>MySQL SSL Enforcement Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.4.1; hipaa: 164.312(e)(1); nist_800_53_r5: SC-8; pci_dss_v4: 4.1; soc2: CC6.7;</li>
+</ul>
+<p>SSL enforcement disabled. Connections to the database can be unencrypted — credentials and query data transmitted in plaintext.</p>
+<p><strong>Remediation:</strong> Enable SSL enforcement on the MySQL server.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuremysqltls001">CTL.AZURE.MYSQL.TLS.001<a href="#ctlazuremysqltls001" class="hash-link" aria-label="Direct link to CTL.AZURE.MYSQL.TLS.001" title="Direct link to CTL.AZURE.MYSQL.TLS.001" translate="no">​</a></h3>
+<p><strong>MySQL TLS Minimum Version Below 1.2</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.4.5; nist_800_53_r5: SC-8; pci_dss_v4: 4.1; soc2: CC6.1;</li>
+</ul>
+<p>MySQL accepts TLS 1.0 or 1.1 connections with known vulnerabilities (BEAST, POODLE, CRIME).</p>
+<p><strong>Remediation:</strong> Set minimum TLS version to 1.2.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurensgdefault001">CTL.AZURE.NSG.DEFAULT.001<a href="#ctlazurensgdefault001" class="hash-link" aria-label="Direct link to CTL.AZURE.NSG.DEFAULT.001" title="Direct link to CTL.AZURE.NSG.DEFAULT.001" translate="no">​</a></h3>
+<p><strong>NSG Must Have Custom Rules Beyond Defaults</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Azure NSGs must have custom security rules configured beyond the default rules. Default-only NSGs provide minimal network segmentation.</p>
+<p><strong>Remediation:</strong> Add custom inbound and outbound rules for your workload.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurensgunassociated001">CTL.AZURE.NSG.UNASSOCIATED.001<a href="#ctlazurensgunassociated001" class="hash-link" aria-label="Direct link to CTL.AZURE.NSG.UNASSOCIATED.001" title="Direct link to CTL.AZURE.NSG.UNASSOCIATED.001" translate="no">​</a></h3>
+<p><strong>NSG Must Be Associated with a Subnet or NIC</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: CM-6;</li>
+</ul>
+<p>Azure NSGs must be associated with at least one subnet or network interface. Unassociated NSGs contain rules that protect nothing.</p>
+<p><strong>Remediation:</strong> Associate the NSG with a subnet or delete it if unused.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurensgunrestricted001">CTL.AZURE.NSG.UNRESTRICTED.001<a href="#ctlazurensgunrestricted001" class="hash-link" aria-label="Direct link to CTL.AZURE.NSG.UNRESTRICTED.001" title="Direct link to CTL.AZURE.NSG.UNRESTRICTED.001" translate="no">​</a></h3>
+<p><strong>NSG Must Not Allow Unrestricted Inbound on Sensitive Ports</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; pci_dss_v4.0: 1.3.1; soc2: CC6.6;</li>
+</ul>
+<p>Azure NSGs must not have inbound Allow rules permitting traffic from any source (0.0.0.0/0 or *) on sensitive ports (SSH 22, RDP 3389, SQL 1433/3306/5432, or all ports). NSG rules are priority-ordered — an unrestricted Allow at a low priority number overrides restrictive Deny rules with higher numbers.</p>
+<p><strong>Remediation:</strong> Restrict source addresses to specific CIDR ranges or service tags.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurepolicycompliance001">CTL.AZURE.POLICY.COMPLIANCE.001<a href="#ctlazurepolicycompliance001" class="hash-link" aria-label="Direct link to CTL.AZURE.POLICY.COMPLIANCE.001" title="Direct link to CTL.AZURE.POLICY.COMPLIANCE.001" translate="no">​</a></h3>
+<p><strong>Non-Compliant Azure Policy Assignments</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 7.4; nist_800_53_r5: AU-6; soc2: CC7.1;</li>
+</ul>
+<p>Azure Policy assignments show non-compliant resources. Intended configuration state is not enforced.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurepostgresqlad001">CTL.AZURE.POSTGRESQL.AD.001<a href="#ctlazurepostgresqlad001" class="hash-link" aria-label="Direct link to CTL.AZURE.POSTGRESQL.AD.001" title="Direct link to CTL.AZURE.POSTGRESQL.AD.001" translate="no">​</a></h3>
+<p><strong>PostgreSQL Entra ID Admin Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.3.5; nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>No Entra ID administrator configured. Authentication relies solely on native PostgreSQL credentials — no centralized identity, no Conditional Access, no SSO.</p>
+<p><strong>Remediation:</strong> Configure an Entra ID administrator for the PostgreSQL server.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurepostgresqlencrypt001">CTL.AZURE.POSTGRESQL.ENCRYPT.001<a href="#ctlazurepostgresqlencrypt001" class="hash-link" aria-label="Direct link to CTL.AZURE.POSTGRESQL.ENCRYPT.001" title="Direct link to CTL.AZURE.POSTGRESQL.ENCRYPT.001" translate="no">​</a></h3>
+<p><strong>PostgreSQL Infrastructure Encryption Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.3.6; nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>Infrastructure-level double encryption not enabled. Data encrypted at the storage layer only — no second encryption layer with a different key.</p>
+<p><strong>Remediation:</strong> Enable infrastructure encryption on the PostgreSQL server.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurepostgresqlfirewall001">CTL.AZURE.POSTGRESQL.FIREWALL.001<a href="#ctlazurepostgresqlfirewall001" class="hash-link" aria-label="Direct link to CTL.AZURE.POSTGRESQL.FIREWALL.001" title="Direct link to CTL.AZURE.POSTGRESQL.FIREWALL.001" translate="no">​</a></h3>
+<p><strong>PostgreSQL Firewall Allows All Azure IPs</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.3.8; nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>Firewall rule allows 0.0.0.0-255.255.255.255 or AllowAllAzureIps. Permits connections from ANY Azure IP globally, not just the organization&#x27;s resources.</p>
+<p><strong>Remediation:</strong> Remove the allow-all rule and configure specific IP ranges.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurepostgresqllog001">CTL.AZURE.POSTGRESQL.LOG.001<a href="#ctlazurepostgresqllog001" class="hash-link" aria-label="Direct link to CTL.AZURE.POSTGRESQL.LOG.001" title="Direct link to CTL.AZURE.POSTGRESQL.LOG.001" translate="no">​</a></h3>
+<p><strong>PostgreSQL Server Logging Not Fully Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.3.2; hipaa: 164.312(b); nist_800_53_r5: AU-2; pci_dss_v4: 10.2; soc2: CC7.1;</li>
+</ul>
+<p>One or more recommended logging parameters disabled: log_checkpoints, log_connections, log_disconnections, log_duration, or connection_throttling. Database activity forensics are incomplete.</p>
+<p><strong>Remediation:</strong> Enable all recommended logging parameters.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurepostgresqlpublic001">CTL.AZURE.POSTGRESQL.PUBLIC.001<a href="#ctlazurepostgresqlpublic001" class="hash-link" aria-label="Direct link to CTL.AZURE.POSTGRESQL.PUBLIC.001" title="Direct link to CTL.AZURE.POSTGRESQL.PUBLIC.001" translate="no">​</a></h3>
+<p><strong>PostgreSQL Public Network Access Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.3.7; hipaa: 164.312(a)(1); nist_800_53_r5: AC-4; pci_dss_v4: 1.3; soc2: CC6.6;</li>
+</ul>
+<p>Server accepts connections from the public internet. Database is directly reachable without VNet or private endpoint restriction.</p>
+<p><strong>Remediation:</strong> Disable public network access and use private endpoints.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurepostgresqlssl001">CTL.AZURE.POSTGRESQL.SSL.001<a href="#ctlazurepostgresqlssl001" class="hash-link" aria-label="Direct link to CTL.AZURE.POSTGRESQL.SSL.001" title="Direct link to CTL.AZURE.POSTGRESQL.SSL.001" translate="no">​</a></h3>
+<p><strong>PostgreSQL SSL Enforcement Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.3.1; hipaa: 164.312(e)(1); nist_800_53_r5: SC-8; pci_dss_v4: 4.1; soc2: CC6.7;</li>
+</ul>
+<p>SSL enforcement disabled. Connections to the database can be unencrypted — credentials and query data transmitted in plaintext.</p>
+<p><strong>Remediation:</strong> Enable SSL enforcement on the PostgreSQL server.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurerbaccustom001">CTL.AZURE.RBAC.CUSTOM.001<a href="#ctlazurerbaccustom001" class="hash-link" aria-label="Direct link to CTL.AZURE.RBAC.CUSTOM.001" title="Direct link to CTL.AZURE.RBAC.CUSTOM.001" translate="no">​</a></h3>
+<p><strong>Custom Role Definitions Must Follow Least Privilege</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-6; soc2: CC6.1;</li>
+</ul>
+<p>Custom Azure RBAC role definitions must not grant overly broad permissions (actions: * or dataActions: *). Custom roles should scope to specific resource types and operations.</p>
+<p><strong>Remediation:</strong> Scope actions and dataActions to specific resource providers and operations.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurerbacghost001">CTL.AZURE.RBAC.GHOST.001<a href="#ctlazurerbacghost001" class="hash-link" aria-label="Direct link to CTL.AZURE.RBAC.GHOST.001" title="Direct link to CTL.AZURE.RBAC.GHOST.001" translate="no">​</a></h3>
+<p><strong>RBAC Role Assignment References Deleted Principal</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 1.21; hipaa: 164.312(a)(1); nist_800_53_r5: AC-2; soc2: CC6.2;</li>
+</ul>
+<p>RBAC assignment grants permissions to a principal that no longer exists in Entra ID. The assignment persists as an &quot;Unknown&quot; entry.</p>
+<p><strong>Remediation:</strong> Remove the orphaned role assignment.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurerbacowner001">CTL.AZURE.RBAC.OWNER.001<a href="#ctlazurerbacowner001" class="hash-link" aria-label="Direct link to CTL.AZURE.RBAC.OWNER.001" title="Direct link to CTL.AZURE.RBAC.OWNER.001" translate="no">​</a></h3>
+<p><strong>Owner Role Must Not Be Broadly Assigned</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-6(5); pci_dss_v4.0: 7.2.1; soc2: CC6.1;</li>
+</ul>
+<p>The Owner role grants full control including the ability to assign roles to others. Excessive Owner assignments at subscription or management group scope expand the blast radius of any compromised principal.</p>
+<p><strong>Remediation:</strong> Replace Owner with Contributor or custom roles scoped to specific resource groups.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurerbacscope001">CTL.AZURE.RBAC.SCOPE.001<a href="#ctlazurerbacscope001" class="hash-link" aria-label="Direct link to CTL.AZURE.RBAC.SCOPE.001" title="Direct link to CTL.AZURE.RBAC.SCOPE.001" translate="no">​</a></h3>
+<p><strong>Privileged Roles Must Not Be Assigned at Subscription Scope</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-6; soc2: CC6.1;</li>
+</ul>
+<p>Contributor, User Access Administrator, and custom write roles should be assigned at resource group scope, not subscription scope. Subscription-scoped assignments grant permissions across all resource groups.</p>
+<p><strong>Remediation:</strong> Reassign at resource group scope with specific resource group targets.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurerecoveryencrypt001">CTL.AZURE.RECOVERY.ENCRYPT.001<a href="#ctlazurerecoveryencrypt001" class="hash-link" aria-label="Direct link to CTL.AZURE.RECOVERY.ENCRYPT.001" title="Direct link to CTL.AZURE.RECOVERY.ENCRYPT.001" translate="no">​</a></h3>
+<p><strong>Recovery Services Vault Not Using CMK</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>Recovery Services vault uses platform-managed encryption. No revocation, no custom rotation, no access audit via Key Vault.</p>
+<p><strong>Remediation:</strong> Configure customer-managed key encryption via Key Vault.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurerecoverysoftdelete001">CTL.AZURE.RECOVERY.SOFTDELETE.001<a href="#ctlazurerecoverysoftdelete001" class="hash-link" aria-label="Direct link to CTL.AZURE.RECOVERY.SOFTDELETE.001" title="Direct link to CTL.AZURE.RECOVERY.SOFTDELETE.001" translate="no">​</a></h3>
+<p><strong>Recovery Services Vault Soft Delete Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 7.6; nist_800_53_r5: CP-9; soc2: CC7.2;</li>
+</ul>
+<p>Soft delete not enabled for backup items. Deleted backups are permanently lost. An attacker who gains vault access can destroy all backups before a destructive attack.</p>
+<p><strong>Remediation:</strong> Enable soft delete for backup items.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqladadmin001">CTL.AZURE.SQL.ADADMIN.001<a href="#ctlazuresqladadmin001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.ADADMIN.001" title="Direct link to CTL.AZURE.SQL.ADADMIN.001" translate="no">​</a></h3>
+<p><strong>SQL Server Entra ID Admin Not Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.1.3; nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>No Entra ID administrator set. Entra ID authentication is not possible without an admin configured.</p>
+<p><strong>Remediation:</strong> Configure an Entra ID administrator for the SQL server.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqladonly001">CTL.AZURE.SQL.ADONLY.001<a href="#ctlazuresqladonly001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.ADONLY.001" title="Direct link to CTL.AZURE.SQL.ADONLY.001" translate="no">​</a></h3>
+<p><strong>SQL Server Allows SQL Authentication</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.1.4; hipaa: 164.312(d); nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>SQL authentication enabled alongside Entra ID. SQL credentials bypass MFA, Conditional Access, and centralized audit. Entra ID-only authentication eliminates this identity bypass.</p>
+<p><strong>Remediation:</strong> Enable Entra ID-only authentication.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqlaudit001">CTL.AZURE.SQL.AUDIT.001<a href="#ctlazuresqlaudit001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.AUDIT.001" title="Direct link to CTL.AZURE.SQL.AUDIT.001" translate="no">​</a></h3>
+<p><strong>Azure SQL Auditing Must Be Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-2; soc2: CC6.1;</li>
+</ul>
+<p>SQL auditing not configured. Database operations are not recorded.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqlauditretention001">CTL.AZURE.SQL.AUDIT.RETENTION.001<a href="#ctlazuresqlauditretention001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.AUDIT.RETENTION.001" title="Direct link to CTL.AZURE.SQL.AUDIT.RETENTION.001" translate="no">​</a></h3>
+<p><strong>SQL Auditing Retention Below 90 Days</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.1.6; nist_800_53_r5: AU-12; soc2: CC7.2;</li>
+</ul>
+<p>Audit logs retained fewer than 90 days. Investigation of incidents older than the retention period loses database evidence.</p>
+<p><strong>Remediation:</strong> Increase audit log retention to at least 90 days.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqldefender001">CTL.AZURE.SQL.DEFENDER.001<a href="#ctlazuresqldefender001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.DEFENDER.001" title="Direct link to CTL.AZURE.SQL.DEFENDER.001" translate="no">​</a></h3>
+<p><strong>Azure SQL Must Enable Advanced Threat Protection</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SI-4; soc2: CC6.1;</li>
+</ul>
+<p>Microsoft Defender for SQL not enabled for anomaly detection.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqlencrypt001">CTL.AZURE.SQL.ENCRYPT.001<a href="#ctlazuresqlencrypt001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.ENCRYPT.001" title="Direct link to CTL.AZURE.SQL.ENCRYPT.001" translate="no">​</a></h3>
+<p><strong>Azure SQL TDE Must Use Customer-Managed Key</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>TDE uses service-managed keys without revocation or access audit.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqlfirewall001">CTL.AZURE.SQL.FIREWALL.001<a href="#ctlazuresqlfirewall001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.FIREWALL.001" title="Direct link to CTL.AZURE.SQL.FIREWALL.001" translate="no">​</a></h3>
+<p><strong>Azure SQL Must Not Allow All Azure Services</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.1;</li>
+</ul>
+<p>Allow Azure services permits connections from ANY Azure IP globally.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqlpublic001">CTL.AZURE.SQL.PUBLIC.001<a href="#ctlazuresqlpublic001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.PUBLIC.001" title="Direct link to CTL.AZURE.SQL.PUBLIC.001" translate="no">​</a></h3>
+<p><strong>Azure SQL Must Not Allow Public Network Access</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.1;</li>
+</ul>
+<p>SQL server accepts connections from the public internet.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqltls001">CTL.AZURE.SQL.TLS.001<a href="#ctlazuresqltls001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.TLS.001" title="Direct link to CTL.AZURE.SQL.TLS.001" translate="no">​</a></h3>
+<p><strong>SQL Server TLS Minimum Version Below 1.2</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.1.5; nist_800_53_r5: SC-8; pci_dss_v4: 4.1; soc2: CC6.1;</li>
+</ul>
+<p>SQL server accepts TLS 1.0 or 1.1 connections with known vulnerabilities (BEAST, POODLE, CRIME).</p>
+<p><strong>Remediation:</strong> Set minimum TLS version to 1.2.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazuresqlva001">CTL.AZURE.SQL.VA.001<a href="#ctlazuresqlva001" class="hash-link" aria-label="Direct link to CTL.AZURE.SQL.VA.001" title="Direct link to CTL.AZURE.SQL.VA.001" translate="no">​</a></h3>
+<p><strong>SQL Vulnerability Assessment Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 4.2.1; nist_800_53_r5: RA-5; soc2: CC7.1;</li>
+</ul>
+<p>SQL vulnerability assessment not configured. No automated scanning for misconfigurations, excessive permissions, or sensitive data exposure.</p>
+<p><strong>Remediation:</strong> Enable SQL vulnerability assessment with periodic scanning.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestorageencrypt001">CTL.AZURE.STORAGE.ENCRYPT.001<a href="#ctlazurestorageencrypt001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.ENCRYPT.001" title="Direct link to CTL.AZURE.STORAGE.ENCRYPT.001" translate="no">​</a></h3>
+<p><strong>Azure Storage Must Use Customer-Managed Key for Encryption</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-28; soc2: CC6.7;</li>
+</ul>
+<p>Azure Storage accounts must use a customer-managed key (CMK) from Azure Key Vault for encryption at rest. Microsoft-managed keys provide no revocation capability and no access audit trail.</p>
+<p><strong>Remediation:</strong> Configure customer-managed key from Azure Key Vault.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestorageghost001">CTL.AZURE.STORAGE.GHOST.001<a href="#ctlazurestorageghost001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.GHOST.001" title="Direct link to CTL.AZURE.STORAGE.GHOST.001" translate="no">​</a></h3>
+<p><strong>Storage Account Access References Deleted Identity</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-2; soc2: CC6.2;</li>
+</ul>
+<p>Storage account RBAC assignment or shared access policy references a deleted managed identity or service principal.</p>
+<p><strong>Remediation:</strong> Remove the orphaned access configuration.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragehttps001">CTL.AZURE.STORAGE.HTTPS.001<a href="#ctlazurestoragehttps001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.HTTPS.001" title="Direct link to CTL.AZURE.STORAGE.HTTPS.001" translate="no">​</a></h3>
+<p><strong>Azure Storage Must Require HTTPS</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-8; soc2: CC6.7;</li>
+</ul>
+<p>Azure Storage accounts must enforce HTTPS-only access. Allowing HTTP exposes data in transit to interception.</p>
+<p><strong>Remediation:</strong> Set supportsHttpsTrafficOnly to true.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestorageimmutability001">CTL.AZURE.STORAGE.IMMUTABILITY.001<a href="#ctlazurestorageimmutability001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.IMMUTABILITY.001" title="Direct link to CTL.AZURE.STORAGE.IMMUTABILITY.001" translate="no">​</a></h3>
+<p><strong>Storage Container Without Immutability Policy</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-9; soc2: CC6.1;</li>
+</ul>
+<p>No immutability policy on blob containers. Objects can be modified or deleted with no WORM protection.</p>
+<p><strong>Remediation:</strong> Configure an immutability policy on the container.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestorageinfrastructure001">CTL.AZURE.STORAGE.INFRASTRUCTURE.001<a href="#ctlazurestorageinfrastructure001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.INFRASTRUCTURE.001" title="Direct link to CTL.AZURE.STORAGE.INFRASTRUCTURE.001" translate="no">​</a></h3>
+<p><strong>Storage Account Infrastructure Encryption Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 3.12; nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>Double encryption (infrastructure + service layer) not enabled. Single layer is default — infrastructure encryption adds a second layer with a different algorithm.</p>
+<p><strong>Remediation:</strong> Enable infrastructure encryption on the storage account.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragekeyrotation001">CTL.AZURE.STORAGE.KEYROTATION.001<a href="#ctlazurestoragekeyrotation001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.KEYROTATION.001" title="Direct link to CTL.AZURE.STORAGE.KEYROTATION.001" translate="no">​</a></h3>
+<p><strong>Storage Account Key Not Rotated</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 3.2; nist_800_53_r5: IA-5; owasp_nhi: NHI7; soc2: CC6.1;</li>
+</ul>
+<p>Access keys not rotated within 90 days. Long-lived keys increase the window of compromise if a key is leaked.</p>
+<p><strong>Remediation:</strong> Rotate storage account access keys.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragelog001">CTL.AZURE.STORAGE.LOG.001<a href="#ctlazurestoragelog001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.LOG.001" title="Direct link to CTL.AZURE.STORAGE.LOG.001" translate="no">​</a></h3>
+<p><strong>Azure Storage Must Have Diagnostic Logging Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-2; soc2: CC7.1;</li>
+</ul>
+<p>Azure Storage accounts must have diagnostic logging enabled for read, write, and delete operations. Without logging, data access patterns are invisible.</p>
+<p><strong>Remediation:</strong> Enable diagnostic logging for read, write, and delete operations.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragenetwork001">CTL.AZURE.STORAGE.NETWORK.001<a href="#ctlazurestoragenetwork001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.NETWORK.001" title="Direct link to CTL.AZURE.STORAGE.NETWORK.001" translate="no">​</a></h3>
+<p><strong>Azure Storage Must Restrict Network Access</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Azure Storage accounts must set the default network action to Deny, allowing access only from specified VNets and IP ranges. Default Allow exposes the storage account to all Azure and internet traffic.</p>
+<p><strong>Remediation:</strong> Set networkRuleSet.defaultAction to Deny and add VNet/IP rules.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestorageprivateendpoint001">CTL.AZURE.STORAGE.PRIVATEENDPOINT.001<a href="#ctlazurestorageprivateendpoint001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.PRIVATEENDPOINT.001" title="Direct link to CTL.AZURE.STORAGE.PRIVATEENDPOINT.001" translate="no">​</a></h3>
+<p><strong>Storage Account Without Private Endpoint</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 3.10; nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>No private endpoint configured. Traffic to storage traverses the public internet.</p>
+<p><strong>Remediation:</strong> Configure a private endpoint for the storage account.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragepublic001">CTL.AZURE.STORAGE.PUBLIC.001<a href="#ctlazurestoragepublic001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.PUBLIC.001" title="Direct link to CTL.AZURE.STORAGE.PUBLIC.001" translate="no">​</a></h3>
+<p><strong>Azure Storage Account Must Not Allow Public Blob Access</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-3; pci_dss_v4.0: 7.2.1; soc2: CC6.1;</li>
+</ul>
+<p>Azure Storage accounts must have AllowBlobPublicAccess disabled. When enabled, individual containers can be set to public access, exposing blobs to unauthenticated internet access.</p>
+<p><strong>Remediation:</strong> Set AllowBlobPublicAccess to false on the storage account.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragereplication001">CTL.AZURE.STORAGE.REPLICATION.001<a href="#ctlazurestoragereplication001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.REPLICATION.001" title="Direct link to CTL.AZURE.STORAGE.REPLICATION.001" translate="no">​</a></h3>
+<p><strong>Cross-Tenant Replication Not Disabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AC-4; soc2: CC6.6;</li>
+</ul>
+<p>Cross-tenant replication allows data to be replicated to storage accounts in other Azure tenants. Data replicated outside the organization is beyond organizational control.</p>
+<p><strong>Remediation:</strong> Disable cross-tenant replication on the storage account.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragesharedkey001">CTL.AZURE.STORAGE.SHAREDKEY.001<a href="#ctlazurestoragesharedkey001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.SHAREDKEY.001" title="Direct link to CTL.AZURE.STORAGE.SHAREDKEY.001" translate="no">​</a></h3>
+<p><strong>Storage Account Shared Key Access Not Disabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 3.3; nist_800_53_r5: AC-3; soc2: CC6.1;</li>
+</ul>
+<p>Shared key access enabled. Shared keys are long-lived bearer tokens with no identity attribution. Entra ID authorization provides identity-based access with audit logging.</p>
+<p><strong>Remediation:</strong> Disable shared key access and use Entra ID authorization.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragesoftdelete001">CTL.AZURE.STORAGE.SOFTDELETE.001<a href="#ctlazurestoragesoftdelete001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.SOFTDELETE.001" title="Direct link to CTL.AZURE.STORAGE.SOFTDELETE.001" translate="no">​</a></h3>
+<p><strong>Azure Storage Must Have Soft Delete Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: CP-9; soc2: A1.1;</li>
+</ul>
+<p>Azure Storage accounts must enable soft delete for blobs to protect against accidental or malicious deletion. Without soft delete, deleted data is immediately and permanently lost.</p>
+<p><strong>Remediation:</strong> Enable blob soft delete with a retention period of at least 7 days.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurestoragetls001">CTL.AZURE.STORAGE.TLS.001<a href="#ctlazurestoragetls001" class="hash-link" aria-label="Direct link to CTL.AZURE.STORAGE.TLS.001" title="Direct link to CTL.AZURE.STORAGE.TLS.001" translate="no">​</a></h3>
+<p><strong>Azure Storage Must Enforce TLS 1.2 Minimum</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-8; soc2: CC6.7;</li>
+</ul>
+<p>Azure Storage accounts must set the minimum TLS version to 1.2. Older TLS versions have known vulnerabilities.</p>
+<p><strong>Remediation:</strong> Set minimumTlsVersion to TLS1_2.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmautoupdate001">CTL.AZURE.VM.AUTOUPDATE.001<a href="#ctlazurevmautoupdate001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.AUTOUPDATE.001" title="Direct link to CTL.AZURE.VM.AUTOUPDATE.001" translate="no">​</a></h3>
+<p><strong>VM Automatic OS Updates Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 7.3; nist_800_53_r5: SI-2; soc2: CC7.1;</li>
+</ul>
+<p>Automatic guest OS updates not enabled. VM accumulates unpatched vulnerabilities over time.</p>
+<p><strong>Remediation:</strong> Enable automatic guest OS updates.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmbackup001">CTL.AZURE.VM.BACKUP.001<a href="#ctlazurevmbackup001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.BACKUP.001" title="Direct link to CTL.AZURE.VM.BACKUP.001" translate="no">​</a></h3>
+<p><strong>VM Backup Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 7.1; nist_800_53_r5: CP-9; soc2: CC7.2;</li>
+</ul>
+<p>VM not enrolled in Azure Backup. No recovery point exists. Data loss on VM failure is permanent.</p>
+<p><strong>Remediation:</strong> Enable Azure Backup for the VM.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmencrypt001">CTL.AZURE.VM.ENCRYPT.001<a href="#ctlazurevmencrypt001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.ENCRYPT.001" title="Direct link to CTL.AZURE.VM.ENCRYPT.001" translate="no">​</a></h3>
+<p><strong>VM Disks Must Use Customer-Managed Key Encryption</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>OS and data disks must use customer-managed keys or encryption at host.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmendpoint001">CTL.AZURE.VM.ENDPOINT.001<a href="#ctlazurevmendpoint001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.ENDPOINT.001" title="Direct link to CTL.AZURE.VM.ENDPOINT.001" translate="no">​</a></h3>
+<p><strong>VM Must Have Endpoint Protection Installed</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SI-3; soc2: CC6.1;</li>
+</ul>
+<p>VMs must have endpoint protection (Microsoft Defender or equivalent) for malware detection and behavioral monitoring.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmextension001">CTL.AZURE.VM.EXTENSION.001<a href="#ctlazurevmextension001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.EXTENSION.001" title="Direct link to CTL.AZURE.VM.EXTENSION.001" translate="no">​</a></h3>
+<p><strong>VM Must Not Have Unauthorized Extensions</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: CM-7; soc2: CC6.1;</li>
+</ul>
+<p>VMs must not have extensions beyond the approved baseline. Extensions execute with system privileges and survive restarts.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmmanageddisk001">CTL.AZURE.VM.MANAGEDDISK.001<a href="#ctlazurevmmanageddisk001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.MANAGEDDISK.001" title="Direct link to CTL.AZURE.VM.MANAGEDDISK.001" translate="no">​</a></h3>
+<p><strong>VM Using Unmanaged Disks</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 7.2; nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>Unmanaged disks lack built-in encryption, RBAC integration, and snapshot management that managed disks provide.</p>
+<p><strong>Remediation:</strong> Migrate to managed disks.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmpublic001">CTL.AZURE.VM.PUBLIC.001<a href="#ctlazurevmpublic001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.PUBLIC.001" title="Direct link to CTL.AZURE.VM.PUBLIC.001" translate="no">​</a></h3>
+<p><strong>VM With Public IP Must Have JIT Access Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.1;</li>
+</ul>
+<p>VMs with public IPs must enable Just-In-Time access to reduce permanent exposure. Without JIT the VM is reachable 24/7.</p>
+<p><strong>Remediation:</strong> Remediate per control description.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmtrustedlaunch001">CTL.AZURE.VM.TRUSTEDLAUNCH.001<a href="#ctlazurevmtrustedlaunch001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.TRUSTEDLAUNCH.001" title="Direct link to CTL.AZURE.VM.TRUSTEDLAUNCH.001" translate="no">​</a></h3>
+<p><strong>VM Secure Boot Not Enabled (Trusted Launch)</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 7.5; nist_800_53_r5: SI-7; soc2: CC6.1;</li>
+</ul>
+<p>Trusted Launch with Secure Boot and vTPM not enabled. No boot integrity verification — rootkits and bootkits can persist undetected across reboots.</p>
+<p><strong>Remediation:</strong> Enable Trusted Launch with Secure Boot and vTPM.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevmunattacheddisk001">CTL.AZURE.VM.UNATTACHEDDISK.001<a href="#ctlazurevmunattacheddisk001" class="hash-link" aria-label="Direct link to CTL.AZURE.VM.UNATTACHEDDISK.001" title="Direct link to CTL.AZURE.VM.UNATTACHEDDISK.001" translate="no">​</a></h3>
+<p><strong>Unattached Disk Not Encrypted</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> encryption</li>
+<li class=""><strong>Compliance:</strong> cis_azure_v2: 7.4; nist_800_53_r5: SC-28; soc2: CC6.1;</li>
+</ul>
+<p>A disk not attached to any VM is unencrypted. Unattached disks may contain data from previous workloads — anyone with disk read access can read the data.</p>
+<p><strong>Remediation:</strong> Encrypt the disk or delete it if no longer needed.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevnetflowlog001">CTL.AZURE.VNET.FLOWLOG.001<a href="#ctlazurevnetflowlog001" class="hash-link" aria-label="Direct link to CTL.AZURE.VNET.FLOWLOG.001" title="Direct link to CTL.AZURE.VNET.FLOWLOG.001" translate="no">​</a></h3>
+<p><strong>NSG Flow Logs Must Be Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-12; soc2: CC7.1;</li>
+</ul>
+<p>NSGs associated with VNets must have flow logs enabled for network forensics. Without flow logs, network traffic is not recorded and incident investigation has no network-level data.</p>
+<p><strong>Remediation:</strong> Enable NSG flow logs to a Storage Account or Log Analytics workspace.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurevnetpeering001">CTL.AZURE.VNET.PEERING.001<a href="#ctlazurevnetpeering001" class="hash-link" aria-label="Direct link to CTL.AZURE.VNET.PEERING.001" title="Direct link to CTL.AZURE.VNET.PEERING.001" translate="no">​</a></h3>
+<p><strong>VNet Peering Must Have NSG Filtering</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Peered VNets must have NSGs applied to peered subnets to filter cross-VNet traffic. Azure VNet peering allows all traffic between peered VNets by default — NSGs must be explicitly applied.</p>
+<p><strong>Remediation:</strong> Apply NSGs to subnets in both peered VNets.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurewafmode001">CTL.AZURE.WAF.MODE.001<a href="#ctlazurewafmode001" class="hash-link" aria-label="Direct link to CTL.AZURE.WAF.MODE.001" title="Direct link to CTL.AZURE.WAF.MODE.001" translate="no">​</a></h3>
+<p><strong>Application Gateway WAF Must Be in Prevention Mode</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SI-3; soc2: CC6.6;</li>
+</ul>
+<p>Azure Application Gateway WAF must be in Prevention mode, not Detection mode. Detection mode logs attacks without blocking them — the WAF observes attacks without stopping them.</p>
+<p><strong>Remediation:</strong> Switch WAF mode from Detection to Prevention.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlazurewafpolicy001">CTL.AZURE.WAF.POLICY.001<a href="#ctlazurewafpolicy001" class="hash-link" aria-label="Direct link to CTL.AZURE.WAF.POLICY.001" title="Direct link to CTL.AZURE.WAF.POLICY.001" translate="no">​</a></h3>
+<p><strong>Application Gateway Must Have WAF Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Azure Application Gateways must have WAF enabled. Without WAF, the gateway routes traffic to backends without application-layer inspection.</p>
+<p><strong>Remediation:</strong> Enable WAF on the Application Gateway (requires WAF_v2 SKU).</p>
+<hr></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/invariants-reference/catalog/autoscaling"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">AUTOSCALING (3)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/invariants-reference/catalog/backup"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">BACKUP (10)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#ctlazureacradmin001" class="table-of-contents__link toc-highlight">CTL.AZURE.ACR.ADMIN.001</a></li><li><a href="#ctlazureacranon001" class="table-of-contents__link toc-highlight">CTL.AZURE.ACR.ANON.001</a></li><li><a href="#ctlazureacrnetwork001" class="table-of-contents__link toc-highlight">CTL.AZURE.ACR.NETWORK.001</a></li><li><a href="#ctlazureacrscan001" class="table-of-contents__link toc-highlight">CTL.AZURE.ACR.SCAN.001</a></li><li><a href="#ctlazureacrtrust001" class="table-of-contents__link toc-highlight">CTL.AZURE.ACR.TRUST.001</a></li><li><a href="#ctlazureactivitylogexport001" class="table-of-contents__link toc-highlight">CTL.AZURE.ACTIVITYLOG.EXPORT.001</a></li><li><a href="#ctlazureactivitylogretention001" class="table-of-contents__link toc-highlight">CTL.AZURE.ACTIVITYLOG.RETENTION.001</a></li><li><a href="#ctlazureaisearchidentity001" class="table-of-contents__link toc-highlight">CTL.AZURE.AISEARCH.IDENTITY.001</a></li><li><a href="#ctlazureaisearchnetwork001" class="table-of-contents__link toc-highlight">CTL.AZURE.AISEARCH.NETWORK.001</a></li><li><a href="#ctlazureaksnetwork001" class="table-of-contents__link toc-highlight">CTL.AZURE.AKS.NETWORK.001</a></li><li><a href="#ctlazureaksprivate001" class="table-of-contents__link toc-highlight">CTL.AZURE.AKS.PRIVATE.001</a></li><li><a href="#ctlazureaksrbac001" class="table-of-contents__link toc-highlight">CTL.AZURE.AKS.RBAC.001</a></li><li><a href="#ctlazureaksversion001" class="table-of-contents__link toc-highlight">CTL.AZURE.AKS.VERSION.001</a></li><li><a href="#ctlazurealertghost001" class="table-of-contents__link toc-highlight">CTL.AZURE.ALERT.GHOST.001</a></li><li><a href="#ctlazureapimhttps001" class="table-of-contents__link toc-highlight">CTL.AZURE.APIM.HTTPS.001</a></li><li><a href="#ctlazureapimidentity001" class="table-of-contents__link toc-highlight">CTL.AZURE.APIM.IDENTITY.001</a></li><li><a href="#ctlazureapimmanagement001" class="table-of-contents__link toc-highlight">CTL.AZURE.APIM.MANAGEMENT.001</a></li><li><a href="#ctlazureappauth001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.AUTH.001</a></li><li><a href="#ctlazureappclientcert001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.CLIENTCERT.001</a></li><li><a href="#ctlazureappcors001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.CORS.001</a></li><li><a href="#ctlazureappdebug001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.DEBUG.001</a></li><li><a href="#ctlazureappftp001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.FTP.001</a></li><li><a href="#ctlazureapphttps001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.HTTPS.001</a></li><li><a href="#ctlazureappidentity001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.IDENTITY.001</a></li><li><a href="#ctlazureappinsights001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.INSIGHTS.001</a></li><li><a href="#ctlazureapplog001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.LOG.001</a></li><li><a href="#ctlazureappnetwork001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.NETWORK.001</a></li><li><a href="#ctlazureappprivate001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.PRIVATE.001</a></li><li><a href="#ctlazureappruntime001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.RUNTIME.001</a></li><li><a href="#ctlazureapptls001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.TLS.001</a></li><li><a href="#ctlazureappvnet001" class="table-of-contents__link toc-highlight">CTL.AZURE.APP.VNET.001</a></li><li><a href="#ctlazureappinsightsconfigured001" class="table-of-contents__link toc-highlight">CTL.AZURE.APPINSIGHTS.CONFIGURED.001</a></li><li><a href="#ctlazurecosmosencrypt001" class="table-of-contents__link toc-highlight">CTL.AZURE.COSMOS.ENCRYPT.001</a></li><li><a href="#ctlazurecosmosnetwork001" class="table-of-contents__link toc-highlight">CTL.AZURE.COSMOS.NETWORK.001</a></li><li><a href="#ctlazuredatabricksnoip001" class="table-of-contents__link toc-highlight">CTL.AZURE.DATABRICKS.NOIP.001</a></li><li><a href="#ctlazuredatabrickspublic001" class="table-of-contents__link toc-highlight">CTL.AZURE.DATABRICKS.PUBLIC.001</a></li><li><a href="#ctlazuredatabricksvnet001" class="table-of-contents__link toc-highlight">CTL.AZURE.DATABRICKS.VNET.001</a></li><li><a href="#ctlazureddos001" class="table-of-contents__link toc-highlight">CTL.AZURE.DDOS.001</a></li><li><a href="#ctlazuredefenderarm001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.ARM.001</a></li><li><a href="#ctlazuredefenderautoprovisioning001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.AUTOPROVISIONING.001</a></li><li><a href="#ctlazuredefendercontact001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.CONTACT.001</a></li><li><a href="#ctlazuredefendercontainers001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.CONTAINERS.001</a></li><li><a href="#ctlazuredefenderenabled001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.ENABLED.001</a></li><li><a href="#ctlazuredefenderexport001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.EXPORT.001</a></li><li><a href="#ctlazuredefenderkeyvault001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.KEYVAULT.001</a></li><li><a href="#ctlazuredefenderservers001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.SERVERS.001</a></li><li><a href="#ctlazuredefendersql001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.SQL.001</a></li><li><a href="#ctlazuredefenderstorage001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.STORAGE.001</a></li><li><a href="#ctlazuredefendersuppression001" class="table-of-contents__link toc-highlight">CTL.AZURE.DEFENDER.SUPPRESSION.001</a></li><li><a href="#ctlazurediagnostic001" class="table-of-contents__link toc-highlight">CTL.AZURE.DIAGNOSTIC.001</a></li><li><a href="#ctlazureentraappreg001" class="table-of-contents__link toc-highlight">CTL.AZURE.ENTRA.APPREG.001</a></li><li><a href="#ctlazureentrapasswordban001" class="table-of-contents__link toc-highlight">CTL.AZURE.ENTRA.PASSWORDBAN.001</a></li><li><a href="#ctlazureentrasigninrisk001" class="table-of-contents__link toc-highlight">CTL.AZURE.ENTRA.SIGNINRISK.001</a></li><li><a href="#ctlazureentrasspr001" class="table-of-contents__link toc-highlight">CTL.AZURE.ENTRA.SSPR.001</a></li><li><a href="#ctlazureentrauserrisk001" class="table-of-contents__link toc-highlight">CTL.AZURE.ENTRA.USERRISK.001</a></li><li><a href="#ctlazurefirewalllog001" class="table-of-contents__link toc-highlight">CTL.AZURE.FIREWALL.LOG.001</a></li><li><a href="#ctlazurefirewallpolicy001" class="table-of-contents__link toc-highlight">CTL.AZURE.FIREWALL.POLICY.001</a></li><li><a href="#ctlazurefunctionauth001" class="table-of-contents__link toc-highlight">CTL.AZURE.FUNCTION.AUTH.001</a></li><li><a href="#ctlazurefunctionruntime001" class="table-of-contents__link toc-highlight">CTL.AZURE.FUNCTION.RUNTIME.001</a></li><li><a href="#ctlazureidentitybreakglass001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.BREAKGLASS.001</a></li><li><a href="#ctlazureidentityconditional001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.CONDITIONAL.001</a></li><li><a href="#ctlazureidentityguest001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.GUEST.001</a></li><li><a href="#ctlazureidentitymanaged001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.MANAGED.001</a></li><li><a href="#ctlazureidentitymfa001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.MFA.001</a></li><li><a href="#ctlazureidentitypim001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.PIM.001</a></li><li><a href="#ctlazureidentityspexpiry001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.SP.EXPIRY.001</a></li><li><a href="#ctlazureidentityspsecret001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.SP.SECRET.001</a></li><li><a href="#ctlazureidentitystale001" class="table-of-contents__link toc-highlight">CTL.AZURE.IDENTITY.STALE.001</a></li><li><a href="#ctlazurekeyvaultghost001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.GHOST.001</a></li><li><a href="#ctlazurekeyvaultkeyexpiry001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.KEY.EXPIRY.001</a></li><li><a href="#ctlazurekeyvaultkeysize001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.KEYSIZE.001</a></li><li><a href="#ctlazurekeyvaultnetwork001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.NETWORK.001</a></li><li><a href="#ctlazurekeyvaultprivate001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.PRIVATE.001</a></li><li><a href="#ctlazurekeyvaultpurge001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.PURGE.001</a></li><li><a href="#ctlazurekeyvaultrbac001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.RBAC.001</a></li><li><a href="#ctlazurekeyvaultrotation001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.ROTATION.001</a></li><li><a href="#ctlazurekeyvaultsecretexpiry001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.SECRET.EXPIRY.001</a></li><li><a href="#ctlazurekeyvaultsoftdelete001" class="table-of-contents__link toc-highlight">CTL.AZURE.KEYVAULT.SOFTDELETE.001</a></li><li><a href="#ctlazureloganalytics001" class="table-of-contents__link toc-highlight">CTL.AZURE.LOG.ANALYTICS.001</a></li><li><a href="#ctlazureloganalyticsaccess001" class="table-of-contents__link toc-highlight">CTL.AZURE.LOGANALYTICS.ACCESS.001</a></li><li><a href="#ctlazuremonitoralerts001" class="table-of-contents__link toc-highlight">CTL.AZURE.MONITOR.ALERTS.001</a></li><li><a href="#ctlazuremonitoralertscis001" class="table-of-contents__link toc-highlight">CTL.AZURE.MONITOR.ALERTS.CIS.001</a></li><li><a href="#ctlazuremysqlaudit001" class="table-of-contents__link toc-highlight">CTL.AZURE.MYSQL.AUDIT.001</a></li><li><a href="#ctlazuremysqlencrypt001" class="table-of-contents__link toc-highlight">CTL.AZURE.MYSQL.ENCRYPT.001</a></li><li><a href="#ctlazuremysqlfirewall001" class="table-of-contents__link toc-highlight">CTL.AZURE.MYSQL.FIREWALL.001</a></li><li><a href="#ctlazuremysqlpublic001" class="table-of-contents__link toc-highlight">CTL.AZURE.MYSQL.PUBLIC.001</a></li><li><a href="#ctlazuremysqlssl001" class="table-of-contents__link toc-highlight">CTL.AZURE.MYSQL.SSL.001</a></li><li><a href="#ctlazuremysqltls001" class="table-of-contents__link toc-highlight">CTL.AZURE.MYSQL.TLS.001</a></li><li><a href="#ctlazurensgdefault001" class="table-of-contents__link toc-highlight">CTL.AZURE.NSG.DEFAULT.001</a></li><li><a href="#ctlazurensgunassociated001" class="table-of-contents__link toc-highlight">CTL.AZURE.NSG.UNASSOCIATED.001</a></li><li><a href="#ctlazurensgunrestricted001" class="table-of-contents__link toc-highlight">CTL.AZURE.NSG.UNRESTRICTED.001</a></li><li><a href="#ctlazurepolicycompliance001" class="table-of-contents__link toc-highlight">CTL.AZURE.POLICY.COMPLIANCE.001</a></li><li><a href="#ctlazurepostgresqlad001" class="table-of-contents__link toc-highlight">CTL.AZURE.POSTGRESQL.AD.001</a></li><li><a href="#ctlazurepostgresqlencrypt001" class="table-of-contents__link toc-highlight">CTL.AZURE.POSTGRESQL.ENCRYPT.001</a></li><li><a href="#ctlazurepostgresqlfirewall001" class="table-of-contents__link toc-highlight">CTL.AZURE.POSTGRESQL.FIREWALL.001</a></li><li><a href="#ctlazurepostgresqllog001" class="table-of-contents__link toc-highlight">CTL.AZURE.POSTGRESQL.LOG.001</a></li><li><a href="#ctlazurepostgresqlpublic001" class="table-of-contents__link toc-highlight">CTL.AZURE.POSTGRESQL.PUBLIC.001</a></li><li><a href="#ctlazurepostgresqlssl001" class="table-of-contents__link toc-highlight">CTL.AZURE.POSTGRESQL.SSL.001</a></li><li><a href="#ctlazurerbaccustom001" class="table-of-contents__link toc-highlight">CTL.AZURE.RBAC.CUSTOM.001</a></li><li><a href="#ctlazurerbacghost001" class="table-of-contents__link toc-highlight">CTL.AZURE.RBAC.GHOST.001</a></li><li><a href="#ctlazurerbacowner001" class="table-of-contents__link toc-highlight">CTL.AZURE.RBAC.OWNER.001</a></li><li><a href="#ctlazurerbacscope001" class="table-of-contents__link toc-highlight">CTL.AZURE.RBAC.SCOPE.001</a></li><li><a href="#ctlazurerecoveryencrypt001" class="table-of-contents__link toc-highlight">CTL.AZURE.RECOVERY.ENCRYPT.001</a></li><li><a href="#ctlazurerecoverysoftdelete001" class="table-of-contents__link toc-highlight">CTL.AZURE.RECOVERY.SOFTDELETE.001</a></li><li><a href="#ctlazuresqladadmin001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.ADADMIN.001</a></li><li><a href="#ctlazuresqladonly001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.ADONLY.001</a></li><li><a href="#ctlazuresqlaudit001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.AUDIT.001</a></li><li><a href="#ctlazuresqlauditretention001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.AUDIT.RETENTION.001</a></li><li><a href="#ctlazuresqldefender001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.DEFENDER.001</a></li><li><a href="#ctlazuresqlencrypt001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.ENCRYPT.001</a></li><li><a href="#ctlazuresqlfirewall001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.FIREWALL.001</a></li><li><a href="#ctlazuresqlpublic001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.PUBLIC.001</a></li><li><a href="#ctlazuresqltls001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.TLS.001</a></li><li><a href="#ctlazuresqlva001" class="table-of-contents__link toc-highlight">CTL.AZURE.SQL.VA.001</a></li><li><a href="#ctlazurestorageencrypt001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.ENCRYPT.001</a></li><li><a href="#ctlazurestorageghost001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.GHOST.001</a></li><li><a href="#ctlazurestoragehttps001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.HTTPS.001</a></li><li><a href="#ctlazurestorageimmutability001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.IMMUTABILITY.001</a></li><li><a href="#ctlazurestorageinfrastructure001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.INFRASTRUCTURE.001</a></li><li><a href="#ctlazurestoragekeyrotation001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.KEYROTATION.001</a></li><li><a href="#ctlazurestoragelog001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.LOG.001</a></li><li><a href="#ctlazurestoragenetwork001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.NETWORK.001</a></li><li><a href="#ctlazurestorageprivateendpoint001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.PRIVATEENDPOINT.001</a></li><li><a href="#ctlazurestoragepublic001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.PUBLIC.001</a></li><li><a href="#ctlazurestoragereplication001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.REPLICATION.001</a></li><li><a href="#ctlazurestoragesharedkey001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.SHAREDKEY.001</a></li><li><a href="#ctlazurestoragesoftdelete001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.SOFTDELETE.001</a></li><li><a href="#ctlazurestoragetls001" class="table-of-contents__link toc-highlight">CTL.AZURE.STORAGE.TLS.001</a></li><li><a href="#ctlazurevmautoupdate001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.AUTOUPDATE.001</a></li><li><a href="#ctlazurevmbackup001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.BACKUP.001</a></li><li><a href="#ctlazurevmencrypt001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.ENCRYPT.001</a></li><li><a href="#ctlazurevmendpoint001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.ENDPOINT.001</a></li><li><a href="#ctlazurevmextension001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.EXTENSION.001</a></li><li><a href="#ctlazurevmmanageddisk001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.MANAGEDDISK.001</a></li><li><a href="#ctlazurevmpublic001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.PUBLIC.001</a></li><li><a href="#ctlazurevmtrustedlaunch001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.TRUSTEDLAUNCH.001</a></li><li><a href="#ctlazurevmunattacheddisk001" class="table-of-contents__link toc-highlight">CTL.AZURE.VM.UNATTACHEDDISK.001</a></li><li><a href="#ctlazurevnetflowlog001" class="table-of-contents__link toc-highlight">CTL.AZURE.VNET.FLOWLOG.001</a></li><li><a href="#ctlazurevnetpeering001" class="table-of-contents__link toc-highlight">CTL.AZURE.VNET.PEERING.001</a></li><li><a href="#ctlazurewafmode001" class="table-of-contents__link toc-highlight">CTL.AZURE.WAF.MODE.001</a></li><li><a href="#ctlazurewafpolicy001" class="table-of-contents__link toc-highlight">CTL.AZURE.WAF.POLICY.001</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
+</body>
+</html>

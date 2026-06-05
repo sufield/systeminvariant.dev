@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-how-to/iam-assessment" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">How to Run an IAM Security Assessment | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/how-to/iam-assessment"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="How to Run an IAM Security Assessment | Stave"><meta data-rh="true" name="description" content="Evaluate AWS IAM configuration against 38 controls covering identity,"><meta data-rh="true" property="og:description" content="Evaluate AWS IAM configuration against 38 controls covering identity,"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/how-to/iam-assessment"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/how-to/iam-assessment" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/how-to/iam-assessment" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"How-to Guides","item":"https://stave.dev/docs/how-to"},{"@type":"ListItem","position":2,"name":"How to Run an IAM Security Assessment","item":"https://stave.dev/docs/how-to/iam-assessment"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.aebbb64c.css">
+<script src="/assets/js/runtime~main.d5341b07.js" defer="defer"></script>
+<script src="/assets/js/main.dcaf12a7.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><b class="navbar__title text--truncate">Stave</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/sufield/stave" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/tutorials"><span title="Tutorials" class="categoryLinkLabel_W154">Tutorials</span></a><button aria-label="Expand sidebar category &#x27;Tutorials&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/how-to"><span title="How-to Guides" class="categoryLinkLabel_W154">How-to Guides</span></a><button aria-label="Collapse sidebar category &#x27;How-to Guides&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/bug-reports"><span title="Bug Repro Guide" class="linkLabel_WmDU">Bug Repro Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/control-authoring"><span title="Authoring" class="linkLabel_WmDU">Authoring</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/troubleshooting"><span title="Common Issues" class="linkLabel_WmDU">Common Issues</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/ci-cd-integration"><span title="Running in CI/CD" class="linkLabel_WmDU">Running in CI/CD</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/enabling-disabling-invariants"><span title="Enabling/Disabling" class="linkLabel_WmDU">Enabling/Disabling</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/interpreting-findings"><span title="Interpreting Findings" class="linkLabel_WmDU">Interpreting Findings</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/hipaa-compliance"><span title="HIPAA Compliance" class="linkLabel_WmDU">HIPAA Compliance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/security-workflows"><span title="Security Workflows" class="linkLabel_WmDU">Security Workflows</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/breach-routing"><span title="Breach-Type Routing" class="linkLabel_WmDU">Breach-Type Routing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/ignore-lists"><span title="Resource Ignore Lists" class="linkLabel_WmDU">Resource Ignore Lists</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/sanitization"><span title="Sanitization" class="linkLabel_WmDU">Sanitization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/recipes"><span title="Recipes" class="linkLabel_WmDU">Recipes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/reasoning-engines"><span title="Reasoning Engines" class="linkLabel_WmDU">Reasoning Engines</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/atlantis-integration"><span title="Atlantis Post-Plan Integration" class="linkLabel_WmDU">Atlantis Post-Plan Integration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/contributing"><span title="Contributing to Stave" class="linkLabel_WmDU">Contributing to Stave</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/create-snapshots"><span title="Create Snapshots" class="linkLabel_WmDU">Create Snapshots</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/enable-z3-solver"><span title="Enable Z3" class="linkLabel_WmDU">Enable Z3</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/how-to/iam-assessment"><span title="How to Run an IAM Security Assessment" class="linkLabel_WmDU">How to Run an IAM Security Assessment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/logic-trace-debugging"><span title="How to Debug Unexpected Findings with the Logic Trace" class="linkLabel_WmDU">How to Debug Unexpected Findings with the Logic Trace</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/multi-cloud-evaluation"><span title="How to Evaluate Multi-Cloud Infrastructure" class="linkLabel_WmDU">How to Evaluate Multi-Cloud Infrastructure</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/opensearch-assessment"><span title="How to Run an OpenSearch Security Assessment" class="linkLabel_WmDU">How to Run an OpenSearch Security Assessment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/policy-forge"><span title="How to Scaffold Controls with the Policy Forge" class="linkLabel_WmDU">How to Scaffold Controls with the Policy Forge</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/pre-commit-hook"><span title="How to Block Unsafe Configs with a Pre-Commit Hook" class="linkLabel_WmDU">How to Block Unsafe Configs with a Pre-Commit Hook</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/s3-assessment"><span title="S3 Assessment Workflow" class="linkLabel_WmDU">S3 Assessment Workflow</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/how-to/verify-release"><span title="Verify a Release" class="linkLabel_WmDU">Verify a Release</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/reference"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a><button aria-label="Expand sidebar category &#x27;Reference&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/explanation"><span title="Explanation" class="categoryLinkLabel_W154">Explanation</span></a><button aria-label="Expand sidebar category &#x27;Explanation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/challenge/cases/"><span title="Challenge" class="categoryLinkLabel_W154">Challenge</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/demos/"><span title="Demos" class="categoryLinkLabel_W154">Demos</span></a><button aria-label="Expand sidebar category &#x27;Demos&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/positioning/vs-scanners"><span title="Positioning" class="categoryLinkLabel_W154">Positioning</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/how-to"><span>How-to Guides</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">How to Run an IAM Security Assessment</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>How to Run an IAM Security Assessment</h1></header>
+<p>Evaluate AWS IAM configuration against 38 controls covering identity,
+credential lifecycle, privilege escalation, and monitoring.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
+<ul>
+<li class="">Stave binary built (<code>cd stave &amp;&amp; make build</code>)</li>
+<li class="">IAM observations in <code>obs.v0.1</code> format (see observation shapes below)</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-extract-iam-observations">1) Extract IAM observations<a href="#1-extract-iam-observations" class="hash-link" aria-label="Direct link to 1) Extract IAM observations" title="Direct link to 1) Extract IAM observations" translate="no">​</a></h2>
+<p>Use an extractor to produce <code>obs.v0.1</code> JSON from AWS IAM APIs.
+The extractor must call:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>AWS API</th><th>What it produces</th><th>Controls that need it</th></tr></thead><tbody><tr><td><code>iam list-users</code> + <code>get-credential-report</code></td><td>User metadata, last activity</td><td>CRED.UNUSED, CRED.ROTATION, ACCOUNT.INACTIVE</td></tr><tr><td><code>iam list-attached-user-policies</code> + <code>get-policy-version</code></td><td>Policy documents</td><td>POLICY.ADMIN, POLICY.ESCALATION, PASSROLE, COMPLEXITY</td></tr><tr><td><code>iam list-mfa-devices</code> + <code>list-virtual-mfa-devices</code></td><td>MFA device types</td><td>ROOT.MFA, CONSOLE.MFA, MFA.HWKEY</td></tr><tr><td><code>iam list-roles</code></td><td>Role metadata + boundary</td><td>BOUNDARY</td></tr><tr><td><code>iam get-account-password-policy</code></td><td>Password policy</td><td>PASSWORD.LENGTH, PASSWORD.REUSE, PASSWORD.COMPLEXITY</td></tr><tr><td><code>accessanalyzer list-analyzers</code></td><td>Analyzer status per region</td><td>ANALYZER</td></tr><tr><td><code>organizations list-policies</code></td><td>SCP listing</td><td>SCP.FULLACCESS</td></tr><tr><td><code>logs describe-metric-filters</code></td><td>CloudWatch metric filters</td><td>CLOUDWATCH.MONITOR.MFADEVICE</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-evaluate-observations-against-the-iam-control-pack">2) Evaluate observations against the IAM control pack<a href="#2-evaluate-observations-against-the-iam-control-pack" class="hash-link" aria-label="Direct link to 2) Evaluate observations against the IAM control pack" title="Direct link to 2) Evaluate observations against the IAM control pack" translate="no">​</a></h2>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --controls controls/iam \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --observations ./iam-obs/ \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --max-unsafe 168h \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --now 2026-01-15T00:00:00Z \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --format json &gt; iam-findings.json</span><br></span></code></pre></div></div>
+<p>Exit code <code>3</code> means violations found.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-what-the-iam-pack-covers">3) What the IAM pack covers<a href="#3-what-the-iam-pack-covers" class="hash-link" aria-label="Direct link to 3) What the IAM pack covers" title="Direct link to 3) What the IAM pack covers" translate="no">​</a></h2>
+<p>The <code>iam</code> pack evaluates 38 controls across these categories:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Category</th><th>Controls</th><th>What they detect</th></tr></thead><tbody><tr><td>Root account</td><td>ROOT.MFA, ROOT.ACCESSKEY, ROOT.HWMFA, ROOT.USAGE</td><td>Root MFA, access keys, hardware MFA, usage monitoring</td></tr><tr><td>Console access</td><td>CONSOLE.MFA, MFA.HWKEY</td><td>Console MFA, hardware MFA for admin users</td></tr><tr><td>Credentials</td><td>CRED.ROTATION, CRED.UNUSED, CRED.UNUSED45, CRED.SETUPKEY, CRED.SINGLEKEY, CRED.EXPIRY, ACCOUNT.INACTIVE</td><td>Key rotation, unused credentials, credential TTL, inactive accounts</td></tr><tr><td>Policies</td><td>POLICY.ADMIN, POLICY.INLINE, POLICY.DIRECT, POLICY.CLOUDSHELL, POLICY.ESCALATION, POLICY.PASSROLE, POLICY.COMPLEXITY, POLICY.ASSUMEROLE, POLICY.SOD</td><td>Full admin, inline policies, self-modification, PassRole/AssumeRole scoping, complexity, separation of duties</td></tr><tr><td>Permissions</td><td>BOUNDARY, SCP.FULLACCESS, ROLE.BREAKGLASS, CROSS.ENV, TRUST.EXTERNALID</td><td>Permissions boundaries, org guardrails, break-glass, cross-env, external ID</td></tr><tr><td>Zero Trust</td><td>ZT.PERIMETER, ZT.SHORTLIVED</td><td>Identity-based access required, short-lived credentials</td></tr><tr><td>Cross-cloud</td><td>CROSSCLOUD.ADMIN, CROSSCLOUD.MFA</td><td>No admin access across any cloud, MFA enforced everywhere</td></tr><tr><td>Password</td><td>PASSWORD.LENGTH, PASSWORD.REUSE, PASSWORD.COMPLEXITY</td><td>Password policy requirements</td></tr><tr><td>Infrastructure</td><td>ANALYZER, SUPPORT, CERT.EXPIRED</td><td>Access Analyzer, support role, certificate expiry</td></tr><tr><td>Monitoring</td><td>CLOUDWATCH.MONITOR.MFADEVICE</td><td>MFA device enrollment monitoring</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-new-controls-added-for-iam-failure-requirements">4) New controls added for IAM failure requirements<a href="#4-new-controls-added-for-iam-failure-requirements" class="hash-link" aria-label="Direct link to 4) New controls added for IAM failure requirements" title="Direct link to 4) New controls added for IAM failure requirements" translate="no">​</a></h2>
+<p>Ten controls address gaps identified in IAM failure analysis and CSA Top Threats 2025:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control</th><th>Requirement</th><th>What it detects</th></tr></thead><tbody><tr><td>CTL.IAM.POLICY.ESCALATION.001</td><td>Privilege escalation</td><td>Policies granting iam:CreatePolicyVersion, iam:AttachRolePolicy on self</td></tr><tr><td>CTL.IAM.POLICY.PASSROLE.001</td><td>Privilege escalation</td><td>iam:PassRole with wildcard Resource *</td></tr><tr><td>CTL.IAM.BOUNDARY.001</td><td>Excessive permissions</td><td>IAM roles without permissions boundary</td></tr><tr><td>CTL.IAM.POLICY.COMPLEXITY.001</td><td>Poor policies</td><td>Policy documents with &gt;25 statements</td></tr><tr><td>CTL.IAM.MFA.HWKEY.001</td><td>SMS 2FA insufficient</td><td>Admin users without hardware MFA</td></tr><tr><td>CTL.CLOUDWATCH.MONITOR.MFADEVICE.001</td><td>Unauthorized MFA</td><td>No metric filter for MFA device changes</td></tr><tr><td>CTL.IAM.ACCOUNT.INACTIVE.001</td><td>Legacy accounts</td><td>Accounts inactive for 90+ days</td></tr><tr><td>CTL.IAM.CRED.EXPIRY.001</td><td>CSA TT2 (Snowflake)</td><td>Credentials without defined TTL</td></tr><tr><td>CTL.IAM.ROLE.BREAKGLASS.001</td><td>CSA TT1 (drift)</td><td>Break-glass elevated roles persisting &gt;7 days</td></tr><tr><td>CTL.IAM.CROSS.ENV.001</td><td>CSA TT1 (Microsoft)</td><td>Non-production roles with production resource access</td></tr><tr><td>CTL.IAM.POLICY.SOD.001</td><td>CSA P2-01 (CCM IAM-09)</td><td>Roles with both data access and IAM management</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-shadow-admin-detection--the-entropy-family">5) Shadow Admin detection — the entropy family<a href="#5-shadow-admin-detection--the-entropy-family" class="hash-link" aria-label="Direct link to 5) Shadow Admin detection — the entropy family" title="Direct link to 5) Shadow Admin detection — the entropy family" translate="no">​</a></h2>
+<p>Five controls under <code>controls/iam/entropy/</code> plus two compound chains
+detect the pattern where a role accumulates permissions far beyond
+its declared scope:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control</th><th>Detects</th><th>Reads (collector pre-computes)</th></tr></thead><tbody><tr><td><code>CTL.IAM.ROLE.PERMISSIONDRIFT.001</code></td><td>Drift past threshold over a role active &gt;90 days</td><td><code>permission_drift.threshold_exceeded</code> (accounts for <code>stave/permission-drift-threshold</code> tag override)</td></tr><tr><td><code>CTL.IAM.ROLE.CATEGORYMIX.001</code></td><td>Incompatible permission category pair (e.g. <code>data_read + secrets_access</code>)</td><td><code>permission_categories.has_incompatible_categories</code></td></tr><tr><td><code>CTL.IAM.ROLE.INTENTTAG.001</code></td><td>Role missing the <code>role-type</code> tag</td><td><code>tags.role-type</code> absent</td></tr><tr><td><code>CTL.IAM.ROLE.INTENTMISMATCH.001</code></td><td>Actual permissions contradict declared <code>role-type</code></td><td><code>intent_match.has_intent_mismatch</code></td></tr><tr><td><code>CTL.IAM.ROLE.ENTROPY.INCOMPLETE.001</code></td><td>Access Advisor data absent</td><td><code>access_advisor.available == false</code></td></tr></tbody></table>
+<p>Compound chains compose them:</p>
+<ul>
+<li class=""><code>shadow_admin_by_accumulation</code> — drift + categorymix + intent mismatch, threshold 2 of 3, CRITICAL.</li>
+<li class=""><code>privilege_creep_lateral_movement</code> — categorymix + drift, threshold 2 of 2, CRITICAL.</li>
+</ul>
+<p>The collector consults two taxonomy files when stamping the
+pre-computed booleans:</p>
+<ul>
+<li class=""><code>internal/controldata/taxonomy/permission_categories.yaml</code> — 11 categories + the incompatible-pair matrix.</li>
+<li class=""><code>internal/controldata/taxonomy/role_type_matrix.yaml</code> — 8 role types with allowed/forbidden category lists.</li>
+</ul>
+<p>Worked demo: <code>examples/shadow-admin-detection/run.sh</code> walks a
+2-year-old <code>S3-ReadOnly</code>-tagged role that has accumulated
+secrets-access and compute-invoke permissions. See
+<code>examples/shadow-admin-detection/multi-engine-results.md</code>
+for the CEL + chain + Clingo + Soufflé output.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-observation-shapes">6) Observation shapes<a href="#6-observation-shapes" class="hash-link" aria-label="Direct link to 6) Observation shapes" title="Direct link to 6) Observation shapes" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="user-with-privilege-escalation-risk">User with privilege escalation risk<a href="#user-with-privilege-escalation-risk" class="hash-link" aria-label="Direct link to User with privilege escalation risk" title="Direct link to User with privilege escalation risk" translate="no">​</a></h3>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;id&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;iam-user-dev&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;type&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;aws_iam_user&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;vendor&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;aws&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;properties&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token property">&quot;identity&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token property">&quot;kind&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;user&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token property">&quot;policies&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        </span><span class="token property">&quot;has_admin_access&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">false</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        </span><span class="token property">&quot;has_self_modify&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">true</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        </span><span class="token property">&quot;passrole_unrestricted&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">true</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        </span><span class="token property">&quot;statement_count&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">30</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token property">&quot;mfa&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token property">&quot;hardware_mfa&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">false</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token property">&quot;credentials&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token property">&quot;inactive_days&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">5</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><br></span></code></pre></div></div>
+<p>Triggers: ESCALATION.001 (self-modify), PASSROLE.001 (wildcard), COMPLEXITY.001 (30 &gt; 25).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="role-without-permissions-boundary">Role without permissions boundary<a href="#role-without-permissions-boundary" class="hash-link" aria-label="Direct link to Role without permissions boundary" title="Direct link to Role without permissions boundary" translate="no">​</a></h3>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;id&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;iam-role-app-service&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;type&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;aws_iam_role&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;vendor&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;aws&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;properties&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token property">&quot;identity&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token property">&quot;kind&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;role&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token property">&quot;role&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token property">&quot;has_permissions_boundary&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">false</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><br></span></code></pre></div></div>
+<p>Triggers: BOUNDARY.001.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="mfa-monitoring-observation">MFA monitoring observation<a href="#mfa-monitoring-observation" class="hash-link" aria-label="Direct link to MFA monitoring observation" title="Direct link to MFA monitoring observation" translate="no">​</a></h3>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;id&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;cloudwatch-us-east-1&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;type&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;aws_cloudwatch_account&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;vendor&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;aws&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token property">&quot;properties&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token property">&quot;monitoring&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token property">&quot;kind&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;account&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token property">&quot;metric_filters&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        </span><span class="token property">&quot;mfa_device_changes&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token property">&quot;exists&quot;</span><span class="token operator" style="color:rgb(137, 221, 255)">:</span><span class="token plain"> </span><span class="token boolean" style="color:rgb(255, 88, 116)">false</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">      </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><br></span></code></pre></div></div>
+<p>Triggers: CLOUDWATCH.MONITOR.MFADEVICE.001.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="notes">Notes<a href="#notes" class="hash-link" aria-label="Direct link to Notes" title="Direct link to Notes" translate="no">​</a></h2>
+<ul>
+<li class="">IAM and S3 controls coexist without conflict when evaluated together.</li>
+<li class="">For HIPAA compliance, use <code>--profile hipaa</code> which includes IAM controls
+for MFA (§164.312(d)) and inactive accounts (§164.312(a)(2)(i)).</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/how-to/enable-z3-solver"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Enable Z3</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/how-to/logic-trace-debugging"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">How to Debug Unexpected Findings with the Logic Trace</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#1-extract-iam-observations" class="table-of-contents__link toc-highlight">1) Extract IAM observations</a></li><li><a href="#2-evaluate-observations-against-the-iam-control-pack" class="table-of-contents__link toc-highlight">2) Evaluate observations against the IAM control pack</a></li><li><a href="#3-what-the-iam-pack-covers" class="table-of-contents__link toc-highlight">3) What the IAM pack covers</a></li><li><a href="#4-new-controls-added-for-iam-failure-requirements" class="table-of-contents__link toc-highlight">4) New controls added for IAM failure requirements</a></li><li><a href="#5-shadow-admin-detection--the-entropy-family" class="table-of-contents__link toc-highlight">5) Shadow Admin detection — the entropy family</a></li><li><a href="#6-observation-shapes" class="table-of-contents__link toc-highlight">6) Observation shapes</a><ul><li><a href="#user-with-privilege-escalation-risk" class="table-of-contents__link toc-highlight">User with privilege escalation risk</a></li><li><a href="#role-without-permissions-boundary" class="table-of-contents__link toc-highlight">Role without permissions boundary</a></li><li><a href="#mfa-monitoring-observation" class="table-of-contents__link toc-highlight">MFA monitoring observation</a></li></ul></li><li><a href="#notes" class="table-of-contents__link toc-highlight">Notes</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
+</body>
+</html>

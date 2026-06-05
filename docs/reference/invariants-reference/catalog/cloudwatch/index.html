@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/invariants-reference/catalog/cloudwatch" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">CLOUDWATCH controls | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/reference/invariants-reference/catalog/cloudwatch"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLOUDWATCH controls | Stave"><meta data-rh="true" name="description" content="CTL.CLOUDWATCH.ALARM.COMPOSITE.NOACTION.001"><meta data-rh="true" property="og:description" content="CTL.CLOUDWATCH.ALARM.COMPOSITE.NOACTION.001"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/reference/invariants-reference/catalog/cloudwatch"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/reference/invariants-reference/catalog/cloudwatch" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/reference/invariants-reference/catalog/cloudwatch" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Reference","item":"https://stave.dev/docs/reference"},{"@type":"ListItem","position":2,"name":"Controls Reference","item":"https://stave.dev/docs/reference/invariants-reference/_index"},{"@type":"ListItem","position":3,"name":"Full Control Catalog (by service)","item":"https://stave.dev/docs/reference/invariants-reference/catalog/"},{"@type":"ListItem","position":4,"name":"CLOUDWATCH (66)","item":"https://stave.dev/docs/reference/invariants-reference/catalog/cloudwatch"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.aebbb64c.css">
+<script src="/assets/js/runtime~main.d5341b07.js" defer="defer"></script>
+<script src="/assets/js/main.dcaf12a7.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><b class="navbar__title text--truncate">Stave</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/sufield/stave" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/tutorials"><span title="Tutorials" class="categoryLinkLabel_W154">Tutorials</span></a><button aria-label="Expand sidebar category &#x27;Tutorials&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/how-to"><span title="How-to Guides" class="categoryLinkLabel_W154">How-to Guides</span></a><button aria-label="Expand sidebar category &#x27;How-to Guides&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/reference"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a><button aria-label="Collapse sidebar category &#x27;Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/config-file"><span title="Configuration" class="linkLabel_WmDU">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/limits"><span title="Limits" class="linkLabel_WmDU">Limits</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-obs"><span title="obs.v0.1" class="linkLabel_WmDU">obs.v0.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/observation-export-schema"><span title="Observation Export Schema" class="linkLabel_WmDU">Observation Export Schema</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-out"><span title="out.v0.1" class="linkLabel_WmDU">out.v0.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/stability"><span title="Stability" class="linkLabel_WmDU">Stability</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/evaluation-semantics"><span title="Evaluation Semantics" class="linkLabel_WmDU">Evaluation Semantics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-ctrl"><span title="ctrl.v1" class="linkLabel_WmDU">ctrl.v1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/severity-thresholds"><span title="Severity Thresholds" class="linkLabel_WmDU">Severity Thresholds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/observation-contract"><span title="Observation Contract" class="linkLabel_WmDU">Observation Contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/output-and-severity"><span title="Output &amp; Severity" class="linkLabel_WmDU">Output &amp; Severity</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/output-formats"><span title="Output Formats" class="linkLabel_WmDU">Output Formats</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-diagnose"><span title="diagnose.v1" class="linkLabel_WmDU">diagnose.v1</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/reference/cli-reference/_index"><span title="CLI Reference" class="categoryLinkLabel_W154">CLI Reference</span></a><button aria-label="Expand sidebar category &#x27;CLI Reference&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/reference/invariants-reference/_index"><span title="Controls Reference" class="categoryLinkLabel_W154">Controls Reference</span></a><button aria-label="Collapse sidebar category &#x27;Controls Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/public-access/inv-s3-public-001"><span title="Public Access" class="categoryLinkLabel_W154">Public Access</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/access-control/inv-s3-access-001"><span title="Access Control" class="categoryLinkLabel_W154">Access Control</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/acl-escalation/inv-s3-acl-escalation-001"><span title="ACL Escalation" class="categoryLinkLabel_W154">ACL Escalation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/encryption/inv-s3-encrypt-001"><span title="Encryption" class="categoryLinkLabel_W154">Encryption</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/logging/inv-s3-log-001"><span title="Logging" class="categoryLinkLabel_W154">Logging</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/lifecycle-governance/inv-s3-governance-001"><span title="Lifecycle &amp; Governance" class="categoryLinkLabel_W154">Lifecycle &amp; Governance</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/compliance/inv-s3-bucket-takeover-001"><span title="Compliance" class="categoryLinkLabel_W154">Compliance</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/reference/invariants-reference/catalog/"><span title="Full Control Catalog (by service)" class="categoryLinkLabel_W154">Full Control Catalog (by service)</span></a><button aria-label="Collapse sidebar category &#x27;Full Control Catalog (by service)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/acm"><span title="ACM (3)" class="linkLabel_WmDU">ACM (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ad"><span title="AD (40)" class="linkLabel_WmDU">AD (40)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/apigateway"><span title="APIGATEWAY (105)" class="linkLabel_WmDU">APIGATEWAY (105)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/apigw2"><span title="APIGW2 (2)" class="linkLabel_WmDU">APIGW2 (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/appstream"><span title="APPSTREAM (1)" class="linkLabel_WmDU">APPSTREAM (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/athena"><span title="ATHENA (1)" class="linkLabel_WmDU">ATHENA (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/autoscaling"><span title="AUTOSCALING (3)" class="linkLabel_WmDU">AUTOSCALING (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/azure"><span title="AZURE (141)" class="linkLabel_WmDU">AZURE (141)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/backup"><span title="BACKUP (10)" class="linkLabel_WmDU">BACKUP (10)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/beanstalk"><span title="BEANSTALK (2)" class="linkLabel_WmDU">BEANSTALK (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/bedrock"><span title="BEDROCK (24)" class="linkLabel_WmDU">BEDROCK (24)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cfn"><span title="CFN (1)" class="linkLabel_WmDU">CFN (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cisco"><span title="CISCO (30)" class="linkLabel_WmDU">CISCO (30)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudflare"><span title="CLOUDFLARE (29)" class="linkLabel_WmDU">CLOUDFLARE (29)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudformation"><span title="CLOUDFORMATION (7)" class="linkLabel_WmDU">CLOUDFORMATION (7)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudfront"><span title="CLOUDFRONT (71)" class="linkLabel_WmDU">CLOUDFRONT (71)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudtrail"><span title="CLOUDTRAIL (48)" class="linkLabel_WmDU">CLOUDTRAIL (48)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudwatch"><span title="CLOUDWATCH (66)" class="linkLabel_WmDU">CLOUDWATCH (66)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/codebuild"><span title="CODEBUILD (12)" class="linkLabel_WmDU">CODEBUILD (12)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/codecommit"><span title="CODECOMMIT (2)" class="linkLabel_WmDU">CODECOMMIT (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cognito"><span title="COGNITO (104)" class="linkLabel_WmDU">COGNITO (104)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/config"><span title="CONFIG (50)" class="linkLabel_WmDU">CONFIG (50)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dms"><span title="DMS (6)" class="linkLabel_WmDU">DMS (6)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dns"><span title="DNS (3)" class="linkLabel_WmDU">DNS (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/documentdb"><span title="DOCUMENTDB (18)" class="linkLabel_WmDU">DOCUMENTDB (18)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dynamodb"><span title="DYNAMODB (35)" class="linkLabel_WmDU">DYNAMODB (35)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ec2"><span title="EC2 (98)" class="linkLabel_WmDU">EC2 (98)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ecr"><span title="ECR (10)" class="linkLabel_WmDU">ECR (10)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ecs"><span title="ECS (48)" class="linkLabel_WmDU">ECS (48)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/efs"><span title="EFS (13)" class="linkLabel_WmDU">EFS (13)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/eks"><span title="EKS (115)" class="linkLabel_WmDU">EKS (115)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/elasticache"><span title="ELASTICACHE (4)" class="linkLabel_WmDU">ELASTICACHE (4)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/elb"><span title="ELB (75)" class="linkLabel_WmDU">ELB (75)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/emr"><span title="EMR (5)" class="linkLabel_WmDU">EMR (5)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/eventbridge"><span title="EVENTBRIDGE (96)" class="linkLabel_WmDU">EVENTBRIDGE (96)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/exposure"><span title="EXPOSURE (11)" class="linkLabel_WmDU">EXPOSURE (11)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/gcp"><span title="GCP (72)" class="linkLabel_WmDU">GCP (72)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/gcs"><span title="GCS (7)" class="linkLabel_WmDU">GCS (7)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ghost"><span title="GHOST (2)" class="linkLabel_WmDU">GHOST (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/github"><span title="GITHUB (22)" class="linkLabel_WmDU">GITHUB (22)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/glue"><span title="GLUE (12)" class="linkLabel_WmDU">GLUE (12)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/guardduty"><span title="GUARDDUTY (6)" class="linkLabel_WmDU">GUARDDUTY (6)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/guardrail"><span title="GUARDRAIL (1)" class="linkLabel_WmDU">GUARDRAIL (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/iam"><span title="IAM (184)" class="linkLabel_WmDU">IAM (184)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/inspector"><span title="INSPECTOR (1)" class="linkLabel_WmDU">INSPECTOR (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/k8s"><span title="K8S (68)" class="linkLabel_WmDU">K8S (68)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/kinesis"><span title="KINESIS (2)" class="linkLabel_WmDU">KINESIS (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/kms"><span title="KMS (45)" class="linkLabel_WmDU">KMS (45)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lambda"><span title="LAMBDA (58)" class="linkLabel_WmDU">LAMBDA (58)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lifecycle"><span title="LIFECYCLE (1)" class="linkLabel_WmDU">LIFECYCLE (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lightsail"><span title="LIGHTSAIL (2)" class="linkLabel_WmDU">LIGHTSAIL (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/m365"><span title="M365 (73)" class="linkLabel_WmDU">M365 (73)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/macie"><span title="MACIE (1)" class="linkLabel_WmDU">MACIE (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/meta"><span title="META (1)" class="linkLabel_WmDU">META (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/mq"><span title="MQ (1)" class="linkLabel_WmDU">MQ (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/msk"><span title="MSK (9)" class="linkLabel_WmDU">MSK (9)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/neptune"><span title="NEPTUNE (19)" class="linkLabel_WmDU">NEPTUNE (19)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/netfirewall"><span title="NETFIREWALL (11)" class="linkLabel_WmDU">NETFIREWALL (11)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/opensearch"><span title="OPENSEARCH (132)" class="linkLabel_WmDU">OPENSEARCH (132)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/org"><span title="ORG (1)" class="linkLabel_WmDU">ORG (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ram"><span title="RAM (1)" class="linkLabel_WmDU">RAM (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/rds"><span title="RDS (68)" class="linkLabel_WmDU">RDS (68)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/redshift"><span title="REDSHIFT (26)" class="linkLabel_WmDU">REDSHIFT (26)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/route53"><span title="ROUTE53 (50)" class="linkLabel_WmDU">ROUTE53 (50)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/s3"><span title="S3 (124)" class="linkLabel_WmDU">S3 (124)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sagemaker"><span title="SAGEMAKER (25)" class="linkLabel_WmDU">SAGEMAKER (25)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secret"><span title="SECRET (3)" class="linkLabel_WmDU">SECRET (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secrets"><span title="SECRETS (31)" class="linkLabel_WmDU">SECRETS (31)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secretsmanager"><span title="SECRETSMANAGER (4)" class="linkLabel_WmDU">SECRETSMANAGER (4)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/securityhub"><span title="SECURITYHUB (3)" class="linkLabel_WmDU">SECURITYHUB (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/shield"><span title="SHIELD (1)" class="linkLabel_WmDU">SHIELD (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sns"><span title="SNS (37)" class="linkLabel_WmDU">SNS (37)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sqs"><span title="SQS (37)" class="linkLabel_WmDU">SQS (37)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ssm"><span title="SSM (8)" class="linkLabel_WmDU">SSM (8)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/stepfunctions"><span title="STEPFUNCTIONS (113)" class="linkLabel_WmDU">STEPFUNCTIONS (113)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/vpc"><span title="VPC (78)" class="linkLabel_WmDU">VPC (78)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/vsphere"><span title="VSPHERE (35)" class="linkLabel_WmDU">VSPHERE (35)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/waf"><span title="WAF (8)" class="linkLabel_WmDU">WAF (8)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/workspaces"><span title="WORKSPACES (1)" class="linkLabel_WmDU">WORKSPACES (1)</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/fact-export"><span title="Fact Export" class="linkLabel_WmDU">Fact Export</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/changelog"><span title="Changelog" class="linkLabel_WmDU">Changelog</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/command-reference"><span title="Command Reference" class="linkLabel_WmDU">Command Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/compliance-owasp-nhi"><span title="OWASP Non-Human Identity Top 10 — Stave coverage" class="linkLabel_WmDU">OWASP Non-Human Identity Top 10 — Stave coverage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/contracts"><span title="Contract-First Schemas" class="linkLabel_WmDU">Contract-First Schemas</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/evaluation-engine-capabilities"><span title="Engine Capabilities" class="linkLabel_WmDU">Engine Capabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/glossary"><span title="Stave Terminology Glossary" class="linkLabel_WmDU">Stave Terminology Glossary</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/hippa-cli"><span title="HIPAA CLI Evidence" class="linkLabel_WmDU">HIPAA CLI Evidence</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/hippa-table"><span title="HIPAA Control Mapping" class="linkLabel_WmDU">HIPAA Control Mapping</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/iam-permissions"><span title="Minimum IAM Permissions for S3 Observation Collection" class="linkLabel_WmDU">Minimum IAM Permissions for S3 Observation Collection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/identity-blast-radius"><span title="Identity Blast Radius" class="linkLabel_WmDU">Identity Blast Radius</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/operator-contract"><span title="Operator Contract" class="linkLabel_WmDU">Operator Contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scope-and-support"><span title="Scope and support" class="linkLabel_WmDU">Scope and support</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/security-policy"><span title="Security Policy" class="linkLabel_WmDU">Security Policy</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/explanation"><span title="Explanation" class="categoryLinkLabel_W154">Explanation</span></a><button aria-label="Expand sidebar category &#x27;Explanation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/challenge/cases/"><span title="Challenge" class="categoryLinkLabel_W154">Challenge</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/demos/"><span title="Demos" class="categoryLinkLabel_W154">Demos</span></a><button aria-label="Expand sidebar category &#x27;Demos&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/positioning/vs-scanners"><span title="Positioning" class="categoryLinkLabel_W154">Positioning</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference"><span>Reference</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference/invariants-reference/_index"><span>Controls Reference</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference/invariants-reference/catalog/"><span>Full Control Catalog (by service)</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">CLOUDWATCH (66)</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>CLOUDWATCH controls (66)</h1></header>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmcompositenoaction001">CTL.CLOUDWATCH.ALARM.COMPOSITE.NOACTION.001<a href="#ctlcloudwatchalarmcompositenoaction001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.COMPOSITE.NOACTION.001" title="Direct link to CTL.CLOUDWATCH.ALARM.COMPOSITE.NOACTION.001" translate="no">​</a></h3>
+<p><strong>Composite Alarm Has No Action Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-6, IR-4; iso_27001_2022: A.5.30, A.8.16; nist_800_53_r5: AU-6, IR-4, SI-4; pci_dss_v4.0: 10.6, 12.10; soc2: CC7.1, CC7.2, CC7.3;</li>
+</ul>
+<p>CloudWatch composite alarm evaluates a rule combining multiple child alarm states but has no AlarmAction, OKAction, or InsufficientDataAction configured. The composite alarm exists for high-value correlated detection — multiple signals that together indicate a systemic problem. Without actions, the correlation is detected and discarded.</p>
+<p><strong>Remediation:</strong> Add at least one AlarmAction to the composite alarm pointing at the team&#x27;s alert SNS topic: aws cloudwatch put-composite-alarm --alarm-name <name> --alarm-rule <rule> --alarm-actions <topic-arn>. Composite alarms typically warrant a higher-priority notification channel than individual child alarms (paging vs ticketing) because the correlation indicates a more severe condition than any single child.</topic-arn></rule></name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmdecommissioned001">CTL.CLOUDWATCH.ALARM.DECOMMISSIONED.001<a href="#ctlcloudwatchalarmdecommissioned001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.DECOMMISSIONED.001" title="Direct link to CTL.CLOUDWATCH.ALARM.DECOMMISSIONED.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Alarm Monitors Decommissioned Resource</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-6, SI-4; iso_27001_2022: A.5.9, A.8.16; nist_800_53_r5: AU-6, CM-8, IR-4, SI-4; pci_dss_v4.0: 10.6; soc2: CC7.2, CC7.3, CC8.1;</li>
+</ul>
+<p>CloudWatch alarm monitors a metric for a resource that has been decommissioned — an EC2 instance terminated, an RDS instance deleted, a Lambda function removed. The metric stops publishing, the alarm enters INSUFFICIENT_DATA permanently, and the alarm clutters the inventory while monitoring nothing. Different from ALARM.INSUFFICIENTDATA.001 which checks the symptom (current state); this checks the root cause (the monitored resource is gone).</p>
+<p><strong>Remediation:</strong> Confirm the dimensioned resource is gone (e.g., the InstanceId is not in the EC2 inventory, the FunctionName is not in Lambda). Delete the alarm: aws cloudwatch delete-alarms --alarm-names <name>. If the resource was replaced (new InstanceId for the same logical role), update the alarm&#x27;s dimensions to the new resource rather than leaving the old alarm dead.</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmdisabled001">CTL.CLOUDWATCH.ALARM.DISABLED.001<a href="#ctlcloudwatchalarmdisabled001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.DISABLED.001" title="Direct link to CTL.CLOUDWATCH.ALARM.DISABLED.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Alarm ActionsEnabled Is False</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.5; fedramp_moderate: SI-4; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, IR-4, IR-5, SI-4; pci_dss_v4.0: 10.5, 10.6; soc2: CC7.1, CC7.2, CC7.3;</li>
+</ul>
+<p>CloudWatch alarm has ActionsEnabled set to false. The alarm evaluates the metric and transitions states normally; the actions exist (SNS topic, Lambda function); but ActionsEnabled is false so the actions don&#x27;t fire. The most invisible alarm failure — actions ARE listed, the alarm appears fully configured. ActionsEnabled is a single boolean buried in the configuration. False- protection archetype: alarm looks functional, silently muted.</p>
+<p><strong>Remediation:</strong> Re-enable actions: aws cloudwatch enable-alarm-actions --alarm-names <name>. Audit the historical reason for the disablement — common cause is a maintenance window where actions were silenced and never re-enabled. Add a follow-up alarm or process check that surfaces long-running ActionsEnabled=false states so the same lapse doesn&#x27;t recur.</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmemailonly001">CTL.CLOUDWATCH.ALARM.EMAILONLY.001<a href="#ctlcloudwatchalarmemailonly001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.EMAILONLY.001" title="Direct link to CTL.CLOUDWATCH.ALARM.EMAILONLY.001" translate="no">​</a></h3>
+<p><strong>Critical CloudWatch Alarm Notifies Only by Email</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: IR-4, IR-6; iso_27001_2022: A.5.24, A.5.30; nist_800_53_r5: AU-5, IR-4, IR-6, SI-4; pci_dss_v4.0: 12.10; soc2: CC7.2, CC7.3;</li>
+</ul>
+<p>Critical or high-severity CloudWatch alarm references an SNS topic whose only subscribers are email addresses — no Slack/HTTPS webhook, no PagerDuty integration, no Lambda function for automation, no SQS for downstream processing. Email delivery is best-effort: delays, spam filters, full inboxes, and off-hours all degrade response time on alerts that need urgent attention.</p>
+<p><strong>Remediation:</strong> Add at least one non-email subscriber to the SNS topic: a Slack incoming-webhook HTTPS endpoint, a PagerDuty integration URL, a Lambda subscription for automation, or an SQS queue feeding an on-call rotation. Keep the email subscriber for audit trail; add the high-availability channel for response. For paging-grade alerts, prefer PagerDuty or OpsGenie HTTPS endpoints over Slack (Slack&#x27;s reliability for paging is worse than its perceived UX suggests).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmghost001">CTL.CLOUDWATCH.ALARM.GHOST.001<a href="#ctlcloudwatchalarmghost001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.GHOST.001" title="Direct link to CTL.CLOUDWATCH.ALARM.GHOST.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Alarm Actions Must Not Target Deleted SNS Topics</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-5; hipaa: 164.312(b); nist_800_53_r5: AU-5; soc2: CC7.1;</li>
+</ul>
+<p>CloudWatch alarm notification actions must not reference deleted SNS topics. When the alarm fires, the notification goes nowhere. The security team is not alerted. The alarm appears configured and active in the console while notifications are silently broken.</p>
+<p><strong>Remediation:</strong> Update the alarm action to reference an existing SNS topic.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarminsufficientdata001">CTL.CLOUDWATCH.ALARM.INSUFFICIENTDATA.001<a href="#ctlcloudwatchalarminsufficientdata001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.INSUFFICIENTDATA.001" title="Direct link to CTL.CLOUDWATCH.ALARM.INSUFFICIENTDATA.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Alarm in INSUFFICIENT_DATA State for 30+ Days</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SI-4; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, SI-4, CM-3; pci_dss_v4.0: 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch alarm has been in INSUFFICIENT_DATA state for more than 30 days. INSUFFICIENT_DATA means the metric is not publishing data points — the alarm cannot evaluate because there&#x27;s nothing to evaluate. Common causes: monitored resource was deleted, metric namespace or dimensions changed, CloudTrail or the metric filter&#x27;s log group was deleted. The alarm exists in the console as an active alarm in a neutral state; brief INSUFFICIENT_DATA is normal during metric-publication gaps but 30+ days means the data source is permanently gone.</p>
+<p><strong>Remediation:</strong> Investigate why the metric stopped publishing. Common roots: the monitored resource was deleted, dimensions changed, the metric filter&#x27;s log group is gone (see CTL.CLOUDWATCH.GHOST.METRICFILTER.LOGGROUP.001), or CloudTrail stopped logging. Either restore the data source, repoint the alarm at the new metric dimensions, or delete the dead alarm. A dead alarm in the console creates the illusion of monitoring coverage.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmmissingdatanotbreaching001">CTL.CLOUDWATCH.ALARM.MISSINGDATA.NOTBREACHING.001<a href="#ctlcloudwatchalarmmissingdatanotbreaching001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.MISSINGDATA.NOTBREACHING.001" title="Direct link to CTL.CLOUDWATCH.ALARM.MISSINGDATA.NOTBREACHING.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Security Alarm Treats Missing Data as Not Breaching</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.1; fedramp_moderate: SI-4; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, AU-9, SI-4; pci_dss_v4.0: 10.5, 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch security alarm has TreatMissingData set to &quot;notBreaching.&quot; When metric data stops arriving (resource deleted, CloudTrail stopped, application crashed), the alarm treats the absence as OK. For security alarms specifically, missing data is dangerous: an attacker who stops the data source silences the metric AND the alarm cooperates by staying OK. Operational alarms (CPU, latency) often legitimately use notBreaching when monitoring potentially-terminated resources; security alarms should use &quot;breaching&quot; or &quot;missing&quot; instead.</p>
+<p><strong>Remediation:</strong> Change TreatMissingData on the alarm: aws cloudwatch put-metric-alarm --treat-missing-data breaching (preferred for security — missing data is treated as ALARM) or --treat-missing-data missing (alarm goes to INSUFFICIENT_DATA which is observable). Pair with CTL.CLOUDWATCH.ALARM.INSUFFICIENTDATA.001 so a permanently-INSUFFICIENT_DATA security alarm surfaces.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmnoaction001">CTL.CLOUDWATCH.ALARM.NOACTION.001<a href="#ctlcloudwatchalarmnoaction001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.NOACTION.001" title="Direct link to CTL.CLOUDWATCH.ALARM.NOACTION.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Alarm Has No Action Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SI-4; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, IR-4, IR-5, SI-4; pci_dss_v4.0: 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch alarm has no actions — no AlarmAction, no OKAction, no InsufficientDataAction. The alarm evaluates the metric and transitions states normally but nobody is notified, no SNS topic receives a message, no Lambda function runs, no auto-scaling triggers. Detection without response: the alarm exists in the console showing ALARM state, but the console is not the audience.</p>
+<p><strong>Remediation:</strong> Add an AlarmAction pointing at an SNS topic that pages the relevant on-call (aws cloudwatch put-metric-alarm --alarm-actions <sns-arn>). For composite or aggregate alarms, OK and InsufficientData actions can also be useful for state-change auditing — but at minimum, every alarm needs an AlarmAction.</sns-arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmnoalarmaction001">CTL.CLOUDWATCH.ALARM.NOALARMACTION.001<a href="#ctlcloudwatchalarmnoalarmaction001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.NOALARMACTION.001" title="Direct link to CTL.CLOUDWATCH.ALARM.NOALARMACTION.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Alarm Has OK or InsufficientData Actions But No Alarm Action</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SI-4; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, IR-4, SI-4; pci_dss_v4.0: 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch alarm has OKAction or InsufficientDataAction configured but no AlarmAction. The alarm notifies when things are fine (OK) or when data is missing (INSUFFICIENT_DATA) but not when the threshold is breached (ALARM). Reversed-action misconfiguration: the team is notified when the metric recovers but not when it breaches.</p>
+<p><strong>Remediation:</strong> Add an AlarmAction: aws cloudwatch put-metric-alarm --alarm-actions <sns-arn>. The OK and InsufficientData actions remain useful for state-change auditing; the AlarmAction is the one that actually pages on-call.</sns-arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchalarmsametopicblast001">CTL.CLOUDWATCH.ALARM.SAMETOPIC.BLAST.001<a href="#ctlcloudwatchalarmsametopicblast001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ALARM.SAMETOPIC.BLAST.001" title="Direct link to CTL.CLOUDWATCH.ALARM.SAMETOPIC.BLAST.001" translate="no">​</a></h3>
+<p><strong>Multiple Critical Alarms Share One SNS Topic</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-6, IR-4; iso_27001_2022: A.5.30, A.8.16; nist_800_53_r5: AU-6, IR-4, SI-4; pci_dss_v4.0: 10.6; soc2: CC7.2, CC7.3;</li>
+</ul>
+<p>More than five critical or high-severity CloudWatch alarms reference the same SNS topic for their alarm action. The topic is a single point of failure for the entire group: one topic deletion (or ghost — SNS.GHOST.ALARM) silences all of those alarms simultaneously. Blast radius scales with the number of alarms sharing the topic.</p>
+<p><strong>Remediation:</strong> Either split the alarms across multiple SNS topics by severity or by domain (one topic for security alarms, one for operational alarms, one per service team), or add a secondary backup topic to each critical alarm so notifications survive a primary topic deletion. Centralizing on one topic is acceptable for low-severity alarms; critical alarms should have at least two notification paths.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchcrossaccountdestinationopen001">CTL.CLOUDWATCH.CROSSACCOUNT.DESTINATION.OPEN.001<a href="#ctlcloudwatchcrossaccountdestinationopen001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.CROSSACCOUNT.DESTINATION.OPEN.001" title="Direct link to CTL.CLOUDWATCH.CROSSACCOUNT.DESTINATION.OPEN.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Logs Cross-Account Destination Allows Any Account</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.4; fedramp_moderate: AC-3, AU-9; iso_27001_2022: A.5.15, A.8.15; nist_800_53_r5: AC-3, AC-4, AU-9; pci_dss_v4.0: 7.2; soc2: CC6.1, CC6.6, CC7.1;</li>
+</ul>
+<p>CloudWatch Logs cross-account destination has an access policy that allows subscription filters from any AWS account. Without account restriction or aws:PrincipalOrgID, any account can stream log events to this destination, contaminating the centralized log aggregation with attacker-controlled streams that mix into the legitimate log flow.</p>
+<p><strong>Remediation:</strong> Replace the destination policy with an explicit account allow-list, or add an aws:PrincipalOrgID condition restricting sources to the organization. Apply via aws logs put-destination-policy --destination-name <name> --access-policy <json>. Audit any subscription filters already targeting the destination from accounts not currently expected — those streams may have been established while the policy was open.</json></name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchcrossaccountnocentralized001">CTL.CLOUDWATCH.CROSSACCOUNT.NOCENTRALIZED.001<a href="#ctlcloudwatchcrossaccountnocentralized001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.CROSSACCOUNT.NOCENTRALIZED.001" title="Direct link to CTL.CLOUDWATCH.CROSSACCOUNT.NOCENTRALIZED.001" translate="no">​</a></h3>
+<p><strong>AWS Organizations Has No Centralized CloudWatch Logging Account</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.4, 3.1; fedramp_moderate: AU-4, AU-9; iso_27001_2022: A.5.36, A.8.15; nist_800_53_r5: AU-4, AU-6, AU-9; pci_dss_v4.0: 10.5; soc2: CC6.1, CC7.1;</li>
+</ul>
+<p>AWS Organizations is in use but CloudWatch Logs are not aggregated to a centralized logging account. Each member account stores its own logs independently. Security investigations require querying logs in each account individually; there is no single view of the organization&#x27;s log data for incident response, compliance audit, or operational analysis.</p>
+<p><strong>Remediation:</strong> Designate a logging-account in the organization (typically a dedicated security/ audit account) and configure cross-account subscription filters from member accounts to a destination in that account, OR enable CloudWatch cross-account observability with the logging account as the monitoring account. SCPs can prevent member accounts from disabling the cross-account subscriptions once configured.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchcrossaccountretentioninconsistent001">CTL.CLOUDWATCH.CROSSACCOUNT.RETENTION.INCONSISTENT.001<a href="#ctlcloudwatchcrossaccountretentioninconsistent001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.CROSSACCOUNT.RETENTION.INCONSISTENT.001" title="Direct link to CTL.CLOUDWATCH.CROSSACCOUNT.RETENTION.INCONSISTENT.001" translate="no">​</a></h3>
+<p><strong>Cross-Account Log Aggregation Has Inconsistent Retention</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> hipaa: 164.312(b), 164.316(b)(2)(i); iso_27001_2022: A.5.16, A.8.10; nist_800_53_r5: AU-11, SI-12; pci_dss_v4.0: 10.5.1, 10.7; soc2: CC6.1, CC7.1;</li>
+</ul>
+<p>CloudWatch Logs are aggregated from member accounts to a centralized logging account, but source and destination retention periods disagree. Source may retain longer than destination (logs disappear earlier in the centralized account than the source intended) or destination may retain longer than source (data minimization violated, logs persist beyond the source&#x27;s policy).</p>
+<p><strong>Remediation:</strong> Decide on the canonical retention horizon for the data class (security audit, ops debug, application access) and apply it consistently to source and destination log groups: aws logs put-retention-policy --log-group-name <name> --retention-in-days <days>. Use Organizations SCPs or config-as-code to keep retention aligned automatically as new log groups are provisioned.</days></name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchghostalarmlambda001">CTL.CLOUDWATCH.GHOST.ALARM.LAMBDA.001<a href="#ctlcloudwatchghostalarmlambda001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.GHOST.ALARM.LAMBDA.001" title="Direct link to CTL.CLOUDWATCH.GHOST.ALARM.LAMBDA.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Alarm Action References Deleted Lambda Function</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: IR-4; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, IR-4, CM-2, CM-3; pci_dss_v4.0: 10.6, 12.10; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch alarm has an action invoking a Lambda function for automated remediation. The Lambda has been deleted. The alarm fires correctly. The invocation fails. The remediation doesn&#x27;t happen. Distinct from CTL.CLOUDWATCH.ALARM.GHOST.001 (alarm action targets a deleted SNS topic) — this control covers Lambda action targets, the path most often used for automated remediation rather than human notification.</p>
+<p><strong>Remediation:</strong> Either redeploy the Lambda function (same ARN) or repoint the alarm action at an active remediation function (aws cloudwatch put-metric-alarm --alarm-actions <new-lambda-arn>). If the automated remediation is no longer needed, replace with an SNS notification action so the alarm surfaces to humans instead of failing silently.</new-lambda-arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchghostcompositechild001">CTL.CLOUDWATCH.GHOST.COMPOSITE.CHILD.001<a href="#ctlcloudwatchghostcompositechild001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.GHOST.COMPOSITE.CHILD.001" title="Direct link to CTL.CLOUDWATCH.GHOST.COMPOSITE.CHILD.001" translate="no">​</a></h3>
+<p><strong>Composite Alarm References Deleted Child Alarm</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SI-4; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, CM-2, CM-3, SI-4; pci_dss_v4.0: 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch composite alarm references one or more child alarms that have been deleted. The composite alarm evaluates a rule combining child alarm states (e.g., &quot;ALARM(child1) AND ALARM(child2)&quot;). When a child is deleted, the composite cannot evaluate the rule — it goes to INSUFFICIENT_DATA or evaluates incorrectly. Composite alarms are commonly used for high-fidelity production alerts that combine multiple signals; a ghost child silently breaks the combination.</p>
+<p><strong>Remediation:</strong> Either recreate the deleted child alarm with the same name, or update the composite alarm&#x27;s AlarmRule to remove the deleted child reference. The choice depends on whether the deleted child represented an intentional simplification of the composite rule or a mistaken cleanup. Audit the composite&#x27;s intended detection logic before deciding.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchghostmetricfilterloggroup001">CTL.CLOUDWATCH.GHOST.METRICFILTER.LOGGROUP.001<a href="#ctlcloudwatchghostmetricfilterloggroup001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.GHOST.METRICFILTER.LOGGROUP.001" title="Direct link to CTL.CLOUDWATCH.GHOST.METRICFILTER.LOGGROUP.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Metric Filter References Deleted Log Group</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 3.4, 4.1; fedramp_moderate: SI-4; hipaa: 164.312(b); iso_27001_2022: A.8.15, A.8.16; nist_800_53_r5: AU-6, CM-2, CM-3, SI-4; pci_dss_v4.0: 10.5, 10.6; soc2: CC7.1, CC7.2, CC8.1;</li>
+</ul>
+<p>CloudWatch metric filter is associated with a log group that has been deleted. The metric filter exists in the console — pattern, namespace, and metric name are all configured — but the log group it parses no longer exists. The filter evaluates nothing, the metric publishes no data points, and every alarm based on the metric goes to INSUFFICIENT_DATA. One deleted log group can break N metric filters, and through them N alarms — the highest multiplier ghost reference in the catalog.</p>
+<p><strong>Remediation:</strong> Either recreate the log group with the same name and recreate the metric filter on it, or repoint the metric filter at an existing log group, or delete the orphan filter if the monitoring is no longer needed. After fix, verify by triggering an event matching the filter pattern and confirming the metric publishes a data point. Audit other metric filters on the same deleted log group — they share the same fate.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchghostsubscriptionkinesis001">CTL.CLOUDWATCH.GHOST.SUBSCRIPTION.KINESIS.001<a href="#ctlcloudwatchghostsubscriptionkinesis001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.GHOST.SUBSCRIPTION.KINESIS.001" title="Direct link to CTL.CLOUDWATCH.GHOST.SUBSCRIPTION.KINESIS.001" translate="no">​</a></h3>
+<p><strong>Subscription Filter References Deleted Kinesis Stream</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-6; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, CM-2, CM-3; pci_dss_v4.0: 10.5, 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch Logs subscription filter delivers log events to a Kinesis Data Stream that has been deleted. The filter matches events. The delivery fails. Matched log events are silently dropped — they don&#x27;t reach the Kinesis consumer (SIEM, analytics pipeline, security data lake). For security-sensitive log groups, this is a silent ingest gap into the SIEM.</p>
+<p><strong>Remediation:</strong> Either recreate the Kinesis stream with the same ARN and reattach (aws logs put-subscription-filter --destination-arn <stream-arn>), or repoint the filter at an existing stream, or delete the subscription filter if the downstream consumer is gone for good. Audit downstream — the SIEM / analytics pipeline expecting these events has been blind for the gap window.</stream-arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchghostsubscriptionlambda001">CTL.CLOUDWATCH.GHOST.SUBSCRIPTION.LAMBDA.001<a href="#ctlcloudwatchghostsubscriptionlambda001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.GHOST.SUBSCRIPTION.LAMBDA.001" title="Direct link to CTL.CLOUDWATCH.GHOST.SUBSCRIPTION.LAMBDA.001" translate="no">​</a></h3>
+<p><strong>Subscription Filter References Deleted Lambda Function</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-6; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: AU-6, CM-2, CM-3; pci_dss_v4.0: 10.5, 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch Logs subscription filter delivers log events to a Lambda function that has been deleted. Same pattern as the Kinesis ghost (separate control) but for Lambda destinations. The filter matches events. The Lambda invocation fails. Matched log events are silently dropped. Common pattern: a real-time log processing Lambda (anomaly detection, log enrichment) that gets removed without updating the subscription filter.</p>
+<p><strong>Remediation:</strong> Either redeploy the Lambda function (same ARN) or repoint the filter at an existing Lambda. If the downstream processing is no longer needed, delete the subscription filter so it doesn&#x27;t accumulate drop-failures in CloudWatch Logs metrics.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchincomplete001">CTL.CLOUDWATCH.INCOMPLETE.001<a href="#ctlcloudwatchincomplete001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.INCOMPLETE.001" title="Direct link to CTL.CLOUDWATCH.INCOMPLETE.001" translate="no">​</a></h3>
+<p><strong>Complete Data Required for CloudWatch Assessment</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> info</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+</ul>
+<p>The observation snapshot is missing required CloudWatch log group properties.</p>
+<p><strong>Remediation:</strong> Ensure the extractor calls aws logs describe-log-groups and maps the retentionInDays to the log_group observation properties.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchlogexport001">CTL.CLOUDWATCH.LOG.EXPORT.001<a href="#ctlcloudwatchlogexport001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.LOG.EXPORT.001" title="Direct link to CTL.CLOUDWATCH.LOG.EXPORT.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Log Group Exports Must Be Restricted to Authorized Buckets</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> mitre_attack: T1530; nist_800_53_r5: AU-9;</li>
+</ul>
+<p>CloudWatch log group export tasks copy all log data to an S3 bucket. An attacker with logs:CreateExportTask permission can export CloudTrail logs, application logs, and security tool outputs to an attacker-controlled bucket. This is particularly dangerous for CloudTrail log groups — exporting them gives the attacker a complete copy of all API activity before they cover their tracks.</p>
+<p><strong>Remediation:</strong> Restrict logs:CreateExportTask to approved S3 destinations via IAM resource conditions. Monitor for export tasks to unexpected destinations via CloudTrail alerting.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchlogretention001">CTL.CLOUDWATCH.LOG.RETENTION.001<a href="#ctlcloudwatchlogretention001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.LOG.RETENTION.001" title="Direct link to CTL.CLOUDWATCH.LOG.RETENTION.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Log Groups Must Have Retention Policies Set</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> mitre_attack: T1530; nist_800_53_r5: AU-11;</li>
+</ul>
+<p>CloudWatch log groups without retention policies retain logs indefinitely — creating an ever-growing collection of potentially sensitive data (application logs, access patterns, error messages containing credentials). An attacker with logs:GetLogEvents access can search through years of accumulated logs to harvest credentials, API keys, and internal system details. Retention policies limit the data collection window.</p>
+<p><strong>Remediation:</strong> Set a retention policy appropriate for the log type: aws logs put-retention-policy --log-group-name <name> --retention-in-days 90</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchlogretention365001">CTL.CLOUDWATCH.LOG.RETENTION365.001<a href="#ctlcloudwatchlogretention365001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.LOG.RETENTION365.001" title="Direct link to CTL.CLOUDWATCH.LOG.RETENTION365.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Log Retention Must Be At Least 365 Days</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-11; gdpr: Art.30; nist_800_53_r5: AU-11; pci_dss_v4.0: 10.7;</li>
+</ul>
+<p>CloudWatch log groups for cardholder data environment audit logs must retain logs for at least 365 days. PCI-DSS v4.0 requires 12 months of audit trail with at least 3 months immediately available.</p>
+<p><strong>Remediation:</strong> Set retention to at least 365 days: aws logs put-retention-policy --log-group-name <name> --retention-in-days 365</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchloggroupencryptcmk001">CTL.CLOUDWATCH.LOGGROUP.ENCRYPT.CMK.001<a href="#ctlcloudwatchloggroupencryptcmk001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.LOGGROUP.ENCRYPT.CMK.001" title="Direct link to CTL.CLOUDWATCH.LOGGROUP.ENCRYPT.CMK.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Log Group Not Encrypted with Customer-Managed KMS Key</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 3.7; fedramp_moderate: SC-13, SC-28; hipaa: 164.312(a)(2)(iv), 164.312(e)(2)(ii); iso_27001_2022: A.8.24; nist_800_53_r5: SC-13, SC-28; pci_dss_v4.0: 3.5.1; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>CloudWatch Logs log group is not encrypted with a customer-managed KMS key. CW Logs encrypts data at rest by default with AWS-managed keys, but without a CMK there is no key policy control over which principals can decrypt log data, no usage audit trail in CloudTrail KMS events, and no key revocation capability. For log groups containing audit events, application logs, or security tool output, CMK encryption is the only way to bound decryption authority and revoke access.</p>
+<p><strong>Remediation:</strong> Associate a customer-managed KMS key with the log group: aws logs associate-kms-key --log-group-name <name> --kms-key-id <cmk-arn>. The key policy must grant logs.<region>.amazonaws.com kms:Encrypt, kms:Decrypt, kms:ReEncrypt*, kms:GenerateDataKey*, and kms:Describe* with a kms:EncryptionContext condition scoping to the log group ARN. After association, only entries written after association are encrypted with the CMK; existing entries remain encrypted with the previous key.</region></cmk-arn></name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchloggrouporphan001">CTL.CLOUDWATCH.LOGGROUP.ORPHAN.001<a href="#ctlcloudwatchloggrouporphan001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.LOGGROUP.ORPHAN.001" title="Direct link to CTL.CLOUDWATCH.LOGGROUP.ORPHAN.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Log Group Has No Log Streams in 90+ Days</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> iso_27001_2022: A.5.9, A.8.10; nist_800_53_r5: CM-8, SI-12; soc2: CC6.1, A1.2;</li>
+</ul>
+<p>CloudWatch Logs log group has not received any new log events in 90+ days. The log group exists with retention, encryption, and policy configuration — but no service writes to it. Typically indicates the writer service was deleted (Lambda function, ECS task, API Gateway), the log group was created for a service that was never deployed, or the service&#x27;s log configuration was changed to a different log group. Dormant log groups continue to accrue storage cost on whatever historical data they hold.</p>
+<p><strong>Remediation:</strong> Confirm no service still depends on the log group (search Lambda function configurations, ECS task definitions, API Gateway log destinations, custom application code for the log group name). If confirmed orphaned, archive any stored data to S3 via aws logs create-export-task and delete the log group: aws logs delete-log-group --log-group-name <name>. If the data is not needed, delete directly. Stop paying storage cost on data nothing reads.</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchloggrouppolicycrossaccount001">CTL.CLOUDWATCH.LOGGROUP.POLICY.CROSSACCOUNT.001<a href="#ctlcloudwatchloggrouppolicycrossaccount001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.LOGGROUP.POLICY.CROSSACCOUNT.001" title="Direct link to CTL.CLOUDWATCH.LOGGROUP.POLICY.CROSSACCOUNT.001" translate="no">​</a></h3>
+<p><strong>Log Group Resource Policy Grants Cross-Account Access Without Org Boundary</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.4; fedramp_moderate: AC-3, AU-9; iso_27001_2022: A.5.15, A.8.15; nist_800_53_r5: AC-3, AC-4, AU-9; pci_dss_v4.0: 7.2; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>CloudWatch Logs log group resource policy grants logs:PutLogEvents or logs:GetLogEvents to principals in external accounts without aws:PrincipalOrgID condition. External accounts can write to or read from the log group regardless of current organizational membership.</p>
+<p><strong>Remediation:</strong> Add an aws:PrincipalOrgID condition to the resource policy restricting access to the organization. If specific external accounts legitimately need access, enumerate them as Principal and document the exception. Replace the policy via aws logs put-resource-policy --policy-name <name> --policy-document <json>.</json></name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchloggrouppolicypublic001">CTL.CLOUDWATCH.LOGGROUP.POLICY.PUBLIC.001<a href="#ctlcloudwatchloggrouppolicypublic001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.LOGGROUP.POLICY.PUBLIC.001" title="Direct link to CTL.CLOUDWATCH.LOGGROUP.POLICY.PUBLIC.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Log Group Resource Policy Allows PutLogEvents from Any Account</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 3.4; fedramp_moderate: AC-3, AU-9; hipaa: 164.312(b), 164.312(c)(1); iso_27001_2022: A.5.15, A.8.15; nist_800_53_r5: AC-3, AU-9; pci_dss_v4.0: 10.5; soc2: CC6.1, CC7.1;</li>
+</ul>
+<p>CloudWatch Logs log group resource policy allows logs:PutLogEvents from Principal: * or from any AWS account without an aws:PrincipalOrgID condition. Any account on the internet can write log entries — injecting fake events that mix with legitimate entries. For security log groups (the CloudTrail CW Logs target, VPC Flow Logs), injected entries contaminate the audit trail and may trigger or mask metric-filter alarms.</p>
+<p><strong>Remediation:</strong> Replace Principal: * with the specific service principal that needs to write (e.g., cloudtrail.amazonaws.com, vpc-flow-logs.amazonaws.com) and add an aws:SourceArn condition limiting writes to a specific resource. For cross-account writes, enumerate Principal accounts explicitly or add an aws:PrincipalOrgID condition. Apply the policy via aws logs put-resource-policy --policy-name <name> --policy-document <json>.</json></name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchloggroupretentionshort001">CTL.CLOUDWATCH.LOGGROUP.RETENTION.SHORT.001<a href="#ctlcloudwatchloggroupretentionshort001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.LOGGROUP.RETENTION.SHORT.001" title="Direct link to CTL.CLOUDWATCH.LOGGROUP.RETENTION.SHORT.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Log Group Retention Too Short for Compliance</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 3.4; fedramp_moderate: AU-11; hipaa: 164.312(b), 164.316(b)(2)(i); iso_27001_2022: A.5.16, A.8.10; nist_800_53_r5: AU-9, AU-11; pci_dss_v4.0: 10.5.1, 10.7; soc2: CC7.1, A1.2;</li>
+</ul>
+<p>CloudWatch Logs log group has a retention period shorter than the applicable compliance requirement. Common requirements: HIPAA 6 years (2190 days), PCI-DSS 1 year (365 days), SOC2 1 year (365 days). When the configured retention is shorter than the required minimum, security investigation data and audit evidence are deleted before the audit window closes. Compliance-profile control: fires when retention is set AND retention_compliant is false for the active compliance tag set.</p>
+<p><strong>Remediation:</strong> Update the log group retention to meet or exceed required_retention_days: aws logs put-retention-policy --log-group-name <name> --retention-in-days <days>. Allowed CW Logs retention values are discrete (1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653) — pick the smallest value that meets or exceeds the required minimum.</days></name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmetricfilterdecommissioned001">CTL.CLOUDWATCH.METRICFILTER.DECOMMISSIONED.001<a href="#ctlcloudwatchmetricfilterdecommissioned001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.METRICFILTER.DECOMMISSIONED.001" title="Direct link to CTL.CLOUDWATCH.METRICFILTER.DECOMMISSIONED.001" translate="no">​</a></h3>
+<p><strong>Metric Filter Monitors Decommissioned Service</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> iso_27001_2022: A.5.9, A.8.10; nist_800_53_r5: CM-2, CM-8, SA-22; soc2: CC8.1;</li>
+</ul>
+<p>CloudWatch metric filter is on a log group whose source service has been decommissioned — the Lambda function was deleted, the ECS service was removed, the API Gateway was shut down. The log group may still exist (orphaned) or may have been recreated for a different service. The filter evaluates events from a service that no longer runs.</p>
+<p><strong>Remediation:</strong> Confirm the source service is gone and not being recreated under a different name. Delete the metric filter (aws logs delete-metric-filter --log-group-name <name> --filter-name <filter>) and any alarms that used the metric. If the log group itself is also orphaned, delete it (LOGGROUP.ORPHAN catches that separately).</filter></name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmetricfilternoalarm001">CTL.CLOUDWATCH.METRICFILTER.NOALARM.001<a href="#ctlcloudwatchmetricfilternoalarm001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.METRICFILTER.NOALARM.001" title="Direct link to CTL.CLOUDWATCH.METRICFILTER.NOALARM.001" translate="no">​</a></h3>
+<p><strong>Metric Filter Has No Alarm Watching Its Metric</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 3.4, 4.1; fedramp_moderate: AU-6, SI-4; iso_27001_2022: A.8.16; nist_800_53_r5: AU-6, SI-4; pci_dss_v4.0: 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch metric filter exists and matches log events into a metric, but no CloudWatch alarm watches the metric. Events accumulate as metric data points; nothing reads them. The filter is detection without alerting. For security metric filters (root logins, unauthorized API calls, KMS deletions), this means the events are counted in CloudWatch metrics but never trigger a notification.</p>
+<p><strong>Remediation:</strong> Either create a CloudWatch alarm against the metric (aws cloudwatch put-metric-alarm) or delete the orphan filter (aws logs delete-metric-filter). If the metric is consumed by an external system (Datadog, CloudWatch Logs Insights queries, dashboards), document the external consumer so future audits don&#x27;t re-flag it.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmetricfilternodefault001">CTL.CLOUDWATCH.METRICFILTER.NODEFAULT.001<a href="#ctlcloudwatchmetricfilternodefault001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.METRICFILTER.NODEFAULT.001" title="Direct link to CTL.CLOUDWATCH.METRICFILTER.NODEFAULT.001" translate="no">​</a></h3>
+<p><strong>Metric Filter Has No Default Value</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-6, SI-4; iso_27001_2022: A.8.16; nist_800_53_r5: AU-6, SI-4; pci_dss_v4.0: 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch metric filter does not have a default value configured. When no log events match the filter pattern in an evaluation period, the metric publishes NO data point — not zero, no data. Alarms based on the metric enter INSUFFICIENT_DATA instead of evaluating the threshold. Combined with TreatMissingData: notBreaching (CW-1), the alarm stays in OK state silently. Combined with TreatMissingData: missing, the alarm enters INSUFFICIENT_DATA permanently if no events ever match.</p>
+<p><strong>Remediation:</strong> Set a default value of 0 on the metric filter: aws logs put-metric-filter --metric-transformations metricName=...,metricNamespace=...,metricValue=1,defaultValue=0. This way the metric publishes 0 when no events match, the alarm has data to evaluate, and threshold logic works as expected. After update, validate the metric data shows a continuous series rather than gaps.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitoraccesskey001">CTL.CLOUDWATCH.MONITOR.ACCESSKEY.001<a href="#ctlcloudwatchmonitoraccesskey001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.ACCESSKEY.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.ACCESSKEY.001" translate="no">​</a></h3>
+<p><strong>Access Key Creation Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.4; nist_800_53_r5: AU-6; owasp_nhi: NHI8; soc2: CC7.2;</li>
+</ul>
+<p>No CloudWatch metric filter and alarm for iam:CreateAccessKey events. Access key creation is a persistence mechanism — an attacker who creates access keys establishes long-lived credentials that survive password resets and session revocation.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching iam:CreateAccessKey events, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitoranonvpc001">CTL.CLOUDWATCH.MONITOR.ANON.VPC.001<a href="#ctlcloudwatchmonitoranonvpc001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.ANON.VPC.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.ANON.VPC.001" translate="no">​</a></h3>
+<p><strong>Anonymous S3 Requests via VPC Endpoints Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-12; soc2: CC7.1;</li>
+</ul>
+<p>CloudWatch alarms must detect anonymous S3 requests transiting VPC endpoints. Even with Network Activity logging enabled, events must be actively monitored to surface anonymous access.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch metric filter on Network Activity events matching anonymous (unsigned) S3 requests through VPC endpoints. Create an alarm with SNS notification.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorassumerole001">CTL.CLOUDWATCH.MONITOR.ASSUMEROLE.001<a href="#ctlcloudwatchmonitorassumerole001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.ASSUMEROLE.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.ASSUMEROLE.001" translate="no">​</a></h3>
+<p><strong>Cross-Account Role Assumption Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.4; nist_800_53_r5: SI-4; owasp_nhi: NHI8; soc2: CC7.2;</li>
+</ul>
+<p>No CloudWatch metric filter and alarm for sts:AssumeRole events from external accounts. Cross-account role assumption is the entry point for lateral movement between accounts. Without an alarm, an external account assuming a role in this account goes unnoticed in real time.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching sts:AssumeRole events where the source account differs from the local account, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorauthfail001">CTL.CLOUDWATCH.MONITOR.AUTHFAIL.001<a href="#ctlcloudwatchmonitorauthfail001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.AUTHFAIL.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.AUTHFAIL.001" translate="no">​</a></h3>
+<p><strong>Console Authentication Failures Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.6; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor console authentication failures. Failed console authentication attempts indicate brute force attacks against IAM user passwords.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for console authentication failures, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorboundary001">CTL.CLOUDWATCH.MONITOR.BOUNDARY.001<a href="#ctlcloudwatchmonitorboundary001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.BOUNDARY.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.BOUNDARY.001" translate="no">​</a></h3>
+<p><strong>Permission Boundary Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.4; nist_800_53_r5: AU-6; owasp_nhi: NHI8; soc2: CC7.2;</li>
+</ul>
+<p>No CloudWatch metric filter and alarm for iam:DeleteRolePermissionsBoundary or iam:PutRolePermissionsBoundary events. Permission boundary removal expands a role&#x27;s effective permissions instantly — the boundary that constrained the role is gone, all policy permissions become effective.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching iam:DeleteRolePermissionsBoundary and iam:PutRolePermissionsBoundary events, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorcmk001">CTL.CLOUDWATCH.MONITOR.CMK.001<a href="#ctlcloudwatchmonitorcmk001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.CMK.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.CMK.001" translate="no">​</a></h3>
+<p><strong>CMK Disable or Deletion Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.7; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor cmk disable or deletion. KMS key disabling or scheduled deletion renders encrypted data permanently inaccessible — a ransomware vector.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for cmk disable or deletion, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorconfig001">CTL.CLOUDWATCH.MONITOR.CONFIG.001<a href="#ctlcloudwatchmonitorconfig001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.CONFIG.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.CONFIG.001" translate="no">​</a></h3>
+<p><strong>AWS Config Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.9; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor aws config changes. Changes to AWS Config (StopConfigurationRecorder) remove drift detection.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for aws config changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorcrossaccount001">CTL.CLOUDWATCH.MONITOR.CROSSACCOUNT.001<a href="#ctlcloudwatchmonitorcrossaccount001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.CROSSACCOUNT.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.CROSSACCOUNT.001" translate="no">​</a></h3>
+<p><strong>Cross-Account AssumeRole Events Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-12; nist_800_53_r5: AU-12; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor sts:AssumeRole events from external accounts. Cross-account assumption is a normal operation for partner integrations and CI/CD pipelines, but unexpected external assumptions indicate compromised trust relationships or credential theft. The metric filter should match AssumeRole events where the source account is not in the organization&#x27;s known account list.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching sts:AssumeRole events where the source account differs from the target account. Create an alarm with SNS notification.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorescalation001">CTL.CLOUDWATCH.MONITOR.ESCALATION.001<a href="#ctlcloudwatchmonitorescalation001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.ESCALATION.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.ESCALATION.001" translate="no">​</a></h3>
+<p><strong>IAM Privilege Escalation Events Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.4; fedramp_moderate: AU-12; nist_800_53_r5: AU-12; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor IAM privilege escalation API calls. These are the specific API actions that enable an attacker to elevate permissions after initial access: CreatePolicyVersion, SetDefaultPolicyVersion, AttachUserPolicy, AttachRolePolicy, AttachGroupPolicy, PutUserPolicy, PutRolePolicy, PutGroupPolicy, CreateAccessKey, CreateLoginProfile, UpdateLoginProfile, UpdateAssumeRolePolicy, and PassRole (as a parameter in RunInstances, CreateFunction, CreateStack, etc.). The existing iam_policy_changes metric filter (CIS 4.4) covers general policy modifications but does not specifically surface the escalation-enabling subset. This control verifies that a dedicated escalation-focused filter and alarm exist.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching escalation-relevant API calls: { ($.eventName = CreatePolicyVersion) ||
+($.eventName = SetDefaultPolicyVersion) ||
+($.eventName = AttachUserPolicy) ||
+($.eventName = AttachRolePolicy) ||
+($.eventName = PutUserPolicy) ||
+($.eventName = PutRolePolicy) ||
+($.eventName = CreateAccessKey) ||
+($.eventName = CreateLoginProfile) ||
+($.eventName = UpdateAssumeRolePolicy) }.
+Then create a CloudWatch alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorgw001">CTL.CLOUDWATCH.MONITOR.GW.001<a href="#ctlcloudwatchmonitorgw001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.GW.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.GW.001" translate="no">​</a></h3>
+<p><strong>Network Gateway Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.12; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor network gateway changes. Gateway attachment is the boundary between a VPC and the internet.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for network gateway changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitoriampolicy001">CTL.CLOUDWATCH.MONITOR.IAMPOLICY.001<a href="#ctlcloudwatchmonitoriampolicy001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.IAMPOLICY.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.IAMPOLICY.001" translate="no">​</a></h3>
+<p><strong>IAM Policy Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.4; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor iam policy changes. IAM policy modifications (CreatePolicy, DeletePolicy, AttachRolePolicy) are a primary persistence mechanism for attackers.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for iam policy changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorimds001">CTL.CLOUDWATCH.MONITOR.IMDS.001<a href="#ctlcloudwatchmonitorimds001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.IMDS.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.IMDS.001" translate="no">​</a></h3>
+<p><strong>IMDS Configuration Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-12; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>CloudWatch alarms must detect changes to EC2 instance metadata options (ModifyInstanceMetadataOptions). Without monitoring, an attacker can downgrade IMDSv2 to IMDSv1 silently.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch metric filter on CloudTrail events matching ModifyInstanceMetadataOptions. Create an alarm with SNS notification for any match.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorlambdaerrors001">CTL.CLOUDWATCH.MONITOR.LAMBDA.ERRORS.001<a href="#ctlcloudwatchmonitorlambdaerrors001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.LAMBDA.ERRORS.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.LAMBDA.ERRORS.001" translate="no">​</a></h3>
+<p><strong>Lambda Error and Permission Failure Events Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-12; nist_800_53_r5: AU-12; soc2: CC7.1;</li>
+</ul>
+<p>CloudWatch alarms must be configured to detect Lambda function error spikes, throttling events, and permission failure patterns. Without monitoring, a compromised function probing IAM permissions generates AccessDenied events nobody sees, and application errors indicating exploitation accumulate without alerting.</p>
+<p><strong>Remediation:</strong> Create CloudWatch alarms for: AWS/Lambda Errors metric exceeding threshold, AWS/Lambda Throttles &gt; 0, and CloudTrail AccessDenied/UnauthorizedAccess events filtered to Lambda- sourced principals. Configure SNS notification for each alarm.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitormfadevice001">CTL.CLOUDWATCH.MONITOR.MFADEVICE.001<a href="#ctlcloudwatchmonitormfadevice001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.MFADEVICE.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.MFADEVICE.001" translate="no">​</a></h3>
+<p><strong>MFA Device Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SI-4; nist_800_53_r5: SI-4; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor MFA device enrollment and deactivation events. MFA device changes (CreateVirtualMFADevice, EnableMFADevice, DeactivateMFADevice, DeleteVirtualMFADevice) are a persistence mechanism — an attacker who gains temporary access can enroll their own MFA device to maintain access after the victim resets their password.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching CreateVirtualMFADevice, EnableMFADevice, DeactivateMFADevice, and DeleteVirtualMFADevice events. Create an alarm with an SNS notification action to alert on any MFA device change.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitornacl001">CTL.CLOUDWATCH.MONITOR.NACL.001<a href="#ctlcloudwatchmonitornacl001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.NACL.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.NACL.001" translate="no">​</a></h3>
+<p><strong>NACL Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.11; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor nacl changes. Network ACL changes can open or close network paths.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for nacl changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitornomfa001">CTL.CLOUDWATCH.MONITOR.NOMFA.001<a href="#ctlcloudwatchmonitornomfa001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.NOMFA.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.NOMFA.001" translate="no">​</a></h3>
+<p><strong>Console Sign-In Without MFA Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.2; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor console sign-in without mfa. Console sign-ins without MFA indicate either MFA is not enforced or credentials were used from a context that bypassed MFA.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for console sign-in without mfa, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitororg001">CTL.CLOUDWATCH.MONITOR.ORG.001<a href="#ctlcloudwatchmonitororg001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.ORG.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.ORG.001" translate="no">​</a></h3>
+<p><strong>AWS Organizations Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.15; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor aws organizations changes. Organizations changes affect account-level governance and SCP enforcement.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for aws organizations changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorpassrole001">CTL.CLOUDWATCH.MONITOR.PASSROLE.001<a href="#ctlcloudwatchmonitorpassrole001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.PASSROLE.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.PASSROLE.001" translate="no">​</a></h3>
+<p><strong>iam:PassRole Invocations Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.4; nist_800_53_r5: SI-4; owasp_nhi: NHI8; soc2: CC7.2;</li>
+</ul>
+<p>No CloudWatch metric filter and alarm for iam:PassRole events. PassRole is the gateway to every compute-based privilege escalation path — EC2, Lambda, Glue, SageMaker, ECS, CodeBuild, auto-scaling. Every PassRole invocation should generate an alert because it means a principal is assigning IAM permissions to a compute resource.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching iam:PassRole events, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorroot001">CTL.CLOUDWATCH.MONITOR.ROOT.001<a href="#ctlcloudwatchmonitorroot001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.ROOT.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.ROOT.001" translate="no">​</a></h3>
+<p><strong>Root Account Usage Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.3; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor root account usage. Root account API activity should be near-zero. Any activity may indicate compromise or unauthorized administrative action.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for root account usage, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorroute001">CTL.CLOUDWATCH.MONITOR.ROUTE.001<a href="#ctlcloudwatchmonitorroute001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.ROUTE.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.ROUTE.001" translate="no">​</a></h3>
+<p><strong>Route Table Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.13; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor route table changes. Route table modifications can redirect traffic through attacker-controlled paths.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for route table changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitors3policy001">CTL.CLOUDWATCH.MONITOR.S3POLICY.001<a href="#ctlcloudwatchmonitors3policy001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.S3POLICY.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.S3POLICY.001" translate="no">​</a></h3>
+<p><strong>S3 Bucket Policy Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor s3 bucket policy changes. S3 bucket policy changes (PutBucketPolicy, PutBucketAcl) can make private buckets public.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for s3 bucket policy changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorscp001">CTL.CLOUDWATCH.MONITOR.SCP.001<a href="#ctlcloudwatchmonitorscp001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.SCP.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.SCP.001" translate="no">​</a></h3>
+<p><strong>SCP Modifications Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.15; nist_800_53_r5: SI-4; soc2: CC7.2;</li>
+</ul>
+<p>No CloudWatch metric filter and alarm for organizations:UpdatePolicy, DetachPolicy, and DeletePolicy events on Service Control Policies. SCP modifications change the organizational guardrails — an attacker who modifies an SCP can remove region restrictions, escalation prevention, or service protections. Requires CloudTrail organization-level trail in the management account.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching organizations:UpdatePolicy, organizations:DetachPolicy, and organizations:DeletePolicy events, then create an alarm with an SNS notification action. Requires an organization-level CloudTrail trail.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorsg001">CTL.CLOUDWATCH.MONITOR.SG.001<a href="#ctlcloudwatchmonitorsg001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.SG.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.SG.001" translate="no">​</a></h3>
+<p><strong>Security Group Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.10; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor security group changes. Security group changes directly affect network access to resources.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for security group changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorstsanomalous001">CTL.CLOUDWATCH.MONITOR.STS.ANOMALOUS.001<a href="#ctlcloudwatchmonitorstsanomalous001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.STS.ANOMALOUS.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.STS.ANOMALOUS.001" translate="no">​</a></h3>
+<p><strong>Anomalous STS Credential Usage Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-12; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>CloudWatch alarms must detect STS credential usage from unexpected IP addresses or regions — indicating stolen instance role credentials being used externally.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch metric filter matching STS API calls where the source IP is outside the expected VPC CIDR range or from unexpected regions. Alert on any match.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitortrail001">CTL.CLOUDWATCH.MONITOR.TRAIL.001<a href="#ctlcloudwatchmonitortrail001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.TRAIL.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.TRAIL.001" translate="no">​</a></h3>
+<p><strong>CloudTrail Configuration Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.5; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor cloudtrail configuration changes. Changes to CloudTrail (CreateTrail, UpdateTrail, DeleteTrail, StopLogging) are the first action in covering tracks after compromise.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for cloudtrail configuration changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitortrailaccess001">CTL.CLOUDWATCH.MONITOR.TRAIL.ACCESS.001<a href="#ctlcloudwatchmonitortrailaccess001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.TRAIL.ACCESS.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.TRAIL.ACCESS.001" translate="no">​</a></h3>
+<p><strong>Unauthorized Access to CloudTrail Log Bucket Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: AU-9; soc2: CC7.1;</li>
+</ul>
+<p>CloudWatch alarms must detect access to the CloudTrail log bucket by principals other than the CloudTrail service. An attacker who reads log files can learn what&#x27;s logged and plan evasion.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch metric filter on the CloudTrail log group matching S3 GetObject/ListBucket events on the trail bucket where the principal is not cloudtrail.amazonaws.com. Create an alarm with SNS notification.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitortrust001">CTL.CLOUDWATCH.MONITOR.TRUST.001<a href="#ctlcloudwatchmonitortrust001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.TRUST.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.TRUST.001" translate="no">​</a></h3>
+<p><strong>Trust Policy Modifications Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.4; nist_800_53_r5: SI-4; owasp_nhi: NHI8; soc2: CC7.2;</li>
+</ul>
+<p>No CloudWatch metric filter and alarm for iam:UpdateAssumeRolePolicy events. Trust policy modification changes who can assume a role — an attacker who modifies a trust policy adds themselves as a trusted principal. This is Rhino technique #14 (UpdateAssumeRolePolicy).</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching iam:UpdateAssumeRolePolicy events, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorunauth001">CTL.CLOUDWATCH.MONITOR.UNAUTH.001<a href="#ctlcloudwatchmonitorunauth001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.UNAUTH.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.UNAUTH.001" translate="no">​</a></h3>
+<p><strong>Unauthorized API Calls Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.1; owasp_nhi: NHI8; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor unauthorized api calls. Unauthorized API calls (AccessDenied, UnauthorizedAccess) indicate credential probing or misconfigured IAM policies.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for unauthorized api calls, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchmonitorvpc001">CTL.CLOUDWATCH.MONITOR.VPC.001<a href="#ctlcloudwatchmonitorvpc001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.MONITOR.VPC.001" title="Direct link to CTL.CLOUDWATCH.MONITOR.VPC.001" translate="no">​</a></h3>
+<p><strong>VPC Changes Must Be Monitored</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 4.14; soc2: CC7.1;</li>
+</ul>
+<p>A CloudWatch metric filter and alarm must monitor vpc changes. VPC lifecycle changes affect the entire network boundary.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch log metric filter on the CloudTrail log group matching the CIS-specified pattern for vpc changes, then create an alarm with an SNS notification action.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchorphandashboard001">CTL.CLOUDWATCH.ORPHAN.DASHBOARD.001<a href="#ctlcloudwatchorphandashboard001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ORPHAN.DASHBOARD.001" title="Direct link to CTL.CLOUDWATCH.ORPHAN.DASHBOARD.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Dashboard Not Viewed in 90+ Days</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> iso_27001_2022: A.5.9; nist_800_53_r5: CM-2, SA-22; soc2: CC8.1;</li>
+</ul>
+<p>CloudWatch dashboard exists but has not been viewed in 90+ days. The dashboard auto-refreshes on each load (API calls drive cost), shows metrics nobody consults, and may reference deleted alarms or metrics (ghost widgets that display empty panels). A dashboard nobody watches is governance clutter and a small but steady operational expense.</p>
+<p><strong>Remediation:</strong> Confirm no team or process depends on the dashboard (search internal documentation, on-call runbooks, and team wikis for the dashboard name or URL). If unused, delete: aws cloudwatch delete-dashboards --dashboard-names <name>. If the dashboard is still relevant but underused, surface it in team standups so the audience knows it exists.</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchorphanloggroupservice001">CTL.CLOUDWATCH.ORPHAN.LOGGROUP.SERVICE.001<a href="#ctlcloudwatchorphanloggroupservice001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.ORPHAN.LOGGROUP.SERVICE.001" title="Direct link to CTL.CLOUDWATCH.ORPHAN.LOGGROUP.SERVICE.001" translate="no">​</a></h3>
+<p><strong>Log Group Exists for Decommissioned Service</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> iso_27001_2022: A.5.9, A.8.10; nist_800_53_r5: CM-2, CM-8, SA-22; soc2: CC8.1;</li>
+</ul>
+<p>CloudWatch Logs log group follows a standard service prefix (/aws/lambda/<function-name>, /aws/ecs/<cluster>, /aws/apigateway/<api>) but the corresponding service resource has been deleted. The log group keeps historical events from the deleted service and persists indefinitely unless explicitly deleted. Cost accrues, governance attention scales with the number of orphans, and the log group may be reused for an unrelated service later (confusing log content).</api></cluster></function-name></p>
+<p><strong>Remediation:</strong> Confirm the service resource (Lambda function, ECS cluster, API Gateway) was intentionally decommissioned. If logs are needed for compliance, archive to S3 (aws logs create-export-task) before deleting. Then delete: aws logs delete-log-group --log-group-name <name>. Note that the different service prefixes have different deletion patterns — Lambda log groups can auto-recreate when a function with the same name is redeployed, so deleting must coincide with confirming the function will not return.</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchretention001">CTL.CLOUDWATCH.RETENTION.001<a href="#ctlcloudwatchretention001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.RETENTION.001" title="Direct link to CTL.CLOUDWATCH.RETENTION.001" translate="no">​</a></h3>
+<p><strong>CloudWatch Log Groups Must Have Retention Policy</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> hipaa: 164.312(b); soc2: CC7.1;</li>
+</ul>
+<p>CloudWatch Logs log groups must have a retention policy configured. Without a retention policy, logs are kept indefinitely (incurring cost) or may be deleted manually without audit trail.</p>
+<p><strong>Remediation:</strong> Set a retention policy on the log group. Run: aws logs put-retention-policy --log-group-name xxx --retention-in-days 365</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchsubscriptioncrossaccountnoencrypt001">CTL.CLOUDWATCH.SUBSCRIPTION.CROSSACCOUNT.NOENCRYPT.001<a href="#ctlcloudwatchsubscriptioncrossaccountnoencrypt001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.SUBSCRIPTION.CROSSACCOUNT.NOENCRYPT.001" title="Direct link to CTL.CLOUDWATCH.SUBSCRIPTION.CROSSACCOUNT.NOENCRYPT.001" translate="no">​</a></h3>
+<p><strong>Subscription Filter Delivers to Cross-Account Destination Without Encryption</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-8, SC-13; hipaa: 164.312(e)(1), 164.312(e)(2)(ii); iso_27001_2022: A.8.20, A.8.24; nist_800_53_r5: AU-9, SC-8, SC-13; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>CloudWatch Logs subscription filter delivers log events to a destination in an external account — Kinesis stream, Lambda function, or Firehose — without encryption in transit or at rest at the destination. Log data crosses the account boundary in plaintext: any PII, credentials, security event details, or internal application data in the logs is accessible to the receiving account.</p>
+<p><strong>Remediation:</strong> Encrypt the destination: for Kinesis streams, enable server-side encryption with a CMK whose key policy is shared with the source account; for Lambda destinations, ensure the function encrypts its environment variables and any onward storage with a CMK; for Firehose, enable server-side encryption on the delivery stream and on the downstream S3 bucket. If sensitive fields can be redacted at the source, add a CloudWatch Logs Insights query or Lambda transformer that strips the fields before cross-account delivery.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchsubscriptioncrossaccountnoorg001">CTL.CLOUDWATCH.SUBSCRIPTION.CROSSACCOUNT.NOORG.001<a href="#ctlcloudwatchsubscriptioncrossaccountnoorg001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.SUBSCRIPTION.CROSSACCOUNT.NOORG.001" title="Direct link to CTL.CLOUDWATCH.SUBSCRIPTION.CROSSACCOUNT.NOORG.001" translate="no">​</a></h3>
+<p><strong>Subscription Filter Cross-Account Destination Without Organizational Boundary</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.4; fedramp_moderate: AC-3, AC-6; iso_27001_2022: A.5.15; nist_800_53_r5: AC-3, AC-6, AU-9; pci_dss_v4.0: 7.2; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>CloudWatch Logs subscription filter delivers to a destination in an external account whose policy does not include an aws:PrincipalOrgID condition or an explicit account allow-list. The destination accepts subscription deliveries from any account — meaning any AWS account, in or out of the organization, could establish a subscription to this destination and receive the log stream.</p>
+<p><strong>Remediation:</strong> Add an aws:PrincipalOrgID condition to the destination&#x27;s resource policy (Kinesis KeyPolicy, Lambda function policy, Firehose delivery stream policy) restricting deliveries to principals within the organization. If cross-org delivery is genuinely needed, enumerate the specific accounts as Principal rather than leaving the policy open.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchsubscriptionfilternoalarm001">CTL.CLOUDWATCH.SUBSCRIPTION.FILTER.NOALARM.001<a href="#ctlcloudwatchsubscriptionfilternoalarm001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.SUBSCRIPTION.FILTER.NOALARM.001" title="Direct link to CTL.CLOUDWATCH.SUBSCRIPTION.FILTER.NOALARM.001" translate="no">​</a></h3>
+<p><strong>Subscription Filter Destination Has No Monitoring</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-5; iso_27001_2022: A.8.15, A.8.16; nist_800_53_r5: AU-5, SI-4; pci_dss_v4.0: 10.7; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>CloudWatch Logs subscription filter delivers to a Kinesis stream or Lambda function, but the destination has no monitoring — no alarm for Kinesis throttling, no alarm for Lambda errors. If the destination is throttled or erroring, log events are silently dropped. The subscription filter continues matching events; the destination cannot process them; logs are lost between filter and destination with no signal to anyone.</p>
+<p><strong>Remediation:</strong> Add at least one alarm on the destination appropriate to its type: for Kinesis, WriteProvisionedThroughputExceeded &gt; 0; for Lambda, Errors &gt; 0 and Throttles &gt; 0; for Firehose, DeliveryToS3.DataFreshness above the expected processing window. Wire the alarms into the same notification path used by other operational alerts so destination drops surface immediately rather than silently.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlcloudwatchsubscriptionghostfirehose001">CTL.CLOUDWATCH.SUBSCRIPTION.GHOST.FIREHOSE.001<a href="#ctlcloudwatchsubscriptionghostfirehose001" class="hash-link" aria-label="Direct link to CTL.CLOUDWATCH.SUBSCRIPTION.GHOST.FIREHOSE.001" title="Direct link to CTL.CLOUDWATCH.SUBSCRIPTION.GHOST.FIREHOSE.001" translate="no">​</a></h3>
+<p><strong>Subscription Filter References Deleted Kinesis Firehose</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 3.4; fedramp_moderate: AU-9, SI-4; iso_27001_2022: A.8.15, A.8.16; nist_800_53_r5: AU-9, CM-2, CM-3, SI-4; pci_dss_v4.0: 10.5, 10.6; soc2: CC7.1, CC8.1;</li>
+</ul>
+<p>CloudWatch Logs subscription filter delivers log events to a Kinesis Data Firehose delivery stream that has been deleted. The filter matches log events; delivery fails; events are silently dropped before reaching the downstream destination (S3, Redshift, OpenSearch, Splunk). Extends the ghost reference family alongside the deleted-Kinesis and deleted-Lambda subscription destination controls.</p>
+<p><strong>Remediation:</strong> Either recreate the Firehose delivery stream with the same ARN, repoint the subscription filter at an existing Firehose, or delete the orphan filter: aws logs delete-subscription-filter --log-group-name <name> --filter-name <filter>. After fix, confirm by triggering a matching log event and verifying it lands in the Firehose&#x27;s downstream destination.</filter></name></p>
+<hr></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/invariants-reference/catalog/cloudtrail"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">CLOUDTRAIL (48)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/invariants-reference/catalog/codebuild"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">CODEBUILD (12)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#ctlcloudwatchalarmcompositenoaction001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.COMPOSITE.NOACTION.001</a></li><li><a href="#ctlcloudwatchalarmdecommissioned001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.DECOMMISSIONED.001</a></li><li><a href="#ctlcloudwatchalarmdisabled001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.DISABLED.001</a></li><li><a href="#ctlcloudwatchalarmemailonly001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.EMAILONLY.001</a></li><li><a href="#ctlcloudwatchalarmghost001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.GHOST.001</a></li><li><a href="#ctlcloudwatchalarminsufficientdata001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.INSUFFICIENTDATA.001</a></li><li><a href="#ctlcloudwatchalarmmissingdatanotbreaching001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.MISSINGDATA.NOTBREACHING.001</a></li><li><a href="#ctlcloudwatchalarmnoaction001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.NOACTION.001</a></li><li><a href="#ctlcloudwatchalarmnoalarmaction001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.NOALARMACTION.001</a></li><li><a href="#ctlcloudwatchalarmsametopicblast001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ALARM.SAMETOPIC.BLAST.001</a></li><li><a href="#ctlcloudwatchcrossaccountdestinationopen001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.CROSSACCOUNT.DESTINATION.OPEN.001</a></li><li><a href="#ctlcloudwatchcrossaccountnocentralized001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.CROSSACCOUNT.NOCENTRALIZED.001</a></li><li><a href="#ctlcloudwatchcrossaccountretentioninconsistent001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.CROSSACCOUNT.RETENTION.INCONSISTENT.001</a></li><li><a href="#ctlcloudwatchghostalarmlambda001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.GHOST.ALARM.LAMBDA.001</a></li><li><a href="#ctlcloudwatchghostcompositechild001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.GHOST.COMPOSITE.CHILD.001</a></li><li><a href="#ctlcloudwatchghostmetricfilterloggroup001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.GHOST.METRICFILTER.LOGGROUP.001</a></li><li><a href="#ctlcloudwatchghostsubscriptionkinesis001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.GHOST.SUBSCRIPTION.KINESIS.001</a></li><li><a href="#ctlcloudwatchghostsubscriptionlambda001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.GHOST.SUBSCRIPTION.LAMBDA.001</a></li><li><a href="#ctlcloudwatchincomplete001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.INCOMPLETE.001</a></li><li><a href="#ctlcloudwatchlogexport001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.LOG.EXPORT.001</a></li><li><a href="#ctlcloudwatchlogretention001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.LOG.RETENTION.001</a></li><li><a href="#ctlcloudwatchlogretention365001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.LOG.RETENTION365.001</a></li><li><a href="#ctlcloudwatchloggroupencryptcmk001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.LOGGROUP.ENCRYPT.CMK.001</a></li><li><a href="#ctlcloudwatchloggrouporphan001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.LOGGROUP.ORPHAN.001</a></li><li><a href="#ctlcloudwatchloggrouppolicycrossaccount001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.LOGGROUP.POLICY.CROSSACCOUNT.001</a></li><li><a href="#ctlcloudwatchloggrouppolicypublic001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.LOGGROUP.POLICY.PUBLIC.001</a></li><li><a href="#ctlcloudwatchloggroupretentionshort001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.LOGGROUP.RETENTION.SHORT.001</a></li><li><a href="#ctlcloudwatchmetricfilterdecommissioned001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.METRICFILTER.DECOMMISSIONED.001</a></li><li><a href="#ctlcloudwatchmetricfilternoalarm001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.METRICFILTER.NOALARM.001</a></li><li><a href="#ctlcloudwatchmetricfilternodefault001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.METRICFILTER.NODEFAULT.001</a></li><li><a href="#ctlcloudwatchmonitoraccesskey001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.ACCESSKEY.001</a></li><li><a href="#ctlcloudwatchmonitoranonvpc001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.ANON.VPC.001</a></li><li><a href="#ctlcloudwatchmonitorassumerole001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.ASSUMEROLE.001</a></li><li><a href="#ctlcloudwatchmonitorauthfail001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.AUTHFAIL.001</a></li><li><a href="#ctlcloudwatchmonitorboundary001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.BOUNDARY.001</a></li><li><a href="#ctlcloudwatchmonitorcmk001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.CMK.001</a></li><li><a href="#ctlcloudwatchmonitorconfig001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.CONFIG.001</a></li><li><a href="#ctlcloudwatchmonitorcrossaccount001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.CROSSACCOUNT.001</a></li><li><a href="#ctlcloudwatchmonitorescalation001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.ESCALATION.001</a></li><li><a href="#ctlcloudwatchmonitorgw001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.GW.001</a></li><li><a href="#ctlcloudwatchmonitoriampolicy001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.IAMPOLICY.001</a></li><li><a href="#ctlcloudwatchmonitorimds001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.IMDS.001</a></li><li><a href="#ctlcloudwatchmonitorlambdaerrors001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.LAMBDA.ERRORS.001</a></li><li><a href="#ctlcloudwatchmonitormfadevice001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.MFADEVICE.001</a></li><li><a href="#ctlcloudwatchmonitornacl001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.NACL.001</a></li><li><a href="#ctlcloudwatchmonitornomfa001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.NOMFA.001</a></li><li><a href="#ctlcloudwatchmonitororg001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.ORG.001</a></li><li><a href="#ctlcloudwatchmonitorpassrole001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.PASSROLE.001</a></li><li><a href="#ctlcloudwatchmonitorroot001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.ROOT.001</a></li><li><a href="#ctlcloudwatchmonitorroute001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.ROUTE.001</a></li><li><a href="#ctlcloudwatchmonitors3policy001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.S3POLICY.001</a></li><li><a href="#ctlcloudwatchmonitorscp001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.SCP.001</a></li><li><a href="#ctlcloudwatchmonitorsg001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.SG.001</a></li><li><a href="#ctlcloudwatchmonitorstsanomalous001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.STS.ANOMALOUS.001</a></li><li><a href="#ctlcloudwatchmonitortrail001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.TRAIL.001</a></li><li><a href="#ctlcloudwatchmonitortrailaccess001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.TRAIL.ACCESS.001</a></li><li><a href="#ctlcloudwatchmonitortrust001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.TRUST.001</a></li><li><a href="#ctlcloudwatchmonitorunauth001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.UNAUTH.001</a></li><li><a href="#ctlcloudwatchmonitorvpc001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.MONITOR.VPC.001</a></li><li><a href="#ctlcloudwatchorphandashboard001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ORPHAN.DASHBOARD.001</a></li><li><a href="#ctlcloudwatchorphanloggroupservice001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.ORPHAN.LOGGROUP.SERVICE.001</a></li><li><a href="#ctlcloudwatchretention001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.RETENTION.001</a></li><li><a href="#ctlcloudwatchsubscriptioncrossaccountnoencrypt001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.SUBSCRIPTION.CROSSACCOUNT.NOENCRYPT.001</a></li><li><a href="#ctlcloudwatchsubscriptioncrossaccountnoorg001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.SUBSCRIPTION.CROSSACCOUNT.NOORG.001</a></li><li><a href="#ctlcloudwatchsubscriptionfilternoalarm001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.SUBSCRIPTION.FILTER.NOALARM.001</a></li><li><a href="#ctlcloudwatchsubscriptionghostfirehose001" class="table-of-contents__link toc-highlight">CTL.CLOUDWATCH.SUBSCRIPTION.GHOST.FIREHOSE.001</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
+</body>
+</html>

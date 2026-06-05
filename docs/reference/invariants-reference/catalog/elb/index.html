@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/invariants-reference/catalog/elb" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">ELB controls | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/reference/invariants-reference/catalog/elb"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="ELB controls | Stave"><meta data-rh="true" name="description" content="CTL.ELB.ACCESSLOG.PERMISSION.001"><meta data-rh="true" property="og:description" content="CTL.ELB.ACCESSLOG.PERMISSION.001"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/reference/invariants-reference/catalog/elb"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/reference/invariants-reference/catalog/elb" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/reference/invariants-reference/catalog/elb" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Reference","item":"https://stave.dev/docs/reference"},{"@type":"ListItem","position":2,"name":"Controls Reference","item":"https://stave.dev/docs/reference/invariants-reference/_index"},{"@type":"ListItem","position":3,"name":"Full Control Catalog (by service)","item":"https://stave.dev/docs/reference/invariants-reference/catalog/"},{"@type":"ListItem","position":4,"name":"ELB (75)","item":"https://stave.dev/docs/reference/invariants-reference/catalog/elb"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.aebbb64c.css">
+<script src="/assets/js/runtime~main.d5341b07.js" defer="defer"></script>
+<script src="/assets/js/main.dcaf12a7.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><b class="navbar__title text--truncate">Stave</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/sufield/stave" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/tutorials"><span title="Tutorials" class="categoryLinkLabel_W154">Tutorials</span></a><button aria-label="Expand sidebar category &#x27;Tutorials&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/how-to"><span title="How-to Guides" class="categoryLinkLabel_W154">How-to Guides</span></a><button aria-label="Expand sidebar category &#x27;How-to Guides&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/reference"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a><button aria-label="Collapse sidebar category &#x27;Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/config-file"><span title="Configuration" class="linkLabel_WmDU">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/limits"><span title="Limits" class="linkLabel_WmDU">Limits</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-obs"><span title="obs.v0.1" class="linkLabel_WmDU">obs.v0.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/observation-export-schema"><span title="Observation Export Schema" class="linkLabel_WmDU">Observation Export Schema</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-out"><span title="out.v0.1" class="linkLabel_WmDU">out.v0.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/stability"><span title="Stability" class="linkLabel_WmDU">Stability</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/evaluation-semantics"><span title="Evaluation Semantics" class="linkLabel_WmDU">Evaluation Semantics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-ctrl"><span title="ctrl.v1" class="linkLabel_WmDU">ctrl.v1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/severity-thresholds"><span title="Severity Thresholds" class="linkLabel_WmDU">Severity Thresholds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/observation-contract"><span title="Observation Contract" class="linkLabel_WmDU">Observation Contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/output-and-severity"><span title="Output &amp; Severity" class="linkLabel_WmDU">Output &amp; Severity</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/output-formats"><span title="Output Formats" class="linkLabel_WmDU">Output Formats</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/schema-diagnose"><span title="diagnose.v1" class="linkLabel_WmDU">diagnose.v1</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/reference/cli-reference/_index"><span title="CLI Reference" class="categoryLinkLabel_W154">CLI Reference</span></a><button aria-label="Expand sidebar category &#x27;CLI Reference&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/reference/invariants-reference/_index"><span title="Controls Reference" class="categoryLinkLabel_W154">Controls Reference</span></a><button aria-label="Collapse sidebar category &#x27;Controls Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/public-access/inv-s3-public-001"><span title="Public Access" class="categoryLinkLabel_W154">Public Access</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/access-control/inv-s3-access-001"><span title="Access Control" class="categoryLinkLabel_W154">Access Control</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/acl-escalation/inv-s3-acl-escalation-001"><span title="ACL Escalation" class="categoryLinkLabel_W154">ACL Escalation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/encryption/inv-s3-encrypt-001"><span title="Encryption" class="categoryLinkLabel_W154">Encryption</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/logging/inv-s3-log-001"><span title="Logging" class="categoryLinkLabel_W154">Logging</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/lifecycle-governance/inv-s3-governance-001"><span title="Lifecycle &amp; Governance" class="categoryLinkLabel_W154">Lifecycle &amp; Governance</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/invariants-reference/compliance/inv-s3-bucket-takeover-001"><span title="Compliance" class="categoryLinkLabel_W154">Compliance</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/reference/invariants-reference/catalog/"><span title="Full Control Catalog (by service)" class="categoryLinkLabel_W154">Full Control Catalog (by service)</span></a><button aria-label="Collapse sidebar category &#x27;Full Control Catalog (by service)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/acm"><span title="ACM (3)" class="linkLabel_WmDU">ACM (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ad"><span title="AD (40)" class="linkLabel_WmDU">AD (40)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/apigateway"><span title="APIGATEWAY (105)" class="linkLabel_WmDU">APIGATEWAY (105)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/apigw2"><span title="APIGW2 (2)" class="linkLabel_WmDU">APIGW2 (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/appstream"><span title="APPSTREAM (1)" class="linkLabel_WmDU">APPSTREAM (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/athena"><span title="ATHENA (1)" class="linkLabel_WmDU">ATHENA (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/autoscaling"><span title="AUTOSCALING (3)" class="linkLabel_WmDU">AUTOSCALING (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/azure"><span title="AZURE (141)" class="linkLabel_WmDU">AZURE (141)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/backup"><span title="BACKUP (10)" class="linkLabel_WmDU">BACKUP (10)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/beanstalk"><span title="BEANSTALK (2)" class="linkLabel_WmDU">BEANSTALK (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/bedrock"><span title="BEDROCK (24)" class="linkLabel_WmDU">BEDROCK (24)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cfn"><span title="CFN (1)" class="linkLabel_WmDU">CFN (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cisco"><span title="CISCO (30)" class="linkLabel_WmDU">CISCO (30)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudflare"><span title="CLOUDFLARE (29)" class="linkLabel_WmDU">CLOUDFLARE (29)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudformation"><span title="CLOUDFORMATION (7)" class="linkLabel_WmDU">CLOUDFORMATION (7)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudfront"><span title="CLOUDFRONT (71)" class="linkLabel_WmDU">CLOUDFRONT (71)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudtrail"><span title="CLOUDTRAIL (48)" class="linkLabel_WmDU">CLOUDTRAIL (48)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cloudwatch"><span title="CLOUDWATCH (66)" class="linkLabel_WmDU">CLOUDWATCH (66)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/codebuild"><span title="CODEBUILD (12)" class="linkLabel_WmDU">CODEBUILD (12)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/codecommit"><span title="CODECOMMIT (2)" class="linkLabel_WmDU">CODECOMMIT (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/cognito"><span title="COGNITO (104)" class="linkLabel_WmDU">COGNITO (104)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/config"><span title="CONFIG (50)" class="linkLabel_WmDU">CONFIG (50)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dms"><span title="DMS (6)" class="linkLabel_WmDU">DMS (6)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dns"><span title="DNS (3)" class="linkLabel_WmDU">DNS (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/documentdb"><span title="DOCUMENTDB (18)" class="linkLabel_WmDU">DOCUMENTDB (18)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/dynamodb"><span title="DYNAMODB (35)" class="linkLabel_WmDU">DYNAMODB (35)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ec2"><span title="EC2 (98)" class="linkLabel_WmDU">EC2 (98)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ecr"><span title="ECR (10)" class="linkLabel_WmDU">ECR (10)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ecs"><span title="ECS (48)" class="linkLabel_WmDU">ECS (48)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/efs"><span title="EFS (13)" class="linkLabel_WmDU">EFS (13)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/eks"><span title="EKS (115)" class="linkLabel_WmDU">EKS (115)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/elasticache"><span title="ELASTICACHE (4)" class="linkLabel_WmDU">ELASTICACHE (4)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/invariants-reference/catalog/elb"><span title="ELB (75)" class="linkLabel_WmDU">ELB (75)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/emr"><span title="EMR (5)" class="linkLabel_WmDU">EMR (5)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/eventbridge"><span title="EVENTBRIDGE (96)" class="linkLabel_WmDU">EVENTBRIDGE (96)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/exposure"><span title="EXPOSURE (11)" class="linkLabel_WmDU">EXPOSURE (11)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/gcp"><span title="GCP (72)" class="linkLabel_WmDU">GCP (72)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/gcs"><span title="GCS (7)" class="linkLabel_WmDU">GCS (7)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ghost"><span title="GHOST (2)" class="linkLabel_WmDU">GHOST (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/github"><span title="GITHUB (22)" class="linkLabel_WmDU">GITHUB (22)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/glue"><span title="GLUE (12)" class="linkLabel_WmDU">GLUE (12)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/guardduty"><span title="GUARDDUTY (6)" class="linkLabel_WmDU">GUARDDUTY (6)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/guardrail"><span title="GUARDRAIL (1)" class="linkLabel_WmDU">GUARDRAIL (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/iam"><span title="IAM (184)" class="linkLabel_WmDU">IAM (184)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/inspector"><span title="INSPECTOR (1)" class="linkLabel_WmDU">INSPECTOR (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/k8s"><span title="K8S (68)" class="linkLabel_WmDU">K8S (68)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/kinesis"><span title="KINESIS (2)" class="linkLabel_WmDU">KINESIS (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/kms"><span title="KMS (45)" class="linkLabel_WmDU">KMS (45)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lambda"><span title="LAMBDA (58)" class="linkLabel_WmDU">LAMBDA (58)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lifecycle"><span title="LIFECYCLE (1)" class="linkLabel_WmDU">LIFECYCLE (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/lightsail"><span title="LIGHTSAIL (2)" class="linkLabel_WmDU">LIGHTSAIL (2)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/m365"><span title="M365 (73)" class="linkLabel_WmDU">M365 (73)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/macie"><span title="MACIE (1)" class="linkLabel_WmDU">MACIE (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/meta"><span title="META (1)" class="linkLabel_WmDU">META (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/mq"><span title="MQ (1)" class="linkLabel_WmDU">MQ (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/msk"><span title="MSK (9)" class="linkLabel_WmDU">MSK (9)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/neptune"><span title="NEPTUNE (19)" class="linkLabel_WmDU">NEPTUNE (19)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/netfirewall"><span title="NETFIREWALL (11)" class="linkLabel_WmDU">NETFIREWALL (11)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/opensearch"><span title="OPENSEARCH (132)" class="linkLabel_WmDU">OPENSEARCH (132)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/org"><span title="ORG (1)" class="linkLabel_WmDU">ORG (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ram"><span title="RAM (1)" class="linkLabel_WmDU">RAM (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/rds"><span title="RDS (68)" class="linkLabel_WmDU">RDS (68)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/redshift"><span title="REDSHIFT (26)" class="linkLabel_WmDU">REDSHIFT (26)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/route53"><span title="ROUTE53 (50)" class="linkLabel_WmDU">ROUTE53 (50)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/s3"><span title="S3 (124)" class="linkLabel_WmDU">S3 (124)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sagemaker"><span title="SAGEMAKER (25)" class="linkLabel_WmDU">SAGEMAKER (25)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secret"><span title="SECRET (3)" class="linkLabel_WmDU">SECRET (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secrets"><span title="SECRETS (31)" class="linkLabel_WmDU">SECRETS (31)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/secretsmanager"><span title="SECRETSMANAGER (4)" class="linkLabel_WmDU">SECRETSMANAGER (4)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/securityhub"><span title="SECURITYHUB (3)" class="linkLabel_WmDU">SECURITYHUB (3)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/shield"><span title="SHIELD (1)" class="linkLabel_WmDU">SHIELD (1)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sns"><span title="SNS (37)" class="linkLabel_WmDU">SNS (37)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/sqs"><span title="SQS (37)" class="linkLabel_WmDU">SQS (37)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/ssm"><span title="SSM (8)" class="linkLabel_WmDU">SSM (8)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/stepfunctions"><span title="STEPFUNCTIONS (113)" class="linkLabel_WmDU">STEPFUNCTIONS (113)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/vpc"><span title="VPC (78)" class="linkLabel_WmDU">VPC (78)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/vsphere"><span title="VSPHERE (35)" class="linkLabel_WmDU">VSPHERE (35)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/waf"><span title="WAF (8)" class="linkLabel_WmDU">WAF (8)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/invariants-reference/catalog/workspaces"><span title="WORKSPACES (1)" class="linkLabel_WmDU">WORKSPACES (1)</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/fact-export"><span title="Fact Export" class="linkLabel_WmDU">Fact Export</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/changelog"><span title="Changelog" class="linkLabel_WmDU">Changelog</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/command-reference"><span title="Command Reference" class="linkLabel_WmDU">Command Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/compliance-owasp-nhi"><span title="OWASP Non-Human Identity Top 10 — Stave coverage" class="linkLabel_WmDU">OWASP Non-Human Identity Top 10 — Stave coverage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/contracts"><span title="Contract-First Schemas" class="linkLabel_WmDU">Contract-First Schemas</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/evaluation-engine-capabilities"><span title="Engine Capabilities" class="linkLabel_WmDU">Engine Capabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/glossary"><span title="Stave Terminology Glossary" class="linkLabel_WmDU">Stave Terminology Glossary</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/hippa-cli"><span title="HIPAA CLI Evidence" class="linkLabel_WmDU">HIPAA CLI Evidence</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/hippa-table"><span title="HIPAA Control Mapping" class="linkLabel_WmDU">HIPAA Control Mapping</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/iam-permissions"><span title="Minimum IAM Permissions for S3 Observation Collection" class="linkLabel_WmDU">Minimum IAM Permissions for S3 Observation Collection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/identity-blast-radius"><span title="Identity Blast Radius" class="linkLabel_WmDU">Identity Blast Radius</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/operator-contract"><span title="Operator Contract" class="linkLabel_WmDU">Operator Contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scope-and-support"><span title="Scope and support" class="linkLabel_WmDU">Scope and support</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/security-policy"><span title="Security Policy" class="linkLabel_WmDU">Security Policy</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/explanation"><span title="Explanation" class="categoryLinkLabel_W154">Explanation</span></a><button aria-label="Expand sidebar category &#x27;Explanation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/challenge/cases/"><span title="Challenge" class="categoryLinkLabel_W154">Challenge</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/demos/"><span title="Demos" class="categoryLinkLabel_W154">Demos</span></a><button aria-label="Expand sidebar category &#x27;Demos&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/positioning/vs-scanners"><span title="Positioning" class="categoryLinkLabel_W154">Positioning</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference"><span>Reference</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference/invariants-reference/_index"><span>Controls Reference</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/reference/invariants-reference/catalog/"><span>Full Control Catalog (by service)</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">ELB (75)</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>ELB controls (75)</h1></header>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbaccesslogpermission001">CTL.ELB.ACCESSLOG.PERMISSION.001<a href="#ctlelbaccesslogpermission001" class="hash-link" aria-label="Direct link to CTL.ELB.ACCESSLOG.PERMISSION.001" title="Direct link to CTL.ELB.ACCESSLOG.PERMISSION.001" translate="no">​</a></h3>
+<p><strong>ELB Cannot Write to Access Log S3 Bucket</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.1; fedramp_moderate: AU-2; iso_27001_2022: A.5.16, A.8.15; nist_800_53_r5: AU-2, AU-9, AC-3; pci_dss_v4.0: 10.1, 10.5; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>ELB access logging is enabled and the S3 bucket exists, but the bucket policy doesn&#x27;t grant the region&#x27;s ELB log-delivery service account s3:PutObject. Logs are silently dropped — same effect as a deleted bucket, but caused by missing permissions rather than missing infrastructure. A common failure mode when buckets are created without the ELB grant or the grant is later removed by policy edits.</p>
+<p><strong>Remediation:</strong> Update the bucket policy to grant s3:PutObject to the regional ELB log-delivery service account (e.g., 127311923021 for us-east-1 — the IDs are region-specific and listed in the AWS docs). Test by triggering ELB traffic and verifying a new log file appears under AWSLogs/<account>/elasticloadbalancing/<region>/ within five minutes.</region></account></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalarm5xx001">CTL.ELB.ALARM.5XX.001<a href="#ctlelbalarm5xx001" class="hash-link" aria-label="Direct link to CTL.ELB.ALARM.5XX.001" title="Direct link to CTL.ELB.ALARM.5XX.001" translate="no">​</a></h3>
+<p><strong>No CloudWatch Alarm for ELB 5xx Errors</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.5; fedramp_moderate: SI-4; iso_27001_2022: A.5.30, A.8.16; nist_800_53_r5: SI-4, IR-4, IR-5; pci_dss_v4.0: 10.6, 12.10; soc2: CC7.2, CC7.3, A1.2;</li>
+</ul>
+<p>No CloudWatch alarm monitors HTTPCode_ELB_5XX_Count (ALB) or HTTPCode_ELB_5XX (CLB). 5xx errors come from the load balancer itself — not the backend application — and indicate perimeter failures: 503 (no healthy targets), 502 (target closed connection), or 500 (internal LB error). Without an alarm, users experience errors while operations team has no signal. Skipped for NLB which doesn&#x27;t generate HTTP error codes.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch alarm on AWS/ApplicationELB HTTPCode_ELB_5XX_Count (or AWS/ELB HTTPCode_ELB_5XX for CLB) dimensioned by the load balancer name. Threshold &gt; 0 over a 1-minute period; route to on-call. Pair with a target-side HTTPCode_Target_5XX_Count alarm so the team can distinguish ELB-side failures (no healthy targets) from application-side failures (target returned 5xx).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalarmrejectedconnection001">CTL.ELB.ALARM.REJECTEDCONNECTION.001<a href="#ctlelbalarmrejectedconnection001" class="hash-link" aria-label="Direct link to CTL.ELB.ALARM.REJECTEDCONNECTION.001" title="Direct link to CTL.ELB.ALARM.REJECTEDCONNECTION.001" translate="no">​</a></h3>
+<p><strong>No CloudWatch Alarm for Rejected Connections</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SI-4; iso_27001_2022: A.5.30, A.8.16; nist_800_53_r5: SI-4, SI-10; pci_dss_v4.0: 10.6; soc2: CC7.2, A1.2;</li>
+</ul>
+<p>No CloudWatch alarm monitors RejectedConnectionCount. Rejected connections mean the load balancer can&#x27;t accept new connections — capacity exhausted. Causes include traffic spike beyond ALB scaling, DDoS activity exhausting connection limits, or underprovisioned ALB. Without an alarm, connection refusals accumulate while users get connect-refused errors.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch alarm on RejectedConnectionCount with threshold &gt; 0 over a 1-minute period. Route to on-call. A non-zero rejected count means the ALB is at capacity — investigate scaling, DDoS, or upstream traffic pattern changes.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalarmresponsetime001">CTL.ELB.ALARM.RESPONSETIME.001<a href="#ctlelbalarmresponsetime001" class="hash-link" aria-label="Direct link to CTL.ELB.ALARM.RESPONSETIME.001" title="Direct link to CTL.ELB.ALARM.RESPONSETIME.001" translate="no">​</a></h3>
+<p><strong>No CloudWatch Alarm for Target Response Time</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SI-4; iso_27001_2022: A.8.16; nist_800_53_r5: SI-4; pci_dss_v4.0: 10.6; soc2: CC7.2;</li>
+</ul>
+<p>No CloudWatch alarm monitors TargetResponseTime (ALB). Rising response time indicates backend overload, downstream-dependency latency, or application bugs (memory leaks, thread exhaustion). Latency spikes degrade user experience without necessarily generating errors — without an alarm, the team learns about slowness from user reports rather than monitoring.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch anomaly-detection alarm on AWS/ApplicationELB TargetResponseTime dimensioned by the load balancer or target group. Anomaly detection adapts to baseline latency so static thresholds aren&#x27;t required (a 100ms baseline API and a 5s baseline report endpoint shouldn&#x27;t share a single static threshold). Route to the application on-call team.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalarmtlserror001">CTL.ELB.ALARM.TLSERROR.001<a href="#ctlelbalarmtlserror001" class="hash-link" aria-label="Direct link to CTL.ELB.ALARM.TLSERROR.001" title="Direct link to CTL.ELB.ALARM.TLSERROR.001" translate="no">​</a></h3>
+<p><strong>No CloudWatch Alarm for TLS Negotiation Errors</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SI-4; iso_27001_2022: A.8.16, A.8.24; nist_800_53_r5: SI-4, SC-12; pci_dss_v4.0: 10.6, 4.1; soc2: CC7.2;</li>
+</ul>
+<p>No CloudWatch alarm monitors ClientTLSNegotiationErrorCount. TLS errors mean clients can&#x27;t establish HTTPS connections — the TLS handshake fails before any HTTP request reaches the load balancer. Common causes: certificate expired, TLS policy too strict for the client&#x27;s supported versions, certificate mismatch (SNI doesn&#x27;t cover the requested host), missing intermediate CA. Without an alarm, TLS errors accumulate while clients silently fail to connect.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch alarm on ClientTLSNegotiationErrorCount dimensioned by the load balancer. Threshold tuned to a small baseline (e.g., &gt; 5 errors per 5 minutes — there&#x27;s always some noise from outdated bots and probing clients). Pair with CTL.ELB.CERT.RENEWAL.FAILING.001 so cert expiration is caught earlier than its TLS-error consequence.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalarmunhealthyhost001">CTL.ELB.ALARM.UNHEALTHYHOST.001<a href="#ctlelbalarmunhealthyhost001" class="hash-link" aria-label="Direct link to CTL.ELB.ALARM.UNHEALTHYHOST.001" title="Direct link to CTL.ELB.ALARM.UNHEALTHYHOST.001" translate="no">​</a></h3>
+<p><strong>No CloudWatch Alarm for Unhealthy Host Count</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.5; fedramp_moderate: SI-4; iso_27001_2022: A.5.30, A.8.16; nist_800_53_r5: SI-4, IR-4; pci_dss_v4.0: 10.6; soc2: CC7.2, CC7.3, A1.2;</li>
+</ul>
+<p>No CloudWatch alarm monitors UnHealthyHostCount. Rising unhealthy host count is the leading indicator of backend degradation — it precedes the zero-healthy state caught by CTL.ELB.TARGET.NOHEALTHY.001. Early detection (alarm at threshold 1) flags the first unhealthy target; by the time TARGET.NOHEALTHY fires, every target is unhealthy and the service is down.</p>
+<p><strong>Remediation:</strong> Create a CloudWatch alarm on UnHealthyHostCount per target group with threshold &gt;= 1 over a 5-minute period. Route to on-call. Pair with HealthyHostCount alarm at threshold 0 so total-failure (NOHEALTHY) is caught even if UnHealthyHostCount stays at 0 (e.g., all targets deregistered).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalbdesyncmode001">CTL.ELB.ALB.DESYNC.MODE.001<a href="#ctlelbalbdesyncmode001" class="hash-link" aria-label="Direct link to CTL.ELB.ALB.DESYNC.MODE.001" title="Direct link to CTL.ELB.ALB.DESYNC.MODE.001" translate="no">​</a></h3>
+<p><strong>ALB Desync Mitigation Mode Set to Monitor</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 5.4; fedramp_moderate: SC-7, SI-10; iso_27001_2022: A.8.16, A.8.26; nist_800_53_r5: SC-7, SI-3, SI-10; pci_dss_v4.0: 6.4.2; soc2: CC6.1, CC6.7, CC7.2;</li>
+</ul>
+<p>ALB desync mitigation mode is set to &quot;monitor&quot; rather than &quot;defensive&quot; or &quot;strictest&quot;. Monitor mode lets ambiguous HTTP requests through unchanged — only logging — instead of normalizing or rejecting them. Request-smuggling payloads that exploit Content-Length / Transfer-Encoding ambiguity reach the backend.</p>
+<p><strong>Remediation:</strong> Set the ALB attribute routing.http.desync_mitigation_mode to &quot;defensive&quot; (the default for new ALBs) or &quot;strictest&quot; for hardened workloads: aws elbv2 modify-load-balancer- attributes --attributes Key=routing.http.desync_mitigation_mode,Value=defensive. Defensive normalizes ambiguous requests; strictest rejects them outright. Monitor mode is appropriate only as a temporary rollout step when validating that a defensive switch won&#x27;t break legitimate clients.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalbdropinvalidheaders001">CTL.ELB.ALB.DROP.INVALID.HEADERS.001<a href="#ctlelbalbdropinvalidheaders001" class="hash-link" aria-label="Direct link to CTL.ELB.ALB.DROP.INVALID.HEADERS.001" title="Direct link to CTL.ELB.ALB.DROP.INVALID.HEADERS.001" translate="no">​</a></h3>
+<p><strong>ALB Forwards Invalid HTTP Header Fields to Backend</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-7, SI-10; iso_27001_2022: A.8.16, A.8.26; nist_800_53_r5: SC-7, SI-10; pci_dss_v4.0: 6.4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>ALB attribute drop_invalid_header_fields is disabled. Headers that don&#x27;t conform to RFC 7230 (control characters, invalid whitespace, malformed names) are forwarded to the backend instead of being stripped. Header-injection and parser-disagreement attacks reach the application layer.</p>
+<p><strong>Remediation:</strong> Enable the ALB attribute routing.http.drop_invalid_header_fields.enabled: aws elbv2 modify-load-balancer-attributes --attributes Key=routing.http.drop_invalid_header_fields.enabled,Value=true. The ALB will then strip headers that don&#x27;t conform to RFC 7230 before forwarding to the backend. Some legacy clients send technically-invalid headers; validate against expected traffic before flipping in production.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalbidletimeoutlong001">CTL.ELB.ALB.IDLE.TIMEOUT.LONG.001<a href="#ctlelbalbidletimeoutlong001" class="hash-link" aria-label="Direct link to CTL.ELB.ALB.IDLE.TIMEOUT.LONG.001" title="Direct link to CTL.ELB.ALB.IDLE.TIMEOUT.LONG.001" translate="no">​</a></h3>
+<p><strong>ALB Idle Timeout Exceeds Reasonable Ceiling</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> resilience</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-5; iso_27001_2022: A.8.6, A.8.16; nist_800_53_r5: SC-5, SC-7; pci_dss_v4.0: 6.4.2; soc2: CC6.6, A1.1, A1.2;</li>
+</ul>
+<p>ALB idle_timeout is configured for more than 300 seconds. Long-held idle connections amplify the impact of slowloris-style resource exhaustion — each open connection consumes an ALB connection slot and (if forwarded) a backend connection slot until the timeout fires.</p>
+<p><strong>Remediation:</strong> Lower the ALB attribute idle_timeout.timeout_seconds to 60-300 seconds depending on application profile: aws elbv2 modify-load-balancer- attributes --attributes Key=idle_timeout.timeout_seconds,Value=60. The default is 60 seconds. Workloads that need long-held connections (server-sent events, long-poll APIs) should explicitly justify the longer timeout in code review and pair it with WAF rate limiting and connection quotas.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbalbstickycookieinsecure001">CTL.ELB.ALB.STICKY.COOKIE.INSECURE.001<a href="#ctlelbalbstickycookieinsecure001" class="hash-link" aria-label="Direct link to CTL.ELB.ALB.STICKY.COOKIE.INSECURE.001" title="Direct link to CTL.ELB.ALB.STICKY.COOKIE.INSECURE.001" translate="no">​</a></h3>
+<p><strong>ALB Application-Controlled Sticky Cookie Missing Secure Flag</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-8, SC-23; iso_27001_2022: A.5.16, A.8.20; nist_800_53_r5: SC-8, SC-23, AC-12; pci_dss_v4.0: 4.2, 8.3; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>Target group is configured with application-controlled sticky session cookies, but the upstream application&#x27;s cookie response doesn&#x27;t set the Secure flag. The cookie is transmitted over plain HTTP whenever a user inadvertently lands on the http:// scheme, exposing the session affinity identifier to any party on the path.</p>
+<p><strong>Remediation:</strong> Update the application emitting the sticky cookie to set Secure (and HttpOnly + SameSite as appropriate). Set-Cookie: AWSALBAPP-X=...; Path=/; Secure; HttpOnly; SameSite=Strict. For load-balancer-controlled stickiness (the default cookie name AWSALB), AWS sets Secure automatically when the listener is HTTPS — this control flags the application-managed variant where the operator owns the Set-Cookie header.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbauthcognitoghost001">CTL.ELB.AUTH.COGNITO.GHOST.001<a href="#ctlelbauthcognitoghost001" class="hash-link" aria-label="Direct link to CTL.ELB.AUTH.COGNITO.GHOST.001" title="Direct link to CTL.ELB.AUTH.COGNITO.GHOST.001" translate="no">​</a></h3>
+<p><strong>ALB Authentication References Deleted Cognito User Pool</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AC-3; iso_27001_2022: A.5.15, A.8.3; nist_800_53_r5: AC-3, CM-2, CM-3; pci_dss_v4.0: 8.1, 8.2; soc2: CC6.1, CC6.3, CC8.1;</li>
+</ul>
+<p>ALB listener rule has an authenticate-cognito action referencing a Cognito user pool that has been deleted. The auth action attempts to redirect unauthenticated users to the Cognito hosted login; the user pool doesn&#x27;t exist; the redirect fails. Depending on OnUnauthenticatedRequest: users see an error page (auth broken) or — if set to &quot;allow&quot; — reach the backend without auth (compound failure with CTL.ELB.AUTH.UNAUTHENTICATED.ALLOW.001).</p>
+<p><strong>Remediation:</strong> Either recreate the Cognito user pool with the same configuration (clients, identity providers, callback URLs) and update the rule&#x27;s UserPoolArn / UserPoolClientId / UserPoolDomain, or repoint the rule at an existing user pool, or remove the authenticate-cognito action if authentication is no longer required. Audit any rules where OnUnauthenticatedRequest = allow — those are silently bypassing auth right now.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbauthoidcsecretplaintext001">CTL.ELB.AUTH.OIDC.SECRET.PLAINTEXT.001<a href="#ctlelbauthoidcsecretplaintext001" class="hash-link" aria-label="Direct link to CTL.ELB.AUTH.OIDC.SECRET.PLAINTEXT.001" title="Direct link to CTL.ELB.AUTH.OIDC.SECRET.PLAINTEXT.001" translate="no">​</a></h3>
+<p><strong>ELB OIDC Auth Action Stores Client Secret in Plaintext</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: IA-5, SC-13; hipaa: 164.312(a)(2)(iv); iso_27001_2022: A.5.17, A.8.24; nist_800_53_r5: IA-5, SC-13; pci_dss_v4.0: 3.5, 8.6; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>ALB authenticate-oidc action&#x27;s ClientSecret is a literal string rather than a reference to AWS Secrets Manager. The OIDC client secret sits in the listener rule configuration in plaintext, visible to anyone with elbv2:DescribeRules.</p>
+<p><strong>Remediation:</strong> Migrate the client secret to AWS Secrets Manager and reference it from the listener rule: store the secret with aws secretsmanager create-secret, then update the rule&#x27;s authenticate-oidc action to reference the secret ARN. Anyone with elbv2:DescribeRules then sees the ARN rather than the literal secret. Rotate the secret afterwards since the previous plaintext value may be in CloudTrail history.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbauthsessiontimeout001">CTL.ELB.AUTH.SESSION.TIMEOUT.001<a href="#ctlelbauthsessiontimeout001" class="hash-link" aria-label="Direct link to CTL.ELB.AUTH.SESSION.TIMEOUT.001" title="Direct link to CTL.ELB.AUTH.SESSION.TIMEOUT.001" translate="no">​</a></h3>
+<p><strong>ELB Authentication Session Timeout Exceeds Threshold</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> identity</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: AC-12, IA-2; hipaa: 164.312(a)(2)(iii); iso_27001_2022: A.5.17, A.8.5; nist_800_53_r5: AC-12, IA-2; pci_dss_v4.0: 8.6; soc2: CC6.1;</li>
+</ul>
+<p>ALB authenticate-cognito or authenticate-oidc action has SessionTimeout greater than 12 hours. The authentication session persists past the working day; a stolen session cookie remains usable for an extended window.</p>
+<p><strong>Remediation:</strong> Set SessionTimeout to 43200 seconds (12 hours) or less in the listener rule&#x27;s authenticate-cognito or authenticate-oidc action: aws elbv2 modify-rule with Authenticate*Config.SessionTimeout=43200 (or shorter for sensitive workloads — HIPAA-aligned applications often pick 3600 seconds / 1 hour).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbauthunauthenticatedallow001">CTL.ELB.AUTH.UNAUTHENTICATED.ALLOW.001<a href="#ctlelbauthunauthenticatedallow001" class="hash-link" aria-label="Direct link to CTL.ELB.AUTH.UNAUTHENTICATED.ALLOW.001" title="Direct link to CTL.ELB.AUTH.UNAUTHENTICATED.ALLOW.001" translate="no">​</a></h3>
+<p><strong>ALB Authentication Action Allows Unauthenticated Requests</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: AC-3; iso_27001_2022: A.5.15, A.8.3; nist_800_53_r5: AC-3, IA-2, IA-8; pci_dss_v4.0: 8.1, 8.2; soc2: CC6.1, CC6.3, CC6.6;</li>
+</ul>
+<p>ALB listener rule has an authenticate-oidc or authenticate-cognito action with OnUnauthenticatedRequest set to &quot;allow.&quot; Unauthenticated requests pass through the authentication action without being challenged. An auditor sees &quot;authentication configured&quot; — the rule has an authenticate-* action. Unauthenticated requests reach the backend anyway. False protection archetype at the auth layer: same class as DMARC p=none, WAF COUNT-only, and rotation-Lambda-deleted.</p>
+<p><strong>Remediation:</strong> Update the listener rule&#x27;s authentication action to set OnUnauthenticatedRequest to either &quot;authenticate&quot; (redirect to login — standard) or &quot;deny&quot; (return 401 — strictest). Reserve &quot;allow&quot; for paths that intentionally serve mixed authenticated/unauthenticated content. Verify by sending a request without a valid session token — the response should be a redirect or 401, not the backend&#x27;s response.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbazsame001">CTL.ELB.AZ.SAME.001<a href="#ctlelbazsame001" class="hash-link" aria-label="Direct link to CTL.ELB.AZ.SAME.001" title="Direct link to CTL.ELB.AZ.SAME.001" translate="no">​</a></h3>
+<p><strong>ELB Subnets Resolve to the Same Availability Zone</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CP-7; iso_27001_2022: A.5.30, A.8.14; nist_800_53_r5: CP-7, SC-5; pci_dss_v4.0: 12.10; soc2: CC7.1, A1.1;</li>
+</ul>
+<p>ALB or NLB has multiple subnets configured but they all map to the same AZ. The configuration looks redundant but isn&#x27;t — loss of that single AZ takes the load balancer offline despite the multi-subnet appearance.</p>
+<p><strong>Remediation:</strong> Replace one or more subnets with subnets from a different AZ: aws elbv2 set-subnets with a list spanning at least two AZs. Verify by checking each subnet&#x27;s AvailabilityZone field — they must differ. The minimum production posture for HA is two AZs; three is common in regions with three AZs available.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbbackenddirectaccess001">CTL.ELB.BACKEND.DIRECT.ACCESS.001<a href="#ctlelbbackenddirectaccess001" class="hash-link" aria-label="Direct link to CTL.ELB.BACKEND.DIRECT.ACCESS.001" title="Direct link to CTL.ELB.BACKEND.DIRECT.ACCESS.001" translate="no">​</a></h3>
+<p><strong>ELB Backend Reachable Bypassing the Load Balancer</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 5.2; fedramp_moderate: AC-3, SC-7; hipaa: 164.312(c)(1); iso_27001_2022: A.5.15, A.8.20; nist_800_53_r5: AC-3, SC-7; pci_dss_v4.0: 1.2, 1.3, 6.4.2; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>Target group&#x27;s backend security groups allow inbound traffic on the application port from sources other than the ALB&#x27;s security group. Direct internet or cross-VPC access reaches the backend without traversing the ALB — the WAF, TLS termination, and access logging at the ALB are all bypassed.</p>
+<p><strong>Remediation:</strong> Tighten backend security groups to allow inbound on the application port from only the ALB&#x27;s security group: aws ec2 authorize-security-group-ingress with SourceSecurityGroupId pointing at the ALB&#x27;s SG. Remove broader rules (0.0.0.0/0, broad CIDRs, other SGs that don&#x27;t serve as ALBs).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertchainincomplete001">CTL.ELB.CERT.CHAIN.INCOMPLETE.001<a href="#ctlelbcertchainincomplete001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.CHAIN.INCOMPLETE.001" title="Direct link to CTL.ELB.CERT.CHAIN.INCOMPLETE.001" translate="no">​</a></h3>
+<p><strong>ELB Listener Certificate Chain Missing Intermediate CA</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-12, SC-23; iso_27001_2022: A.8.24; nist_800_53_r5: SC-12, SC-23; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>ELB listener certificate is configured without the intermediate CA in its chain. Browsers that don&#x27;t have the intermediate cached fail to verify the certificate; some clients (curl, mobile platforms) reject the connection outright.</p>
+<p><strong>Remediation:</strong> Re-import the certificate with the full intermediate chain via aws acm import-certificate with the --certificate-chain flag pointing at the PEM-bundled intermediate CAs. ACM-issued certificates auto-include the chain; manually imported certs require the operator to bundle intermediates explicitly.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertexpirywarn001">CTL.ELB.CERT.EXPIRY.WARN.001<a href="#ctlelbcertexpirywarn001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.EXPIRY.WARN.001" title="Direct link to CTL.ELB.CERT.EXPIRY.WARN.001" translate="no">​</a></h3>
+<p><strong>ELB Listener Certificate Expiring Within 30 Days</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-12; iso_27001_2022: A.8.24; nist_800_53_r5: SC-12; owasp_nhi: NHI7; pci_dss_v4.0: 4.2; soc2: CC6.1, CC8.1;</li>
+</ul>
+<p>ELB listener certificate has 30 or fewer days until expiry. ACM-issued certificates auto-renew if DNS validation is in place, but imported certificates and ACM certs with broken validation paths require manual rotation. A certificate expiring inside 30 days needs immediate operator attention.</p>
+<p><strong>Remediation:</strong> For ACM certificates: confirm DNS validation records are in place so the cert can auto-renew (the existing CTL.ELB.CERT.RENEWAL.FAILING control catches the case where renewal is actively failing). For imported certificates: request a new cert, import it via aws acm import-certificate, and swap it onto the listener via aws elbv2 modify-listener-certificates before the current one expires.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertghost001">CTL.ELB.CERT.GHOST.001<a href="#ctlelbcertghost001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.GHOST.001" title="Direct link to CTL.ELB.CERT.GHOST.001" translate="no">​</a></h3>
+<p><strong>Load Balancer References Deleted or Expired SSL Certificate</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-17; hipaa: 164.312(e)(1); nist_800_53_r5: SC-17; pci_dss_v4.0: 4.2.1; soc2: CC6.7;</li>
+</ul>
+<p>Load balancer HTTPS listener references an ACM certificate that has been deleted, has expired, or failed renewal. The load balancer continues to serve the missing or expired certificate — browsers display certificate warnings, API clients reject the TLS handshake, and automated integrations (webhooks, partner APIs, service meshes) fail at connection time. The listener configuration appears intact; the failure is external and immediate.</p>
+<p><strong>Remediation:</strong> Replace the certificate on the listener. If the original ACM certificate was deleted, request a new one with the same subject alternative names and associate it. If renewal failed, investigate the ACM renewal path (DNS validation records, IAM permissions for renewal). Enable automated ACM renewal where possible and add a 30-day-before-expiry alarm so the finding does not recur.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertmismatch001">CTL.ELB.CERT.MISMATCH.001<a href="#ctlelbcertmismatch001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.MISMATCH.001" title="Direct link to CTL.ELB.CERT.MISMATCH.001" translate="no">​</a></h3>
+<p><strong>ELB Listener Certificate Does Not Match Listener Domain</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-12, SC-23; hipaa: 164.312(e)(1); iso_27001_2022: A.8.24; nist_800_53_r5: SC-12, SC-23; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>ELB listener serves a certificate whose CN/SAN does not include the domain users reach the listener on. Browsers reject the connection with a hostname-mismatch error.</p>
+<p><strong>Remediation:</strong> Either request a new certificate covering all domains routed to the listener (including SANs for each subdomain) and swap it in via aws elbv2 modify-listener-certificates, or remove the mismatched DNS records pointing at the listener. ACM supports up to 10 SAN entries per certificate; for more, use a wildcard or split across multiple certificates with SNI.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertnotacm001">CTL.ELB.CERT.NOTACM.001<a href="#ctlelbcertnotacm001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.NOTACM.001" title="Direct link to CTL.ELB.CERT.NOTACM.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Certificate Not Managed by ACM</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.6; fedramp_moderate: SC-17; iso_27001_2022: A.5.16, A.8.24; nist_800_53_r5: SC-12, SC-17; pci_dss_v4.0: 4.1, 4.2.1; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>Load balancer listener uses an SSL/TLS certificate that is not managed by AWS Certificate Manager (ACM). The certificate was uploaded to IAM (legacy) or is self-signed. Non-ACM certificates don&#x27;t auto-renew (manual renewal — risk of expiration), require manual rotation (download new cert, upload, update listener), and may not be validated by a trusted CA (self-signed certificates trigger browser warnings).</p>
+<p><strong>Remediation:</strong> Issue a replacement certificate via ACM (aws acm request-certificate or import-certificate), validate via DNS, then update the listener to reference the new ACM certificate: aws elbv2 modify-listener --listener-arn <arn> --certificates CertificateArn=<acm-arn>. Test the new certificate before deleting the old IAM certificate so a rollback path remains. ACM&#x27;s DNS-validated certificates auto-renew — once migrated, the manual renewal risk disappears.</acm-arn></arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertrenewalfailing001">CTL.ELB.CERT.RENEWAL.FAILING.001<a href="#ctlelbcertrenewalfailing001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.RENEWAL.FAILING.001" title="Direct link to CTL.ELB.CERT.RENEWAL.FAILING.001" translate="no">​</a></h3>
+<p><strong>ACM Certificate Auto-Renewal Is Failing</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-17; iso_27001_2022: A.5.16, A.8.24; nist_800_53_r5: SC-12, SC-17; pci_dss_v4.0: 4.1, 4.2.1; soc2: CC6.7, A1.1;</li>
+</ul>
+<p>ACM certificate used by the load balancer has auto-renewal failing. ACM attempted to renew the certificate but the DNS validation record is missing or the email validation wasn&#x27;t completed. The certificate will expire on its expiration date if not resolved. Precursor to expiration — fires while there&#x27;s still time to fix the validation record before the certificate stops working.</p>
+<p><strong>Remediation:</strong> Inspect the certificate&#x27;s renewal status via aws acm describe-certificate. For DNS-validated certificates, recreate the missing CNAME validation record in the domain&#x27;s DNS zone. For email-validated certificates, request a new validation email and have a domain admin click the validation link. After fixing, ACM retries renewal automatically; status moves to SUCCESS within a day or two. Track certificate_expiry_days — if it drops below 14 the risk of expiration becomes immediate.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertsancoverage001">CTL.ELB.CERT.SAN.COVERAGE.001<a href="#ctlelbcertsancoverage001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.SAN.COVERAGE.001" title="Direct link to CTL.ELB.CERT.SAN.COVERAGE.001" translate="no">​</a></h3>
+<p><strong>ELB Listener Certificate Doesn&#x27;t Cover All Routed Domains</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-12, SC-23; iso_27001_2022: A.8.24; nist_800_53_r5: SC-12, SC-23; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7, CC8.1;</li>
+</ul>
+<p>Route 53 alias records point at the ELB from multiple domains, but the listener certificate&#x27;s SAN list doesn&#x27;t include every domain. Some routed domains produce hostname-mismatch TLS errors — partial outage that only some users experience.</p>
+<p><strong>Remediation:</strong> Either add the missing domains to the certificate&#x27;s SAN list (request a new cert, ACM allows up to 10 SANs and a wildcard counts as one SAN per subdomain level), or remove the Route 53 records for domains the cert doesn&#x27;t cover. Detection cross-references Route 53 alias targets pointing at the ELB DNS name with the certificate&#x27;s SAN list.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertselfsigned001">CTL.ELB.CERT.SELFSIGNED.001<a href="#ctlelbcertselfsigned001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.SELFSIGNED.001" title="Direct link to CTL.ELB.CERT.SELFSIGNED.001" translate="no">​</a></h3>
+<p><strong>ELB Listener Uses Self-Signed Certificate</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-12, SC-23; hipaa: 164.312(e)(1); iso_27001_2022: A.8.24; nist_800_53_r5: SC-12, SC-23; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>ELB listener serves a certificate that is self-signed (issuer equals subject) rather than issued by a publicly trusted CA. Browsers reject the connection with a certificate error; users either bypass the warning (training them to ignore TLS errors) or fail to connect.</p>
+<p><strong>Remediation:</strong> Replace the self-signed certificate with one from ACM (free, auto-renewing) or another publicly trusted CA. Use aws elbv2 modify-listener with the new certificate ARN. If self-signed is intentional (lab testing only), document the deviation; production listeners should never serve self-signed certs to end users.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertstale001">CTL.ELB.CERT.STALE.001<a href="#ctlelbcertstale001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.STALE.001" title="Direct link to CTL.ELB.CERT.STALE.001" translate="no">​</a></h3>
+<p><strong>ELB Listener Has Old Certificate Still Attached After Replacement</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> iso_27001_2022: A.5.9, A.8.10; nist_800_53_r5: CM-2, CM-8, SA-22; soc2: CC8.1;</li>
+</ul>
+<p>ELB listener has multiple certificates attached including one that&#x27;s been superseded but not removed. The stale certificate is no longer the default but remains active for SNI matches against its SAN list — a forgotten cert may still be serving traffic.</p>
+<p><strong>Remediation:</strong> Identify the active certificate (the one used by current production traffic) and remove the others: aws elbv2 remove-listener-certificates with --certificates CertificateArn=<old>. Each ALB listener can attach multiple certificates (for SNI), so &#x27;multiple&#x27; isn&#x27;t itself a defect — but certificates that no SAN-bearing domain currently routes to the LB are stale.</old></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcertweakkey001">CTL.ELB.CERT.WEAKKEY.001<a href="#ctlelbcertweakkey001" class="hash-link" aria-label="Direct link to CTL.ELB.CERT.WEAKKEY.001" title="Direct link to CTL.ELB.CERT.WEAKKEY.001" translate="no">​</a></h3>
+<p><strong>ELB Listener Certificate Uses Weak RSA-1024 Key</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-12, SC-13; hipaa: 164.312(a)(2)(iv); iso_27001_2022: A.8.24; nist_800_53_r5: SC-12, SC-13; pci_dss_v4.0: 3.5; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>ELB listener certificate uses RSA-1024 (or weaker) key. RSA-1024 has been considered insufficient for TLS use since 2014 — major CAs stopped issuing 1024-bit certificates long ago. A certificate using 1024-bit keys typically indicates a long-lived manual import that wasn&#x27;t refreshed.</p>
+<p><strong>Remediation:</strong> Replace the certificate with one using RSA-2048 (minimum) or ECDSA-P-256. Request via ACM (which only issues modern key sizes) or, if importing, generate a new key with openssl genrsa 2048 (or openssl ecparam genkey -name prime256v1). Update the listener via aws elbv2 modify-listener-certificates.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbclbbackendplaintext001">CTL.ELB.CLB.BACKEND.PLAINTEXT.001<a href="#ctlelbclbbackendplaintext001" class="hash-link" aria-label="Direct link to CTL.ELB.CLB.BACKEND.PLAINTEXT.001" title="Direct link to CTL.ELB.CLB.BACKEND.PLAINTEXT.001" translate="no">​</a></h3>
+<p><strong>Classic Load Balancer Backend Listener Uses HTTP</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-8, SC-23; hipaa: 164.312(e)(1); iso_27001_2022: A.8.20, A.8.24; nist_800_53_r5: SC-8, SC-23; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>Classic Load Balancer&#x27;s backend instance protocol is HTTP rather than HTTPS. The CLB-to-backend hop transits unencrypted over the VPC network, even when client- to-CLB is HTTPS. End-to-end encryption isn&#x27;t preserved.</p>
+<p><strong>Remediation:</strong> Either migrate the CLB to ALB or NLB (recommended — CLB is legacy; the existing CTL.ELB.LIFECYCLE.CLB.MIGRATION control flags this), or update the CLB backend to HTTPS: aws elb create-load-balancer-listeners with InstanceProtocol=HTTPS and the appropriate backend cert. Migration to ALB or NLB unlocks every modern feature the CLB lacks.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbclbdraining001">CTL.ELB.CLB.DRAINING.001<a href="#ctlelbclbdraining001" class="hash-link" aria-label="Direct link to CTL.ELB.CLB.DRAINING.001" title="Direct link to CTL.ELB.CLB.DRAINING.001" translate="no">​</a></h3>
+<p><strong>Classic Load Balancer Connection Draining Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CP-10; iso_27001_2022: A.5.30, A.8.32; nist_800_53_r5: CP-10, SI-2; pci_dss_v4.0: 11.5.1; soc2: A1.1, A1.2;</li>
+</ul>
+<p>Classic Load Balancer does not have connection draining enabled. When an instance is deregistered (during deployment or scaling), in-flight requests on that instance are immediately dropped — the connection closes mid-request. Clients receive connection-reset or timeout errors during routine deployments. Connection draining gives in-flight requests a graceful completion window before the instance is removed from rotation.</p>
+<p><strong>Remediation:</strong> Enable connection draining on the CLB: aws elb modify-load-balancer-attributes --load-balancer-name <name> --load-balancer-attributes &quot;ConnectionDraining={Enabled=true,Timeout=300}&quot;. A 300-second drain window gives long-running requests time to complete; tune lower for short-request workloads. Better long-term move: migrate to ALB (CTL.ELB.LIFECYCLE.CLB.MIGRATION.001) — ALB handles graceful deregistration without a distinct draining flag.</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbclbhealthcheckmissing001">CTL.ELB.CLB.HEALTHCHECK.MISSING.001<a href="#ctlelbclbhealthcheckmissing001" class="hash-link" aria-label="Direct link to CTL.ELB.CLB.HEALTHCHECK.MISSING.001" title="Direct link to CTL.ELB.CLB.HEALTHCHECK.MISSING.001" translate="no">​</a></h3>
+<p><strong>Classic Load Balancer Has No Health Check Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.5; fedramp_moderate: CP-10; iso_27001_2022: A.5.30, A.8.32; nist_800_53_r5: CP-10, SI-4; pci_dss_v4.0: 11.5.1; soc2: CC7.1, A1.1, A1.2;</li>
+</ul>
+<p>Classic Load Balancer has no health check configured (or has health checks disabled). The CLB cannot detect unhealthy instances — every registered instance receives traffic regardless of health. An instance with a crashed application, hung process, or network failure still gets 1/N of the traffic; every request to that instance fails for the client.</p>
+<p><strong>Remediation:</strong> Configure a health check on the CLB: aws elb configure-health-check --load-balancer-name <name> --health-check Target=HTTP:80/health,Interval=30, Timeout=5,UnhealthyThreshold=2,HealthyThreshold=2. Pick a target endpoint that exercises the application&#x27;s basic functionality (database reachability, dependency check) rather than a static OK page. Better long-term: migrate to ALB (CTL.ELB.LIFECYCLE.CLB.MIGRATION.001) — ALB target-group health checks are richer (matcher codes, multiple paths, advanced options).</name></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbconnlogghostbucket001">CTL.ELB.CONNLOG.GHOST.BUCKET.001<a href="#ctlelbconnlogghostbucket001" class="hash-link" aria-label="Direct link to CTL.ELB.CONNLOG.GHOST.BUCKET.001" title="Direct link to CTL.ELB.CONNLOG.GHOST.BUCKET.001" translate="no">​</a></h3>
+<p><strong>NLB Connection Log References Deleted S3 Bucket</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-2, AU-9, CM-3; iso_27001_2022: A.5.16, A.8.15; nist_800_53_r5: AU-2, AU-9, CM-2, CM-3; pci_dss_v4.0: 10.5; soc2: CC7.1, CC7.2, CC8.1;</li>
+</ul>
+<p>Network Load Balancer connection logging is configured with an S3 bucket name that doesn&#x27;t exist. NLB writes silently fail; TLS handshake forensics are lost despite the configuration showing logging enabled.</p>
+<p><strong>Remediation:</strong> Either recreate the bucket with the same name and the appropriate Config- delivery / ELB-write bucket policy, or repoint the NLB connection log destination at an existing bucket: aws elbv2 modify-load-balancer-attributes with connection_logs.s3.bucket=<new>. Pair with the existing CTL.ELB.GHOST.ACCESSLOG.001 control that catches the same shape on access logs.</new></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcrossaccountprivatelinkopen001">CTL.ELB.CROSSACCOUNT.PRIVATELINK.OPEN.001<a href="#ctlelbcrossaccountprivatelinkopen001" class="hash-link" aria-label="Direct link to CTL.ELB.CROSSACCOUNT.PRIVATELINK.OPEN.001" title="Direct link to CTL.ELB.CROSSACCOUNT.PRIVATELINK.OPEN.001" translate="no">​</a></h3>
+<p><strong>NLB PrivateLink Service Allows Connections from Any Account</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.20; fedramp_moderate: AC-3; iso_27001_2022: A.5.15, A.8.20; nist_800_53_r5: AC-3, AC-4, SC-7; pci_dss_v4.0: 1.2, 7.1; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>NLB is configured as a VPC endpoint service (PrivateLink) but the endpoint service permissions allow connections from any AWS account — no account restriction, no PrincipalOrgID condition. Any account can create a VPC endpoint targeting this NLB and route traffic to its backend services via PrivateLink. Open permissions defeat the purpose of PrivateLink (private connectivity with controlled access).</p>
+<p><strong>Remediation:</strong> Restrict allowed principals: aws ec2 modify-vpc-endpoint-service-permissions --service-id <id> --add-allowed-principals &quot;arn:aws:iam::<consumer-account>:root&quot; — and remove the wildcard. For organization-internal endpoint services, attach an SCP with aws:PrincipalOrgID so only org accounts can connect. Verify by attempting a connection from an out-of-org account — it must fail with a permission error before reaching the NLB.</consumer-account></id></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcrossaccountsharedblastradius001">CTL.ELB.CROSSACCOUNT.SHARED.BLASTRADIUS.001<a href="#ctlelbcrossaccountsharedblastradius001" class="hash-link" aria-label="Direct link to CTL.ELB.CROSSACCOUNT.SHARED.BLASTRADIUS.001" title="Direct link to CTL.ELB.CROSSACCOUNT.SHARED.BLASTRADIUS.001" translate="no">​</a></h3>
+<p><strong>Multiple Unrelated Services Share the Same ALB</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CM-2; iso_27001_2022: A.5.16, A.8.32; nist_800_53_r5: CM-2, SC-7; pci_dss_v4.0: 11.5.1; soc2: CC6.1, CC8.1;</li>
+</ul>
+<p>Multiple services from different teams or applications share the same ALB via listener rules. A single ALB-level change — TLS policy downgrade, WAF removal, security-group modification — affects every service behind it. The blast radius spans multiple service owners. Shared ALBs are sometimes intentional (cost optimization) but the increased blast radius warrants explicit acknowledgement. Heuristic threshold: more than 5 distinct services on one ALB.</p>
+<p><strong>Remediation:</strong> Either split the ALB along service / team boundaries (one ALB per major service) or document the shared-ALB choice with the affected teams and add change-control gating on any ALB-level modification (TLS policy, WAF, security group). Pair with CTL.ELB.WAF.NORULES.001 and CTL.ELB.WAF.COUNTONLY.001 — a misconfigured WAF on a shared ALB blast-radiuses across every tenant.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbcrosszone001">CTL.ELB.CROSSZONE.001<a href="#ctlelbcrosszone001" class="hash-link" aria-label="Direct link to CTL.ELB.CROSSZONE.001" title="Direct link to CTL.ELB.CROSSZONE.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Must Have Cross-Zone Load Balancing Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> ffiec: BCP; hipaa: 164.308(a)(7); soc2: A1.1;</li>
+</ul>
+<p>Load balancers must distribute traffic across all registered targets in all enabled Availability Zones. Without cross-zone balancing, uneven distribution can cause availability issues during AZ failures.</p>
+<p><strong>Remediation:</strong> Enable cross-zone load balancing. Run: aws elbv2 modify-load-balancer-attributes --load-balancer-arn xxx --attributes Key=load_balancing.cross_zone.enabled,Value=true</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbdeletionprotect001">CTL.ELB.DELETION.PROTECT.001<a href="#ctlelbdeletionprotect001" class="hash-link" aria-label="Direct link to CTL.ELB.DELETION.PROTECT.001" title="Direct link to CTL.ELB.DELETION.PROTECT.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Must Have Deletion Protection Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> resilience</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: CP-10; soc2: CC6.1;</li>
+</ul>
+<p>Production load balancers must have deletion protection enabled.</p>
+<p><strong>Remediation:</strong> Enable deletion protection.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbghostaccesslog001">CTL.ELB.GHOST.ACCESSLOG.001<a href="#ctlelbghostaccesslog001" class="hash-link" aria-label="Direct link to CTL.ELB.GHOST.ACCESSLOG.001" title="Direct link to CTL.ELB.GHOST.ACCESSLOG.001" translate="no">​</a></h3>
+<p><strong>ELB Access Log S3 Bucket Does Not Exist</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.1; fedramp_moderate: AU-2; hipaa: 164.312(b); iso_27001_2022: A.5.16, A.8.15; nist_800_53_r5: AU-2, AU-9, CM-2, CM-3; pci_dss_v4.0: 10.1, 10.5; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>ELB access logging is enabled but the S3 destination bucket has been deleted. The configuration shows &quot;access logging: enabled&quot; with the bucket name. An auditor sees access logging configured. Every log write fails silently. Same invisible-harmful pattern as CTL.CLOUDTRAIL.GHOST.S3BUCKET.001 — the logging appears configured, the destination is gone, the logs are silently lost.</p>
+<p><strong>Remediation:</strong> Either (a) recreate the bucket with the same name and restore the bucket policy granting the regional ELB log-delivery service account s3:PutObject, or (b) repoint the ELB at an existing audit bucket via aws elbv2 modify-load-balancer-attributes — Key access_logs.s3.bucket. Verify by triggering traffic and confirming a new log file appears in the bucket within five minutes. Audit the gap window: every request handled while the bucket was missing has no access-log record.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbghosttargetlambda001">CTL.ELB.GHOST.TARGET.LAMBDA.001<a href="#ctlelbghosttargetlambda001" class="hash-link" aria-label="Direct link to CTL.ELB.GHOST.TARGET.LAMBDA.001" title="Direct link to CTL.ELB.GHOST.TARGET.LAMBDA.001" translate="no">​</a></h3>
+<p><strong>Target Group References Deleted Lambda Function</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CM-2; iso_27001_2022: A.5.16, A.8.32; nist_800_53_r5: CM-2, CM-3, SC-7; pci_dss_v4.0: 11.5.1; soc2: CC6.1, CC8.1, A1.2;</li>
+</ul>
+<p>ELB target group of type Lambda references a Lambda function that has been deleted. Every request forwarded to this target group fails — the ALB attempts to invoke the Lambda, the invocation returns ResourceNotFoundException, and the response is 502 Bad Gateway. Distinct from CTL.ELB.TARGET.GHOST.001 (terminated EC2 instances) — the Lambda case is invisible at the EC2 inventory layer.</p>
+<p><strong>Remediation:</strong> Either redeploy the Lambda function (same name and version) or update the target group to register a different Lambda (aws elbv2 register-targets --target-group-arn <arn> --targets Id=<new-lambda-arn>). Audit the routing rules that forward to this target group — if the deletion was intentional, the rules also need to be repointed or removed.</new-lambda-arn></arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbghostwaf001">CTL.ELB.GHOST.WAF.001<a href="#ctlelbghostwaf001" class="hash-link" aria-label="Direct link to CTL.ELB.GHOST.WAF.001" title="Direct link to CTL.ELB.GHOST.WAF.001" translate="no">​</a></h3>
+<p><strong>ALB References Deleted WAF Web ACL</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.6; fedramp_moderate: SC-7; iso_27001_2022: A.5.16, A.8.20; nist_800_53_r5: SC-7, SI-3, SI-4, CM-2; pci_dss_v4.0: 6.4.2, 6.6; soc2: CC6.1, CC6.6, CC7.2;</li>
+</ul>
+<p>ALB has a WAF web ACL association but the web ACL has been deleted. The ALB&#x27;s WebACLArn references a non-existent web ACL. CTL.ELB.WAF.001 sees &quot;WAF associated&quot; and passes. The web ACL doesn&#x27;t exist — no rules evaluate, no requests are blocked. SQL injection, XSS, bot traffic, known-bad IPs all pass through. This is the false-protection archetype at the perimeter — the most dangerous location for false protection because every external request passes through.</p>
+<p><strong>Remediation:</strong> Either (a) recreate the web ACL with the original rule set and re-associate via aws wafv2 associate-web-acl — WebACLArn — ResourceArn, or (b) detach the dangling association and associate an existing web ACL. Confirm filtering is active by sending a request with a known-malicious payload (e.g., a SQL injection canary string) and verifying it&#x27;s blocked. Audit the gap window — every request handled while the WAF was a ghost passed through unfiltered.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbhttps001">CTL.ELB.HTTPS.001<a href="#ctlelbhttps001" class="hash-link" aria-label="Direct link to CTL.ELB.HTTPS.001" title="Direct link to CTL.ELB.HTTPS.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Must Redirect HTTP to HTTPS</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-8; gdpr: Art.32; hipaa: 164.312(e)(2)(ii); nist_800_53_r5: SC-8; pci_dss_v4.0: 4.2.1; soc2: CC6.6;</li>
+</ul>
+<p>Load balancers serving PHI must redirect all HTTP traffic to HTTPS. Allowing plaintext HTTP exposes data in transit to interception.</p>
+<p><strong>Remediation:</strong> Add a listener rule on port 80 that redirects to HTTPS (443) with status code 301.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbincomplete001">CTL.ELB.INCOMPLETE.001<a href="#ctlelbincomplete001" class="hash-link" aria-label="Direct link to CTL.ELB.INCOMPLETE.001" title="Direct link to CTL.ELB.INCOMPLETE.001" translate="no">​</a></h3>
+<p><strong>Complete Data Required for ELB Assessment</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+</ul>
+<p>Load balancer safety cannot be assessed when TLS configuration is missing from the snapshot. The extractor must populate loadbalancer.encryption.tls_1_2_or_higher.</p>
+<p><strong>Remediation:</strong> Re-run the extractor with ELB permissions: elasticloadbalancing:DescribeLoadBalancers, elasticloadbalancing:DescribeLoadBalancerAttributes, elasticloadbalancing:DescribeListeners.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelblifecycleclbmigration001">CTL.ELB.LIFECYCLE.CLB.MIGRATION.001<a href="#ctlelblifecycleclbmigration001" class="hash-link" aria-label="Direct link to CTL.ELB.LIFECYCLE.CLB.MIGRATION.001" title="Direct link to CTL.ELB.LIFECYCLE.CLB.MIGRATION.001" translate="no">​</a></h3>
+<p><strong>Classic Load Balancer Still in Use</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.5; fedramp_moderate: SC-7; iso_27001_2022: A.8.20, A.8.22; nist_800_53_r5: CM-2, SC-7, SI-2; pci_dss_v4.0: 6.6; soc2: CC6.1, CC6.6, A1.2;</li>
+</ul>
+<p>Classic Load Balancer is still in active use. CLB is legacy infrastructure: AWS recommends migration to ALB or NLB. CLBs lack WAF integration (no application-layer filtering), modern TLS policies, authentication integration (OIDC/Cognito on ALB), content-based routing, HTTP/2, WebSocket, and Lambda targets. Workloads on CLB miss security and operational features that ALB ships with.</p>
+<p><strong>Remediation:</strong> Migrate to ALB. Provision an ALB in the same VPC and AZs, recreate listeners and target groups, register targets, and switch DNS / Route 53 aliases from the CLB endpoint to the ALB endpoint. Run both in parallel during the cut-over window to validate. After traffic moves, delete the CLB. Migration unlocks WAF integration, modern TLS policies, authentication actions, content-based routing, and the alarm/auth controls in this catalog.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelblifecycledormant001">CTL.ELB.LIFECYCLE.DORMANT.001<a href="#ctlelblifecycledormant001" class="hash-link" aria-label="Direct link to CTL.ELB.LIFECYCLE.DORMANT.001" title="Direct link to CTL.ELB.LIFECYCLE.DORMANT.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Has No Traffic in 90+ Days</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CM-2; iso_27001_2022: A.5.16, A.8.32; nist_800_53_r5: CM-2, CM-3, SA-22; pci_dss_v4.0: 1.2; soc2: CC6.1, CC8.1;</li>
+</ul>
+<p>Load balancer has processed no requests (RequestCount for ALB, ActiveFlowCount for NLB) in more than 90 days. The ALB/NLB/CLB exists with listeners, target groups, security groups, WAF association, and TLS configuration but serves no traffic. Latent infrastructure: security groups still allow inbound traffic, the ALB still costs money, and an internet-facing dormant ALB is a forgotten entry point reachable from the internet.</p>
+<p><strong>Remediation:</strong> Audit the LB&#x27;s CloudTrail history to confirm dormancy. If truly unused, delete the load balancer (aws elbv2 delete-load-balancer --load-balancer-arn <arn>) along with associated target groups and listener rules. If retained for future use, restrict the security group to a minimal source set, document the planned reactivation, and attach a request-count alarm so any traffic surfaces immediately.</arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelblifecycleorphantargetgroup001">CTL.ELB.LIFECYCLE.ORPHAN.TARGETGROUP.001<a href="#ctlelblifecycleorphantargetgroup001" class="hash-link" aria-label="Direct link to CTL.ELB.LIFECYCLE.ORPHAN.TARGETGROUP.001" title="Direct link to CTL.ELB.LIFECYCLE.ORPHAN.TARGETGROUP.001" translate="no">​</a></h3>
+<p><strong>Target Group Not Associated with Any Load Balancer</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CM-2; iso_27001_2022: A.5.16, A.8.32; nist_800_53_r5: CM-2, CM-3; pci_dss_v4.0: 1.2; soc2: CC6.1, CC8.1;</li>
+</ul>
+<p>ELB target group exists but is not associated with any ALB, NLB, or CLB listener. The target group has registered targets, health-check configuration, and attributes — but no load balancer routes traffic to it. Typically the load balancer was deleted but the target group wasn&#x27;t, or the target group was created for a service that was never deployed.</p>
+<p><strong>Remediation:</strong> Either reattach the target group to an active load balancer&#x27;s listener (modify-listener or create-rule with a forward action), or delete it (aws elbv2 delete-target-group --target-group-arn <arn>). Before deletion, audit registered targets — they may still be running production workloads and the orphan target group may be the only documentation that the workload exists.</arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelblistenerdefaultforward001">CTL.ELB.LISTENER.DEFAULTFORWARD.001<a href="#ctlelblistenerdefaultforward001" class="hash-link" aria-label="Direct link to CTL.ELB.LISTENER.DEFAULTFORWARD.001" title="Direct link to CTL.ELB.LISTENER.DEFAULTFORWARD.001" translate="no">​</a></h3>
+<p><strong>ALB Listener Default Action Forwards Without Authentication</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AC-3; iso_27001_2022: A.5.15, A.8.3; nist_800_53_r5: AC-3, SC-7; pci_dss_v4.0: 7.1, 7.2; soc2: CC6.1, CC6.3;</li>
+</ul>
+<p>ALB listener&#x27;s default action forwards to a target group without any authentication action AND the listener has at least one rule that DOES carry authentication. The default rule catches every request that doesn&#x27;t match a specific rule. If specific rules require auth but the default doesn&#x27;t, any path not covered by a specific rule reaches the backend without authentication. Detects inconsistency, not the absence of auth — listeners with no auth on any rule are out of scope.</p>
+<p><strong>Remediation:</strong> Add an authenticate-oidc or authenticate-cognito action to the listener&#x27;s default action chain (action types compose; auth then forward). For paths that should be public, define explicit rules with no auth before the default — the rule order matters. Verify with a request to a path that doesn&#x27;t match any specific rule: the response should be a redirect to login or 401, not the backend&#x27;s response.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelblistenerghost001">CTL.ELB.LISTENER.GHOST.001<a href="#ctlelblistenerghost001" class="hash-link" aria-label="Direct link to CTL.ELB.LISTENER.GHOST.001" title="Direct link to CTL.ELB.LISTENER.GHOST.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Listener Rule Forwards to Deleted Target Group</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CM-8; nist_800_53_r5: CM-8; pci_dss_v4.0: 11.5.1; soc2: CC7.1;</li>
+</ul>
+<p>ALB or NLB listener rule has a forward action targeting a target group that has been deleted. The listener rule matches incoming requests — based on path, host, header, or other conditions — and attempts to forward them. The target group no longer exists, so every matched request returns 502/503. The listener rule appears correctly configured in the console; the failure surfaces only when production traffic hits the rule.</p>
+<p><strong>Remediation:</strong> Either delete the listener rule if it is no longer needed, or update its forward action to reference an existing target group (recreating the deleted one if the routing was intentional). Confirm no automation continues to generate these rules against deleted target groups.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelblog001">CTL.ELB.LOG.001<a href="#ctlelblog001" class="hash-link" aria-label="Direct link to CTL.ELB.LOG.001" title="Direct link to CTL.ELB.LOG.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Access Logging Must Be Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> hipaa: 164.312(b); soc2: CC7.1;</li>
+</ul>
+<p>Load balancer access logging must be enabled for audit and forensic analysis. Without access logs, request patterns and potential unauthorized access cannot be investigated after an incident.</p>
+<p><strong>Remediation:</strong> Enable access logging to an S3 bucket. Run: aws elbv2 modify-load-balancer-attributes --load-balancer-arn xxx --attributes Key=access_logs.s3.enabled,Value=true Key=access_logs.s3.bucket,Value=my-elb-logs</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelblogaccessbroad001">CTL.ELB.LOG.ACCESS.BROAD.001<a href="#ctlelblogaccessbroad001" class="hash-link" aria-label="Direct link to CTL.ELB.LOG.ACCESS.BROAD.001" title="Direct link to CTL.ELB.LOG.ACCESS.BROAD.001" translate="no">​</a></h3>
+<p><strong>ELB Access Log S3 Bucket Accessible to Overly Broad Principals</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: AC-3, AU-9; hipaa: 164.312(b), 164.312(c)(1); iso_27001_2022: A.5.15, A.8.15; nist_800_53_r5: AC-3, AU-9, AU-11; pci_dss_v4.0: 10.5; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>S3 bucket receiving ELB access logs has a bucket policy or ACL granting read access to broad principals (Principal: *, AuthenticatedUsers, or many cross-account principals without OrgID). Anyone with matching credentials reads the access trail.</p>
+<p><strong>Remediation:</strong> Tighten the bucket policy: restrict s3:GetObject to specific accounts or roles with legitimate need (security, compliance, the ELB&#x27;s logging service principal). Remove Principal: * grants; require aws:PrincipalOrgID for cross- account read. Audit existing principals listed in the policy and cull anyone without ongoing need.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbloglifecycle001">CTL.ELB.LOG.LIFECYCLE.001<a href="#ctlelbloglifecycle001" class="hash-link" aria-label="Direct link to CTL.ELB.LOG.LIFECYCLE.001" title="Direct link to CTL.ELB.LOG.LIFECYCLE.001" translate="no">​</a></h3>
+<p><strong>ELB Access Log S3 Bucket Has No Lifecycle Policy</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-11; iso_27001_2022: A.5.16, A.8.10; nist_800_53_r5: AU-11, SI-12; pci_dss_v4.0: 10.5.1, 10.7; soc2: CC7.1, CC8.1;</li>
+</ul>
+<p>S3 bucket receiving ELB access logs has no lifecycle policy. Logs accumulate indefinitely; storage cost grows linearly with traffic and retention windows aren&#x27;t enforced from the storage side.</p>
+<p><strong>Remediation:</strong> Add a lifecycle configuration to the access log bucket with rules matching the workload&#x27;s compliance retention requirement: aws s3api put-bucket-lifecycle-configuration with rules that transition objects to S3 Glacier after 90 days and expire them after the compliance window (typically 1 year for SOC 2/PCI, 6+ years for HIPAA). Lifecycle ensures costs stay bounded as traffic grows.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbnetworkinternalpublicsubnet001">CTL.ELB.NETWORK.INTERNAL.PUBLICSUBNET.001<a href="#ctlelbnetworkinternalpublicsubnet001" class="hash-link" aria-label="Direct link to CTL.ELB.NETWORK.INTERNAL.PUBLICSUBNET.001" title="Direct link to CTL.ELB.NETWORK.INTERNAL.PUBLICSUBNET.001" translate="no">​</a></h3>
+<p><strong>Internal Load Balancer Is in Public Subnets</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-7; iso_27001_2022: A.8.20, A.8.22; nist_800_53_r5: SC-7, AC-3; pci_dss_v4.0: 1.2, 1.3; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>Internal-scheme ALB or NLB is deployed in public subnets (subnets with a route to an internet gateway). Internal load balancers should be in private subnets — they&#x27;re not intended to receive internet traffic. The internal scheme prevents internet reachability regardless of subnet type, so the control flags a topology misconfiguration rather than an exposure: it indicates confusion about network design and may be a precursor to a future scheme flip that would inadvertently expose the LB.</p>
+<p><strong>Remediation:</strong> Move the load balancer to private subnets: aws elbv2 set-subnets --load-balancer-arn <arn> --subnets <private-subnet-a> <private-subnet-b>. Verify the subnets have no route to an internet gateway. If the LB legitimately needs internet reachability, change the scheme to internet-facing instead of leaving it in mismatched public subnets.</private-subnet-b></private-subnet-a></arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbnetworkinternetfacingprivatesubnet001">CTL.ELB.NETWORK.INTERNETFACING.PRIVATESUBNET.001<a href="#ctlelbnetworkinternetfacingprivatesubnet001" class="hash-link" aria-label="Direct link to CTL.ELB.NETWORK.INTERNETFACING.PRIVATESUBNET.001" title="Direct link to CTL.ELB.NETWORK.INTERNETFACING.PRIVATESUBNET.001" translate="no">​</a></h3>
+<p><strong>Internet-Facing Load Balancer Is in Private Subnets</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CP-7; iso_27001_2022: A.8.20, A.8.32; nist_800_53_r5: SC-7, CP-7; pci_dss_v4.0: 11.5.1; soc2: CC7.1, A1.1;</li>
+</ul>
+<p>Internet-facing ALB or NLB is deployed in private subnets (subnets without a route to an internet gateway). The load balancer can&#x27;t receive internet traffic — it has no public IP route. The scheme says internet-facing. The network says private. The load balancer is unreachable from the internet despite being configured as internet-facing.</p>
+<p><strong>Remediation:</strong> Move the load balancer to public subnets (subnets with a route to the internet gateway): aws elbv2 set-subnets --load-balancer-arn <arn> --subnets <public-subnet-a> <public-subnet-b>. Verify subnets have an IGW route. If the workload is internal-only, change the scheme to internal instead of fixing the subnet placement.</public-subnet-b></public-subnet-a></arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbnetworksingleaz001">CTL.ELB.NETWORK.SINGLEAZ.001<a href="#ctlelbnetworksingleaz001" class="hash-link" aria-label="Direct link to CTL.ELB.NETWORK.SINGLEAZ.001" title="Direct link to CTL.ELB.NETWORK.SINGLEAZ.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Subnets Are in a Single Availability Zone</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.5; fedramp_moderate: CP-7; iso_27001_2022: A.5.30, A.8.32; nist_800_53_r5: CP-7, CP-10, SC-7; pci_dss_v4.0: 11.5.1; soc2: A1.1, A1.2;</li>
+</ul>
+<p>ALB or NLB has subnets configured in only one Availability Zone. The load balancer itself has a single point of AZ failure — if the AZ goes down, the LB has no ENIs in any other AZ and the load balancer becomes unreachable. ALB requires a minimum of two subnets but doesn&#x27;t require they be in different AZs; two subnets in the same AZ satisfy the API requirement but provide no redundancy. The control checks UNIQUE AZ count, not subnet count.</p>
+<p><strong>Remediation:</strong> Add subnets in additional AZs to the load balancer: aws elbv2 set-subnets --load-balancer-arn <arn> --subnets <subnet-az-a> <subnet-az-b>. Verify the subnets resolve to distinct AvailabilityZone values. Pair with CTL.ELB.TARGET.SINGLEAZ.001 — distributing the load balancer across AZs is necessary but not sufficient; targets must also span AZs.</subnet-az-b></subnet-az-a></arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbnlbaccesslog001">CTL.ELB.NLB.ACCESSLOG.001<a href="#ctlelbnlbaccesslog001" class="hash-link" aria-label="Direct link to CTL.ELB.NLB.ACCESSLOG.001" title="Direct link to CTL.ELB.NLB.ACCESSLOG.001" translate="no">​</a></h3>
+<p><strong>NLB Access Logging Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: AU-2, AU-9, AU-12; hipaa: 164.312(b); iso_27001_2022: A.5.16, A.8.15; nist_800_53_r5: AU-2, AU-9, AU-12; pci_dss_v4.0: 10.2, 10.5; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>Network Load Balancer has access logging disabled. Connection-level audit data (source IP, port, accepted/rejected, bytes, timestamps) is not written to S3. Investigation of NLB-fronted incidents has no audit trail to query.</p>
+<p><strong>Remediation:</strong> Enable access logging on the NLB and point it at an S3 bucket: aws elbv2 modify-load-balancer-attributes with Attributes including access_logs.s3.enabled=true and access_logs.s3.bucket=<bucket>. Pair with the existing CTL.ELB.ACCESSLOG.PERMISSION control that catches misconfigured bucket policies.</bucket></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbnlbconnlog001">CTL.ELB.NLB.CONNLOG.001<a href="#ctlelbnlbconnlog001" class="hash-link" aria-label="Direct link to CTL.ELB.NLB.CONNLOG.001" title="Direct link to CTL.ELB.NLB.CONNLOG.001" translate="no">​</a></h3>
+<p><strong>NLB Connection Logging Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> audit</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: AU-2, AU-12; iso_27001_2022: A.5.16, A.8.15; nist_800_53_r5: AU-2, AU-9, AU-12; pci_dss_v4.0: 10.2; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>Network Load Balancer has connection logging disabled. Per-connection TLS handshake outcomes, cipher negotiations, and SNI values are not logged. TLS troubleshooting and connection-state forensics lose their primary data source.</p>
+<p><strong>Remediation:</strong> Enable connection logging: aws elbv2 modify-load-balancer-attributes with connection_logs.s3.enabled=true and a target bucket. Connection logs are distinct from access logs — they record TLS handshake details (negotiated cipher, client SNI, handshake outcome) that access logs don&#x27;t capture. Useful for diagnosing client-compatibility issues and TLS-policy-related failures.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbnlbtcp80notls001">CTL.ELB.NLB.TCP80.NOTLS.001<a href="#ctlelbnlbtcp80notls001" class="hash-link" aria-label="Direct link to CTL.ELB.NLB.TCP80.NOTLS.001" title="Direct link to CTL.ELB.NLB.TCP80.NOTLS.001" translate="no">​</a></h3>
+<p><strong>NLB Has TCP Listener on Port 80 Without Companion TLS Listener</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-8, SC-23; hipaa: 164.312(e)(1); iso_27001_2022: A.8.20, A.8.24; nist_800_53_r5: SC-8, SC-23; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>Network Load Balancer has a TCP listener on port 80 but no TLS listener on 443. NLBs pass through TCP without termination, so there is no TLS handshake at the LB layer — every byte transits in plaintext from client to backend.</p>
+<p><strong>Remediation:</strong> Either add a TLS listener on the NLB (aws elbv2 create-listener with Protocol=TLS,Port=443 and a configured SSL policy + certificate) and remove the TCP/80 listener, or enable TLS on the backend service and switch the NLB to TLS pass-through. NLBs that genuinely need to handle plaintext TCP (legacy protocols, internal-only) should be documented; production user-facing workloads on TCP/80 are almost always misconfiguration.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelborphannolistener001">CTL.ELB.ORPHAN.NOLISTENER.001<a href="#ctlelborphannolistener001" class="hash-link" aria-label="Direct link to CTL.ELB.ORPHAN.NOLISTENER.001" title="Direct link to CTL.ELB.ORPHAN.NOLISTENER.001" translate="no">​</a></h3>
+<p><strong>ELB Has No Listeners Configured</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> low</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> iso_27001_2022: A.5.9, A.8.10; nist_800_53_r5: CM-2, CM-8, SA-22; soc2: CC8.1;</li>
+</ul>
+<p>ALB or NLB exists with zero listeners. The load balancer can&#x27;t accept any traffic — it&#x27;s a configuration shell. Either left over from a half-deleted deployment or a new LB whose setup was abandoned mid-way.</p>
+<p><strong>Remediation:</strong> Either configure listeners (aws elbv2 create-listener) if the LB is intended to be in service, or delete the LB (aws elbv2 delete-load-balancer) if it isn&#x27;t. ALBs and NLBs cost the hourly rate plus LCU regardless of listener presence — listenerless LBs incur cost for no value.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbredirecttargethttp001">CTL.ELB.REDIRECT.TARGET.HTTP.001<a href="#ctlelbredirecttargethttp001" class="hash-link" aria-label="Direct link to CTL.ELB.REDIRECT.TARGET.HTTP.001" title="Direct link to CTL.ELB.REDIRECT.TARGET.HTTP.001" translate="no">​</a></h3>
+<p><strong>ELB Listener Redirects HTTP to Another HTTP Target</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-8, SC-23; hipaa: 164.312(e)(1); iso_27001_2022: A.8.20, A.8.24; nist_800_53_r5: SC-8, SC-23; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>ALB listener rule redirect action sends HTTP traffic to another HTTP target rather than to HTTPS. The redirect superficially looks correct but doesn&#x27;t move the user onto TLS — credentials and content stay in plaintext.</p>
+<p><strong>Remediation:</strong> Update the redirect action&#x27;s Protocol to HTTPS and Port to 443: aws elbv2 modify-rule with Action.RedirectConfig Protocol=HTTPS,Port=443. Verify by requesting <a href="http://app.example.com" target="_blank" rel="noopener noreferrer" class="">http://app.example.com</a> and confirming the response Location header points at https://. Pair with Strict-Transport-Security headers on the HTTPS responses to lock browsers into the secure path.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbsgghost001">CTL.ELB.SG.GHOST.001<a href="#ctlelbsgghost001" class="hash-link" aria-label="Direct link to CTL.ELB.SG.GHOST.001" title="Direct link to CTL.ELB.SG.GHOST.001" translate="no">​</a></h3>
+<p><strong>Load Balancer References Deleted Security Group</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> hygiene</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CM-8; nist_800_53_r5: CM-8; pci_dss_v4.0: 1.2.1; soc2: CC7.1;</li>
+</ul>
+<p>Load balancer is associated with one or more security groups that have been deleted. The SG reference remains on the load balancer but evaluates against a non-existent resource. The effective access-control state is undefined — depending on how AWS resolves the deleted reference, the load balancer may become unreachable or behave as if no rule applies at the SG layer. Either way, the load balancer is in an inconsistent state relative to the firewall policy it was deployed with.</p>
+<p><strong>Remediation:</strong> Replace the deleted SG references with intended live SGs. If the deletion was deliberate, update the load balancer&#x27;s SG association explicitly rather than leaving the stale reference. Investigate the deletion path that did not update the LB — a proper SG decommissioning runbook should update all dependents before deleting.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbsgnonstandardports001">CTL.ELB.SG.NONSTANDARD.PORTS.001<a href="#ctlelbsgnonstandardports001" class="hash-link" aria-label="Direct link to CTL.ELB.SG.NONSTANDARD.PORTS.001" title="Direct link to CTL.ELB.SG.NONSTANDARD.PORTS.001" translate="no">​</a></h3>
+<p><strong>ELB Security Group Allows Inbound on Non-Standard Ports</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 5.2; fedramp_moderate: AC-3, SC-7; iso_27001_2022: A.5.15, A.8.20; nist_800_53_r5: AC-3, SC-7; pci_dss_v4.0: 1.2, 1.3; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>ALB or NLB security group allows inbound traffic on ports other than 80 and 443 (or the configured listener ports). The extra open ports may have been left from early development, debugging tools, or test listeners — they widen the attack surface beyond what the load balancer&#x27;s listeners require.</p>
+<p><strong>Remediation:</strong> Reconcile the SG inbound rules with the load balancer&#x27;s listener ports. Remove SG rules for ports that don&#x27;t correspond to a listener: aws ec2 revoke-security-group-ingress with the extra port. Standard production ALB SGs typically need only 80 and 443 inbound from 0.0.0.0/0 for internet- facing or from internal CIDRs for internal LBs.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtargetempty001">CTL.ELB.TARGET.EMPTY.001<a href="#ctlelbtargetempty001" class="hash-link" aria-label="Direct link to CTL.ELB.TARGET.EMPTY.001" title="Direct link to CTL.ELB.TARGET.EMPTY.001" translate="no">​</a></h3>
+<p><strong>Target Group Associated with Listener Has No Registered Targets</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CP-7; iso_27001_2022: A.8.32; nist_800_53_r5: CP-7, CP-10, SI-4; pci_dss_v4.0: 11.5.1; soc2: CC7.1, A1.1, A1.2;</li>
+</ul>
+<p>ELB target group is associated with a listener (or listener rule) but has zero registered targets. The target group exists with health-check configuration and attributes but no instances, IPs, or Lambda functions are registered. Every request the load balancer forwards to this group returns 503 immediately. Distinct from orphan target groups (no listener at all — separate lifecycle concern).</p>
+<p><strong>Remediation:</strong> Either register targets via aws elbv2 register-targets — or, if the target group is no longer in use, remove the listener-rule association and delete the group (CTL.ELB.GHOST.* catches lingering orphans). For Auto Scaling Group-backed target groups, attach the ASG and let it register targets automatically.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtargetghost001">CTL.ELB.TARGET.GHOST.001<a href="#ctlelbtargetghost001" class="hash-link" aria-label="Direct link to CTL.ELB.TARGET.GHOST.001" title="Direct link to CTL.ELB.TARGET.GHOST.001" translate="no">​</a></h3>
+<p><strong>Target Group References Deregistered or Terminated Instances</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> hygiene</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CM-8; nist_800_53_r5: CM-8; pci_dss_v4.0: 11.5.1; soc2: CC7.1;</li>
+</ul>
+<p>ALB or NLB target group contains registered targets that are deregistered or reference terminated EC2 instances. Health checks continue to fire against non-existent targets, wasting health-check capacity and producing persistent unhealthy- target alerts that operators learn to ignore. If every target in the group is a ghost, listener rules that forward to it return 502/503 for every matching request.</p>
+<p><strong>Remediation:</strong> Deregister the ghost targets from the target group. If the target group has only ghost targets, delete the target group (and any listener rules that forward to it) or register fresh targets. Add target-group cleanup to the instance-termination runbook so deregistration happens alongside termination.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtargetnohealthy001">CTL.ELB.TARGET.NOHEALTHY.001<a href="#ctlelbtargetnohealthy001" class="hash-link" aria-label="Direct link to CTL.ELB.TARGET.NOHEALTHY.001" title="Direct link to CTL.ELB.TARGET.NOHEALTHY.001" translate="no">​</a></h3>
+<p><strong>Target Group Has Zero Healthy Targets</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> critical</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CP-7; iso_27001_2022: A.8.16, A.8.32; nist_800_53_r5: CP-7, CP-10, SI-4; pci_dss_v4.0: 11.5.1; soc2: CC7.1, A1.1, A1.2;</li>
+</ul>
+<p>ELB target group has registered targets but zero are passing health checks. Every request the load balancer forwards to this target group fails with 503. The target group exists. Targets are registered. None are healthy. Distinct from CTL.ELB.LISTENER.GHOST.001 (target group deleted) — here the group is intact but the backend is non-functional.</p>
+<p><strong>Remediation:</strong> Investigate the unhealthy targets via aws elbv2 describe-target-health — each unhealthy target carries a Reason code (Target.FailedHealthChecks, Target.NotInService, Target.NotRegistered). Common fixes: restart the application on instances, correct the health check path so the load balancer hits a route that returns 200, or open the security group so health-check traffic from the load balancer can reach the target port.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtargetsingleaz001">CTL.ELB.TARGET.SINGLEAZ.001<a href="#ctlelbtargetsingleaz001" class="hash-link" aria-label="Direct link to CTL.ELB.TARGET.SINGLEAZ.001" title="Direct link to CTL.ELB.TARGET.SINGLEAZ.001" translate="no">​</a></h3>
+<p><strong>Target Group Has All Targets in Single Availability Zone</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.5; fedramp_moderate: CP-7; iso_27001_2022: A.5.30, A.8.32; nist_800_53_r5: CP-7, CP-10; pci_dss_v4.0: 11.5.1; soc2: A1.1, A1.2;</li>
+</ul>
+<p>ELB target group has all registered targets in a single Availability Zone. AZ failure (hardware, network, power) takes every target offline simultaneously — the target group has zero healthy targets and every request returns 503. The load balancer itself may span multiple AZs but has nothing to route to once the AZ holding all targets fails.</p>
+<p><strong>Remediation:</strong> Distribute targets across at least two AZs aligned with the load balancer&#x27;s subnet AZs. For Auto Scaling Group-backed target groups, set the ASG to span multiple AZs and the appropriate HealthCheckGracePeriod. For manually registered targets, deregister and re-register from instances in additional AZs. Verify via aws elbv2 describe-target-health that targets appear in distinct AvailabilityZone values.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtgbackendplaintext001">CTL.ELB.TG.BACKEND.PLAINTEXT.001<a href="#ctlelbtgbackendplaintext001" class="hash-link" aria-label="Direct link to CTL.ELB.TG.BACKEND.PLAINTEXT.001" title="Direct link to CTL.ELB.TG.BACKEND.PLAINTEXT.001" translate="no">​</a></h3>
+<p><strong>ELB Target Group Uses HTTP to Backend Despite Backend Supporting HTTPS</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-8, SC-23; hipaa: 164.312(e)(1); iso_27001_2022: A.8.20, A.8.24; nist_800_53_r5: SC-8, SC-23; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>Target group&#x27;s Protocol is HTTP even though the backend supports HTTPS (port 443 reachable). The ALB terminates TLS at the listener and re-encodes the request as plaintext over the network to the target. Defense-in-depth requires TLS end-to-end for sensitive workloads.</p>
+<p><strong>Remediation:</strong> Update the target group protocol to HTTPS and the port to the backend&#x27;s TLS port: aws elbv2 modify-target-group with Protocol=HTTPS,Port=443. Verify backend targets present a valid certificate (or accept self-signed if internal). The ALB will then re-encrypt to the backend rather than send plaintext over the VPC network.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtghealthcheckprotocol001">CTL.ELB.TG.HEALTHCHECK.PROTOCOL.001<a href="#ctlelbtghealthcheckprotocol001" class="hash-link" aria-label="Direct link to CTL.ELB.TG.HEALTHCHECK.PROTOCOL.001" title="Direct link to CTL.ELB.TG.HEALTHCHECK.PROTOCOL.001" translate="no">​</a></h3>
+<p><strong>ELB Target Group Health Check Uses HTTP When Target Protocol Is HTTPS</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-8, SI-4; iso_27001_2022: A.8.20, A.8.24; nist_800_53_r5: SC-8, SI-4; pci_dss_v4.0: 4.2; soc2: CC6.1, CC7.1;</li>
+</ul>
+<p>Target group&#x27;s traffic protocol is HTTPS but the health check protocol is HTTP. Health checks bypass the TLS configuration of the application — a backend whose HTTPS endpoint is broken can still pass health checks if its HTTP endpoint works.</p>
+<p><strong>Remediation:</strong> Update the target group health check protocol to match traffic protocol: aws elbv2 modify-target-group with HealthCheckProtocol=HTTPS. The health check then validates that the backend&#x27;s TLS endpoint is healthy — broken certificates, expired keys, or TLS misconfigurations cause health failures promptly rather than going undetected.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtghealthchecktimeout001">CTL.ELB.TG.HEALTHCHECK.TIMEOUT.001<a href="#ctlelbtghealthchecktimeout001" class="hash-link" aria-label="Direct link to CTL.ELB.TG.HEALTHCHECK.TIMEOUT.001" title="Direct link to CTL.ELB.TG.HEALTHCHECK.TIMEOUT.001" translate="no">​</a></h3>
+<p><strong>ELB Target Group Health Check Timeout Equals or Exceeds Interval</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> iso_27001_2022: A.8.16; nist_800_53_r5: SI-4; soc2: CC7.1, A1.1;</li>
+</ul>
+<p>Target group health check timeout is greater than or equal to the health check interval. Health checks overlap — a slow check from one cycle may still be running when the next cycle starts. The result is unstable health detection: targets thrash between healthy and unhealthy unpredictably.</p>
+<p><strong>Remediation:</strong> Set HealthCheckTimeoutSeconds &lt; HealthCheckIntervalSeconds. Typical defaults are interval=30s, timeout=5s. Tune both based on the backend&#x27;s expected response time; timeout should be 25%–50% of the interval so the previous check completes well before the next begins.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtls001">CTL.ELB.TLS.001<a href="#ctlelbtls001" class="hash-link" aria-label="Direct link to CTL.ELB.TLS.001" title="Direct link to CTL.ELB.TLS.001" translate="no">​</a></h3>
+<p><strong>Load Balancer Must Use TLS 1.2 or Higher</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: SC-8; ffiec: ISH-4; gdpr: Art.32; hipaa: 164.312(e)(2)(ii); nist_800_53_r5: SC-8; pci_dss_v4.0: 4.2.1; soc2: CC6.6;</li>
+</ul>
+<p>Application and Network Load Balancers must use TLS 1.2 or higher for HTTPS listeners. Older TLS versions have known vulnerabilities.</p>
+<p><strong>Remediation:</strong> Update the HTTPS listener to use an ELBSecurityPolicy that enforces TLS 1.2 minimum (e.g., ELBSecurityPolicy-TLS-1-2-2017-01).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbtlscustomweakcipher001">CTL.ELB.TLS.CUSTOM.WEAKCIPHER.001<a href="#ctlelbtlscustomweakcipher001" class="hash-link" aria-label="Direct link to CTL.ELB.TLS.CUSTOM.WEAKCIPHER.001" title="Direct link to CTL.ELB.TLS.CUSTOM.WEAKCIPHER.001" translate="no">​</a></h3>
+<p><strong>ELB Custom SSL Policy Includes Weak Ciphers</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-8, SC-13; hipaa: 164.312(e)(1), 164.312(e)(2)(ii); iso_27001_2022: A.8.24; nist_800_53_r5: SC-8, SC-12, SC-13; pci_dss_v4.0: 4.2; soc2: CC6.1, CC6.7;</li>
+</ul>
+<p>ELB listener uses a custom SSL policy whose cipher list contains weak entries — RC4, DES, 3DES, NULL, EXPORT, or anonymous Diffie-Hellman ciphers. The policy may appear locked-down but accepts cipher suites known-broken at the cryptographic level.</p>
+<p><strong>Remediation:</strong> Switch to one of AWS&#x27;s predefined modern SSL policies (e.g., ELBSecurityPolicy-TLS13-1-2-2021-06 or ELBSecurityPolicy-FS-1-2-Res-2020-10): aws elbv2 modify-listener with SslPolicy=<modern-policy>. If a custom policy is required, remove RC4, DES, 3DES, NULL, EXPORT, and anonymous DH cipher suites and require modern key exchange (ECDHE).</modern-policy></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwaf001">CTL.ELB.WAF.001<a href="#ctlelbwaf001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.001" title="Direct link to CTL.ELB.WAF.001" translate="no">​</a></h3>
+<p><strong>Application Load Balancer Must Have WAF Web ACL Associated</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> network</li>
+<li class=""><strong>Compliance:</strong> nist_800_53_r5: SC-7; soc2: CC6.6;</li>
+</ul>
+<p>Internet-facing ALBs must have an AWS WAF web ACL associated.</p>
+<p><strong>Remediation:</strong> Associate a WAF web ACL with the ALB.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwafbypasscf001">CTL.ELB.WAF.BYPASS.CF.001<a href="#ctlelbwafbypasscf001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.BYPASS.CF.001" title="Direct link to CTL.ELB.WAF.BYPASS.CF.001" translate="no">​</a></h3>
+<p><strong>CloudFront-Fronted ALB Without Custom Header Verification</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-7, SC-8; iso_27001_2022: A.8.20, A.8.22; nist_800_53_r5: SC-7, SC-8; pci_dss_v4.0: 1.3; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>ALB sits behind a CloudFront distribution but the ALB does not require a CloudFront-set custom header. Direct internet requests to the ALB DNS name reach the application without traversing CloudFront — bypassing CloudFront&#x27;s WAF, caching, and Shield Advanced protection.</p>
+<p><strong>Remediation:</strong> Configure CloudFront to set a custom request header (e.g., X-Origin-Verify with a long random secret stored in Secrets Manager) and add a WAF rule on the ALB requiring that header on every request. Direct ALB requests fail; only requests from the configured CloudFront distribution succeed. Rotate the header value periodically. The pattern is standard CloudFront-to-ALB origin protection.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwafbypassdirect001">CTL.ELB.WAF.BYPASS.DIRECT.001<a href="#ctlelbwafbypassdirect001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.BYPASS.DIRECT.001" title="Direct link to CTL.ELB.WAF.BYPASS.DIRECT.001" translate="no">​</a></h3>
+<p><strong>Backend Targets Are Directly Accessible Bypassing ALB and WAF</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 5.1, 5.2; fedramp_moderate: SC-7; iso_27001_2022: A.8.20, A.8.22; nist_800_53_r5: SC-7, SI-3, AC-3; pci_dss_v4.0: 1.2, 1.3, 6.6; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>Backend targets behind an ALB have security groups that allow inbound traffic from sources OTHER than the ALB&#x27;s security group. An attacker who can reach the target IP directly bypasses every ALB-layer control: WAF, TLS termination, access logging, authentication, rate limiting. The ALB&#x27;s security controls apply only to traffic that flows through the ALB. Backend security groups should permit inbound only from the ALB&#x27;s security group on the application port.</p>
+<p><strong>Remediation:</strong> Tighten the target instances&#x27; security group: keep one inbound rule allowing the application port from the ALB&#x27;s security-group ID, and remove every other inbound rule on that port (especially 0.0.0.0/0, broad CIDRs, or peer security groups that aren&#x27;t the ALB&#x27;s). Verify by attempting a direct connection from a test instance — the connection must fail. The ALB&#x27;s WAF, TLS, auth, and access logging then become the only path to the backend.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwafconsistency001">CTL.ELB.WAF.CONSISTENCY.001<a href="#ctlelbwafconsistency001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.CONSISTENCY.001" title="Direct link to CTL.ELB.WAF.CONSISTENCY.001" translate="no">​</a></h3>
+<p><strong>WAF Coverage Inconsistent Across Account&#x27;s ALBs</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> fedramp_moderate: CM-2, SC-7; iso_27001_2022: A.5.16, A.8.16; nist_800_53_r5: CM-2, SC-7, SI-4; pci_dss_v4.0: 6.4.2; soc2: CC6.1, CC8.1;</li>
+</ul>
+<p>Some ALBs in the account have a WAF web ACL associated and others don&#x27;t. Mixed WAF posture means an attacker who identifies an unprotected ALB sidesteps the entire perimeter defense — finding the gap is enumeration rather than exploitation work.</p>
+<p><strong>Remediation:</strong> Either attach a web ACL to every ALB or document why specific ALBs are exempt (internal-only, non-production with limited reach, etc.). Use AWS Firewall Manager to enforce uniform WAF association across the organization; Firewall Manager flags non-compliant resources and can auto-remediate.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwafcountonly001">CTL.ELB.WAF.COUNTONLY.001<a href="#ctlelbwafcountonly001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.COUNTONLY.001" title="Direct link to CTL.ELB.WAF.COUNTONLY.001" translate="no">​</a></h3>
+<p><strong>ALB WAF Web ACL Rules Are in COUNT Mode Only</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.6; fedramp_moderate: SC-7; iso_27001_2022: A.8.20, A.8.22; nist_800_53_r5: SC-7, SI-3, SI-4; pci_dss_v4.0: 6.4.2, 6.6; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>ALB WAF web ACL has rules but every rule is in COUNT mode. COUNT mode evaluates requests and records matches but takes no action — the request continues to the backend. SQL injection payloads, known-bad IPs, bot traffic — all matched, all logged, all forwarded. COUNT is intended for testing new rules before enabling BLOCK; production-deployed COUNT-only WAF detects threats without preventing them. Same false- protection class as no-rule WAF — slightly less invisible (logs exist) but no actual blocking.</p>
+<p><strong>Remediation:</strong> Switch rules from COUNT to BLOCK after a brief bake-in window. Use the WAF console (Override statement → none) or aws wafv2 update-web-acl with the rule&#x27;s Action set to Block instead of Override+Count. Move one rule group at a time, watch the WAF logs for false positives between transitions, and revert if legitimate traffic gets blocked. The common failure: rules deployed in COUNT for testing, testing completed, nobody switched to BLOCK.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwafmanaged001">CTL.ELB.WAF.MANAGED.001<a href="#ctlelbwafmanaged001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.MANAGED.001" title="Direct link to CTL.ELB.WAF.MANAGED.001" translate="no">​</a></h3>
+<p><strong>ELB WAF Has No AWS Managed Rule Groups</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-7, SI-3; hipaa: 164.312(c)(1); iso_27001_2022: A.8.7, A.8.16; nist_800_53_r5: SC-7, SI-3, SI-4; pci_dss_v4.0: 6.4.2; soc2: CC6.1, CC6.6;</li>
+</ul>
+<p>ALB has a WAF web ACL associated but the ACL contains no AWS managed rule groups. The team has assembled the WAF surface themselves without the OWASP-aligned baseline AWS provides for free. Common attacks (SQLi, XSS, command injection, known-bad IPs) may not be covered.</p>
+<p><strong>Remediation:</strong> Add AWS managed rule groups to the web ACL: aws wafv2 update-web-acl with rules including AWSManagedRulesCommonRuleSet (OWASP Top 10), AWSManagedRulesKnownBadInputsRuleSet, AWSManagedRulesAmazonIpReputationList, and protocol-specific groups (LinuxRuleSet, WindowsRuleSet, SQLiRuleSet) where appropriate. Managed rules are free per WCU; the only cost is WCU consumption against the ACL&#x27;s capacity.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwafnolog001">CTL.ELB.WAF.NOLOG.001<a href="#ctlelbwafnolog001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.NOLOG.001" title="Direct link to CTL.ELB.WAF.NOLOG.001" translate="no">​</a></h3>
+<p><strong>ALB WAF Logging Not Enabled</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> medium</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> detection</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.6; fedramp_moderate: AU-6; iso_27001_2022: A.8.15, A.8.16; nist_800_53_r5: AU-2, AU-6, SI-4; pci_dss_v4.0: 10.6; soc2: CC7.1, CC7.2;</li>
+</ul>
+<p>ALB has a WAF web ACL associated and the web ACL exists, but WAF logging is not enabled. Without WAF logs, which requests were blocked is unknown (cannot verify the WAF is filtering), which requests matched rules is unknown (cannot tune rules), which IPs trigger rules is unknown (cannot identify attackers), and false positive analysis is impossible (legitimate requests blocked but nobody knows). WAF rules still block requests in the data plane; logging is the operational-intelligence layer.</p>
+<p><strong>Remediation:</strong> Enable logging on the WAF web ACL pointing at a Kinesis Firehose, CloudWatch Logs group, or S3 bucket: aws wafv2 put-logging-configuration --logging-configuration ResourceArn=<webacl-arn>, LogDestinationConfigs=<destination-arn>. Pair with a CloudWatch alarm on the BlockedRequests metric so spikes in blocking surface immediately.</destination-arn></webacl-arn></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwafnorules001">CTL.ELB.WAF.NORULES.001<a href="#ctlelbwafnorules001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.NORULES.001" title="Direct link to CTL.ELB.WAF.NORULES.001" translate="no">​</a></h3>
+<p><strong>ALB WAF Web ACL Has No Rules</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> governance</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 2.6; fedramp_moderate: SC-7; iso_27001_2022: A.8.20, A.8.22; nist_800_53_r5: SC-7, SI-3, SI-4; pci_dss_v4.0: 6.4.2, 6.6; soc2: CC6.1, CC6.6, CC7.1;</li>
+</ul>
+<p>ALB has a WAF web ACL associated and the web ACL exists, but the web ACL contains zero rules — no managed rule groups, no custom rules, no rate-based rules. The WAF evaluates nothing. Every request passes through the default action (typically Allow). An auditor checking &quot;is WAF configured?&quot; sees the association and marks it compliant. The WAF provides the appearance of application-layer filtering without any filtering. Same false-protection class as DMARC p=none and rotation-enabled-but-Lambda-deleted.</p>
+<p><strong>Remediation:</strong> Add at minimum the AWS managed core rule set (AWSManagedRulesCommonRuleSet), the SQL injection rule set (AWSManagedRulesSQLiRuleSet), and a rate-based rule for IP-level throttling. Use the AWS WAF console or aws wafv2 update-web-acl. Run rules in COUNT mode initially (CTL.ELB.WAF.COUNTONLY.001 catches leaving them in COUNT) to surface false positives before flipping to BLOCK.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ctlelbwafratelimit001">CTL.ELB.WAF.RATELIMIT.001<a href="#ctlelbwafratelimit001" class="hash-link" aria-label="Direct link to CTL.ELB.WAF.RATELIMIT.001" title="Direct link to CTL.ELB.WAF.RATELIMIT.001" translate="no">​</a></h3>
+<p><strong>ELB WAF Has No Rate-Based Rule</strong></p>
+<ul>
+<li class=""><strong>Severity:</strong> high</li>
+<li class=""><strong>Type:</strong> unsafe_state</li>
+<li class=""><strong>Domain:</strong> exposure</li>
+<li class=""><strong>Compliance:</strong> cis_aws_v3.0: 1.16; fedramp_moderate: SC-5, SI-4; hipaa: 164.312(c)(1); iso_27001_2022: A.8.7, A.8.16; nist_800_53_r5: SC-5, SI-4; pci_dss_v4.0: 6.4.2; soc2: CC6.1, CC7.2, A1.1;</li>
+</ul>
+<p>ALB has a WAF web ACL associated but the ACL contains no rate-based rule. Application- layer DDoS, credential-stuffing storms, and scraping bots aren&#x27;t throttled at the WAF — attacks pass through to the application.</p>
+<p><strong>Remediation:</strong> Add a rate-based rule: aws wafv2 update-web-acl with a Rule of type RateBasedStatement. Typical thresholds start at 2000 requests per 5-minute window per source IP for general application traffic; tighter (500–1000) for sign-in endpoints and high-cost API paths. Layer multiple rate-based rules if different paths warrant different thresholds.</p>
+<hr></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/invariants-reference/catalog/elasticache"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">ELASTICACHE (4)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/invariants-reference/catalog/emr"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">EMR (5)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#ctlelbaccesslogpermission001" class="table-of-contents__link toc-highlight">CTL.ELB.ACCESSLOG.PERMISSION.001</a></li><li><a href="#ctlelbalarm5xx001" class="table-of-contents__link toc-highlight">CTL.ELB.ALARM.5XX.001</a></li><li><a href="#ctlelbalarmrejectedconnection001" class="table-of-contents__link toc-highlight">CTL.ELB.ALARM.REJECTEDCONNECTION.001</a></li><li><a href="#ctlelbalarmresponsetime001" class="table-of-contents__link toc-highlight">CTL.ELB.ALARM.RESPONSETIME.001</a></li><li><a href="#ctlelbalarmtlserror001" class="table-of-contents__link toc-highlight">CTL.ELB.ALARM.TLSERROR.001</a></li><li><a href="#ctlelbalarmunhealthyhost001" class="table-of-contents__link toc-highlight">CTL.ELB.ALARM.UNHEALTHYHOST.001</a></li><li><a href="#ctlelbalbdesyncmode001" class="table-of-contents__link toc-highlight">CTL.ELB.ALB.DESYNC.MODE.001</a></li><li><a href="#ctlelbalbdropinvalidheaders001" class="table-of-contents__link toc-highlight">CTL.ELB.ALB.DROP.INVALID.HEADERS.001</a></li><li><a href="#ctlelbalbidletimeoutlong001" class="table-of-contents__link toc-highlight">CTL.ELB.ALB.IDLE.TIMEOUT.LONG.001</a></li><li><a href="#ctlelbalbstickycookieinsecure001" class="table-of-contents__link toc-highlight">CTL.ELB.ALB.STICKY.COOKIE.INSECURE.001</a></li><li><a href="#ctlelbauthcognitoghost001" class="table-of-contents__link toc-highlight">CTL.ELB.AUTH.COGNITO.GHOST.001</a></li><li><a href="#ctlelbauthoidcsecretplaintext001" class="table-of-contents__link toc-highlight">CTL.ELB.AUTH.OIDC.SECRET.PLAINTEXT.001</a></li><li><a href="#ctlelbauthsessiontimeout001" class="table-of-contents__link toc-highlight">CTL.ELB.AUTH.SESSION.TIMEOUT.001</a></li><li><a href="#ctlelbauthunauthenticatedallow001" class="table-of-contents__link toc-highlight">CTL.ELB.AUTH.UNAUTHENTICATED.ALLOW.001</a></li><li><a href="#ctlelbazsame001" class="table-of-contents__link toc-highlight">CTL.ELB.AZ.SAME.001</a></li><li><a href="#ctlelbbackenddirectaccess001" class="table-of-contents__link toc-highlight">CTL.ELB.BACKEND.DIRECT.ACCESS.001</a></li><li><a href="#ctlelbcertchainincomplete001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.CHAIN.INCOMPLETE.001</a></li><li><a href="#ctlelbcertexpirywarn001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.EXPIRY.WARN.001</a></li><li><a href="#ctlelbcertghost001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.GHOST.001</a></li><li><a href="#ctlelbcertmismatch001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.MISMATCH.001</a></li><li><a href="#ctlelbcertnotacm001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.NOTACM.001</a></li><li><a href="#ctlelbcertrenewalfailing001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.RENEWAL.FAILING.001</a></li><li><a href="#ctlelbcertsancoverage001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.SAN.COVERAGE.001</a></li><li><a href="#ctlelbcertselfsigned001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.SELFSIGNED.001</a></li><li><a href="#ctlelbcertstale001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.STALE.001</a></li><li><a href="#ctlelbcertweakkey001" class="table-of-contents__link toc-highlight">CTL.ELB.CERT.WEAKKEY.001</a></li><li><a href="#ctlelbclbbackendplaintext001" class="table-of-contents__link toc-highlight">CTL.ELB.CLB.BACKEND.PLAINTEXT.001</a></li><li><a href="#ctlelbclbdraining001" class="table-of-contents__link toc-highlight">CTL.ELB.CLB.DRAINING.001</a></li><li><a href="#ctlelbclbhealthcheckmissing001" class="table-of-contents__link toc-highlight">CTL.ELB.CLB.HEALTHCHECK.MISSING.001</a></li><li><a href="#ctlelbconnlogghostbucket001" class="table-of-contents__link toc-highlight">CTL.ELB.CONNLOG.GHOST.BUCKET.001</a></li><li><a href="#ctlelbcrossaccountprivatelinkopen001" class="table-of-contents__link toc-highlight">CTL.ELB.CROSSACCOUNT.PRIVATELINK.OPEN.001</a></li><li><a href="#ctlelbcrossaccountsharedblastradius001" class="table-of-contents__link toc-highlight">CTL.ELB.CROSSACCOUNT.SHARED.BLASTRADIUS.001</a></li><li><a href="#ctlelbcrosszone001" class="table-of-contents__link toc-highlight">CTL.ELB.CROSSZONE.001</a></li><li><a href="#ctlelbdeletionprotect001" class="table-of-contents__link toc-highlight">CTL.ELB.DELETION.PROTECT.001</a></li><li><a href="#ctlelbghostaccesslog001" class="table-of-contents__link toc-highlight">CTL.ELB.GHOST.ACCESSLOG.001</a></li><li><a href="#ctlelbghosttargetlambda001" class="table-of-contents__link toc-highlight">CTL.ELB.GHOST.TARGET.LAMBDA.001</a></li><li><a href="#ctlelbghostwaf001" class="table-of-contents__link toc-highlight">CTL.ELB.GHOST.WAF.001</a></li><li><a href="#ctlelbhttps001" class="table-of-contents__link toc-highlight">CTL.ELB.HTTPS.001</a></li><li><a href="#ctlelbincomplete001" class="table-of-contents__link toc-highlight">CTL.ELB.INCOMPLETE.001</a></li><li><a href="#ctlelblifecycleclbmigration001" class="table-of-contents__link toc-highlight">CTL.ELB.LIFECYCLE.CLB.MIGRATION.001</a></li><li><a href="#ctlelblifecycledormant001" class="table-of-contents__link toc-highlight">CTL.ELB.LIFECYCLE.DORMANT.001</a></li><li><a href="#ctlelblifecycleorphantargetgroup001" class="table-of-contents__link toc-highlight">CTL.ELB.LIFECYCLE.ORPHAN.TARGETGROUP.001</a></li><li><a href="#ctlelblistenerdefaultforward001" class="table-of-contents__link toc-highlight">CTL.ELB.LISTENER.DEFAULTFORWARD.001</a></li><li><a href="#ctlelblistenerghost001" class="table-of-contents__link toc-highlight">CTL.ELB.LISTENER.GHOST.001</a></li><li><a href="#ctlelblog001" class="table-of-contents__link toc-highlight">CTL.ELB.LOG.001</a></li><li><a href="#ctlelblogaccessbroad001" class="table-of-contents__link toc-highlight">CTL.ELB.LOG.ACCESS.BROAD.001</a></li><li><a href="#ctlelbloglifecycle001" class="table-of-contents__link toc-highlight">CTL.ELB.LOG.LIFECYCLE.001</a></li><li><a href="#ctlelbnetworkinternalpublicsubnet001" class="table-of-contents__link toc-highlight">CTL.ELB.NETWORK.INTERNAL.PUBLICSUBNET.001</a></li><li><a href="#ctlelbnetworkinternetfacingprivatesubnet001" class="table-of-contents__link toc-highlight">CTL.ELB.NETWORK.INTERNETFACING.PRIVATESUBNET.001</a></li><li><a href="#ctlelbnetworksingleaz001" class="table-of-contents__link toc-highlight">CTL.ELB.NETWORK.SINGLEAZ.001</a></li><li><a href="#ctlelbnlbaccesslog001" class="table-of-contents__link toc-highlight">CTL.ELB.NLB.ACCESSLOG.001</a></li><li><a href="#ctlelbnlbconnlog001" class="table-of-contents__link toc-highlight">CTL.ELB.NLB.CONNLOG.001</a></li><li><a href="#ctlelbnlbtcp80notls001" class="table-of-contents__link toc-highlight">CTL.ELB.NLB.TCP80.NOTLS.001</a></li><li><a href="#ctlelborphannolistener001" class="table-of-contents__link toc-highlight">CTL.ELB.ORPHAN.NOLISTENER.001</a></li><li><a href="#ctlelbredirecttargethttp001" class="table-of-contents__link toc-highlight">CTL.ELB.REDIRECT.TARGET.HTTP.001</a></li><li><a href="#ctlelbsgghost001" class="table-of-contents__link toc-highlight">CTL.ELB.SG.GHOST.001</a></li><li><a href="#ctlelbsgnonstandardports001" class="table-of-contents__link toc-highlight">CTL.ELB.SG.NONSTANDARD.PORTS.001</a></li><li><a href="#ctlelbtargetempty001" class="table-of-contents__link toc-highlight">CTL.ELB.TARGET.EMPTY.001</a></li><li><a href="#ctlelbtargetghost001" class="table-of-contents__link toc-highlight">CTL.ELB.TARGET.GHOST.001</a></li><li><a href="#ctlelbtargetnohealthy001" class="table-of-contents__link toc-highlight">CTL.ELB.TARGET.NOHEALTHY.001</a></li><li><a href="#ctlelbtargetsingleaz001" class="table-of-contents__link toc-highlight">CTL.ELB.TARGET.SINGLEAZ.001</a></li><li><a href="#ctlelbtgbackendplaintext001" class="table-of-contents__link toc-highlight">CTL.ELB.TG.BACKEND.PLAINTEXT.001</a></li><li><a href="#ctlelbtghealthcheckprotocol001" class="table-of-contents__link toc-highlight">CTL.ELB.TG.HEALTHCHECK.PROTOCOL.001</a></li><li><a href="#ctlelbtghealthchecktimeout001" class="table-of-contents__link toc-highlight">CTL.ELB.TG.HEALTHCHECK.TIMEOUT.001</a></li><li><a href="#ctlelbtls001" class="table-of-contents__link toc-highlight">CTL.ELB.TLS.001</a></li><li><a href="#ctlelbtlscustomweakcipher001" class="table-of-contents__link toc-highlight">CTL.ELB.TLS.CUSTOM.WEAKCIPHER.001</a></li><li><a href="#ctlelbwaf001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.001</a></li><li><a href="#ctlelbwafbypasscf001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.BYPASS.CF.001</a></li><li><a href="#ctlelbwafbypassdirect001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.BYPASS.DIRECT.001</a></li><li><a href="#ctlelbwafconsistency001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.CONSISTENCY.001</a></li><li><a href="#ctlelbwafcountonly001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.COUNTONLY.001</a></li><li><a href="#ctlelbwafmanaged001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.MANAGED.001</a></li><li><a href="#ctlelbwafnolog001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.NOLOG.001</a></li><li><a href="#ctlelbwafnorules001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.NORULES.001</a></li><li><a href="#ctlelbwafratelimit001" class="table-of-contents__link toc-highlight">CTL.ELB.WAF.RATELIMIT.001</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
+</body>
+</html>

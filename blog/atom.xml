@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://stave.dev/blog</id>
+    <title>Stave Blog</title>
+    <updated>2026-02-20T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://stave.dev/blog"/>
+    <subtitle>Stave Blog</subtitle>
+    <icon>https://stave.dev/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Hello World]]></title>
+        <id>https://stave.dev/blog/2026/02/20/hello-world</id>
+        <link href="https://stave.dev/blog/2026/02/20/hello-world"/>
+        <updated>2026-02-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome to the Stave blog.]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to the Stave blog.</p>
+<p>This is a sample post. Replace it with your own content.</p>]]></content>
+        <category label="Stave" term="Stave"/>
+    </entry>
+</feed>

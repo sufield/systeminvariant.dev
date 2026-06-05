@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunksite=globalThis.webpackChunksite||[]).push([[7472],{55513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Hello World","permalink":"/blog/2026/02/20/hello-world","unlisted":false,"date":"2026-02-20T00:00:00.000Z"}]}')}}]);
