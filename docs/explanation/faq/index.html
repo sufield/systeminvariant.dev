@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">FAQ | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/explanation/faq"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="FAQ | Stave"><meta data-rh="true" name="description" content="Frequently asked questions about Stave&#x27;s approach, terminology, and how it differs from existing tools."><meta data-rh="true" property="og:description" content="Frequently asked questions about Stave&#x27;s approach, terminology, and how it differs from existing tools."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/explanation/faq"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/explanation/faq" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/explanation/faq" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Explanation","item":"https://stave.dev/docs/explanation"},{"@type":"ListItem","position":2,"name":"FAQ","item":"https://stave.dev/docs/explanation/faq"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.aebbb64c.css">
-<script src="/assets/js/runtime~main.2bd388b4.js" defer="defer"></script>
-<script src="/assets/js/main.5d6ab950.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7b6c69bf.js" defer="defer"></script>
+<script src="/assets/js/main.5f3f2aae.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -161,7 +161,7 @@
 <ol>
 <li class=""><strong>Air-gapped environments</strong> — security review and audit often happen in isolated networks where cloud API access is unavailable or prohibited.</li>
 <li class=""><strong>Deterministic replay</strong> — the same snapshot files produce the same findings on any machine, any time. Live API queries introduce non-determinism (state changes, API throttling, clock differences).</li>
-<li class=""><strong>Separation of concerns</strong> — extracting data from cloud APIs is a different problem from evaluating safety invariants. Stave handles evaluation; external extractors handle extraction. See <a class="" href="/docs/tutorials/building-extractors">Building an Extractor</a>.</li>
+<li class=""><strong>Separation of concerns</strong> — calling cloud APIs to collect data is a different problem from evaluating safety invariants. Collection stays external (your tools, your credentials); Stave handles evaluation and ships a built-in converter, <code>stave transform</code> (jq filters), that reshapes raw snapshots into <code>obs.v0.1</code>. For data sources beyond the built-in filters you can still write an external extractor — see <a class="" href="/docs/tutorials/building-extractors">Building an Extractor</a>.</li>
 </ol>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-is-evidence-different-from-observation">How is &quot;evidence&quot; different from &quot;observation&quot;?<a href="#how-is-evidence-different-from-observation" class="hash-link" aria-label="Direct link to How is &quot;evidence&quot; different from &quot;observation&quot;?" title="Direct link to How is &quot;evidence&quot; different from &quot;observation&quot;?" translate="no">​</a></h2>
 <p><strong>Observations</strong> are raw input — point-in-time snapshots of infrastructure state (<code>obs.v0.1</code> JSON files). They contain everything captured, whether relevant or not.</p>
@@ -226,102 +226,39 @@
 <li class=""><a href="https://www.securityweek.com/aws-trusted-advisor-tricked-into-showing-unprotected-s3-buckets-as-secure/" target="_blank" rel="noopener noreferrer" class="">SecurityWeek: AWS Trusted Advisor Tricked Into Showing Unprotected S3 Buckets as Secure</a></li>
 <li class=""><a href="https://checkred.com/resources/blog/when-secure-isnt-what-the-trusted-advisor-s3-bypass-reveals-about-aws-misconfigurations/" target="_blank" rel="noopener noreferrer" class="">CheckRed: AWS Bypass — Misconfigurations Still Threaten Cloud Security</a></li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-stave-protect-against-accidental-destruction-in-production">How does Stave protect against accidental destruction in production?<a href="#how-does-stave-protect-against-accidental-destruction-in-production" class="hash-link" aria-label="Direct link to How does Stave protect against accidental destruction in production?" title="Direct link to How does Stave protect against accidental destruction in production?" translate="no">​</a></h2>
-<p>Stave uses a <strong>two-key safety model</strong> for any commands an operator marks as sensitive via the <code>blocked_commands</code> config. Both conditions must be true for the production guard to activate:</p>
-<ol>
-<li class=""><strong>Key 1: Edition</strong> — the binary must be built with the dev edition label (<code>stave-dev</code>)</li>
-<li class=""><strong>Key 2: Environment</strong> — the runtime must be detected as production (<code>STAVE_ENV=production</code> or a context with <code>production: true</code>)</li>
-</ol>
-<p>This is defense-in-depth. A single misconfiguration cannot cause a disaster:</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>Scenario</th><th>Binary</th><th>Environment</th><th>Guard activates?</th><th>Result</th></tr></thead><tbody><tr><td>CI pipeline</td><td><code>stave</code></td><td>production</td><td>No</td><td>All commands run freely (standard deployment)</td></tr><tr><td>Developer laptop</td><td><code>stave</code> or <code>stave-dev</code></td><td>not production</td><td>No</td><td>All commands run freely (local sandbox)</td></tr><tr><td>Shared environment</td><td><code>stave-dev</code></td><td>production</td><td><strong>Yes</strong></td><td>Destructive commands blocked, read-only commands warn</td></tr><tr><td>Accidental env var</td><td><code>stave</code></td><td>production</td><td>No</td><td>Safe — production binary never activates guard</td></tr></tbody></table>
-<p><strong>Why two keys instead of one?</strong> If the guard only checked <code>STAVE_ENV</code>, then unsetting the variable (or a typo) would silently disable protection. Requiring the dev edition binary as the first key means the standard <code>stave</code> binary is always safe regardless of environment configuration. You have to <strong>intentionally deploy the dev binary</strong> to a production-marked environment for the guard to matter.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="layer-1-environment-detection">Layer 1: Environment detection<a href="#layer-1-environment-detection" class="hash-link" aria-label="Direct link to Layer 1: Environment detection" title="Direct link to Layer 1: Environment detection" translate="no">​</a></h3>
-<p>Set <code>STAVE_ENV=production</code> in production CI/CD runners and deployment environments, or mark contexts as production:</p>
-<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token key atrule">contexts</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token key atrule">prod-us-east</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token key atrule">project_root</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> /ops/stave</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token key atrule">production</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token boolean important" style="color:rgb(255, 88, 116)">true</span><br></span></code></pre></div></div>
-<p>When detected, the dev binary:</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-stave-keep-developer-only-commands-out-of-production">How does Stave keep developer-only commands out of production?<a href="#how-does-stave-keep-developer-only-commands-out-of-production" class="hash-link" aria-label="Direct link to How does Stave keep developer-only commands out of production?" title="Direct link to How does Stave keep developer-only commands out of production?" translate="no">​</a></h2>
+<p>Stave has <strong>no destructive commands</strong> — every command reads observation
+snapshots and writes findings; nothing modifies or deletes infrastructure.
+There is no &quot;accidental destruction&quot; for Stave to cause.</p>
+<p>A few commands are <strong>developer-workflow</strong> tools, though, that have no place
+in a production environment:</p>
 <ul>
-<li class=""><strong>Hard-blocks</strong> any command listed in <code>blocked_commands</code> with a clear error</li>
-<li class=""><strong>Warns</strong> on read-only commands (allows break-glass debugging)</li>
+<li class=""><code>generate</code> — scaffolds starter artifacts (project/observation templates).</li>
+<li class=""><code>forge</code> — authors and tests custom controls.</li>
 </ul>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">export STAVE_ENV=production</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># With `blocked_commands: [enforce]` configured:</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave-dev enforce   # BLOCKED: &quot;command &#x27;enforce&#x27; is blocked in production&quot;</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave-dev doctor    # WARNING printed, then runs (read-only)</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="layer-2-iam-boundaries-the-gold-standard">Layer 2: IAM boundaries (the gold standard)<a href="#layer-2-iam-boundaries-the-gold-standard" class="hash-link" aria-label="Direct link to Layer 2: IAM boundaries (the gold standard)" title="Direct link to Layer 2: IAM boundaries (the gold standard)" translate="no">​</a></h3>
-<p>The most robust defense ensures developer credentials cannot modify production data at the cloud layer:</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>Environment</th><th>Binary</th><th>Credentials</th><th>Can read</th><th>Can write/delete</th></tr></thead><tbody><tr><td>CI/CD pipeline</td><td><code>stave</code></td><td>Service account</td><td>Yes</td><td>Yes (archive only)</td></tr><tr><td>Developer laptop</td><td><code>stave-dev</code></td><td>Developer IAM role</td><td>Yes (break-glass)</td><td>No</td></tr><tr><td>Local sandbox</td><td><code>stave</code> or <code>stave-dev</code></td><td>Sandbox credentials</td><td>Yes</td><td>Yes</td></tr></tbody></table>
+<p>These are tagged <strong>dev-only</strong> in the CLI (a Cobra annotation,
+<code>cmdutil.AnnotationDevOnly</code>, on the command). Before any command runs, the
+bootstrap guard checks two things:</p>
+<ol>
+<li class="">
+<p><strong>Is the command dev-only?</strong> The check walks the command&#x27;s ancestry, so
+tagging <code>forge</code> or <code>generate</code> automatically covers every subcommand
+(<code>forge new</code>, <code>generate observation</code>, …).</p>
+</li>
+<li class="">
+<p><strong>Is this a production environment?</strong> Detected via <code>STAVE_ENV=production</code>,
+or an active context with <code>production: true</code>:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token key atrule">contexts</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token key atrule">prod-us-east</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token key atrule">project_root</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> /ops/stave</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    </span><span class="token key atrule">production</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> </span><span class="token boolean important" style="color:rgb(255, 88, 116)">true</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<p>If both are true, the command is <strong>rejected</strong> with a clear error and a
+non-zero exit code:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">export STAVE_ENV=production</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave forge new        # error: command &quot;new&quot; is development-only and cannot run in production</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply ...        # runs normally — not a dev-only command</span><br></span></code></pre></div></div>
+<p>The dev-only set is declared <strong>in code</strong>, not via config — there is no
+<code>blocked_commands</code> list to set or keep in sync. Marking a new command
+dev-only is one annotation: <code>cmdutil.AnnotationDevOnly: &quot;true&quot;</code>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-are-there-two-binaries-stave-and-stave-dev">Why are there two binaries (<code>stave</code> and <code>stave-dev</code>)?<a href="#why-are-there-two-binaries-stave-and-stave-dev" class="hash-link" aria-label="Direct link to why-are-there-two-binaries-stave-and-stave-dev" title="Direct link to why-are-there-two-binaries-stave-and-stave-dev" translate="no">​</a></h2>
-<p>Both binaries contain <strong>identical commands</strong>. Every command — <code>apply</code>, <code>diagnose</code>, <code>trace</code>, <code>controls</code>, <code>lint</code>, <code>inspect</code>, <code>doctor</code>, <code>snapshot diff</code> — ships in both.</p>
+<p>Both binaries contain <strong>identical commands</strong>. Every command — <code>apply</code>, <code>diagnose</code>, <code>controls</code>, <code>lint</code>, <code>inspect</code>, <code>doctor</code>, <code>snapshot diff</code> — ships in both.</p>
 <p>The only difference is the <strong>edition label</strong>:</p>
 
 
@@ -348,18 +285,66 @@
 
 
 
-
-
-
-
-
-<table><thead><tr><th></th><th><code>stave</code></th><th><code>stave-dev</code></th></tr></thead><tbody><tr><td>Edition</td><td><code>production</code></td><td><code>dev</code></td></tr><tr><td><code>--version</code> output</td><td><code>0.0.3 (production)</code></td><td><code>0.0.3 (dev)</code></td></tr><tr><td>Production guard</td><td>Never activates</td><td>Activates when <code>STAVE_ENV=production</code></td></tr><tr><td>Panic recovery message</td><td>Suggests <code>doctor</code></td><td>Suggests <code>bug-report</code></td></tr></tbody></table>
-<p><strong>Why not a single binary with a flag?</strong> The two-key model requires the safety decision to be made at <strong>build time</strong> (which binary to deploy), not at <strong>runtime</strong> (which flag to pass). A <code>--dev</code> flag could be accidentally included in a CI script. A deployment that installs <code>stave</code> instead of <code>stave-dev</code> is safe by construction — there is no flag to discover, no config to override.</p>
+<table><thead><tr><th></th><th><code>stave</code></th><th><code>stave-dev</code></th></tr></thead><tbody><tr><td>Edition</td><td><code>production</code></td><td><code>dev</code></td></tr><tr><td><code>--version</code> output</td><td><code>0.0.3 (production)</code></td><td><code>0.0.3 (dev)</code></td></tr><tr><td>Panic recovery message</td><td>Suggests <code>doctor</code></td><td>Suggests <code>bug-report</code></td></tr></tbody></table>
+<p>The edition is a <strong>build-time diagnostic label</strong> — it fixes what <code>--version</code>
+and crash hints report, so there is no runtime <code>--dev</code> flag to accidentally
+set in a CI script. It is <em>not</em> a safety toggle: the development-only command
+guard (see above) is keyed on the production environment, not on the edition,
+so <strong>both</strong> binaries reject <code>forge</code> / <code>generate</code> in production.</p>
 <p><strong>When to use which:</strong></p>
 <ul>
-<li class=""><strong><code>stave</code></strong> — standard deployment for CI pipelines, production evaluation, and automated workflows. The production guard never activates, so all commands run without warnings or blocks.</li>
-<li class=""><strong><code>stave-dev</code></strong> — for shared environments where you want the production guard active. Deploy alongside <code>STAVE_ENV=production</code> or production-marked contexts to block destructive commands while allowing break-glass debugging.</li>
+<li class=""><strong><code>stave</code></strong> — standard deployment for CI pipelines, production evaluation, and automated workflows.</li>
+<li class=""><strong><code>stave-dev</code></strong> — developer machines; its <code>--version</code> and crash hints point at developer tooling.</li>
 </ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-is-there-an-oscal-control-in-core-and-an-oscal-gaps-command-in-stave-coverage">Why is there an OSCAL control in core <em>and</em> an <code>oscal-gaps</code> command in stave-coverage?<a href="#why-is-there-an-oscal-control-in-core-and-an-oscal-gaps-command-in-stave-coverage" class="hash-link" aria-label="Direct link to why-is-there-an-oscal-control-in-core-and-an-oscal-gaps-command-in-stave-coverage" title="Direct link to why-is-there-an-oscal-control-in-core-and-an-oscal-gaps-command-in-stave-coverage" translate="no">​</a></h2>
+<p>They answer two different questions about OSCAL, so they live in two
+different places. The shared word &quot;OSCAL&quot; is just the input format.</p>
+<p><code>CTL.COMPLIANCE.OSCAL.REPORT.CURRENT.001</code> (core catalog) is a runtime
+invariant over a <strong>customer&#x27;s snapshot</strong>. It asks: <em>&quot;Is the SOC report this
+account relies on present, unexpired (≤ 12 months past its coverage period),
+and in scope for the snapshot&#x27;s region?&quot;</em> It evaluates a derived
+<code>oscal_report</code> asset during <code>stave apply</code> and emits a finding — exactly what a
+control is, so it lives in the catalog with every other control.</p>
+<p><code>stave-coverage oscal-gaps</code> never looks at a customer snapshot. It asks a
+<strong>meta question about the catalog itself</strong>: <em>&quot;Of the customer- and
+shared-responsibility SOC 2 criteria AWS lists in its OSCAL report, which ones
+does the Stave catalog have no control for?&quot;</em> That is catalog-coverage
+analysis, which is the entire reason <code>stave-coverage</code> exists as a separate
+tool — coverage logic never lives in core.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>Core control</th><th><code>oscal-gaps</code></th></tr></thead><tbody><tr><td>Input</td><td>one account snapshot</td><td>the OSCAL report + the whole catalog</td></tr><tr><td>Question</td><td><em>is my evidence fresh &amp; in scope?</em></td><td><em>does our rulebook cover what AWS says is my job?</em></td></tr><tr><td>Output</td><td>a finding in <code>stave apply</code></td><td>a gap list (criteria with zero controls)</td></tr><tr><td>Runs against</td><td>customer infrastructure</td><td>Stave&#x27;s own catalog</td></tr></tbody></table>
+<p>No shared code (separate Go modules), no overlapping logic. The control is the
+shippable customer-facing invariant; <code>oscal-gaps</code> is an internal
+catalog-completeness tool that stands beside it.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-the-output-contract-schema-outv01">What is the output contract schema (<code>out.v0.1</code>)?<a href="#what-is-the-output-contract-schema-outv01" class="hash-link" aria-label="Direct link to what-is-the-output-contract-schema-outv01" title="Direct link to what-is-the-output-contract-schema-outv01" translate="no">​</a></h2>
 <p>Every <code>stave apply</code> command produces JSON conforming to the <code>out.v0.1</code> schema. This is a stable machine-readable contract that downstream tools — CI pipelines, dashboards, SIEM integrations, custom scripts — can rely on.</p>
 <p>The schema defines two output kinds:</p>
@@ -429,7 +414,7 @@
 </ul>
 <p>Stave is a pure function: files in, findings out.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="are-all-controls-yaml-or-are-some-implemented-in-go">Are all controls YAML or are some implemented in Go?<a href="#are-all-controls-yaml-or-are-some-implemented-in-go" class="hash-link" aria-label="Direct link to Are all controls YAML or are some implemented in Go?" title="Direct link to Are all controls YAML or are some implemented in Go?" translate="no">​</a></h2>
-<p>All 246 controls are declarative YAML. Zero controls are implemented as Go functions.</p>
+<p>All 2,674 controls are declarative YAML. Zero controls are implemented as Go functions.</p>
 <p>Every control is a YAML file with an <code>unsafe_predicate</code> evaluated by the CEL engine. Adding a new control means writing a YAML file — no Go code, no compilation, no engine changes.</p>
 <p>Compliance profiles (HIPAA, CIS, SOC 2, PCI-DSS, NIST, FedRAMP, GDPR, FFIEC, ISO 27001, NIST CSF) are implemented as compliance tags on existing YAML controls, filtered by <code>--profile</code>. The engine doesn&#x27;t know which framework is being evaluated — it evaluates the same predicates and attaches the compliance requirement IDs to the findings.</p>
 <p>Compound risk detection, duration tracking, severity grouping, and compliance citations are features of the evaluation engine, not separate control implementations. They work across all YAML controls automatically.</p>
@@ -506,7 +491,6 @@ fix_loop           fix_loop.v0.1
 gate               gate.v0.1
 snapshot_archive   snapshot_archive.v0.1
 snapshot_plan      snapshot_plan.v0.1
-snapshot_prune     snapshot_prune.v0.1
 snapshot_quality   snapshot_quality.v0.1
 validate           validate.v0.1</p>
 <p>Artifact Contracts:
@@ -640,71 +624,20 @@ runtime validation.</p>
 <p>To run a single script:</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">go test ./cmd/stave/ -run TestScripts/smoke -v</span><br></span></code></pre></div></div>
 <p>These tests run as part of <code>make test</code> (which executes <code>go test ./...</code>). They are the primary integration test suite — each script exercises the real CLI binary against real control YAML and observation JSON files embedded in the <code>.txtar</code> archive.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-does-security-audit-differ-from-the-logic-trace---trace">How does <code>security-audit</code> differ from the Logic Trace (<code>--trace</code>)?<a href="#how-does-security-audit-differ-from-the-logic-trace---trace" class="hash-link" aria-label="Direct link to how-does-security-audit-differ-from-the-logic-trace---trace" title="Direct link to how-does-security-audit-differ-from-the-logic-trace---trace" translate="no">​</a></h2>
-<p>They serve different purposes at different layers.</p>
-<p><strong><code>stave security-audit</code></strong> evaluates the Stave binary itself — supply chain
-integrity, build hardening, vulnerability assessment, SBOM generation. It
-answers: <em>&quot;Is this tool trustworthy?&quot;</em> It produces evidence for auditors about
-Stave&#x27;s own security posture, not about the infrastructure Stave evaluates.</p>
-<p><strong><code>stave apply --trace</code></strong> records the evaluation engine&#x27;s reasoning chain —
-step-by-step decisions for every control × asset pair. It answers: <em>&quot;Why did
-the engine reach this verdict?&quot;</em> It produces a <code>trace.v0.1</code> JSON with exemption
-checks, predicate evaluations, threshold checks, and verdict decisions.</p>
-<p><strong><code>stave prompt from-finding --trace-file</code></strong> takes that trace and wraps it in
-an LLM-ready prompt for offline explainability. It answers: <em>&quot;How do I fix
-this?&quot;</em></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th></th><th><code>security-audit</code></th><th><code>apply --trace</code></th><th><code>prompt --trace-file</code></th></tr></thead><tbody><tr><td><strong>Subject</strong></td><td>The Stave binary</td><td>Infrastructure findings</td><td>Finding explanation</td></tr><tr><td><strong>Question</strong></td><td>&quot;Is this tool secure?&quot;</td><td>&quot;Why did this fire?&quot;</td><td>&quot;How do I fix this?&quot;</td></tr><tr><td><strong>Output</strong></td><td>SBOM, vuln report, build info</td><td>trace.v0.1 JSON</td><td>Markdown LLM prompt</td></tr><tr><td><strong>Audience</strong></td><td>Auditors, compliance</td><td>Security engineers</td><td>Operators, AI assistants</td></tr><tr><td><strong>Layer</strong></td><td>Meta (tool about itself)</td><td>Engine internals</td><td>User-facing guidance</td></tr></tbody></table>
-<p>They are complementary:</p>
-<ul>
-<li class=""><code>security-audit</code> builds trust in the <strong>tool</strong>.</li>
-<li class=""><code>--trace</code> builds trust in the <strong>verdict</strong>.</li>
-<li class=""><code>--trace-file</code> bridges the verdict to <strong>remediation</strong>.</li>
-</ul>
-<p>Example workflow:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain"># 1. Verify the tool itself is trustworthy</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave security-audit --sbom cyclonedx --format json</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># 2. Evaluate infrastructure and record reasoning</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls controls/s3 --observations obs/ \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --max-unsafe 168h --trace audit_trace.json --format json &gt; eval.json</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># 3. Generate explainable remediation prompt from trace</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave prompt from-finding \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --evaluation-file eval.json \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --asset-id my-bucket \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --controls controls/s3 \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --trace-file audit_trace.json</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-the-logic-trace-apply---trace">What is the Logic Trace (<code>apply --trace</code>)?<a href="#what-is-the-logic-trace-apply---trace" class="hash-link" aria-label="Direct link to what-is-the-logic-trace-apply---trace" title="Direct link to what-is-the-logic-trace-apply---trace" translate="no">​</a></h2>
+<p><code>stave apply --trace &lt;file&gt;</code> records the evaluation engine&#x27;s reasoning
+chain — the step-by-step decisions (exemption checks, predicate
+evaluations, threshold checks, and the final verdict) for every
+control × asset pair. It answers: <em>&quot;Why did the engine reach this
+verdict?&quot;</em></p>
+<p>Every finding already carries a compact <code>reasoning_trace</code> inline
+(rendered as prose in text output, as raw DSL in JSON/SARIF). The
+<code>--trace</code> flag writes the full <code>Assessment.Steps[]</code> superset to a
+separate file for users who want the precise predicate-DSL form or
+per-step timing.</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls controls/s3 --observations obs/ \</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">  --max-unsafe 168h --trace audit_trace.json --format json &gt; eval.json</span><br></span></code></pre></div></div>
 <p>For LLM-driven remediation you can also consume <code>eval.json</code> directly:
 controls carry triage terms (defect, infection, failure) so the
-findings are already self-explanatory.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/explanation/trust-and-security"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Security and Trust</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/explanation/release-security"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Release Security</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#why-does-stave-use-unsafe-state-instead-of-vulnerability-or-misconfiguration" class="table-of-contents__link toc-highlight">Why does Stave use &quot;unsafe state&quot; instead of &quot;vulnerability&quot; or &quot;misconfiguration&quot;?</a></li><li><a href="#what-is-system-invariant-as-code" class="table-of-contents__link toc-highlight">What is &quot;System Invariant as Code&quot;?</a></li><li><a href="#how-does-system-invariant-as-code-differ-from-opa-rego-and-other-policy-engines" class="table-of-contents__link toc-highlight">How does System Invariant as Code differ from OPA Rego and other policy engines?</a></li><li><a href="#why-control-and-not-rule-or-policy" class="table-of-contents__link toc-highlight">Why &quot;control&quot; and not &quot;rule&quot; or &quot;policy&quot;?</a></li><li><a href="#why-is-there-a-semantic-gap-between-the-domain-and-the-code" class="table-of-contents__link toc-highlight">Why is there a semantic gap between the domain and the code?</a></li><li><a href="#why-does-stave-need-two-snapshots" class="table-of-contents__link toc-highlight">Why does Stave need two snapshots?</a></li><li><a href="#why-does-stave-work-offline-with-no-credentials" class="table-of-contents__link toc-highlight">Why does Stave work offline with no credentials?</a></li><li><a href="#how-is-evidence-different-from-observation" class="table-of-contents__link toc-highlight">How is &quot;evidence&quot; different from &quot;observation&quot;?</a></li><li><a href="#what-s3-blind-spots-does-stave-detect-that-aws-trusted-advisor-misses" class="table-of-contents__link toc-highlight">What S3 blind spots does Stave detect that AWS Trusted Advisor misses?</a><ul><li><a href="#1-policy-denied-scanning-the-fog-security-bypass" class="table-of-contents__link toc-highlight">1. Policy-denied scanning (the Fog Security bypass)</a></li><li><a href="#2-latent-public-exposure-behind-public-access-block" class="table-of-contents__link toc-highlight">2. Latent public exposure behind Public Access Block</a></li><li><a href="#3-acl-escalation-paths" class="table-of-contents__link toc-highlight">3. ACL escalation paths</a></li><li><a href="#detection-comparison" class="table-of-contents__link toc-highlight">Detection comparison</a></li></ul></li><li><a href="#how-does-stave-protect-against-accidental-destruction-in-production" class="table-of-contents__link toc-highlight">How does Stave protect against accidental destruction in production?</a><ul><li><a href="#layer-1-environment-detection" class="table-of-contents__link toc-highlight">Layer 1: Environment detection</a></li><li><a href="#layer-2-iam-boundaries-the-gold-standard" class="table-of-contents__link toc-highlight">Layer 2: IAM boundaries (the gold standard)</a></li></ul></li><li><a href="#why-are-there-two-binaries-stave-and-stave-dev" class="table-of-contents__link toc-highlight">Why are there two binaries (<code>stave</code> and <code>stave-dev</code>)?</a></li><li><a href="#what-is-the-output-contract-schema-outv01" class="table-of-contents__link toc-highlight">What is the output contract schema (<code>out.v0.1</code>)?</a><ul><li><a href="#evaluation-output-structure" class="table-of-contents__link toc-highlight">Evaluation output structure</a></li><li><a href="#design-decisions" class="table-of-contents__link toc-highlight">Design decisions</a></li><li><a href="#accessing-the-output" class="table-of-contents__link toc-highlight">Accessing the output</a></li></ul></li><li><a href="#what-does-stave-not-do" class="table-of-contents__link toc-highlight">What does Stave <em>not</em> do?</a></li><li><a href="#are-all-controls-yaml-or-are-some-implemented-in-go" class="table-of-contents__link toc-highlight">Are all controls YAML or are some implemented in Go?</a></li><li><a href="#google-cel-library" class="table-of-contents__link toc-highlight">Google CEL Library</a></li><li><a href="#what-is-the-purpose-of-now-flag-in-apply-command" class="table-of-contents__link toc-highlight">What is the purpose of now flag in apply command?</a></li><li><a href="#which-ones-are-validated-using-json-schema" class="table-of-contents__link toc-highlight">Which ones are validated using JSON schema?</a></li><li><a href="#how-are-the-testscripts-structured" class="table-of-contents__link toc-highlight">How are the testscripts structured?</a></li><li><a href="#how-does-security-audit-differ-from-the-logic-trace---trace" class="table-of-contents__link toc-highlight">How does <code>security-audit</code> differ from the Logic Trace (<code>--trace</code>)?</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
+findings are already self-explanatory.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/explanation/trust-and-security"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Security and Trust</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/explanation/release-security"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Release Security</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#why-does-stave-use-unsafe-state-instead-of-vulnerability-or-misconfiguration" class="table-of-contents__link toc-highlight">Why does Stave use &quot;unsafe state&quot; instead of &quot;vulnerability&quot; or &quot;misconfiguration&quot;?</a></li><li><a href="#what-is-system-invariant-as-code" class="table-of-contents__link toc-highlight">What is &quot;System Invariant as Code&quot;?</a></li><li><a href="#how-does-system-invariant-as-code-differ-from-opa-rego-and-other-policy-engines" class="table-of-contents__link toc-highlight">How does System Invariant as Code differ from OPA Rego and other policy engines?</a></li><li><a href="#why-control-and-not-rule-or-policy" class="table-of-contents__link toc-highlight">Why &quot;control&quot; and not &quot;rule&quot; or &quot;policy&quot;?</a></li><li><a href="#why-is-there-a-semantic-gap-between-the-domain-and-the-code" class="table-of-contents__link toc-highlight">Why is there a semantic gap between the domain and the code?</a></li><li><a href="#why-does-stave-need-two-snapshots" class="table-of-contents__link toc-highlight">Why does Stave need two snapshots?</a></li><li><a href="#why-does-stave-work-offline-with-no-credentials" class="table-of-contents__link toc-highlight">Why does Stave work offline with no credentials?</a></li><li><a href="#how-is-evidence-different-from-observation" class="table-of-contents__link toc-highlight">How is &quot;evidence&quot; different from &quot;observation&quot;?</a></li><li><a href="#what-s3-blind-spots-does-stave-detect-that-aws-trusted-advisor-misses" class="table-of-contents__link toc-highlight">What S3 blind spots does Stave detect that AWS Trusted Advisor misses?</a><ul><li><a href="#1-policy-denied-scanning-the-fog-security-bypass" class="table-of-contents__link toc-highlight">1. Policy-denied scanning (the Fog Security bypass)</a></li><li><a href="#2-latent-public-exposure-behind-public-access-block" class="table-of-contents__link toc-highlight">2. Latent public exposure behind Public Access Block</a></li><li><a href="#3-acl-escalation-paths" class="table-of-contents__link toc-highlight">3. ACL escalation paths</a></li><li><a href="#detection-comparison" class="table-of-contents__link toc-highlight">Detection comparison</a></li></ul></li><li><a href="#how-does-stave-keep-developer-only-commands-out-of-production" class="table-of-contents__link toc-highlight">How does Stave keep developer-only commands out of production?</a></li><li><a href="#why-are-there-two-binaries-stave-and-stave-dev" class="table-of-contents__link toc-highlight">Why are there two binaries (<code>stave</code> and <code>stave-dev</code>)?</a></li><li><a href="#why-is-there-an-oscal-control-in-core-and-an-oscal-gaps-command-in-stave-coverage" class="table-of-contents__link toc-highlight">Why is there an OSCAL control in core <em>and</em> an <code>oscal-gaps</code> command in stave-coverage?</a></li><li><a href="#what-is-the-output-contract-schema-outv01" class="table-of-contents__link toc-highlight">What is the output contract schema (<code>out.v0.1</code>)?</a><ul><li><a href="#evaluation-output-structure" class="table-of-contents__link toc-highlight">Evaluation output structure</a></li><li><a href="#design-decisions" class="table-of-contents__link toc-highlight">Design decisions</a></li><li><a href="#accessing-the-output" class="table-of-contents__link toc-highlight">Accessing the output</a></li></ul></li><li><a href="#what-does-stave-not-do" class="table-of-contents__link toc-highlight">What does Stave <em>not</em> do?</a></li><li><a href="#are-all-controls-yaml-or-are-some-implemented-in-go" class="table-of-contents__link toc-highlight">Are all controls YAML or are some implemented in Go?</a></li><li><a href="#google-cel-library" class="table-of-contents__link toc-highlight">Google CEL Library</a></li><li><a href="#what-is-the-purpose-of-now-flag-in-apply-command" class="table-of-contents__link toc-highlight">What is the purpose of now flag in apply command?</a></li><li><a href="#which-ones-are-validated-using-json-schema" class="table-of-contents__link toc-highlight">Which ones are validated using JSON schema?</a></li><li><a href="#how-are-the-testscripts-structured" class="table-of-contents__link toc-highlight">How are the testscripts structured?</a></li><li><a href="#what-is-the-logic-trace-apply---trace" class="table-of-contents__link toc-highlight">What is the Logic Trace (<code>apply --trace</code>)?</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
 </body>
 </html>

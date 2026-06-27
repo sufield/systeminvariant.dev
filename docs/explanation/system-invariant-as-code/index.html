@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">System Invariant as Code | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/explanation/system-invariant-as-code"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="System Invariant as Code | Stave"><meta data-rh="true" name="description" content="What system invariant as code means in Stave, and how it differs from OPA, IaC scanners, and CSPM tools."><meta data-rh="true" property="og:description" content="What system invariant as code means in Stave, and how it differs from OPA, IaC scanners, and CSPM tools."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/explanation/system-invariant-as-code"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/explanation/system-invariant-as-code" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/explanation/system-invariant-as-code" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Explanation","item":"https://stave.dev/docs/explanation"},{"@type":"ListItem","position":2,"name":"System Invariant as Code","item":"https://stave.dev/docs/explanation/system-invariant-as-code"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.aebbb64c.css">
-<script src="/assets/js/runtime~main.2bd388b4.js" defer="defer"></script>
-<script src="/assets/js/main.5d6ab950.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7b6c69bf.js" defer="defer"></script>
+<script src="/assets/js/main.5f3f2aae.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -105,8 +105,8 @@ Use CSPM for continuous cloud detection; use Stave for offline, deterministic re
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="scope-boundaries">Scope boundaries<a href="#scope-boundaries" class="hash-link" aria-label="Direct link to Scope boundaries" title="Direct link to Scope boundaries" translate="no">​</a></h2>
 <ul>
-<li class=""><strong>Evaluation-only</strong> — Stave evaluates observations; extractors and remediators are separate programs.</li>
-<li class=""><strong>Offline by design</strong> — all inputs are local files; cloud API access belongs to extractors.</li>
+<li class=""><strong>Evaluation-first</strong> — Stave evaluates observations and ships a built-in converter (<code>stave transform</code>, jq filters) that reshapes raw snapshots into <code>obs.v0.1</code>; collection and remediation are separate programs.</li>
+<li class=""><strong>Offline by design</strong> — all inputs are local files; cloud API access belongs to collectors, not Stave.</li>
 <li class=""><strong>Deterministic</strong> — same inputs always produce the same findings, scores, and rankings.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="developer-workflow">Developer Workflow<a href="#developer-workflow" class="hash-link" aria-label="Direct link to Developer Workflow" title="Direct link to Developer Workflow" translate="no">​</a></h2>
@@ -136,7 +136,7 @@ Use CSPM for continuous cloud detection; use Stave for offline, deterministic re
 <ul>
 <li class="">Define control intent in YAML (IDs, predicate logic, thresholds).</li>
 <li class="">Produce valid observation snapshots from approved sources.</li>
-<li class="">Choose runtime options (<code>--max-unsafe</code>, <code>--now</code>, allow unknown input policy).</li>
+<li class="">Choose runtime options (<code>--max-unsafe</code>, <code>--now</code>).</li>
 <li class="">Review and act on violations/diagnostics.</li>
 <li class="">Version-control control definitions and snapshots as evidence artifacts.</li>
 </ul>
