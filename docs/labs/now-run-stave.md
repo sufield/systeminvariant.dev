@@ -38,8 +38,6 @@ The findings should match — or exceed — what you found manually. The compoun
 
 If Stave found something you missed, look at the reasoning trace (`--verbose`) to see why. If you found something Stave missed, that's a control gap — and an opportunity to [write your own control](/docs/labs/writing-controls.md).
 
-## What's next[​](#whats-next "Direct link to What's next")
+***
 
-* [Quickstart: First Finding](/docs/getting-started/first-finding.md) — the 10-minute version
-* [Tutorial 01: Is this bucket public?](/docs/getting-started/first-evaluation.md) — start the tutorial series
-* [Concepts: Controls](/docs/explanation/controls-as-code.md) — how controls work under the hood
+**Next:** [Debrief](/docs/labs/case-studies-debrief.md) — what the exercise reveals about static analysis.

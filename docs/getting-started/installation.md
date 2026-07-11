@@ -143,4 +143,4 @@ For a deeper look at why Stave is shaped this way, see [Files as the Boundary](/
 
 ***
 
-**Next:** [Your First Stave Evaluation](/docs/getting-started/first-evaluation.md) — bundled snapshot, no credentials, first finding in 60 seconds.
+**Next:** [Understand the Output](/docs/getting-started/reading-chain-findings.md) — learn what compound chains and ★ markers mean.

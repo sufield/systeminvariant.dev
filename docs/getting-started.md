@@ -1,3 +1,3 @@
-## [📄️<!-- --> <!-- -->Your First Stave Evaluation](/docs/getting-started/first-evaluation.md)
+## [📄️<!-- --> <!-- -->Try Stave](/docs/getting-started/try-stave.md)
 
-[No cloud credentials. No Steampipe. No setup. Evaluate a bundled](/docs/getting-started/first-evaluation.md)
+[Five ways to try Stave, from zero-install to full pipeline — each step earns the trust for the next.](/docs/getting-started/try-stave.md)

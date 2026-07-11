@@ -58,4 +58,4 @@ Add the config from `cmd/mcp/configs/claude-desktop.json` to your Claude Desktop
 
 ***
 
-**Next:** [Time To First Finding](/docs/getting-started/first-finding.md) — evaluate your own AWS environment.
+**Next:** [Install Stave](/docs/getting-started/installation.md) — get the binary on your machine.

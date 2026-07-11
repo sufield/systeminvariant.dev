@@ -24,6 +24,6 @@ Write a rule — in plain English — that would have prevented the most dangero
 
 ***
 
-When you have your answers, proceed to [the debrief](/docs/labs/case-studies-debrief.md).
+When you have your answers, proceed to [Run Stave](/docs/labs/now-run-stave.md) to see what the engine finds.
 
-If you gave up or want to skip ahead, that's fine — the debrief explains what the exercise was designed to reveal.
+If you gave up or want to skip ahead, that's fine — the next step shows what the exercise was designed to reveal.

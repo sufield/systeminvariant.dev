@@ -157,4 +157,4 @@ Fix your extractor script, re-run it, and validate again.
 
 ***
 
-**Next:** [Reading Chain Findings](/docs/getting-started/reading-chain-findings.md) — understand compound risk across resources.
+**Next:** [Fix and Verify](/docs/getting-started/fix-and-verify.md) — remediate a finding and prove the fix worked.

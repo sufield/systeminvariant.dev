@@ -22,6 +22,6 @@ The configuration was there. The evidence was there. The gap was the reasoning �
 
 Scanners detect the current state. They answer Question 1. They don't answer Questions 2-5 because those require reasoning across multiple configuration surfaces, temporal projection, and prevention logic.
 
-## Now run Stave[​](#now-run-stave "Direct link to Now run Stave")
+***
 
-Proceed to [Now Run Stave](/docs/labs/now-run-stave.md) to see the same input evaluated by a reasoning engine.
+**Next:** [Browse the cases by attack pattern](/docs/labs/case-studies/.md) — pick the category closest to your concern.

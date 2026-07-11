@@ -2,16 +2,16 @@
 
 ## Get Started[​](#get-started "Direct link to Get Started")
 
-* See what Stave finds before installing — [Static findings example](/why-stave/evaluate)
-* Install Stave — [Installation](/docs/getting-started/installation.md)
-* Run Stave against a demo snapshot — [First Evaluation](/docs/getting-started/first-evaluation.md)
+* Five ways to try Stave, zero-install to full pipeline — [Try Stave](/docs/getting-started/try-stave.md)
+* Run Stave against bundled demo data — [First Evaluation](/docs/getting-started/first-evaluation.md)
+* Install the binary — [Installation](/docs/getting-started/installation.md)
+* Understand compound chains and ★ markers — [Reading Chain Findings](/docs/getting-started/reading-chain-findings.md)
 
 ## Find Issues[​](#find-issues "Direct link to Find Issues")
 
 * Get my first finding on my own AWS account — [Time to First Finding](/docs/getting-started/first-finding.md)
 * Import snapshots from AWS Config — [Config Import](/docs/how-to/getting-started/import-config-snapshots.md)
 * Import from Steampipe — [Steampipe Guide](/docs/labs/from-steampipe-to-stave.md)
-* Understand a compound chain finding — [Reading Chain Findings](/docs/getting-started/reading-chain-findings.md)
 * Understand what a clean report means — [Zero Findings](/docs/how-to/results/interpreting-findings.md)
 
 ## Fix and Verify[​](#fix-and-verify "Direct link to Fix and Verify")

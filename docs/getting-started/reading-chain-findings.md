@@ -70,4 +70,4 @@ stave.context  type=chain  id=bedrock_agent_overpermissioned  observations=...
 
 ***
 
-**Next:** [Fix and Verify](/docs/getting-started/fix-and-verify.md) — remediate a finding, prove the fix worked.
+**Next:** [Find Issues in Your Own Account](/docs/getting-started/first-finding.md) — now that you know what the output means, point Stave at your AWS environment.

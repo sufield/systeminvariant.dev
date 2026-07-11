@@ -1294,3 +1294,7 @@ Acquisitions create dangling DNS because the acquiring company inherits DNS zone
 ```
 cd stave-hackerone-tests/cmd/ibm-2498255 && go run .
 ```
+
+***
+
+**Next:** [Setup](/docs/labs/case-studies-setup.md) — download fixtures and prepare your environment.

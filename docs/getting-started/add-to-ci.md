@@ -84,4 +84,4 @@ The catalog grows with each incident you fix — every new control you add (or t
 
 ***
 
-**Back to the start:** [02-first-evaluation.md](/docs/getting-started/first-evaluation.md)
+**You're running continuously.** [Browse the labs](/docs/labs.md) for deeper scenarios.

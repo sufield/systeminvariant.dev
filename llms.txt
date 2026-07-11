@@ -64,6 +64,7 @@
 - [Fix a Finding, Verify the Fix](/docs/getting-started/fix-and-verify.md): The remediation loop: explain → fix → re-snapshot → verify. Each
 - [Installation](/docs/getting-started/installation.md): Install Stave in three progressive tiers. Tier 1 is the standalone Go binary; Tier 2 adds external reasoning engines; Tier 3 adds Neo4j visualisation.
 - [Reading Chain Findings: Your Compound Risk](/docs/getting-started/reading-chain-findings.md): Chain findings are Stave's distinctive output — compound risks that
+- [Try Stave](/docs/getting-started/try-stave.md): Five ways to try Stave, from zero-install to full pipeline — each step earns the trust for the next.
 - [How-to Guides](/docs/how-to.md)
 - [How to Run an IAM Security Assessment](/docs/how-to/assessments/iam-assessment.md): Evaluate AWS IAM configuration against 38 controls covering identity,
 - [How to Evaluate Multi-Cloud Infrastructure](/docs/how-to/assessments/multi-cloud-evaluation.md): Stave evaluates any cloud provider and any service without engine changes.
@@ -107,10 +108,9 @@
 - [How to Compare Infrastructure State Between Two Dates](/docs/how-to/results/time-travel-comparison.md): Evaluate security posture at two points in time and see what changed.
 - [Labs](/docs/labs.md)
 - [Task: Build a Stave Observation Extractor](/docs/labs/building-extractors.md): Most users don't need this. For common AWS resources, the built-in
-- [HackerOne Case Studies](/docs/labs/case-studies.md)
 - [What you just discovered](/docs/labs/case-studies-debrief.md): What the S3 reasoning challenge reveals about the gap between scanning and reasoning.
 - [Challenge Setup](/docs/labs/case-studies-setup.md): Download 4 JSON files and try to answer 5 questions about S3 security — no Stave, no AWS account.
-- [HackerOne Case Studies](/docs/labs/case-studies.md)
+- [HackerOne Case Studies](/docs/labs/case-studies.md): 30 real HackerOne bug bounty reports reconstructed as reasoning challenges, grouped by attack pattern.
 - [The audit log that watched the front door while the side door stayed open](/docs/labs/case-studies/aws-3021451.md): A CloudTrail reads as fully configured, yet ElastiCache calls through a non-production endpoint generate no log entries at all.
 - [The two side doors the audit log was never told about](/docs/labs/case-studies/aws-3022516.md): A correctly configured trail still misses Amazon Forecast calls made through two non-production endpoints the service never delivers to CloudTrail.
 - [The upload policy with no destination it would refuse](/docs/labs/case-studies/bcm-764243.md): A presigned POST policy uses an empty starts-with prefix, so any key in the bucket is a legal upload target — can you prove the write scope is unrestricted from the policy alone?
