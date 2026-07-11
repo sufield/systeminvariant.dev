@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://stave.dev/blog</id>
+    <id>https://www.systeminvariant.dev/blog</id>
     <title>Stave Blog</title>
     <updated>2026-02-20T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://stave.dev/blog"/>
+    <link rel="alternate" href="https://www.systeminvariant.dev/blog"/>
     <subtitle>Stave Blog</subtitle>
-    <icon>https://stave.dev/img/favicon.ico</icon>
+    <icon>https://www.systeminvariant.dev/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[What's Coming]]></title>
-        <id>https://stave.dev/blog/2026/02/20/hello-world</id>
-        <link href="https://stave.dev/blog/2026/02/20/hello-world"/>
+        <id>https://www.systeminvariant.dev/blog/2026/02/20/hello-world</id>
+        <link href="https://www.systeminvariant.dev/blog/2026/02/20/hello-world"/>
         <updated>2026-02-20T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Articles on cloud security evaluation, IAM policy semantics, and]]></summary>
         <content type="html"><![CDATA[<p>Articles on cloud security evaluation, IAM policy semantics, and

@@ -1,0 +1,135 @@
+# CLOUDFORMATION controls (9)
+
+### CTL.CLOUDFORMATION.DRIFT.001[​](#ctlcloudformationdrift001 "Direct link to CTL.CLOUDFORMATION.DRIFT.001")
+
+**CloudFormation Stack Drift Detection Must Be Enabled**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** fedramp\_moderate: CM-3; nist\_800\_53\_r5: CM-3; pci\_dss\_v4.0: 6.3.2; soc2: CC8.1;
+
+CloudFormation stacks managing production infrastructure must have drift detection enabled. Drift indicates out-of-band changes bypassing IaC.
+
+**Remediation:** Detect drift: aws cloudformation detect-stack-drift --stack-name . Configure periodic detection via EventBridge.
+
+***
+
+### CTL.CLOUDFORMATION.INCOMPLETE.001[​](#ctlcloudformationincomplete001 "Direct link to CTL.CLOUDFORMATION.INCOMPLETE.001")
+
+**Complete Data Required for CloudFormation Assessment**
+
+* **Severity:** info
+* **Type:** unsafe\_state
+* **Domain:** exposure
+
+The observation snapshot is missing required CloudFormation properties.
+
+**Remediation:** Ensure the extractor calls aws cloudformation describe-stacks.
+
+***
+
+### CTL.CLOUDFORMATION.ROLLBACK.001[​](#ctlcloudformationrollback001 "Direct link to CTL.CLOUDFORMATION.ROLLBACK.001")
+
+**CloudFormation Stacks Must Have Rollback Enabled**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** fedramp\_moderate: CM-3; nist\_800\_53\_r5: CM-3; soc2: CC8.1;
+
+CloudFormation stacks must not have DisableRollback set to true. With rollback disabled, a failed deployment leaves resources in a partially created state that may be insecure. Rollback ensures failed changes are reverted to the last known-good state.
+
+**Remediation:** Remove DisableRollback from stack creation/update parameters. Ensure all stacks use the default rollback behavior.
+
+***
+
+### CTL.CLOUDFORMATION.SECRETS.001[​](#ctlcloudformationsecrets001 "Direct link to CTL.CLOUDFORMATION.SECRETS.001")
+
+**CloudFormation Stack Outputs Must Not Contain Secrets**
+
+* **Severity:** critical
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: IA-5(7); soc2: CC6.1;
+
+CloudFormation stack outputs must not contain hardcoded secrets. Stack outputs are readable by anyone with cloudformation:DescribeStacks access, visible in the console, and logged in CloudTrail.
+
+**Remediation:** Remove secrets from outputs. Use Secrets Manager or Parameter Store with dynamic references.
+
+***
+
+### CTL.CLOUDFORMATION.STACKPOLICY.001[​](#ctlcloudformationstackpolicy001 "Direct link to CTL.CLOUDFORMATION.STACKPOLICY.001")
+
+**CloudFormation Stacks Must Have a Stack Policy**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: CM-3; soc2: CC8.1;
+
+CloudFormation stack has no stack policy. Without a stack policy, any IAM principal with UpdateStack permission can modify or replace any resource in the stack. A stack policy acts as a secondary authorization control, preventing accidental or malicious resource replacement even when IAM allows the update.
+
+**Remediation:** Set a stack policy that protects critical resources from replacement.
+
+***
+
+### CTL.CLOUDFORMATION.STACKSETS.RESTRICT.001[​](#ctlcloudformationstacksetsrestrict001 "Direct link to CTL.CLOUDFORMATION.STACKSETS.RESTRICT.001")
+
+**CloudFormation StackSets Must Require Administrator Approval**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** governance
+* **Compliance:** mitre\_attack: T1578; nist\_800\_53\_r5: CM-3;
+
+CloudFormation StackSets deploy infrastructure across multiple AWS accounts and regions simultaneously. An attacker with cloudformation:CreateStackSet and cloudformation:CreateStackInstances can execute arbitrary CloudFormation templates across an entire AWS Organization — creating IAM roles, modifying security groups, or deploying compute resources in hundreds of accounts. StackSet operations should require explicit approval and be restricted to trusted automation accounts or principals.
+
+**Remediation:** Restrict cloudformation:CreateStackInstances to designated automation principals via SCP. Deny unless aws:PrincipalArn matches approved automation roles.
+
+***
+
+### CTL.CLOUDFORMATION.STATE.001[​](#ctlcloudformationstate001 "Direct link to CTL.CLOUDFORMATION.STATE.001")
+
+**Terraform State Must Be Versioned**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** fedramp\_moderate: CM-3; nist\_800\_53\_r5: CM-3; soc2: CC8.1;
+
+Terraform state files must be stored in a versioned backend (S3 with versioning, Terraform Cloud, or equivalent). Unversioned state means a corrupted or accidentally deleted state file cannot be recovered, leaving infrastructure in an unmanaged state with no rollback path.
+
+**Remediation:** Configure an S3 backend with versioning enabled and DynamoDB state locking. Alternatively, use Terraform Cloud or an equivalent managed backend with built-in versioning.
+
+***
+
+### CTL.CLOUDFORMATION.TEMPLATE.S3.INJECTION.001[​](#ctlcloudformationtemplates3injection001 "Direct link to CTL.CLOUDFORMATION.TEMPLATE.S3.INJECTION.001")
+
+**S3 Bucket Hosting CloudFormation Templates Must Restrict Write Access**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SI-7; soc2: CC8.1;
+
+S3 buckets used as CloudFormation template sources must restrict PutObject and PutBucketNotification to trusted principals only. Pacu's cfn\_\_resource\_injection module exploits this: the attacker adds a bucket notification (Lambda or SNS trigger) that intercepts template uploads, then modifies the template to inject an admin IAM role before CloudFormation reads it. The attack requires two permissions on the template bucket: s3:PutBucketNotification (to install the interception trigger) and s3:PutObject (to replace the template with a malicious version). If the CloudFormation stack deploys with CAPABILITY\_IAM or CAPABILITY\_NAMED\_IAM, the injected role is created with full admin permissions. This is a supply-chain attack on infrastructure-as-code: the template looks correct in source control but is modified in transit via S3.
+
+**Remediation:** Restrict the bucket policy to allow s3:PutObject only from the CI/CD pipeline's IAM role. Deny s3:PutBucketNotification for all principals except the bucket owner. Enable S3 Object Lock or versioning with MFA Delete to prevent silent object replacement. Consider using CloudFormation's template validation and stack policies to limit which resource types can be created.
+
+***
+
+### CTL.CLOUDFORMATION.TERMINATION.001[​](#ctlcloudformationtermination001 "Direct link to CTL.CLOUDFORMATION.TERMINATION.001")
+
+**CloudFormation Stacks Must Have Termination Protection Enabled**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: CP-10; soc2: A1.1;
+
+CloudFormation root stacks must enable termination protection to prevent accidental or unauthorized deletion of infrastructure.
+
+**Remediation:** Enable termination protection on the stack.
+
+***
