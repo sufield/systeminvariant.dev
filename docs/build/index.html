@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">Build | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/build"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build | Stave"><meta data-rh="true" name="description" content="Speed to a proof of concept, the build experience, and how to get support."><meta data-rh="true" property="og:description" content="Speed to a proof of concept, the build experience, and how to get support."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/build"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/build" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/build" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.ee2666c3.css">
-<script src="/assets/js/runtime~main.2b16d176.js" defer="defer"></script>
-<script src="/assets/js/main.c42361b4.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d3e6627b.js" defer="defer"></script>
+<script src="/assets/js/main.0124bb2a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -16,17 +16,17 @@
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="proof-of-concept">Proof of concept<a href="#proof-of-concept" class="hash-link" aria-label="Direct link to Proof of concept" title="Direct link to Proof of concept" translate="no">​</a></h2>
 <p>A working PoC is three steps:</p>
 <ol>
-<li class=""><strong>Snapshot your config</strong> — point the AWS CLI (or Terraform, or an extractor) at
+<li class=""><strong>Snapshot your config</strong> — point the AWS CLI, Terraform, or an extractor at
 the resources you care about and emit <code>obs.v0.1</code> JSON.
 → <a class="" href="/docs/how-to/getting-started/create-snapshots">How to create snapshots</a>.</li>
 <li class=""><strong>Pick or write controls</strong> — start with the built-in catalog
-(<a class="" href="/docs/reference">Reference</a>); add your own when you need to.
+at <a class="" href="/docs/reference">Reference</a>; add your own when you need to.
 → <a class="" href="/docs/tutorials">Tutorials</a> walk through writing your first control.</li>
-<li class=""><strong>Evaluate + gate</strong> — run <code>stave apply</code> in CI and gate on exit code <code>3</code>
-(violations). → <a class="" href="/docs/how-to">How-to Guides</a>.</li>
+<li class=""><strong>Evaluate + gate</strong> — run <code>stave apply</code> in CI and gate on exit code 3.
+→ <a class="" href="/docs/how-to">How-to Guides</a>.</li>
 </ol>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --observations ./snapshot/ --format sarif &gt; findings.sarif</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># exit 0 = clean, 3 = violations (fail the pipeline), 2 = input error</span><br></span></code></pre></div></div>
-<p>Most teams get a real finding on their own config the same afternoon.</p>
+<p>Most teams get a finding on their own config the same afternoon.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="developer-experience">Developer experience<a href="#developer-experience" class="hash-link" aria-label="Direct link to Developer experience" title="Direct link to Developer experience" translate="no">​</a></h2>
 <ul>
 <li class=""><strong>Sandbox:</strong> the bundled <a class="" href="/docs/demos">demo scenarios</a> are a ready-made sandbox —
@@ -40,6 +40,6 @@ passed.</li>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="support">Support<a href="#support" class="hash-link" aria-label="Direct link to Support" title="Direct link to Support" translate="no">​</a></h2>
 <p>Email <strong><a href="mailto:bparanj@gmail.com" target="_blank" rel="noopener noreferrer" class="">bparanj@gmail.com</a></strong> — bug reports, control-authoring
 questions, &quot;is this the right tool for X?&quot;. Include the command you ran and the
-output (use <code>--sanitize</code> to scrub identifiers before sharing).</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#proof-of-concept" class="table-of-contents__link toc-highlight">Proof of concept</a></li><li><a href="#developer-experience" class="table-of-contents__link toc-highlight">Developer experience</a></li><li><a href="#support" class="table-of-contents__link toc-highlight">Support</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
+output. Use <code>--sanitize</code> to scrub identifiers before sharing.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#proof-of-concept" class="table-of-contents__link toc-highlight">Proof of concept</a></li><li><a href="#developer-experience" class="table-of-contents__link toc-highlight">Developer experience</a></li><li><a href="#support" class="table-of-contents__link toc-highlight">Support</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__links text--center"><div class="footer__links"><a class="footer__link-item" href="/docs/discover">Discover</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/evaluate">Evaluate</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/learn">Learn</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/build">Build</a><span class="footer__link-separator">·</span><a class="footer__link-item" href="/docs/scale">Scale</a></div></div></div></footer></div>
 </body>
 </html>

@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">Discover | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://stave.dev/docs/discover"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Discover | Stave"><meta data-rh="true" name="description" content="What Stave is, whether it fits your problem, and why you can trust it."><meta data-rh="true" property="og:description" content="What Stave is, whether it fits your problem, and why you can trust it."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://stave.dev/docs/discover"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/discover" hreflang="en"><link data-rh="true" rel="alternate" href="https://stave.dev/docs/discover" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.ee2666c3.css">
-<script src="/assets/js/runtime~main.2b16d176.js" defer="defer"></script>
-<script src="/assets/js/main.c42361b4.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d3e6627b.js" defer="defer"></script>
+<script src="/assets/js/main.0124bb2a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -17,20 +17,20 @@
 <p>Stave answers the query no other tool does: <strong>audit AWS security from a
 configuration snapshot you already have — no credentials, no agent, no
 network access.</strong></p>
-<p>You feed it a point-in-time snapshot of your config (S3, IAM, CloudTrail,
-KMS, Lambda, and 80+ more domains) plus a control catalog, and it proves
-which resources are unsafe — <strong>now</strong> and <strong>latently</strong> (safe today, one
-setting-change from exposed).</p>
-<p>It is a <em>reasoning</em> engine, not a scanner: it evaluates how settings
-<strong>combine</strong> (a permissive policy neutralised by a Public Access Block; an
-exposure that needs two independent paths closed; a compound attack chain
-across resources) — the <strong>edges</strong>, not just the <strong>nodes</strong>.</p>
+<p>You feed it a point-in-time snapshot of your config — S3, IAM, CloudTrail,
+KMS, Lambda, and 80+ more domains — plus a control catalog, and it proves
+which resources are unsafe <strong>now</strong> and <strong>latently</strong>: safe today, one
+setting-change from exposed.</p>
+<p>It is a <em>reasoning</em> engine: it evaluates how settings <strong>combine</strong> — a
+permissive policy neutralised by a Public Access Block, an exposure that
+needs two independent paths closed, a compound attack chain across
+resources — the <strong>edges</strong> between resources, across time.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="problem-fit">Problem fit<a href="#problem-fit" class="hash-link" aria-label="Direct link to Problem fit" title="Direct link to Problem fit" translate="no">​</a></h2>
 <p>Use Stave if you need to:</p>
 <ul>
 <li class="">Prove a bucket / role / key is safe from <strong>static config alone</strong> — no
 credentials, no live account, no network.</li>
-<li class="">Catch <strong>latent</strong> exposure (safe now, unsafe after the next <code>terraform apply</code>).</li>
+<li class="">Catch <strong>latent</strong> exposure — safe now, unsafe after the next <code>terraform apply</code>.</li>
 <li class="">Find <strong>compound</strong> risk a single-setting scanner misses.</li>
 <li class="">Produce <strong>deterministic, reproducible</strong> evidence for audits and CI gates.</li>
 </ul>
@@ -39,12 +39,12 @@ may be enough. Stave&#x27;s wedge is the reasoning across settings, time, and
 resources.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="credibility">Credibility<a href="#credibility" class="hash-link" aria-label="Direct link to Credibility" title="Direct link to Credibility" translate="no">​</a></h2>
 <ul>
-<li class=""><strong>Validated against real breaches and bug bounties</strong> — see the
-<a class="" href="/docs/challenge/cases">case studies</a> (30 real HackerOne reports reconstructed as
-reasoning challenges).</li>
-<li class=""><strong>100% detection across validation labs</strong> — SadCloud (57 findings, 3 engines,
-0 disagreements), Bishop Fox IAM Vulnerable (30/30 paths), CloudGoat (13
-findings + 1 compound chain).</li>
+<li class=""><strong>Validated against real breaches and bug bounties</strong> — 30 HackerOne reports
+reconstructed as reasoning challenges. See the
+<a class="" href="/docs/challenge/cases">case studies</a>.</li>
+<li class=""><strong>100% detection across validation labs</strong> — SadCloud: 57 findings, 3 engines,
+0 disagreements. Bishop Fox IAM Vulnerable: 30/30 paths. CloudGoat: 13
+findings + 1 compound chain.</li>
 <li class=""><strong>Deterministic &amp; auditable</strong> — same input, same verdict, byte-for-byte; every
 finding carries an evidence line and a reasoning trace.</li>
 <li class=""><strong>Open source</strong> — read the engine, the controls, and the test corpus yourself.</li>
