@@ -8,13 +8,28 @@
     <subtitle>Stave Blog</subtitle>
     <icon>https://stave.dev/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Hello World]]></title>
+        <title type="html"><![CDATA[What's Coming]]></title>
         <id>https://stave.dev/blog/2026/02/20/hello-world</id>
         <link href="https://stave.dev/blog/2026/02/20/hello-world"/>
         <updated>2026-02-20T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Welcome to the Stave blog.]]></summary>
-        <content type="html"><![CDATA[<p>Welcome to the Stave blog.</p>
-<p>This is a sample post. Replace it with your own content.</p>]]></content>
+        <summary type="html"><![CDATA[Articles on cloud security evaluation, IAM policy semantics, and]]></summary>
+        <content type="html"><![CDATA[<p>Articles on cloud security evaluation, IAM policy semantics, and
+configuration-graph analysis — each one a real finding, a real fix,
+and a machine-verifiable proof that the fix worked.</p>
+<p>Every article ships with the snapshot, the control, and the commands
+to reproduce the finding yourself. No trust required — re-derive the
+result on your own machine.</p>
+<p>Topics in the queue:</p>
+<ul>
+<li class=""><strong>ForAllValues / ForAnyValue</strong> — the IAM condition key semantics that
+produce silent privilege escalation, and how to prove your policies
+are safe</li>
+<li class=""><strong>Ghost-reference findings</strong> — when a resource references something
+that doesn't exist in the account snapshot, and why that's a
+critical signal</li>
+<li class=""><strong>Compound chains</strong> — multi-hop attack paths that only appear when
+you reason across the relationship graph, not resource-by-resource</li>
+</ul>]]></content>
         <category label="Stave" term="Stave"/>
     </entry>
 </feed>
