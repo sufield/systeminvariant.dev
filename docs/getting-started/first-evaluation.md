@@ -5,13 +5,13 @@ Install Stave, then evaluate a bundled demo snapshot. No cloud credentials. No A
 ## Install[​](#install "Direct link to Install")
 
 ```
-brew install sufield/tap/stave
-```
-
-Or:
-
-```
 go install github.com/sufield/stave/cmd/stave@latest
+```
+
+Or on macOS:
+
+```
+brew install sufield/tap/stave
 ```
 
 Verify:

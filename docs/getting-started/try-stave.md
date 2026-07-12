@@ -37,7 +37,7 @@ Stop the container and it's gone. See [Docker Scenarios](/docs/labs/docker-scena
 ## 3. Install and run against demo data[​](#3-install-and-run-against-demo-data "Direct link to 3. Install and run against demo data")
 
 ```
-brew install sufield/tap/stave
+go install github.com/sufield/stave/cmd/stave@latest  # or: brew install sufield/tap/stave (macOS)
 stave apply --observations ./examples/demo-fixtures/ --format text
 ```
 
