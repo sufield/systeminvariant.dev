@@ -96,7 +96,7 @@ The facts that matter for this scenario: the bucket is `compliance`-tagged (`soc
 
 Scaling past one bucket
 
-The per-resource `jq` projection above is right for one bucket. For a whole estate with many accounts and asset types, [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better than per-resource `jq` — it queries your whole estate as SQL and projects each resource into `obs.v0.1` with no per-resource code. See [Building Extractors](/docs/labs/building-extractors.md).
+The per-resource `jq` projection above is right for one bucket. For a whole estate with many accounts and asset types, [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better than per-resource `jq` — it queries your whole estate as SQL and projects each resource into `obs.v0.1` with no per-resource code. See [Building Extractors](/docs/how-to/integration/building-extractors.md).
 
 ## Step 2 — The controls[​](#step-2--the-controls "Direct link to Step 2 — The controls")
 
@@ -231,4 +231,4 @@ echo $?   # 0
 
 * [Shadow Admin Compute Role Privilege Drift](/docs/labs/shadow-admin-compute-role-privilege-drift.md) — IAM over-permission and drift.
 * [Cognito Unauthenticated S3 Takeover](/docs/labs/cognito-unauthenticated-s3-takeover.md) — the snapshot model, end to end.
-* [Building Extractors](/docs/labs/building-extractors.md) — automate the re-capture step by generating `obs.v0.1` from live AWS.
+* [Building Extractors](/docs/how-to/integration/building-extractors.md) — automate the re-capture step by generating `obs.v0.1` from live AWS.

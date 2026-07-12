@@ -155,7 +155,7 @@ That capture writes `observations/lab3.obs.json` straight from the deployed acco
 
 Producing this snapshot in the real world
 
-For a whole estate — many accounts and asset types — [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better than per-resource `jq`. See [Building Extractors](/docs/labs/building-extractors.md). Note, though, that IAM permission drift and service-wildcards are `derived_properties` in the `iam_role` mapping — Access Advisor polling and policy analysis are the collector's job, not something a SQL projection expresses — so the capture + `jq` shown above is the right tool for *this* resource. The controls, findings, and fix → re-capture loop below are identical no matter how the snapshot was produced.
+For a whole estate — many accounts and asset types — [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better than per-resource `jq`. See [Building Extractors](/docs/how-to/integration/building-extractors.md). Note, though, that IAM permission drift and service-wildcards are `derived_properties` in the `iam_role` mapping — Access Advisor polling and policy analysis are the collector's job, not something a SQL projection expresses — so the capture + `jq` shown above is the right tool for *this* resource. The controls, findings, and fix → re-capture loop below are identical no matter how the snapshot was produced.
 
 ## Step 2 — The controls[​](#step-2--the-controls "Direct link to Step 2 — The controls")
 
@@ -316,4 +316,4 @@ The re-captured snapshot now derives `service_wildcards_granted` to `[]` and `pe
 
 * [Cognito Unauthenticated S3 Takeover](/docs/labs/cognito-unauthenticated-s3-takeover.md) — the snapshot model, end to end.
 * [S3 Public Exposure & Long-Lived IAM Keys](/docs/labs/s3-public-exposure-long-lived-iam-keys.md) — the S3 + IAM walkthrough.
-* [Building Extractors](/docs/labs/building-extractors.md) — automate the re-capture step by generating `obs.v0.1` from live AWS.
+* [Building Extractors](/docs/how-to/integration/building-extractors.md) — automate the re-capture step by generating `obs.v0.1` from live AWS.

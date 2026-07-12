@@ -89,7 +89,7 @@ The two facts that matter: `identity.access.allow_unauthenticated: true` (guest 
 
 Scaling beyond one resource
 
-The capture + `jq` above is the right tool for *this* correlation: `unauth_role_has_s3` is a **cross-resource fact** (pool → role → policy), so it needs a collector/join to compute — it lives in the Steampipe mapping's `derived_properties`, not in a single SQL row. For a whole estate with many asset types, [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better than per-resource `jq` — see [Building Extractors](/docs/labs/building-extractors.md). Everything below — the controls, the findings, the fix → re-capture loop — is identical no matter how the snapshot was produced.
+The capture + `jq` above is the right tool for *this* correlation: `unauth_role_has_s3` is a **cross-resource fact** (pool → role → policy), so it needs a collector/join to compute — it lives in the Steampipe mapping's `derived_properties`, not in a single SQL row. For a whole estate with many asset types, [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better than per-resource `jq` — see [Building Extractors](/docs/how-to/integration/building-extractors.md). Everything below — the controls, the findings, the fix → re-capture loop — is identical no matter how the snapshot was produced.
 
 ## Step 2 — The built-in catalog[​](#step-2--the-built-in-catalog "Direct link to Step 2 — The built-in catalog")
 
@@ -243,5 +243,5 @@ And the `input_hash` is now **different** — proof Stave evaluated the new stat
 ## Next steps[​](#next-steps "Direct link to Next steps")
 
 * [S3 Public Exposure & Long-Lived IAM Keys](/docs/labs/s3-public-exposure-long-lived-iam-keys.md) — the S3 + IAM walkthrough.
-* [Building Extractors](/docs/labs/building-extractors.md) — automate the re-capture step by generating `obs.v0.1` from live AWS.
+* [Building Extractors](/docs/how-to/integration/building-extractors.md) — automate the re-capture step by generating `obs.v0.1` from live AWS.
 * [Writing Controls](/docs/labs/writing-controls.md) — author your own rule.

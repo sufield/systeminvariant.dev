@@ -1,6 +1,6 @@
 # Observation Export Schema
 
-This page is the field-by-field reference for the S3 resource property groups carried in an `obs.v0.1` observation. Each group maps to a set of AWS API calls or Terraform resource attributes.
+This page is the field-by-field reference for the S3 resource property groups carried in an `obs.v0.1` observation. For the envelope structure see [obs.v0.1 Schema](/docs/reference/schema-obs.md); for contract guarantees see [Observation Contract](/docs/reference/observation-contract.md). Each group maps to a set of AWS API calls or Terraform resource attributes.
 
 For the schema envelope (top-level structure, the `assets`/`identities` arrays, and validation rules) see [Observation Schema (`obs.v0.1`)](/docs/reference/schema-obs.md). For step-by-step recipes that produce these snapshots, see [Create Observation Snapshots](/docs/how-to/getting-started/create-snapshots.md).
 

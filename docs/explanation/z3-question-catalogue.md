@@ -95,7 +95,7 @@ The three sub-questions reduce to:
 2. A `lambda_invoke_existing` or `cfn_update_existing` hop in Stage 3.
 3. An S3 cross-account write in Stage 5.
 
-Stave answers each independently today; chaining them into a single derived finding is the role of the [risk reasoning engine](/docs/explanation/risk-reasoning.md), which composes multi-control chain definitions across findings after evaluation.
+Stave answers each independently today; chaining them into a single derived finding is the role of the [evaluation engine](/docs/explanation/how-stave-works.md), which composes multi-control chain definitions across findings after evaluation.
 
 ## How to surface these to operators[​](#how-to-surface-these-to-operators "Direct link to How to surface these to operators")
 

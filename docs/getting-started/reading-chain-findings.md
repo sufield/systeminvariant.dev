@@ -1,8 +1,6 @@
-# Reading Chain Findings: Your Compound Risk
+# Reading Chain Findings
 
 Chain findings are Stave's distinctive output — compound risks that emerge from a *combination* of conditions, invisible to single-resource scanners that check one setting at a time.
-
-> **Environment:** The chain catalog is at `~/chains` (and `$STAVE_CHAINS`) in the Coder workspace; from a local clone, it's `./chains` at the repo root. Chain detection auto-discovers from `./chains` relative to cwd, so the commands below work in both contexts when you run them from where a `chains` directory (or symlink) resolves.
 
 ## What a chain finding is[​](#what-a-chain-finding-is "Direct link to What a chain finding is")
 
@@ -21,6 +19,10 @@ attack_stages:    execution → privilege_escalation → detection_evasion
 ```
 
 Reads like a sentence: *broad reach + no filter + no audit trail = a usable exfiltration / lateral-movement primitive.* Drop any one leg and the attacker has either limited reach, blocked content, or visible activity.
+
+## The ★ STAVE ONLY marker[​](#the--stave-only-marker "Direct link to The ★ STAVE ONLY marker")
+
+Findings marked ★ are graph-level — they require reasoning across multiple resources or settings. A single-resource scanner cannot produce them because no single setting is the vulnerability. The risk emerges from how settings *combine*.
 
 ## Priority order[​](#priority-order "Direct link to Priority order")
 
@@ -42,31 +44,6 @@ Every leg must hold for the compound to fire. **Break any one leg and the compou
 > Pick the **easiest** leg to fix. That single change is your highest-leverage action — it neutralizes the whole chain.
 
 Fixing one leg often also clears several of the single-resource findings that participated in it.
-
-## Visualize the chains[​](#visualize-the-chains "Direct link to Visualize the chains")
-
-Render an interactive graph of each chain's legs flowing into a compound-risk node:
-
-```
-# Run from the Stave repo root — chain detection uses the bundled
-# chain catalog in ./chains, which ships with the repo.
-stave-mcp --render-chains \
-  --observations examples/demo-ai-security/fixtures/writeup-config/observations
-```
-
-It prints a `file://` path; open it in a browser. You'll see each chain as `[ leg ] + [ leg ] + [ leg ] → COMPOUND RISK`, a clickable chain list, and the break-any-link remediation. Zero chains is a good result — it means all your risk is single-resource.
-
-> Chain detection requires the chain-definition catalog. It ships in the repo at `./chains`; the visualizer defaults to that directory. Evaluating your own snapshot for chains means running where `./chains` resolves (the repo root), or supplying that catalog.
-
-## Drill in (with an AI assistant)[​](#drill-in-with-an-ai-assistant "Direct link to Drill in (with an AI assistant)")
-
-If you run the MCP server, the model can pull one chain's full detail:
-
-```
-stave.context  type=chain  id=bedrock_agent_overpermissioned  observations=...
-```
-
-— returning the legs, narrative, stages, and participating assets.
 
 ***
 

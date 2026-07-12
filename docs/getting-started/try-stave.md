@@ -1,10 +1,8 @@
 # Try Stave
 
-Five levels, each earns enough trust for the next. Start anywhere, but if you're evaluating Stave for the first time, go in order.
-
 ## 1. See what it finds[​](#1-see-what-it-finds "Direct link to 1. See what it finds")
 
-No install, no signup, nothing to run. Here's real output from `stave apply` against a CloudGoat snapshot:
+No install, no signup, nothing to run. Real output from `stave apply` against a CloudGoat snapshot:
 
 ```
 FINDINGS:
@@ -19,7 +17,7 @@ FINDINGS:
         evidence: trail.s3_bucket_name has no matching asset
 ```
 
-The ★ findings are configuration-graph findings — relationships between resources that single-setting scanners cannot see.
+★ findings are configuration-graph findings — relationships between resources that single-setting scanners cannot see.
 
 ***
 
@@ -32,9 +30,7 @@ docker run --rm -v "$(pwd)/docs-content/demo/scenarios:/work/scenarios" \
   stave-demo
 ```
 
-You see the same kind of findings from Step 1, live in your terminal. Nothing is installed on your host. Stop the container and it's gone.
-
-See [Docker Scenarios](/docs/labs/docker-scenarios.md) for the full set of curated misconfiguration scenarios.
+Stop the container and it's gone. See [Docker Scenarios](/docs/labs/docker-scenarios.md) for the full set of curated misconfiguration scenarios.
 
 ***
 
@@ -45,27 +41,18 @@ brew install sufield/tap/stave
 stave apply --observations ./examples/demo-fixtures/ --format text
 ```
 
-The binary is on your machine. It evaluates bundled lab fixtures. It reads local files and writes to stdout. No network calls, no credentials, no access to your AWS account.
-
-**Next:** [First Evaluation](/docs/getting-started/first-evaluation.md) walks through this step with explanation of every output field.
+Reads local files, writes to stdout. No network calls, no credentials, no access to your AWS account.
 
 ***
 
 ## 4. Run against your own snapshots[​](#4-run-against-your-own-snapshots "Direct link to 4. Run against your own snapshots")
-
-Already running AWS Config? Your snapshots are in S3:
 
 ```
 aws s3 sync s3://your-config-bucket/AWSLogs/ ./my-snapshot/
 stave apply --observations ./my-snapshot/
 ```
 
-Stave reads the files you give it. It never touches your AWS account. It has no credentials. The snapshot is a copy — your account is unaffected.
-
-* [Import from AWS Config](/docs/how-to/getting-started/import-config-snapshots.md)
-* [Import from Steampipe](/docs/labs/from-steampipe-to-stave.md)
-
-**Next:** [Time to First Finding](/docs/getting-started/first-finding.md) walks through importing and evaluating your own account data.
+Stave reads the files you give it. The snapshot is a copy — your account is unaffected.
 
 ***
 
@@ -76,8 +63,6 @@ stave apply --observations ./snapshot/ --format sarif > findings.sarif
 # exit 0 = clean, exit 3 = findings above threshold
 ```
 
-* [GitHub Actions integration](/docs/how-to/integration/ci-cd-integration.md)
-* [Scheduled operation](/docs/how-to/integration/scheduled-operation.md)
-* [Compliance evidence generation](/docs/labs/compliance-evidence.md)
+***
 
-**Next:** [Add to CI](/docs/getting-started/add-to-ci.md) sets up a gate that blocks merges when findings exceed your threshold.
+**Next:** [First Evaluation](/docs/getting-started/first-evaluation.md) — install the binary and run it against demo data.

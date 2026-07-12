@@ -138,7 +138,7 @@ The two facts that matter — both *derived* by the `jq` above:
 
 Scaling past a handful of resources
 
-The per-resource `aws … | jq` capture above is ideal for a single scenario. For a **whole estate** — many accounts and asset types — [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better: it queries your whole estate as SQL and projects each resource into `obs.v0.1` with no per-resource code. See [Building Extractors](/docs/labs/building-extractors.md). Everything below — the controls, the findings, the fix → re-capture loop — is identical no matter how the snapshot was produced.
+The per-resource `aws … | jq` capture above is ideal for a single scenario. For a **whole estate** — many accounts and asset types — [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better: it queries your whole estate as SQL and projects each resource into `obs.v0.1` with no per-resource code. See [Building Extractors](/docs/how-to/integration/building-extractors.md). Everything below — the controls, the findings, the fix → re-capture loop — is identical no matter how the snapshot was produced.
 
 ## Step 2 — Pick the controls[​](#step-2--pick-the-controls "Direct link to Step 2 — Pick the controls")
 
@@ -282,5 +282,5 @@ echo $?   # 0
 ## Next steps[​](#next-steps "Direct link to Next steps")
 
 * [Writing Controls](/docs/labs/writing-controls.md) — author your own rule for a condition the catalog doesn't cover.
-* [Building Extractors](/docs/labs/building-extractors.md) — generate `obs.v0.1` snapshots from your real AWS state.
+* [Building Extractors](/docs/how-to/integration/building-extractors.md) — generate `obs.v0.1` snapshots from your real AWS state.
 * Browse the full catalog in `docs/controls/reference.md`.

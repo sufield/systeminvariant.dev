@@ -31,7 +31,7 @@ Sanitization is deterministic: the same input identifier always maps to the same
 
 ## Input Scrubbing[​](#input-scrubbing "Direct link to Input Scrubbing")
 
-To sanitize observation files before sharing, handle scrubbing in your extractor. Your extractor (any language producing `obs.v0.1` JSON) should strip or replace sensitive identifiers before writing output. See [Building an Extractor](/docs/labs/building-extractors.md) for guidance.
+To sanitize observation files before sharing, handle scrubbing in your extractor. Your extractor (any language producing `obs.v0.1` JSON) should strip or replace sensitive identifiers before writing output. See [Building an Extractor](/docs/how-to/integration/building-extractors.md) for guidance.
 
 ## Recommended Sharing Workflow[​](#recommended-sharing-workflow "Direct link to Recommended Sharing Workflow")
 
@@ -51,4 +51,4 @@ For shared artifacts, prefer `--path-mode=base`.
 ## Related Docs[​](#related-docs "Direct link to Related Docs")
 
 * [Security Policy](/docs/reference/security-policy.md)
-* [Offline & Air-Gapped Operation](/docs/explanation/offline-airgapped.md)
+* [Air-Gapped Operation](/docs/explanation/air-gapped-analysis.md)

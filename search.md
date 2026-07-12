@@ -7,5 +7,3 @@
 Search
 
 # Search the documentation
-
-[Discover](/why-stave/discover)·[Evaluate](/why-stave/evaluate)·[Learn](/why-stave/learn)·[Build](/why-stave/build)·[Scale](/why-stave/scale)

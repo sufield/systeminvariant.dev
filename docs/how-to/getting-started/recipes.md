@@ -45,7 +45,7 @@ Reusable multi-command workflows. Each recipe shows the exact commands, expected
 
 **When to use:** You have AWS CLI JSON exports from a Terraform-managed environment and want to evaluate them with Stave.
 
-1. **Extract** — use an extractor (any language) to produce `obs.v0.1` JSON from your AWS snapshot directory. The input directory should contain files like `list-buckets.json`, `get-bucket-acl/<bucket>.json`, etc. See [Building an Extractor](/docs/labs/building-extractors.md) for a jumpstart template.
+1. **Extract** — use an extractor (any language) to produce `obs.v0.1` JSON from your AWS snapshot directory. The input directory should contain files like `list-buckets.json`, `get-bucket-acl/<bucket>.json`, etc. See [Building an Extractor](/docs/how-to/integration/building-extractors.md) for a jumpstart template.
 
 2. **Validate** — confirm the extracted observation is well-formed:
 
@@ -71,7 +71,7 @@ Reusable multi-command workflows. Each recipe shows the exact commands, expected
 
 **When to use:** In CI/CD, you want to verify that a remediation fixed the violations found in a before-state snapshot.
 
-1. **Capture before-state observations** (pre-remediation) — use an extractor to produce `obs.v0.1` JSON from your AWS snapshot. See [Building an Extractor](/docs/labs/building-extractors.md).
+1. **Capture before-state observations** (pre-remediation) — use an extractor to produce `obs.v0.1` JSON from your AWS snapshot. See [Building an Extractor](/docs/how-to/integration/building-extractors.md).
 
 2. **Apply remediation** (your Terraform apply, script, etc.)
 

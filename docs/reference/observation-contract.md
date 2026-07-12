@@ -1,5 +1,7 @@
 # Observation Contract
 
+This page covers stability guarantees and versioning promises. For the schema structure see [obs.v0.1 Schema](/docs/reference/schema-obs.md); for the S3 field-by-field reference see [Export Schema](/docs/reference/observation-export-schema.md).
+
 The monolithic contract document was split by namespace in April 2026. The current contract lives in [`docs/contract/`](https://github.com/sufield/stave/blob/main/docs/contract/README.md).
 
 ## Where to find each domain[​](#where-to-find-each-domain "Direct link to Where to find each domain")

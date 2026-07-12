@@ -1,5 +1,7 @@
 # Severity Thresholds
 
+This page explains how to tune duration thresholds and per-control overrides. For reading evaluation output (JSON shape, finding fields, fix plans) see [Output and Severity](/docs/reference/output-and-severity.md).
+
 Stave has two related but distinct concepts: control severity (risk classification) and duration thresholds (how long a resource can be unsafe before it's a violation).
 
 ## Severity Levels[​](#severity-levels "Direct link to Severity Levels")

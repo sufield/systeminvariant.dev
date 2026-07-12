@@ -1,19 +1,33 @@
 # Time To First Finding
 
-Get your first finding against your own AWS environment in under 10 minutes.
+Get your first finding against your own AWS environment. Pick the path that matches what you already have — lowest friction first.
 
-No agents, no credentials stored by Stave, no network calls during evaluation. You extract the data yourself with the AWS CLI, then Stave evaluates it offline.
+## Already running AWS Config?[​](#already-running-aws-config "Direct link to Already running AWS Config?")
 
-## Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+Your snapshots are already in S3. Sync them down and evaluate:
 
-* `stave` installed and on `PATH`
-* AWS CLI configured with read access to the target account
-* Optional: `jq` installed (for extracting observation data)
-* If jq is not installed, you can use JMES path that is part of AWS CLI
+```
+aws s3 sync s3://your-config-bucket/AWSLogs/ ./my-snapshot/
+stave apply --observations ./my-snapshot/ --format text
+```
 
-## Step 1: Extract a snapshot from your AWS account[​](#step-1-extract-a-snapshot-from-your-aws-account "Direct link to Step 1: Extract a snapshot from your AWS account")
+For detailed import options, see [Import Config Snapshots](/docs/how-to/getting-started/import-config-snapshots.md).
 
-Use the AWS CLI to pull S3 bucket configuration into a local directory. This is your extractor — a few shell commands you control.
+## Have Steampipe?[​](#have-steampipe "Direct link to Have Steampipe?")
+
+Export your Steampipe data and convert:
+
+```
+steampipe query "select * from aws_s3_bucket" --output json > steampipe-raw.json
+stave transform -i ./steampipe-raw.json -o ./observations
+stave apply --observations ./observations --format text
+```
+
+For the full guide, see [From Steampipe to Stave](/docs/labs/from-steampipe-to-stave.md).
+
+## Starting from scratch?[​](#starting-from-scratch "Direct link to Starting from scratch?")
+
+Extract S3 bucket configuration with the AWS CLI. This requires read-only access to the target account.
 
 ```
 mkdir -p snapshot-raw
@@ -23,137 +37,28 @@ for bucket in $(jq -r '.Buckets[].Name' snapshot-raw/list-buckets.json); do
   aws s3api get-bucket-acl --bucket "$bucket" > "snapshot-raw/${bucket}-acl.json" 2>/dev/null || true
   aws s3api get-bucket-policy --bucket "$bucket" > "snapshot-raw/${bucket}-policy.json" 2>/dev/null || true
   aws s3api get-bucket-encryption --bucket "$bucket" > "snapshot-raw/${bucket}-encryption.json" 2>/dev/null || true
-  aws s3api get-bucket-logging --bucket "$bucket" > "snapshot-raw/${bucket}-logging.json" 2>/dev/null || true
   aws s3api get-bucket-versioning --bucket "$bucket" > "snapshot-raw/${bucket}-versioning.json" 2>/dev/null || true
 done
 ```
 
-This runs in your terminal. Stave never sees your credentials.
-
-## Step 2: Convert the snapshot into observations[​](#step-2-convert-the-snapshot-into-observations "Direct link to Step 2: Convert the snapshot into observations")
-
-Convert the raw AWS CLI output into Stave's normalized observation format (`obs.v0.1` JSON). The built-in `stave transform` does this with jq filters — no extractor to write:
+Convert to observations and evaluate:
 
 ```
 stave transform -i ./snapshot-raw -o ./observations
+stave apply --observations ./observations --format text
 ```
 
-For data sources or resource types the built-in filters don't cover, you can write your own extractor in any language, or use an existing one such as `stave-extractor`. See [Building an Extractor](/docs/labs/building-extractors.md) for a jumpstart template.
+Stave never sees your credentials. The extractor runs in your terminal; Stave evaluates the resulting files offline.
 
-## Step 3: Validate the observations[​](#step-3-validate-the-observations "Direct link to Step 3: Validate the observations")
+## Reading the output[​](#reading-the-output "Direct link to Reading the output")
 
-Check that the extracted data is well-formed before evaluation.
+Exit code `3` means violations found — you have your first findings. Each finding names the control, the asset, and the remediation step.
 
-```
-stave validate --controls controls/s3 --observations ./observations
-```
+Exit code `0` means your infrastructure is clean against the evaluated controls. Run `stave diagnose` to see why specific controls didn't fire (threshold too high, data shape issues, etc).
 
-If validation fails, the error message tells you exactly which field is missing or malformed. Fix your extractor script (Step 2) and re-run it.
+## What's next[​](#whats-next "Direct link to What's next")
 
-## Step 4: Apply built-in controls[​](#step-4-apply-built-in-controls "Direct link to Step 4: Apply built-in controls")
-
-Run all 43 built-in S3 controls against your observations. This is where findings appear.
-
-```
-stave apply --controls controls/s3 --observations ./observations \
-  --max-unsafe 168h --eval-time "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --format text
-```
-
-Example output:
-
-```
-Evaluation Results
-==================
-
-Summary
--------
-  Controls evaluated:  43
-  Assets evaluated:    12
-  Attack surface:      2
-  Violations:          3
-
-Violations
-----------
-  1. CTL.S3.CONTROLS.001
-     Public Access Block Must Be Enabled
-     Asset: res:aws:s3:bucket:staging-uploads
-     Remediation: Enable BlockPublicAccess on this bucket.
-
-  2. CTL.S3.ENCRYPT.002
-     Transport Encryption Required
-     Asset: res:aws:s3:bucket:staging-uploads
-     Remediation: Add a bucket policy requiring ssl-only access.
-
-  3. CTL.S3.LOG.001
-     Access Logging Required
-     Asset: res:aws:s3:bucket:staging-uploads
-     Remediation: Enable server access logging.
-```
-
-You now have your first findings with specific remediation guidance.
-
-## Step 5: Fix and verify[​](#step-5-fix-and-verify "Direct link to Step 5: Fix and verify")
-
-Fix the issues in your AWS account, then take a second snapshot and re-evaluate.
-
-```
-# Fix the cloud config (e.g., enable BlockPublicAccess in AWS console or Terraform)
-
-# Take a second snapshot
-aws s3api get-public-access-block --bucket staging-uploads > snapshot-raw/staging-uploads-pab.json
-
-# Re-run your extractor and re-evaluate
-./my-s3-extractor.sh ./snapshot-raw ./observations
-stave apply --controls controls/s3 --observations ./observations \
-  --max-unsafe 168h --eval-time "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --format text
-```
-
-If the fix worked, the finding disappears from the output. To formally verify:
-
-```
-# Save both evaluations
-stave apply ... -f json > before.json   # (from Step 4)
-stave apply ... -f json > after.json    # (after fix)
-stave verify --before before.json --after after.json
-```
-
-## Step 6: Check status[​](#step-6-check-status "Direct link to Step 6: Check status")
-
-See where you are in the workflow and what to do next:
-
-```
-stave status
-```
-
-## What if apply returns no findings?[​](#what-if-apply-returns-no-findings "Direct link to What if apply returns no findings?")
-
-Your infrastructure might be clean, or the threshold might be too high. Run:
-
-```
-stave diagnose --controls controls/s3 --observations ./observations
-```
-
-This explains why findings did not trigger — threshold too high, time span too short, no predicate matches, or data shape issues.
-
-## What if validate fails?[​](#what-if-validate-fails "Direct link to What if validate fails?")
-
-The error tells you which field is missing or malformed. Common fixes:
-
-* **Missing `captured_at`**: add a timestamp to your observation: `"captured_at": "2026-03-15T00:00:00Z"`
-* **Schema mismatch**: ensure observations use `obs.v0.1` format — flat JSON, no `"snapshots"` wrapper
-
-Fix your extractor script, re-run it, and validate again.
-
-## Summary[​](#summary "Direct link to Summary")
-
-| Step | Command           | What happens                            |
-| ---- | ----------------- | --------------------------------------- |
-| 1    | AWS CLI + jq      | Extract bucket config from your account |
-| 2    | Your extractor    | Normalize raw exports to observations   |
-| 3    | `stave validate`  | Check observations are well-formed      |
-| 4    | `stave apply`     | Evaluate 43 S3 controls, get findings   |
-| 5    | Fix + re-snapshot | Remediate, retake snapshot, re-evaluate |
-| 6    | `stave verify`    | Confirm the fix resolved the finding    |
+You have findings with specific remediation guidance. Pick one and fix it, then re-snapshot and re-evaluate to confirm the fix worked.
 
 ***
 

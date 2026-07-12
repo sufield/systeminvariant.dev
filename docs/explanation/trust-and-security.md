@@ -8,7 +8,7 @@ Stave is designed with a minimal attack surface and a verifiable release pipelin
 * **No subprocess execution** -- Stave does not shell out to external tools.
 * **No persistent state** -- No databases, caches, or config files are created.
 * **Read-only inputs** -- Observation and control files are never modified.
-* **Air-gapped compatible** -- The binary contains no networking code. See [Offline & Air-Gapped Operation](/docs/explanation/offline-airgapped.md).
+* **Air-gapped compatible** -- The binary contains no networking code. See [Offline & Air-Gapped Operation](/docs/explanation/air-gapped-analysis.md).
 
 ## Trust Documents[​](#trust-documents "Direct link to Trust Documents")
 
@@ -16,7 +16,7 @@ Stave is designed with a minimal attack surface and a verifiable release pipelin
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | [Security Guarantees](/docs/explanation/guarantees.md)                              | Full inventory of every guarantee: offline, no-creds, determinism, no-exec, filesystem safety, sanitization, supply chain |
 | [Release Security](/docs/explanation/release-security.md)                           | How releases are built, signed, and verified (checksums, Cosign, SBOM, provenance)                                        |
-| [Offline & Air-Gapped Operation](/docs/explanation/offline-airgapped.md)            | Network dependency inventory for build vs runtime                                                                         |
+| [Offline & Air-Gapped Operation](/docs/explanation/air-gapped-analysis.md)          | Network dependency inventory for build vs runtime                                                                         |
 | [Execution Safety](/docs/explanation/execution-safety.md)                           | No-exec guarantees: no plugins, no templates, no interpreters, closed DSL                                                 |
 | [Sharing Outputs Safely](/docs/how-to/results/sanitization.md)                      | Sanitization and scrubbing for safe output sharing                                                                        |
 | [Data Flow and I/O](/docs/explanation/data-flow.md)                                 | Per-command I/O model, permission policy, overwrite protection, stdin convention                                          |

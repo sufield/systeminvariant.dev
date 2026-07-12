@@ -35,7 +35,7 @@ This is different from:
 * **Infrastructure-as-Code scanning** (tfsec, Checkov) — checks templates before deployment. Stave checks actual observed configurations after deployment.
 * **CSPM** (Wiz, Prisma, AWS Config) — continuously monitors live cloud APIs. Stave evaluates offline, with no credentials.
 
-See [System Invariant as Code](/docs/explanation/system-invariant-as-code.md) for the formal model.
+See [System Invariants](/docs/explanation/system-invariants.md) for the formal model.
 
 ## How does System Invariant as Code differ from OPA Rego and other policy engines?[​](#how-does-system-invariant-as-code-differ-from-opa-rego-and-other-policy-engines "Direct link to How does System Invariant as Code differ from OPA Rego and other policy engines?")
 
@@ -93,7 +93,7 @@ Three reasons:
 
 1. **Air-gapped environments** — security review and audit often happen in isolated networks where cloud API access is unavailable or prohibited.
 2. **Deterministic replay** — the same snapshot files produce the same findings on any machine, any time. Live API queries introduce non-determinism (state changes, API throttling, clock differences).
-3. **Separation of concerns** — calling cloud APIs to collect data is a different problem from evaluating safety invariants. Collection stays external (your tools, your credentials); Stave handles evaluation and ships a built-in converter, `stave transform` (jq filters), that reshapes raw snapshots into `obs.v0.1`. For data sources beyond the built-in filters you can still write an external extractor — see [Building an Extractor](/docs/labs/building-extractors.md).
+3. **Separation of concerns** — calling cloud APIs to collect data is a different problem from evaluating safety invariants. Collection stays external (your tools, your credentials); Stave handles evaluation and ships a built-in converter, `stave transform` (jq filters), that reshapes raw snapshots into `obs.v0.1`. For data sources beyond the built-in filters you can still write an external extractor — see [Building an Extractor](/docs/how-to/integration/building-extractors.md).
 
 ## How is "evidence" different from "observation"?[​](#how-is-evidence-different-from-observation "Direct link to How is \"evidence\" different from \"observation\"?")
 

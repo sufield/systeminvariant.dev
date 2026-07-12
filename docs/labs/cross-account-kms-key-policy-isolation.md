@@ -139,7 +139,7 @@ The three facts that matter: `policy.has_wildcard_principal`, `policy.has_broad_
 
 Producing this snapshot at estate scale
 
-For a whole estate — many accounts and asset types — [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better than per-resource `jq`: it queries your whole estate as SQL and projects each resource into `obs.v0.1` with no per-resource code. See [Building Extractors](/docs/labs/building-extractors.md). This single-resource KMS case is Steampipe-friendly too — the `kms_key` mapping populates the key's own policy directly — but the per-resource `jq` above shows the exact capture→derive step the mapping automates.
+For a whole estate — many accounts and asset types — [Steampipe](https://steampipe.io) with Stave's declarative `contracts/steampipe/*.yaml` mappings scales better than per-resource `jq`: it queries your whole estate as SQL and projects each resource into `obs.v0.1` with no per-resource code. See [Building Extractors](/docs/how-to/integration/building-extractors.md). This single-resource KMS case is Steampipe-friendly too — the `kms_key` mapping populates the key's own policy directly — but the per-resource `jq` above shows the exact capture→derive step the mapping automates.
 
 ## Step 2 — The controls[​](#step-2--the-controls "Direct link to Step 2 — The controls")
 
@@ -318,4 +318,4 @@ echo $?   # 0
 * [SadCloud — Multi-Service Misconfiguration Sweep](/docs/labs/sadcloud-multi-service-validation.md) — evaluate a whole 22-service vulnerable estate at once and read the scorecard.
 * [S3 Ransomware Protection & Forensic Auditability](/docs/labs/s3-ransomware-protection-forensic-auditability.md) — the backup-integrity trio.
 * [Shadow Admin Compute Role Privilege Drift](/docs/labs/shadow-admin-compute-role-privilege-drift.md) — IAM over-permission and drift.
-* [Building Extractors](/docs/labs/building-extractors.md) — automate the re-capture step by generating `obs.v0.1` from live AWS.
+* [Building Extractors](/docs/how-to/integration/building-extractors.md) — automate the re-capture step by generating `obs.v0.1` from live AWS.

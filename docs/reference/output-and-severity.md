@@ -1,5 +1,7 @@
 # Output and Severity
 
+This page explains how to read evaluation output. For tuning duration thresholds and per-control overrides see [Severity Thresholds](/docs/reference/severity-thresholds.md).
+
 Stave evaluation output is JSON (`out.v0.1`) with deterministic ordering.
 
 ## Top-level shape[​](#top-level-shape "Direct link to Top-level shape")

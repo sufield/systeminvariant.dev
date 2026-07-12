@@ -34,18 +34,15 @@
 - [KMS Concentration Risk](/docs/explanation/kms-concentration.md): KMS concentration risk answers: "If this one encryption key is
 - [Lab Results](/docs/explanation/lab-results.md): Verified detection rates across four vendor lab suites — with links to detailed tutorials.
 - [Why the Logic Trace Exists](/docs/explanation/logic-trace.md): The problem with black-box verdicts
-- [Offline & Air-Gapped Operation](/docs/explanation/offline-airgapped.md): Merged into air-gapped-analysis.md. This page is kept for URL stability.
 - [Posture Score](/docs/explanation/posture-score.md): What the 0-100 score measures, how it is computed, and what it does not tell you.
 - [Posture Trending](/docs/explanation/posture-trending.md): stave trend reads historical assessment output files and computes
 - [The Reasoning Contract](/docs/explanation/reasoning-contract.md): Stave is the fact-producing substrate that any reasoning engine can target via a YAML spec format. Validated end-to-end with five independent paradigms (Z3, Soufflé, Clingo, Prolog, PRISM).
 - [Recovery Isolation](/docs/explanation/recovery-isolation.md): Recovery isolation answers: "If your main account is compromised,
 - [Release Integrity & Trust Model](/docs/explanation/release-security.md): How Stave releases are built, signed, and verified.
-- [Risk Reasoning](/docs/explanation/risk-reasoning.md): Stave is not a scanner. It is a deterministic risk reasoning engine
 - [Secret Blast Radius](/docs/explanation/secret-blast-radius.md): Secret blast radius answers: "If this secret is compromised, how
 - [Shadow Logic Detection](/docs/explanation/shadow-logic.md): Shadow logic detection answers: "Do your IAM policies accidentally
 - [The Snapshot Model](/docs/explanation/snapshot-model.md): Why Stave evaluates local files rather than querying live cloud APIs.
 - [Supply Chain Ingress](/docs/explanation/supply-chain-ingress.md): Supply chain ingress analysis answers: "Can an external CI/CD
-- [System Invariant as Code](/docs/explanation/system-invariant-as-code.md): What system invariant as code means in Stave, and how it differs from OPA, IaC scanners, and CSPM tools.
 - [System Invariants](/docs/explanation/system-invariants.md): What system invariants are, how they are expressed as code in Stave, and how they differ from OPA, IaC scanners, and CSPM tools.
 - [Temporal Ghost Detection](/docs/explanation/temporal-ghost.md): Detect configuration references that were valid in a previous snapshot but invalid in the current one — deleted resources that leave dangling pointers.
 - [Threat Model](/docs/explanation/threat-model.md): Stave's threat model: assets, trust boundaries, attacker profiles, controls, and residual risks.
@@ -59,12 +56,12 @@
 - [Stave and Z3](/docs/explanation/z3-solver.md): Stave's evaluator is in-process Google CEL. A small Go example under examples/ shows how to compose Stave's library API with libz3 to answer SAT/UNSAT questions. They are different shapes of analysis.
 - [Getting Started](/docs/getting-started.md)
 - [Add Stave to Your CI Pipeline](/docs/getting-started/add-to-ci.md): The finding you just fixed? Make sure it never comes back. A CI gate
-- [Your First Stave Evaluation](/docs/getting-started/first-evaluation.md): No cloud credentials. No Steampipe. No setup. Evaluate a bundled
-- [Time To First Finding](/docs/getting-started/first-finding.md): Get your first finding against your own AWS environment in under 10 minutes.
+- [First Evaluation](/docs/getting-started/first-evaluation.md): Install Stave and run it against bundled demo data. No cloud credentials, no AWS account.
+- [Time To First Finding](/docs/getting-started/first-finding.md): Run Stave against your own AWS environment. Pick the import path that matches what you already have.
 - [Fix a Finding, Verify the Fix](/docs/getting-started/fix-and-verify.md): The remediation loop: explain → fix → re-snapshot → verify. Each
 - [Installation](/docs/getting-started/installation.md): Install Stave in three progressive tiers. Tier 1 is the standalone Go binary; Tier 2 adds external reasoning engines; Tier 3 adds Neo4j visualisation.
-- [Reading Chain Findings: Your Compound Risk](/docs/getting-started/reading-chain-findings.md): Chain findings are Stave's distinctive output — compound risks that
-- [Try Stave](/docs/getting-started/try-stave.md): Five ways to try Stave, from zero-install to full pipeline — each step earns the trust for the next.
+- [Reading Chain Findings](/docs/getting-started/reading-chain-findings.md): Understand Stave's compound chain findings — what they mean, how to prioritize them, and how to break them.
+- [Try Stave](/docs/getting-started/try-stave.md): Five ways to try Stave, from zero-install to full pipeline.
 - [How-to Guides](/docs/how-to.md)
 - [How to Run an IAM Security Assessment](/docs/how-to/assessments/iam-assessment.md): Evaluate AWS IAM configuration against 38 controls covering identity,
 - [How to Evaluate Multi-Cloud Infrastructure](/docs/how-to/assessments/multi-cloud-evaluation.md): Stave evaluates any cloud provider and any service without engine changes.
@@ -89,7 +86,9 @@
 - [Verify a Release](/docs/how-to/getting-started/verify-release.md): Step-by-step recipe for verifying Stave release artifacts: checksums, Cosign signatures, SBOM, and build provenance.
 - [Atlantis Post-Plan Integration](/docs/how-to/integration/atlantis-integration.md): Evaluate Terraform plans for safety violations before atlantis apply.
 - [Breach-Type Routing with Evaluation Context](/docs/how-to/integration/breach-routing.md): How to use the --context flag to filter control evaluation based on incident breach type.
+- [Task: Build a Stave Observation Extractor](/docs/how-to/integration/building-extractors.md): Most users don't need this. For common AWS resources, the built-in
 - [Running in CI/CD](/docs/how-to/integration/ci-cd-integration.md): How to integrate Stave into GitHub Actions, GitLab CI, and Jenkins pipelines.
+- [MCP Server Integration](/docs/how-to/integration/mcp-server.md): Connect an AI agent (Claude Code, Cursor) to Stave via stave-mcp.
 - [How to Block Unsafe Configs with a Pre-Commit Hook](/docs/how-to/integration/pre-commit-hook.md): Prevent unsafe cloud configurations from being committed to version
 - [SARIF and GitHub Code Scanning](/docs/how-to/integration/sarif-code-scanning.md): Upload Stave findings to GitHub code scanning via SARIF output.
 - [Scheduled Operation](/docs/how-to/integration/scheduled-operation.md): Run Stave on a schedule: cron + snapshot capture + diff between consecutive runs.
@@ -107,7 +106,6 @@
 - [Sanitization](/docs/how-to/results/sanitization.md): How to share Stave outputs safely using --sanitize.
 - [How to Compare Infrastructure State Between Two Dates](/docs/how-to/results/time-travel-comparison.md): Evaluate security posture at two points in time and see what changed.
 - [Labs](/docs/labs.md)
-- [Task: Build a Stave Observation Extractor](/docs/labs/building-extractors.md): Most users don't need this. For common AWS resources, the built-in
 - [What you just discovered](/docs/labs/case-studies-debrief.md): What the S3 reasoning challenge reveals about the gap between scanning and reasoning.
 - [Challenge Setup](/docs/labs/case-studies-setup.md): Download 4 JSON files and try to answer 5 questions about S3 security — no Stave, no AWS account.
 - [HackerOne Case Studies](/docs/labs/case-studies.md): 30 real HackerOne bug bounty reports reconstructed as reasoning challenges, grouped by attack pattern.
@@ -176,6 +174,13 @@
 - [S3 Ransomware Protection & Forensic Auditability](/docs/labs/s3-ransomware-protection-forensic-auditability.md): Detect a compliance-tagged backup bucket missing the three controls that decide whether you survive a ransomware deletion — versioning, Object Lock (WORM), and access logging. Read all three findings and fix-then-recapture to green.
 - [SadCloud — Multi-Service Misconfiguration Sweep](/docs/labs/sadcloud-multi-service-validation.md): A hands-on walkthrough: deploy NCC Group's SadCloud — a deliberately-insecure, 22-service AWS lab — capture it as an obs.v0.1 snapshot, evaluate the whole estate with Stave's built-in controls, and read the scorecard (breadth, detection rate, and a compound attack chain) instead of a single finding.
 - [Shadow Admin Compute Role Privilege Drift](/docs/labs/shadow-admin-compute-role-privilege-drift.md): Detect an EC2 backend role with service-wildcard admin grants AND a sibling role that has silently drifted past its unused-permission threshold. Read both findings, learn why exit code 3 means success, and fix-then-recapture to green.
+- [Skill Track](/docs/labs/skill-track.md): Six guided exercises from build to production evaluation. Each builds on the previous.
+- [Build & Verify](/docs/labs/skill-track/build-and-verify.md): Build Stave from source and verify the binary and control catalog work.
+- [First Findings](/docs/labs/skill-track/first-findings.md): Run Stave against a crafted observation and read your first findings.
+- [Lab Validation](/docs/labs/skill-track/lab-validation.md): Deploy a known-vulnerable lab and confirm Stave detects the documented attack path.
+- [Reasoning Engines](/docs/labs/skill-track/reasoning-engines.md): Export observation facts and derive compound chains with Z3, Souffle, or Prolog.
+- [Snapshot Your Account](/docs/labs/skill-track/snapshot-your-account.md): Capture a read-only snapshot of your AWS account and evaluate it with Stave.
+- [Write a Control](/docs/labs/skill-track/write-a-control.md): Author, test, and verify a custom control using the forge toolchain.
 - [Writing Custom Controls](/docs/labs/writing-controls.md): Step-by-step guide to writing, testing, and deploying your own Stave controls.
 - [Reference](/docs/reference.md)
 - [Stave Verify — GitHub Action](/docs/reference/baseline-action.md): Run Stave's deterministic security verification on every Pull Request: findings go to the
@@ -345,7 +350,6 @@
 - [stave validate](/docs/reference/cli-reference/stave-validate.md): Validate inputs without evaluation
 - [stave validate-mapping](/docs/reference/cli-reference/stave-validate-mapping.md): Validate a Steampipe→Stave mapping file before use
 - [stave version](/docs/reference/cli-reference/stave-version.md): Print version and environment state
-- [Command Reference](/docs/reference/command-reference.md): <!-- GENERATED by internal/tools/gencommanddocs — DO NOT EDIT.
 - [OWASP Non-Human Identity Top 10 — Stave coverage](/docs/reference/compliance-owasp-nhi.md): The OWASP Non-Human Identity (NHI) Top 10
 - [Configuration](/docs/reference/config-file.md): How Stave resolves settings from flags, project config, user config, and environment variables.
 - [Contract-First Schemas](/docs/reference/contracts.md): Stave uses contract-first JSON schemas so validation is deterministic,
@@ -502,7 +506,6 @@
 - [Anonymous S3 Listing Must Be Explicitly Intended](/docs/reference/invariants-reference/public-access/inv-s3-public-list-002.md): Anonymous bucket listing increases exposure surface and must be explicitly tagged as intended.
 - [Protected Prefixes Must Not Be Publicly Readable](/docs/reference/invariants-reference/public-access/inv-s3-public-prefix-001.md): S3 bucket prefixes marked as protected must not be publicly readable.
 - [No Public Website Hosting with Public Read](/docs/reference/invariants-reference/public-access/inv-s3-website-public-001.md): S3 buckets with static website hosting enabled must not also have public read access.
-- [Scope and Limits](/docs/reference/limits.md): What Stave does and does not do. Scope boundaries, known limitations, and out-of-scope areas.
 - [Observation Contract](/docs/reference/observation-contract.md): Stable contract for observation snapshots used by Stave.
 - [Observation Export Schema](/docs/reference/observation-export-schema.md): Field-by-field reference for the S3 observation property groups produced by Stave's export and ingest tooling.
 - [Operator Contract](/docs/reference/operator-contract.md): Three commands verify correctness after any change:
@@ -513,7 +516,7 @@
 - [Diagnose Schema — diagnose.v1](/docs/reference/schema-diagnose.md): Reference for Stave diagnose output contract diagnose.v1.
 - [Observation Schema — obs.v0.1](/docs/reference/schema-obs.md): Reference for the obs.v0.1 observation snapshot schema.
 - [Output Schema — out.v0.1](/docs/reference/schema-out.md): Reference for Stave evaluation output contract out.v0.1.
-- [Scope and support](/docs/reference/scope-and-support.md): In scope
+- [Scope and Limits](/docs/reference/scope-and-support.md): What Stave covers, what is out of scope, and known technical limitations.
 - [Security Policy](/docs/reference/security-policy.md): Scope
 - [Severity Thresholds](/docs/reference/severity-thresholds.md): How severity levels work and how to tune duration thresholds.
 - [Stability and Versioning](/docs/reference/stability.md): Stave's stability commitments, schema versioning, and dependency policy.

@@ -118,7 +118,7 @@ The candidate code is not dead code. It is reachable through the library API (`p
 2. The engine carries forward features built for domains the catalog will reach in MVP 1.0+ (network reachability, identity propagation, time-series recurrence).
 3. New domains add controls, not engine changes — the engine is already broader than the catalog.
 
-See [Limits](/docs/reference/limits.md) for the inverse — what the engine deliberately does not do.
+See [Scope and Limits](/docs/reference/scope-and-support.md) for the inverse — what the engine deliberately does not do.
 
 ## Related[​](#related "Direct link to Related")
 

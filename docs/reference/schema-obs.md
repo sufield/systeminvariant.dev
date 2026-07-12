@@ -1,5 +1,7 @@
 # Observation Schema — `obs.v0.1`
 
+This page defines the envelope structure and field types. For the stable contract guarantees see [Observation Contract](/docs/reference/observation-contract.md); for the S3 property groups see [Export Schema](/docs/reference/observation-export-schema.md).
+
 Schema ID: `urn:stave:schema:observation:v0.1`
 
 An observation is a point-in-time snapshot of infrastructure assets. Each JSON file represents one capture timestamp. Stave requires **at least two snapshots** (two points in time) for duration-based controls to calculate unsafe periods.

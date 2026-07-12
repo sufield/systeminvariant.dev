@@ -121,7 +121,7 @@ The built-in hook uses a minimal jq-based extractor that maps `planned_values.ro
 * **CloudQuery** — sync Terraform state to a database
 * **Custom extractor** — map specific resource types to obs.v0.1
 
-See [Building an Extractor](/docs/labs/building-extractors.md) for full options.
+See [Building an Extractor](/docs/how-to/integration/building-extractors.md) for full options.
 
 ## Files[​](#files "Direct link to Files")
 

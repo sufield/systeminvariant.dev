@@ -10,7 +10,7 @@ extract (external) -> validate -> apply -> verify
 
 ## 1) Extract observations from an offline AWS snapshot[​](#1-extract-observations-from-an-offline-aws-snapshot "Direct link to 1) Extract observations from an offline AWS snapshot")
 
-Use an extractor (any language) to produce `obs.v0.1` JSON from your AWS snapshot directory. See [Building an Extractor](/docs/labs/building-extractors.md) for a jumpstart template, or use an existing extractor such as `stave-extractor`.
+Use an extractor (any language) to produce `obs.v0.1` JSON from your AWS snapshot directory. See [Building an Extractor](/docs/how-to/integration/building-extractors.md) for a jumpstart template, or use an existing extractor such as `stave-extractor`.
 
 Input:
 

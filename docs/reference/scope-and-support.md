@@ -1,4 +1,4 @@
-# Scope and support
+# Scope and Limits
 
 ## In scope[​](#in-scope "Direct link to In scope")
 
@@ -26,3 +26,26 @@ S3, IAM, VPC, EC2, RDS, ELB, Lambda, ECS, EKS, Kubernetes, Backup, CloudTrail, C
 * `stave diagnose` — per-control analysis
 * `stave ci` — CI/CD baseline and gating
 * Tests: `make test`, `make e2e`, `make lint`
+
+## Known limitations[​](#known-limitations "Direct link to Known limitations")
+
+### Duration requires two snapshots[​](#duration-requires-two-snapshots "Direct link to Duration requires two snapshots")
+
+Duration-based controls (`unsafe_duration`) need at least two observation snapshots to calculate unsafe periods. A single snapshot cannot establish duration.
+
+### Threshold comparison is strict[​](#threshold-comparison-is-strict "Direct link to Threshold comparison is strict")
+
+The `unsafe_duration` threshold comparison uses strict greater-than (`>`). An asset that has been unsafe for exactly the `--max-unsafe` duration does not trigger a violation — it must exceed the threshold.
+
+### Missing fields and predicate semantics[​](#missing-fields-and-predicate-semantics "Direct link to Missing fields and predicate semantics")
+
+* Missing fields do **not** match `eq false` — only explicitly set `false` values trigger `eq false`.
+* Missing fields **do** match `ne "value"` — absence counts as "not equal."
+
+### Snapshot sensitivity[​](#snapshot-sensitivity "Direct link to Snapshot sensitivity")
+
+Terraform plan/state exports and AWS CLI snapshots may contain embedded credentials or sensitive values in rare cases. Stave treats all asset properties as opaque data and does not detect or filter secrets within snapshots. Use `--sanitize` when sharing outputs.
+
+### Provenance verification requires network[​](#provenance-verification-requires-network "Direct link to Provenance verification requires network")
+
+SHA-256 checksum and Cosign signature verification work fully offline, but build provenance verification (`gh attestation verify`) requires GitHub connectivity.

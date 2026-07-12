@@ -1,61 +1,54 @@
-# Your First Stave Evaluation
+# First Evaluation
 
-No cloud credentials. No Steampipe. No setup. Evaluate a bundled example snapshot and read the result in about a minute.
+Install Stave, then evaluate a bundled demo snapshot. No cloud credentials. No AWS account. No setup beyond the install.
 
-Stave is a **risk reasoning engine**: it takes observation snapshots (JSON describing your cloud state) plus a catalog of controls, and produces deterministic verdicts. Same input → same output, every time. All evaluation is offline — no network, no credentials.
-
-> **Environment:** The commands below assume a Coder workspace — `stave` on `$PATH`, examples at `~/examples/`. From a local clone (README Option 3) they work the same; just run from the repo root.
-
-## Step 1: Clone and run (60 seconds)[​](#step-1-clone-and-run-60-seconds "Direct link to Step 1: Clone and run (60 seconds)")
+## Install[​](#install "Direct link to Install")
 
 ```
-git clone https://github.com/sufield/stave.git
-cd stave
-make build                              # builds ./stave (and syncs embedded data)
-bash examples/demo-ai-security/run.sh
+brew install sufield/tap/stave
 ```
 
-The demo evaluates a fixture AWS account with a Bedrock AI agent. It runs entirely against local JSON — `stave apply` exits `3` when it finds violations, which is expected here.
-
-> Not set up for Go yet? `make build` needs Go 1.26+. Or install the binary directly: `go install github.com/sufield/stave/cmd/stave@latest` (then run the demo with `STAVE_BIN=$(go env GOPATH)/bin/stave bash examples/demo-ai-security/run.sh`).
-
-## Step 2: Understand the output[​](#step-2-understand-the-output "Direct link to Step 2: Understand the output")
-
-A Stave evaluation reports a **security state** for the snapshot:
-
-| State           | Meaning                                                                                        |
-| --------------- | ---------------------------------------------------------------------------------------------- |
-| `COMPLIANT`     | No violations. No approaching-threshold risk signals.                                          |
-| `AT_RISK`       | No active violations, but at least one invariant is approaching its unsafe-duration threshold. |
-| `NON_COMPLIANT` | At least one active violation — an invariant the snapshot breaks right now.                    |
-
-Each **finding** is one control firing on one asset: a control ID (e.g. `CTL.S3.PUBLIC.001`), the asset, a severity, and the message.
-
-**Chain findings** are Stave's distinctive output: a *compound* risk where several individually-acceptable conditions stack into an exploitable path. The demo fires three critical Bedrock chains — see [03-reading-chain-findings.md](/docs/getting-started/reading-chain-findings.md).
-
-## Step 3: Evaluate your own snapshot[​](#step-3-evaluate-your-own-snapshot "Direct link to Step 3: Evaluate your own snapshot")
-
-Point `apply` at a directory of `obs.v0.1` snapshot files:
+Or:
 
 ```
-stave apply --observations /path/to/your/obs/
-stave apply --observations /path/to/your/obs/ --format json   # machine-readable
+go install github.com/sufield/stave/cmd/stave@latest
 ```
 
-Exit codes: `0` = no violations · `2` = input error · `3` = violations found · `4` = internal error. Use `--eval-time 2026-01-15T00:00:00Z` to pin the clock for byte-identical, reproducible output.
-
-Don't have snapshots yet? If you already run Steampipe, see [01-from-steampipe-to-stave.md](/docs/labs/from-steampipe-to-stave.md).
-
-## Step 4: Use it from Claude Desktop (optional)[​](#step-4-use-it-from-claude-desktop-optional "Direct link to Step 4: Use it from Claude Desktop (optional)")
-
-Stave ships an MCP server so an AI assistant can call it in conversation:
+Verify:
 
 ```
-go install github.com/sufield/stave/cmd/mcp@latest
+stave --version
 ```
 
-Add the config from `cmd/mcp/configs/claude-desktop.json` to your Claude Desktop config, then ask: *"Evaluate the snapshot in ./obs"* — the model calls the `stave.verify` tool and summarizes the result. See `cmd/mcp/README.md`.
+## Run against the demo snapshot[​](#run-against-the-demo-snapshot "Direct link to Run against the demo snapshot")
+
+```
+stave apply --observations ./examples/demo-ai-security/ --format text
+```
+
+The demo evaluates a fixture AWS account with a Bedrock AI agent. Everything runs against local JSON files — no network, no credentials.
+
+Exit code `3` means violations were found. This is expected for the demo snapshot — it contains intentional misconfigurations.
+
+## What you see[​](#what-you-see "Direct link to What you see")
+
+The output shows:
+
+* **Security state**: `NON_COMPLIANT` (the demo has active violations)
+* **Findings**: each one names a control, an asset, a severity, and the evidence line that triggered it
+* **Chain findings** (marked ★): compound risks where several conditions stack into an exploitable path
+
+```
+  CRITICAL  CTL.CLOUDTRAIL.GHOST.DEST.001          ★ STAVE ONLY
+        CloudTrail trail "prod-trail" references destination bucket
+        "prod-logs-2024" which does not appear in this account snapshot
+        evidence: trail.s3_bucket_name has no matching asset
+```
+
+Exit codes: `0` = no violations, `3` = violations found, `2` = input error, `4` = internal error.
+
+For the full security state definitions (COMPLIANT / AT\_RISK / NON\_COMPLIANT), see [Output Formats](/docs/reference/output-formats.md).
 
 ***
 
-**Next:** [Install Stave](/docs/getting-started/installation.md) — get the binary on your machine.
+**Next:** [Installation Options](/docs/getting-started/installation.md) — brew, go install, binary download, or build from source.
