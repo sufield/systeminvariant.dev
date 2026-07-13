@@ -84,4 +84,4 @@ The catalog grows with each incident you fix — every new control you add (or t
 
 ***
 
-**You're running continuously.** [Browse the labs](/docs/labs.md) for deeper scenarios.
+**You're running continuously.** [Browse the labs](/docs/labs/.md) for deeper scenarios.

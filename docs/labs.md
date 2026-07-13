@@ -1,3 +1,5 @@
-## [🗃️<!-- --> <!-- -->S3](/docs/labs/s3-public-exposure-long-lived-iam-keys.md)
+# Labs
 
-[2 items](/docs/labs/s3-public-exposure-long-lived-iam-keys.md)
+Hands-on exercises that evaluate real infrastructure against Stave's control catalog. Each lab uses live AWS services, reconstructed vulnerability reports, or Docker-based scenarios.
+
+import DocCardList from '@theme/DocCardList';

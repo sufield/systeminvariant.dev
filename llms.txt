@@ -105,7 +105,7 @@
 - [Retroactive Evaluation](/docs/how-to/results/retroactive-evaluation.md): Run new controls against old snapshots to answer: were we exposed to this in March?
 - [Sanitization](/docs/how-to/results/sanitization.md): How to share Stave outputs safely using --sanitize.
 - [How to Compare Infrastructure State Between Two Dates](/docs/how-to/results/time-travel-comparison.md): Evaluate security posture at two points in time and see what changed.
-- [Labs](/docs/labs.md)
+- [Labs](/docs/labs.md): Hands-on security labs using real AWS services, HackerOne case studies, and Docker scenarios.
 - [What you just discovered](/docs/labs/case-studies-debrief.md): What the S3 reasoning challenge reveals about the gap between scanning and reasoning.
 - [Challenge Setup](/docs/labs/case-studies-setup.md): Download 4 JSON files and try to answer 5 questions about S3 security — no Stave, no AWS account.
 - [HackerOne Case Studies](/docs/labs/case-studies.md): 30 real HackerOne bug bounty reports reconstructed as reasoning challenges, grouped by attack pattern.

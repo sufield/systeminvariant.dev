@@ -2,7 +2,7 @@
 
 The remediation loop: **explain → fix → re-snapshot → verify**. Each step is deterministic, so "fixed" is a fact you can prove, not a claim.
 
-> **Environment:** Works identically in the Coder workspace (`stave` on `$PATH`) and from a local clone (README Option 3). The snapshot paths (`./obs-before`, `./obs-after`) are wherever you save your collector's output.
+> **Environment:** All commands run from a local clone of the repo. The snapshot paths (`./obs-before`, `./obs-after`) are wherever you save your collector's output.
 
 ## Step 1: Understand what to change[​](#step-1-understand-what-to-change "Direct link to Step 1: Understand what to change")
 
