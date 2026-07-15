@@ -11,8 +11,6 @@ Stave is stateless. Every command reads from files or stdin, writes to stdout/st
 | `validate`               | `--controls` dir, `--observations` dir, or `--in` file/`-` (stdin)                                                   | stdout (text/JSON)                                                                                                                      | stdout only                                                 |
 | `diagnose`               | `--controls` dir, `--observations` dir, `--previous-output` file or `-` (stdin)                                      | stdout (text/JSON)                                                                                                                      | stdout only                                                 |
 | `verify`                 | `--before` dir, `--after` dir, `--controls` dir                                                                      | stdout (JSON), optional `--out` dir → `verification.json`                                                                               | stdout primary; `--out` creates dir (0700) and file (0600)  |
-| `snapshot status`        | `--controls` dir, `--observations` dir, optional `--archive-dir` dir                                                 | stdout (markdown), optional `--out` file                                                                                                | stdout primary; `--out` creates dir (0700) and file (0600)  |
-| `snapshot risk`          | `--controls` dir, `--observations` dir                                                                               | stdout (markdown), optional `--out` file                                                                                                | stdout primary; `--out` creates dir (0700) and file (0600)  |
 | `ci fix-loop`            | `--before` dir, `--after` dir, `--controls` dir                                                                      | stdout (JSON), optional `--out` dir → `evaluation.before.json`, `evaluation.after.json`, `verification.json`, `remediation-report.json` | stdout primary; `--out` creates dir (0700) and files (0600) |
 | `enforce`                | `--in` evaluation JSON file                                                                                          | `--out` dir → `enforcement/aws/pab.tf` or `scp.json`                                                                                    | Creates dir (0700) and file (0600)                          |
 | `capabilities`           | (none)                                                                                                               | stdout (JSON)                                                                                                                           | stdout only                                                 |
@@ -62,12 +60,8 @@ Integrity paths (`--integrity-manifest`, `--integrity-public-key`) are normalize
 The `--dry-run` flag is available on commands that modify the filesystem:
 
 * `enforce --dry-run` — prints planned artifact path, creates no files
-* `snapshot prune --dry-run` — lists snapshots that would be deleted, removes nothing
-* `snapshot archive --dry-run` — lists snapshots that would be moved, moves nothing
 
-Dry-run validates all inputs (reads and parses input files, checks flags) before printing the planned operations. Only file creation/deletion/move is skipped.
-
-Both `snapshot prune` and `snapshot archive` default to dry-run when neither `--dry-run` nor `--force` is specified, preventing accidental data loss.
+Dry-run validates all inputs (reads and parses input files, checks flags) before printing the planned operations. Only file creation is skipped.
 
 ## Stdin Convention[​](#stdin-convention "Direct link to Stdin Convention")
 

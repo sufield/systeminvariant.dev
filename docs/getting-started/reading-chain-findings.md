@@ -2,7 +2,7 @@
 
 Chain findings are Stave's distinctive output — compound risks that emerge from a *combination* of conditions, invisible to single-resource scanners that check one setting at a time.
 
-## What a chain finding is[​](#what-a-chain-finding-is "Direct link to What a chain finding is")
+## What is a chain finding[​](#what-is-a-chain-finding "Direct link to What is a chain finding")
 
 A chain is a set of **co-failing controls** (its *legs*) that together cross a compound-risk threshold. Each leg, alone, might be a routine "medium" finding. Stacked, they compose into an exploitable path.
 
