@@ -1,0 +1,25 @@
+# stave alias set
+
+Create or update an alias
+
+## Usage[​](#usage "Direct link to Usage")
+
+```
+stave alias set <name> <command>
+```
+
+## Description[​](#description "Direct link to Description")
+
+Set creates or updates a command alias.
+
+Alias names must match \[a-zA-Z0-9\_-]+ and must not collide with existing command names.
+
+Exit Codes: 0 Success 2 Input error 4 Internal error
+
+Offline-only: reads local files; makes zero network connections; no cloud credentials.
+
+## Examples[​](#examples "Direct link to Examples")
+
+```
+stave alias set ev "apply --controls controls/s3 --eval-time 2026-01-11T00:00:00Z"
+```
