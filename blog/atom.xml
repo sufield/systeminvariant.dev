@@ -2,34 +2,209 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.systeminvariant.dev/blog</id>
     <title>Stave Blog</title>
-    <updated>2026-02-20T00:00:00.000Z</updated>
+    <updated>2026-07-16T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.systeminvariant.dev/blog"/>
     <subtitle>Stave Blog</subtitle>
     <icon>https://www.systeminvariant.dev/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[What's Coming]]></title>
-        <id>https://www.systeminvariant.dev/blog/2026/02/20/hello-world</id>
-        <link href="https://www.systeminvariant.dev/blog/2026/02/20/hello-world"/>
-        <updated>2026-02-20T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Articles on cloud security evaluation, IAM policy semantics, and]]></summary>
-        <content type="html"><![CDATA[<p>Articles on cloud security evaluation, IAM policy semantics, and
-configuration-graph analysis — each one a real finding, a real fix,
-and a machine-verifiable proof that the fix worked.</p>
-<p>Every article ships with the snapshot, the control, and the commands
-to reproduce the finding yourself. No trust required — re-derive the
-result on your own machine.</p>
-<p>Topics in the queue:</p>
-<ul>
-<li class=""><strong>ForAllValues / ForAnyValue</strong> — the IAM condition key semantics that
-produce silent privilege escalation, and how to prove your policies
-are safe</li>
-<li class=""><strong>Ghost-reference findings</strong> — when a resource references something
-that doesn't exist in the account snapshot, and why that's a
-critical signal</li>
-<li class=""><strong>Compound chains</strong> — multi-hop attack paths that only appear when
-you reason across the relationship graph, not resource-by-resource</li>
-</ul>]]></content>
+        <title type="html"><![CDATA[CSA Survey Problems → Stave Solutions]]></title>
+        <id>https://www.systeminvariant.dev/blog/2026/07/16/csa-problems-stave-solutions</id>
+        <link href="https://www.systeminvariant.dev/blog/2026/07/16/csa-problems-stave-solutions"/>
+        <updated>2026-07-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Fifteen problems from four CSA surveys. One tool addresses all of them.]]></summary>
+        <content type="html"><![CDATA[<p>Fifteen problems from four CSA surveys. One tool addresses all of them.</p>
+<p>Sources: CSA State of Security Remediation 2024 (2,037 respondents), CSA State of Cloud and AI Security 2025 (1,000+ respondents), CSA Data Security Risk 2025 (912 respondents), CSA State of Cloud and AI Security 2026.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-mapping">The Mapping<a href="https://www.systeminvariant.dev/blog/2026/07/16/csa-problems-stave-solutions#the-mapping" class="hash-link" aria-label="Direct link to The Mapping" title="Direct link to The Mapping" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>CSA Problem</th><th>Survey Data</th><th>Root Cause</th><th>Stave Mechanism</th><th>How It Resolves</th></tr></thead><tbody><tr><td>1</td><td><strong>Alert fatigue</strong></td><td>63% consider duplicate alerts a moderate-to-significant challenge. 60% view false positives similarly.</td><td>Multiple tools scanning the same resources produce overlapping findings. Each tool has its own severity scale. No tool tells you which findings are exploitable.</td><td><strong>Exploitability classification</strong> (exploitable / one-away / reachable) + <strong>deterministic evaluation</strong></td><td>Stave doesn't produce alerts. It produces verdicts. Each finding is classified by exploitability, not just severity. EXPLOITABLE → fix now. REACHABLE → backlog. No duplicate alerts because one tool evaluates once from a single snapshot.</td></tr><tr><td>2</td><td><strong>False positives</strong></td><td>60% view false positives as a moderate-to-significant challenge.</td><td>Scanners evaluate individual resources without graph context. A finding is "true" at the node level but not exploitable in context (SCP blocks it, boundary constrains it, network isolates it).</td><td><strong>Compound chain evaluation</strong> — evaluates relationships between resources, not just individual properties</td><td>A finding that's true at the node level but blocked by an SCP, constrained by a permission boundary, or isolated by network policy is classified REACHABLE, not EXPLOITABLE. The graph context that determines exploitability is IN the output, not left for human triage.</td></tr><tr><td>3</td><td><strong>Tool sprawl / overlapping functionality</strong></td><td>61% use 3-6 different detection tools. 45% plan to increase tooling budget.</td><td>Each tool covers one layer (CSPM, CWPP, CIEM, DSPM). The layers overlap but don't compose. A finding from the CSPM about an open S3 bucket and a finding from the CIEM about an overprivileged role are never connected.</td><td><strong>Single evaluation pipeline</strong> — CEL controls + Soufflé chain engine + exploitability classification in one tool</td><td>One tool replaces the per-layer stack. Controls, chains, and classifications run in one pipeline against one snapshot. The composition happens inside the tool (chain rules connect S3 findings to IAM findings to SCP findings), not between tools.</td></tr><tr><td>4</td><td><strong>Tribal knowledge</strong></td><td>75% spend over 20% of time on manual tasks when addressing alerts. Only 23% report full visibility.</td><td>Security team knowledge about "this finding doesn't matter because of X" lives in people's heads. When the person leaves, the knowledge leaves.</td><td><strong>Controls as code</strong> — every judgment encoded as a YAML predicate with ID, description, severity, remediation, compliance mapping</td><td>The control IS the tribal knowledge, made machine-readable. "This S3 bucket is safe because an SCP blocks cross-account writes" is a control predicate, not a Slack message. New team members read the control. The machine evaluates it. The knowledge survives team turnover.</td></tr><tr><td>5</td><td><strong>Time drained by alert triage</strong></td><td>75% of organizations have security teams spending over 20% of their time performing manual tasks when addressing security alerts.</td><td>Triage is reconstructing the graph context that the scanner didn't evaluate. "Is this finding reachable? Is there an SCP? Is the network isolated?" — questions the tool should have answered.</td><td><strong>Exploitability is in the output, not a post-hoc exercise</strong></td><td>The triage is done by the evaluator. EXPLOITABLE findings are pre-triaged. ONE-AWAY findings name the specific precondition protecting you. The security team reviews verdicts, not raw signals. The 20% manual triage time approaches zero because the triage question is already answered.</td></tr><tr><td>6</td><td><strong>Integration issues between tools</strong></td><td>"The number of security tools isn't as important as the tools' efficiency and their ability to reduce vulnerabilities." — Hillary Baron, CSA.</td><td>Tools don't share a common schema, ontology, or finding format. Correlating a GuardDuty finding with a Config finding with an IAM finding requires manual mapping.</td><td><strong>Common ontology</strong> — all findings share one schema (control ID, resource ARN, severity, exploitability, deciding_layer, chain_membership, compliance mapping)</td><td>One finding schema across all 3,000+ controls. No integration needed because there's nothing to integrate — one tool produces one output format. SARIF for GitHub, ASFF for Security Hub, JSON for pipelines, JSONL for evidence packets. Each format carries the full finding with all fields.</td></tr><tr><td>7</td><td><strong>Overlapping functionality between tools</strong></td><td>"Overlapping functionalities among tools, or a lack of refined integration and fine-tuning, leading to alert fatigue." — CSA Remediation Report</td><td>CSPM checks S3 encryption. CIS benchmark checks S3 encryption. The CIEM also checks S3 encryption as part of access analysis. Three tools, same finding, three alerts.</td><td><strong>Compliance as a lens, not a category</strong> — <code>--compliance hipaa</code> annotates findings, <code>--template data-protection</code> selects controls. No duplication.</td><td>One control checks S3 encryption. Ten compliance frameworks reference it. The control fires once. The compliance annotation says which frameworks it satisfies. The practitioner sees one finding, not ten.</td></tr><tr><td>8</td><td><strong>Lack of visibility</strong></td><td>Only 23% report full visibility in their cloud environments.</td><td>Scanners require agents, credentials, or live API access. Resources behind separate control planes (Lightsail, EVS, App Runner) are invisible.</td><td><strong>Shadow service governance</strong> — registry-driven control covering 62 services invisible to Config/CloudTrail + shadow resource detection (Lightsail, EVS)</td><td>Stave evaluates configuration snapshots, not live APIs. Shadow services that are invisible to Config (62 services identified via IAM-vs-Config delta) are detected by SCP governance controls. Resources in AWS-managed accounts (Lightsail, EVS) have full detection templates.</td></tr><tr><td>9</td><td><strong>Productivity vs security trade-off</strong></td><td>45% plan to increase tooling budget. More tools = more findings = more triage = slower development.</td><td>Each new security tool adds findings that must be triaged. The security team becomes a bottleneck. Developers wait for security approval.</td><td><strong>CI gate with deterministic exit code</strong> — <code>stave apply</code> returns 0 (clean) or 3 (violations). No human in the loop for clean runs.</td><td>The CI gate replaces the security review for configuration. If the snapshot is clean (exit code 0), the pipeline proceeds. No security team bottleneck. If violations exist, the exit code blocks and the findings tell the developer exactly what to fix. The trade-off disappears because the gate is automated and deterministic.</td></tr><tr><td>10</td><td><strong>Reactive instead of proactive</strong></td><td>"Security programs remain reactive by focusing on incidents rather than prevention." — CSA Cloud &amp; AI Security 2025</td><td>Scanners find what's wrong now. Nothing tells you what's about to go wrong.</td><td><strong>ONE-AWAY classification</strong> — names the specific precondition that, if removed, makes a finding exploitable</td><td>ONE-AWAY findings are proactive alerts: "your data perimeter SCP is the only thing preventing 5 exploitable chains. Protect this SCP." The security team monitors the precondition, not the finding. Prevention, not detection.</td></tr><tr><td>11</td><td><strong>Risk prioritization failure</strong></td><td>"Traditional vulnerability scoring methods often fail to keep pace." — CSA 2026. "Toxic cloud trilogy" (public + vulnerable + privileged).</td><td>CVSS/severity scores don't account for environment context. A CRITICAL finding with no attack path is less urgent than a MEDIUM finding in an exploitable chain.</td><td><strong>Exploitability × severity as two independent axes</strong></td><td>Defenders sort by exploitability first (is the path open?), severity second (what's the impact?). A MEDIUM finding that's EXPLOITABLE goes before a CRITICAL finding that's REACHABLE. The graph determines priority, not the label.</td></tr><tr><td>12</td><td><strong>Skills gap</strong></td><td>"Identity is the biggest cloud risk" + growing skills gap. — CSA 2025.</td><td>IAM policy evaluation requires understanding the cross-account formula (identity ∧ resource policy for cross-account), SCP ceilings, permission boundaries, NotAction semantics. Few practitioners have this knowledge.</td><td><strong>IAM evaluation engine</strong> (<code>resolve.go</code>) — computes effective permissions mechanically</td><td>The practitioner doesn't need to understand the cross-account formula. Stave computes it. <code>deciding_layer</code> tells them which policy layer produced the finding. The engine handles the complexity. The practitioner reads the verdict.</td></tr><tr><td>13</td><td><strong>Misaligned priorities between leadership and operations</strong></td><td>"Confidence gaps in risk understanding, misaligned priorities between leadership and operational teams." — CSA Data Security Risk 2025.</td><td>The security team produces findings. Leadership wants risk posture. The translation from "247 findings" to "here's our risk" is manual and subjective.</td><td><strong>Evidence packet</strong> — compliance profile output with per-requirement scoring, finding counts by exploitability, and trend comparison across snapshots</td><td>Leadership sees: "3 exploitable paths, 12 one-away, 89 reachable. Last month: 5 exploitable." That's a risk posture, not a finding list. The evidence packet translates findings into the format leadership consumes.</td></tr><tr><td>14</td><td><strong>Compliance burden</strong></td><td>"Complying with regulatory frameworks proves time- and resource-consuming." — CSA/Orca 2024.</td><td>Each framework requires mapping controls to requirements, gathering evidence, producing reports. With 5 frameworks and 3 tools, that's 15 mapping exercises.</td><td><strong>10 compliance frameworks mapped to controls</strong> — <code>--compliance hipaa</code> annotates findings with requirement references. Evidence profile generates per-requirement reports.</td><td>One evaluation, 10 framework lenses. Add a framework by adding a YAML mapping file, not by writing new controls. <code>stave compliance --framework hipaa</code> generates the evidence packet. The mapping is data, not code — ten frameworks with zero engine changes.</td></tr><tr><td>15</td><td><strong>Fragmented tools and siloed technology</strong></td><td>"Siloed technology tends to increase licensing costs, security blind spots, alert fatigue, workflow inefficiencies, and reduced productivity." — CSA/Orca 2024.</td><td>Each tool has its own data model, finding format, severity scale, and remediation guidance. Cross-tool correlation requires a SIEM or manual effort.</td><td><strong>Contracts and ontology</strong> — all controls follow a common schema. Findings carry a standard set of fields. Every output format includes the full context.</td><td>The contract between the control catalog and the evaluation engine is explicit: every control has a predicate, severity, remediation, compliance mapping, and attack stage. No SIEM needed to correlate — the correlation happens inside the evaluation pipeline via compound chains.</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="summary-csa-problems-by-stave-mechanism">Summary: CSA Problems by Stave Mechanism<a href="https://www.systeminvariant.dev/blog/2026/07/16/csa-problems-stave-solutions#summary-csa-problems-by-stave-mechanism" class="hash-link" aria-label="Direct link to Summary: CSA Problems by Stave Mechanism" title="Direct link to Summary: CSA Problems by Stave Mechanism" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Stave Mechanism</th><th>CSA Problems It Addresses</th></tr></thead><tbody><tr><td><strong>Exploitability classification</strong> (exploitable / one-away / reachable)</td><td>Alert fatigue (#1), false positives (#2), triage time (#5), risk prioritization (#11), reactive posture (#10)</td></tr><tr><td><strong>Compound chain evaluation</strong> (Soufflé graph engine)</td><td>False positives (#2), tool integration (#6), overlapping functionality (#7), toxic cloud trilogy (#11)</td></tr><tr><td><strong>Controls as code</strong> (YAML predicates with full metadata)</td><td>Tribal knowledge (#4), skills gap (#12), compliance burden (#14)</td></tr><tr><td><strong>Common ontology</strong> (one schema, one finding format)</td><td>Tool integration (#6), fragmented tools (#15), overlapping functionality (#7)</td></tr><tr><td><strong>Compliance as a lens</strong> (framework annotation, not category)</td><td>Overlapping functionality (#7), compliance burden (#14), misaligned priorities (#13)</td></tr><tr><td><strong>CI gate</strong> (deterministic exit code)</td><td>Productivity vs security (#9)</td></tr><tr><td><strong>Shadow service governance</strong> (registry-driven detection)</td><td>Lack of visibility (#8)</td></tr><tr><td><strong>Evidence packet</strong> (compliance profile output)</td><td>Misaligned priorities (#13), compliance burden (#14)</td></tr><tr><td><strong>IAM evaluation engine</strong> (mechanical permission resolution)</td><td>Skills gap (#12), tribal knowledge (#4)</td></tr><tr><td><strong>Snapshot model</strong> (evaluate locally, no credentials at eval time)</td><td>Lack of visibility (#8), productivity vs security (#9)</td></tr></tbody></table>]]></content>
+        <author>
+            <name>Sufield</name>
+            <uri>https://github.com/sufield</uri>
+        </author>
         <category label="Stave" term="Stave"/>
     </entry>
 </feed>
