@@ -1,0 +1,238 @@
+# Command Reference
+
+All commands ship in the standard `stave` binary. No build tags are required. Descriptions are each command's one-line summary; run `stave <command> --help` for full usage, flags, and exit codes.
+
+*168 commands across 13 groups.*
+
+## Getting Started[​](#getting-started "Direct link to Getting Started")
+
+| Command                | Description                      |
+| ---------------------- | -------------------------------- |
+| `generate`             | Generate starter artifacts       |
+| `generate observation` | Generate an observation template |
+
+## Control Engine[​](#control-engine "Direct link to Control Engine")
+
+| Command            | Description                                                            |
+| ------------------ | ---------------------------------------------------------------------- |
+| `apply`            | Run control evaluation after plan checks pass                          |
+| `diagnose`         | Diagnose evaluation inputs and results                                 |
+| `diagnose explain` | Generate guided remediation playbook for a finding                     |
+| `diagnose finding` | Deep-dive analysis of a single finding                                 |
+| `diagnose report`  | Generate a plain-text report from evaluation output                    |
+| `diagnose trace`   | Trace predicate evaluation for a single control against a single asset |
+| `expand`           | Show every control sharing a structural defect archetype               |
+| `explain`          | Explain how a control evaluates and which fields it needs              |
+| `validate`         | Validate inputs without evaluation                                     |
+
+## Workflow & CI[​](#workflow--ci "Direct link to Workflow & CI")
+
+| Command             | Description                                                          |
+| ------------------- | -------------------------------------------------------------------- |
+| `bisect`            | Find when a control was first violated                               |
+| `check`             | Compare before/after evaluations to check remediation                |
+| `ci`                | CI/CD policy and baseline commands                                   |
+| `ci baseline`       | Manage baseline findings for fail-on-new CI workflows                |
+| `ci baseline check` | Compare evaluation findings against baseline and detect new findings |
+| `ci baseline save`  | Save evaluation findings as baseline                                 |
+| `ci diff`           | Compare two evaluations and report new findings                      |
+| `ci fix`            | Show machine-readable fix plan for a finding                         |
+| `ci fix-loop`       | Run apply-before/apply-after/verify in one command                   |
+| `ci gate`           | Enforce CI failure policy modes from config or flags                 |
+| `snapshot`          | Snapshot inspection commands                                         |
+| `snapshot diff`     | Compare the latest two observation snapshots                         |
+| `status`            | Show project context and the next recommended command                |
+
+## Security Analysis[​](#security-analysis "Direct link to Security Analysis")
+
+| Command                 | Description                                              |
+| ----------------------- | -------------------------------------------------------- |
+| `inspect`               | Low-level security analysis primitives                   |
+| `inspect acl`           | Analyze S3 ACL grants                                    |
+| `inspect aliases`       | List predicate aliases with metadata                     |
+| `inspect compliance`    | Resolve compliance framework crosswalk                   |
+| `inspect exposure`      | Classify resource exposure vectors                       |
+| `inspect policy`        | Analyze an S3 bucket policy document                     |
+| `inspect risk`          | Score risk from policy statement context                 |
+| `path`                  | Export attack path graph data from active chain findings |
+| `permissions`           | Query net effective permissions from a snapshot          |
+| `permissions principal` | Resolve permissions for a specific principal ARN         |
+| `permissions resource`  | Show who has effective access to a resource              |
+| `permissions summary`   | Aggregate NEP metrics across all principals              |
+| `prove`                 | Run Z3 SMT queries against a Stave assessment            |
+| `score`                 | Compute security posture score (0-100)                   |
+| `scorecard`             | Multi-framework compliance scorecard                     |
+| `search`                | Find catalog entries matching a free-form intent         |
+
+## Compliance & Evidence[​](#compliance--evidence "Direct link to Compliance & Evidence")
+
+| Command             | Description                                                            |
+| ------------------- | ---------------------------------------------------------------------- |
+| `bundle`            | Generate a sealed evidence bundle for air-gap GRC integration          |
+| `bundle audit`      | Assemble a compliance-period evidence package                          |
+| `compare`           | Compare compliance posture between two frameworks                      |
+| `compliance`        | Evaluate a snapshot against a compliance framework and report coverage |
+| `export`            | Export controls and compliance evidence                                |
+| `export changes`    | Export remediation property changes from assessment findings           |
+| `export compliance` | Export compliance evidence package                                     |
+| `export ocsf`       | Export findings as OCSF 1.1 Compliance Finding events                  |
+| `export oscal`      | Export findings as OSCAL 1.1.2 Assessment Results JSON                 |
+| `export tickets`    | Export findings as canonical ticket records                            |
+| `profile`           | Manage compliance profiles                                             |
+| `profile create`    | Generate a starter profile YAML                                        |
+| `profile list`      | List available compliance profiles                                     |
+| `profile validate`  | Validate a profile file                                                |
+| `report`            | Generate executive security posture report                             |
+| `trend`             | Analyze compliance posture trends across assessment runs               |
+| `trend forecast`    | Project posture score trajectory with SLA breach warnings              |
+| `trend oscillation` | Classify violation oscillation patterns across assessment history      |
+| `trend predict`     | Project compliance readiness achievement date                          |
+
+## Risk Acceptance[​](#risk-acceptance "Direct link to Risk Acceptance")
+
+| Command              | Description                                                       |
+| -------------------- | ----------------------------------------------------------------- |
+| `exempt`             | Manage risk acceptances (acknowledgments, exceptions, exemptions) |
+| `exempt acknowledge` | Add a formal risk acceptance                                      |
+| `exempt asset`       | Add a scope exclusion (exemption)                                 |
+| `exempt except`      | Add an operational suppression                                    |
+| `exempt export`      | Export risk register as OSCAL POA\&M                              |
+| `exempt history`     | Show full audit trail including expired entries                   |
+| `exempt list`        | List all active risk acceptances                                  |
+| `exempt remove`      | Mark an acknowledgment as revoked                                 |
+| `exempt suggest`     | Suggest exemptions for chronic/oscillating findings               |
+| `exempt upcoming`    | Show acceptances approaching expiry                               |
+| `exempt validate`    | Validate the acceptance file                                      |
+
+## Control Authoring[​](#control-authoring "Direct link to Control Authoring")
+
+| Command                  | Description                                                     |
+| ------------------------ | --------------------------------------------------------------- |
+| `controls`               | Work with control definitions                                   |
+| `controls alias-explain` | Show expanded predicate for an alias                            |
+| `controls aliases`       | List built-in semantic predicate aliases                        |
+| `controls explain`       | Explain a specific control                                      |
+| `controls list`          | List control IDs and names                                      |
+| `controls quality`       | Analyze control catalog metadata completeness and coverage gaps |
+| `controls search`        | Search the built-in control catalog                             |
+| `fmt`                    | Format control and observation files deterministically          |
+| `forge`                  | Author and test custom controls                                 |
+| `forge chain`            | Author and validate custom chains                               |
+| `forge chain lint`       | Validate chain YAML                                             |
+| `forge lint`             | Static analysis for control YAML files                          |
+| `forge new`              | Interactive control authoring wizard                            |
+| `forge paths`            | List available observation property paths from a snapshot       |
+| `forge preview`          | Evaluate a predicate against a snapshot without writing files   |
+| `forge scaffold`         | Generate test fixtures from a real snapshot                     |
+| `forge test`             | Run fixture-based assertions against a control                  |
+| `lint`                   | Lint control files for design quality                           |
+| `test`                   | Run embedded control test cases                                 |
+
+## Catalog & Coverage[​](#catalog--coverage "Direct link to Catalog & Coverage")
+
+| Command                         | Description                                                                                         |
+| ------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `capabilities`                  | Print supported input types and version constraints (default) or a user-facing catalog (subcommand) |
+| `capabilities catalog`          | Print the user-facing capability catalog                                                            |
+| `capabilities catalog coverage` | Show per-service control coverage                                                                   |
+| `capabilities catalog gaps`     | Compare catalog against an external checklist                                                       |
+| `capabilities catalog inspect`  | Show full metadata for a single control                                                             |
+| `capabilities catalog matrix`   | Show taxonomy × service cross-product with gap cells                                                |
+| `capabilities catalog stats`    | Print aggregate catalog statistics                                                                  |
+| `capabilities catalog taxonomy` | List taxonomy categories with control counts                                                        |
+| `catalog`                       | Print the user-facing capability catalog                                                            |
+| `catalog coverage`              | Show per-service control coverage                                                                   |
+| `catalog gaps`                  | Compare catalog against an external checklist                                                       |
+| `catalog inspect`               | Show full metadata for a single control                                                             |
+| `catalog matrix`                | Show taxonomy × service cross-product with gap cells                                                |
+| `catalog stats`                 | Print aggregate catalog statistics                                                                  |
+| `catalog taxonomy`              | List taxonomy categories with control counts                                                        |
+| `coverage`                      | Analyze observation field coverage against control predicates                                       |
+| `discover`                      | Resolve AWS services to the data Stave needs (the collection manifest)                              |
+| `gaps`                          | Report which observation properties are absent + what they unlock                                   |
+| `map`                           | ATT\&CK tactic coverage and gap analysis                                                            |
+| `plan`                          | Preview which controls will evaluate, by service and severity                                       |
+| `readiness`                     | Report what Stave can/can't evaluate given the supplied observations                                |
+
+## Templates & Packs[​](#templates--packs "Direct link to Templates & Packs")
+
+| Command           | Description                                                                     |
+| ----------------- | ------------------------------------------------------------------------------- |
+| `pack`            | Concern packs — named control groupings and their data requirements             |
+| `pack list`       | List available concern packs and their control counts                           |
+| `pack show`       | Show a pack's requirements manifest (AWS calls, signals, collector permissions) |
+| `packs`           | Inspect built-in control packs                                                  |
+| `packs list`      | List available built-in packs                                                   |
+| `packs show`      | Show one built-in pack and its control IDs                                      |
+| `recommend`       | Recommend templates for a snapshot                                              |
+| `template`        | Manage assessment templates                                                     |
+| `template eject`  | Fork a template for local customization                                         |
+| `template init`   | Instantiate a template with parameters                                          |
+| `template new`    | Scaffold a new custom template                                                  |
+| `template verify` | Verify a template's fixture produces expected findings                          |
+
+## Snapshot & Transform[​](#snapshot--transform "Direct link to Snapshot & Transform")
+
+| Command               | Description                                                            |
+| --------------------- | ---------------------------------------------------------------------- |
+| `attest`              | Snapshot tamper detection via Ed25519 signatures                       |
+| `attest keygen`       | Generate a new Ed25519 key pair for snapshot attestation               |
+| `attest sign`         | Sign a snapshot's assets with an Ed25519 private key                   |
+| `attest verify`       | Verify an attested snapshot against a public key                       |
+| `diff`                | Compare two observation snapshots or control catalogs                  |
+| `fingerprint`         | Policy fingerprint diagnostics                                         |
+| `fingerprint explain` | Show the policy fingerprint preimage and diagnosis                     |
+| `sanitize`            | Sanitize a snapshot for cross-boundary sharing                         |
+| `transform`           | Convert raw AWS CLI snapshots into obs.v0.1 observations (built-in jq) |
+| `validate-mapping`    | Validate a Steampipe→Stave mapping file before use                     |
+
+## Interop & Export[​](#interop--export "Direct link to Interop & Export")
+
+| Command           | Description                                                         |
+| ----------------- | ------------------------------------------------------------------- |
+| `cel`             | CEL expression tools                                                |
+| `cel eval`        | Evaluate a CEL expression against observation assets                |
+| `enforce`         | Generate deterministic enforcement templates from evaluation output |
+| `export-controls` | Export the control catalog for external solver consumption          |
+| `export-sir`      | Export the Stave Intermediate Representation as JSON                |
+| `graph`           | Visualize control and asset relationships                           |
+| `graph coverage`  | Show which controls cover which assets                              |
+| `graph export`    | Export assessment as JSON, STIX 2.1, JSON-LD, or GraphML            |
+| `metrics`         | Write Prometheus scrape file for node\_exporter                     |
+| `render`          | Render JSON data through a Go text/template                         |
+| `telemetry`       | Emit structured NDJSON telemetry from assessment output             |
+
+## Environment & Config[​](#environment--config "Direct link to Environment & Config")
+
+| Command                 | Description                                            |
+| ----------------------- | ------------------------------------------------------ |
+| `completion`            | Generate shell completion scripts                      |
+| `config`                | Configuration commands                                 |
+| `config context`        | Named project context commands                         |
+| `config context create` | Create or update a named context                       |
+| `config context delete` | Delete a context                                       |
+| `config context list`   | List available contexts                                |
+| `config context show`   | Show selected context                                  |
+| `config context use`    | Set active context                                     |
+| `config delete`         | Remove a project config key (reverts to default)       |
+| `config env`            | Manage environment variables                           |
+| `config env list`       | List supported STAVE\_\* environment variables         |
+| `config explain`        | Explain resolved config values and sources             |
+| `config get`            | Get a config value                                     |
+| `config set`            | Set a project config value in stave.yaml               |
+| `config show`           | Show effective project configuration and value sources |
+| `contract`              | Inspect Stave's per-asset-type input contracts         |
+| `contract show`         | Show the agent-facing contract for an asset type       |
+| `doctor`                | Check local environment readiness for Stave workflows  |
+| `features`              | Show what Stave does and deliberately does not do      |
+| `schemas`               | List all contract schemas                              |
+| `version`               | Print version and environment state                    |
+
+## Project Management[​](#project-management "Direct link to Project Management")
+
+| Command        | Description               |
+| -------------- | ------------------------- |
+| `alias`        | Manage command aliases    |
+| `alias delete` | Delete an alias           |
+| `alias list`   | List all aliases          |
+| `alias set`    | Create or update an alias |

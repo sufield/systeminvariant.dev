@@ -1,4 +1,4 @@
-# LAMBDA controls (87)
+# LAMBDA controls (89)
 
 ### CTL.LAMBDA.ALARM.DURATION.001[​](#ctllambdaalarmduration001 "Direct link to CTL.LAMBDA.ALARM.DURATION.001")
 
@@ -420,6 +420,21 @@ All Lambda layers referenced by a function must have ARNs whose account IDs are 
 
 ***
 
+### CTL.LAMBDA.LAYER.PUBLIC.001[​](#ctllambdalayerpublic001 "Direct link to CTL.LAMBDA.LAYER.PUBLIC.001")
+
+**Lambda Layer Version Must Not Be Publicly Shared**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AC-3; soc2: CC6.1;
+
+Lambda layer version has a permission granting access to Principal "\*" via lambda:AddLayerVersionPermission. A public layer can be used by any AWS account. If the layer contains proprietary code, embedded secrets, or internal API endpoints, this is a data exposure. Distinct from CTL.LAMBDA.LAYER.EXTERNAL.001 which checks whether a function USES an external layer — this control checks whether a layer IS externally shared. Scott Piper's aws\_exposable\_resources lists lambda:AddLayerVersionPermission as a public exposure vector.
+
+**Remediation:** Remove the public permission from the layer version. To share with specific accounts, use explicit account IDs via lambda:AddLayerVersionPermission with a specific principal.
+
+***
+
 ### CTL.LAMBDA.LAYER.SECRETS.001[​](#ctllambdalayersecrets001 "Direct link to CTL.LAMBDA.LAYER.SECRETS.001")
 
 **Lambda Layers Must Not Contain Embedded Secrets**
@@ -432,6 +447,21 @@ All Lambda layers referenced by a function must have ARNs whose account IDs are 
 Lambda layers must not contain embedded secrets (API keys, database credentials, certificates, private keys). Unlike environment variables (detectable via ENV.SECRETS.001), layer contents are opaque archives accessible to anyone with lambda:GetLayerVersion permission. Secrets in layers persist across function versions and are not encrypted by KMS.
 
 **Remediation:** Remove secrets from layer contents. Use Secrets Manager or SSM Parameter Store for credentials retrieved at runtime. Republish the layer without sensitive files.
+
+***
+
+### CTL.LAMBDA.LAYER.VERSION.PINNED.001[​](#ctllambdalayerversionpinned001 "Direct link to CTL.LAMBDA.LAYER.VERSION.PINNED.001")
+
+**Lambda Functions Must Pin Layer Versions**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SI-7; soc2: CC7.1;
+
+Lambda functions must reference layers with a pinned version number rather than using the latest. An unpinned layer reference means the function automatically gets the latest version published by the layer owner. If the layer owner's account is compromised, a malicious layer version is silently picked up by all referencing functions. Technique: Wiz "Backdoor Lambda Layer" supply chain vector.
+
+**Remediation:** Pin each layer reference to a specific version number. Update layer versions through a controlled change process rather than automatic inheritance.
 
 ***
 

@@ -31,3 +31,32 @@ Chains carry `preconditions` and `postconditions` from a closed capability vocab
 This is not a graph algorithm — it is a double loop over active chains performing set intersection. The graph structure is data, not computation. External tools (NetworkX, Neo4j) perform path finding, centrality analysis, and visualization.
 
 The capability vocabulary is closed (19 terms) because open vocabularies produce unmaintainable, inconsistent annotations. Every capability string is validated at chain load time.
+
+## Browsing Chains[​](#browsing-chains "Direct link to Browsing Chains")
+
+The catalog groups chains by family — the service prefix of the chain ID (e.g. `iam_`, `s3_`, `apigw_`). Each chain shows its compound severity and a one-line description.
+
+```
+# All chains, grouped by family
+stave catalog --kind chain
+
+# Just one family
+stave catalog --kind chain --family iam
+
+# Full descriptions (default truncates to one phrase)
+stave catalog --kind chain --verbose
+
+# Machine-readable
+stave catalog --kind chain --format json
+```
+
+## Rendering Chain Documentation[​](#rendering-chain-documentation "Direct link to Rendering Chain Documentation")
+
+Chain catalog data can be rendered through templates for custom documentation:
+
+```
+stave catalog --kind chain --format json \
+  | stave render --data - --template templates/chain-catalog.md.tmpl
+```
+
+This separates the data (which changes when chains are added) from the presentation (which changes when the documentation format changes).

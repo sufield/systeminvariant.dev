@@ -12,7 +12,7 @@ stave features [flags]
 
 Report Stave's capability scope.
 
-IN SCOPE is discovered live from this build's registries (control catalog, packs, compliance frameworks, observation schemas, ATT\&CK tactics) — it cannot drift from what the binary can do. OUT OF SCOPE is read from the versioned features/scope.yaml manifest, which is reviewed in PRs: capabilities Stave delegates to upstream collectors or downstream tools.
+IN SCOPE is discovered live from this build's registries (control catalog, packs, compliance frameworks, observation schemas, ATT\&CK tactics) — it cannot drift from what the binary can actually do. OUT OF SCOPE is read from the versioned features/scope.yaml manifest, which is reviewed in PRs: capabilities Stave delegates to upstream collectors or downstream tools.
 
 Output is paged through $PAGER (then 'less -R', then 'more') when stdout is a terminal, and written plain and unpaged when piped, redirected, or in CI — so '... | grep' and '... > file' are unaffected. JSON is never paged. Use --no-pager to force plain output on a terminal.
 

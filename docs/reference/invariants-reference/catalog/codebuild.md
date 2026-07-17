@@ -1,4 +1,4 @@
-# CODEBUILD controls (12)
+# CODEBUILD controls (13)
 
 ### CTL.CODEBUILD.BUILDSPEC.USERCONTROLLED.001[​](#ctlcodebuildbuildspecusercontrolled001 "Direct link to CTL.CODEBUILD.BUILDSPEC.USERCONTROLLED.001")
 
@@ -42,6 +42,21 @@ CodeBuild report groups exporting to S3 must encrypt exported test results at re
 CodeBuild projects delivering logs to S3 must encrypt log objects at rest. Unencrypted build logs can expose source structure, dependency versions, test results, and secrets leaked during build.
 
 **Remediation:** Enable encryption on S3 log delivery in the build project configuration.
+
+***
+
+### CTL.CODEBUILD.GITHUB.TRUST.001[​](#ctlcodebuildgithubtrust001 "Direct link to CTL.CODEBUILD.GITHUB.TRUST.001")
+
+**CodeBuild GitHub Source Must Not Allow Untrusted PR Triggers**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SA-12; soc2: CC8.1;
+
+CodeBuild projects with GitHub source must not allow builds triggered by pull requests from any contributor without an approval gate. An attacker creates a pull request that triggers a CodeBuild run, gaining access to the build environment's IAM role and any secrets in environment variables. Extends CTL.CODEBUILD.WEBHOOK.ANCHORED.001 (regex anchoring) and CTL.CODEBUILD.BUILDSPEC.USERCONTROLLED.001 (buildspec source) with explicit PR trigger trust validation. Technique: hackingthe.cloud CodeBuild GitHub runner persistence.
+
+**Remediation:** Configure webhook filters to restrict PULL\_REQUEST\_CREATED events to trusted actors. Use ACTOR\_ACCOUNT\_ID filters with anchored patterns. Enable build approval for external contributions.
 
 ***
 

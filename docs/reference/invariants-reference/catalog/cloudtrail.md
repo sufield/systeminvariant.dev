@@ -1,4 +1,4 @@
-# CLOUDTRAIL controls (51)
+# CLOUDTRAIL controls (57)
 
 ### CTL.CLOUDTRAIL.ACCESS.LOGREAD.BROAD.001[​](#ctlcloudtrailaccesslogreadbroad001 "Direct link to CTL.CLOUDTRAIL.ACCESS.LOGREAD.BROAD.001")
 
@@ -165,6 +165,36 @@ No CloudWatch alarm monitors CloudTrail for StopLogging API calls. StopLogging i
 
 ***
 
+### CTL.CLOUDTRAIL.AMPLIFY.BLIND.001[​](#ctlcloudtrailamplifyblind001 "Direct link to CTL.CLOUDTRAIL.AMPLIFY.BLIND.001")
+
+**CloudTrail Does Not Log Amplify Data Events**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AU-2; soc2: CC7.1;
+
+CloudTrail data events do not cover Amplify-managed CloudFront distributions and Lambda\@Edge functions. Amplify provisions these resources in an AWS-managed context — request-level activity on Amplify-hosted applications is not visible in the customer's CloudTrail data event logs. Management events (CreateApp, DeleteApp) are logged, but CDN request traffic and edge function invocations are invisible.
+
+**Remediation:** Enable CloudFront access logging and Lambda\@Edge CloudWatch Logs for Amplify-managed distributions. Amplify data-plane events cannot be captured via CloudTrail event selectors.
+
+***
+
+### CTL.CLOUDTRAIL.APPRUNNER.BLIND.001[​](#ctlcloudtrailapprunnerblind001 "Direct link to CTL.CLOUDTRAIL.APPRUNNER.BLIND.001")
+
+**CloudTrail Does Not Log App Runner Data Events**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AU-2; soc2: CC7.1;
+
+CloudTrail data events do not cover App Runner service invocations. HTTP requests to App Runner endpoints are handled by AWS-managed infrastructure and are not visible in the customer's CloudTrail data event logs. Management events (CreateService, DeleteService) are logged, but request-level activity (who called the service, with what payload) is invisible. For services handling sensitive data, this is a detection blind spot.
+
+**Remediation:** Enable application-level access logging within the App Runner service configuration. Route access logs to CloudWatch Logs for centralized monitoring. App Runner data-plane events cannot be captured via CloudTrail event selectors.
+
+***
+
 ### CTL.CLOUDTRAIL.CENTRAL.SAMEACCOUNT.001[​](#ctlcloudtrailcentralsameaccount001 "Direct link to CTL.CLOUDTRAIL.CENTRAL.SAMEACCOUNT.001")
 
 **CloudTrail Trail S3 Bucket Is in the Same Account as Resources**
@@ -177,6 +207,21 @@ No CloudWatch alarm monitors CloudTrail for StopLogging API calls. StopLogging i
 CloudTrail trail delivers log files to an S3 bucket in the same AWS account that the trail monitors. If the account is compromised, the attacker has access to both the resources AND the audit log — they can modify or delete log files to cover their tracks. Best practice is to deliver trail logs to a dedicated logging account with restricted access; compromising the production account doesn't grant access to the log account.
 
 **Remediation:** Create a dedicated AWS account for audit logging and move the trail's S3 bucket there. Update the trail's S3BucketName to point at the logging-account bucket and update the bucket policy in the logging account to grant cloudtrail.amazonaws.com PutObject from the trail-account's trail ARN (with aws:SourceArn pinning per CTL.CLOUDTRAIL.S3.SOURCEARN.001). Restrict access to the logging account to a small security-team principal set; production-account IAM cannot reach the log bucket.
+
+***
+
+### CTL.CLOUDTRAIL.CLOUD9.BLIND.001[​](#ctlcloudtrailcloud9blind001 "Direct link to CTL.CLOUDTRAIL.CLOUD9.BLIND.001")
+
+**CloudTrail Does Not Log Cloud9 Data Events**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AU-2; soc2: CC7.1;
+
+CloudTrail data events do not cover Cloud9 IDE sessions. Cloud9 environments run on EC2 instances but IDE session activity (file edits, terminal commands, credential usage) is not logged in CloudTrail. Management events (CreateEnvironmentEC2, DeleteEnvironment) are logged, but interactive session activity is invisible — an attacker with access to a Cloud9 environment can operate without an audit trail.
+
+**Remediation:** Enable SSM Session Manager logging for Cloud9 environments to capture terminal activity. Cloud9 session events cannot be captured via CloudTrail event selectors.
 
 ***
 
@@ -375,6 +420,21 @@ CloudTrail trails should use advanced event selectors instead of basic event sel
 
 ***
 
+### CTL.CLOUDTRAIL.EVS.BLIND.001[​](#ctlcloudtrailevsblind001 "Direct link to CTL.CLOUDTRAIL.EVS.BLIND.001")
+
+**CloudTrail Does Not Log EVS Management Events**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AU-2; soc2: CC7.1;
+
+CloudTrail is not configured to log EVS management events. If EVS management events are not logged, an attacker can create VMware SDDC environments, provision clusters, and operate an entire VMware management plane without leaving an audit trail. EVS is not inventoried by AWS Config — CloudTrail is the only detection surface for EVS API activity.
+
+**Remediation:** Ensure event selectors include EVS management events. With advanced selectors, add eventSource = evs.amazonaws.com.
+
+***
+
 ### CTL.CLOUDTRAIL.GHOST.CWLOGS.001[​](#ctlcloudtrailghostcwlogs001 "Direct link to CTL.CLOUDTRAIL.GHOST.CWLOGS.001")
 
 **CloudTrail Trail CloudWatch Logs Group Does Not Exist**
@@ -509,6 +569,21 @@ A CloudTrail Lake event data store has a retention period shorter than 365 days.
 
 ***
 
+### CTL.CLOUDTRAIL.LIGHTSAIL.BLIND.001[​](#ctlcloudtraillightsailblind001 "Direct link to CTL.CLOUDTRAIL.LIGHTSAIL.BLIND.001")
+
+**CloudTrail Does Not Log Lightsail Management Events**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AU-2; soc2: CC7.1;
+
+CloudTrail is not configured to log Lightsail management events. If Lightsail management events are not logged, an attacker can create instances, open ports, create bucket access keys, and exfiltrate data through Lightsail without leaving an audit trail. Lightsail operates outside AWS Config — CloudTrail is the only detection surface for Lightsail API activity.
+
+**Remediation:** Ensure event selectors include Lightsail management events. With advanced selectors, add eventSource = lightsail.amazonaws.com.
+
+***
+
 ### CTL.CLOUDTRAIL.LOG.VALIDATION.001[​](#ctlcloudtraillogvalidation001 "Direct link to CTL.CLOUDTRAIL.LOG.VALIDATION.001")
 
 **CloudTrail Log File Validation Must Be Enabled**
@@ -536,6 +611,21 @@ CloudTrail log file validation must be enabled to detect whether log files have 
 CloudTrail LookupEvents access must be restricted to security and administrative roles. Unrestricted LookupEvents access exposes 90 days of API activity patterns including which principals performed which actions, resource names, source IP addresses, and timestamps. Attackers use this to identify active service accounts, map API usage patterns, and time their actions to blend with normal activity.
 
 **Remediation:** Restrict cloudtrail:LookupEvents to security and administrative roles only. Apply conditions such as aws:PrincipalTag to limit access. Consider using CloudTrail Lake with fine-grained query permissions instead of LookupEvents for audit workflows.
+
+***
+
+### CTL.CLOUDTRAIL.MWAA.BLIND.001[​](#ctlcloudtrailmwaablind001 "Direct link to CTL.CLOUDTRAIL.MWAA.BLIND.001")
+
+**CloudTrail Does Not Log MWAA Data Events**
+
+* **Severity:** low
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AU-2; soc2: CC7.1;
+
+CloudTrail data events do not cover MWAA DAG execution. MWAA environments run DAGs on Fargate compute, but individual DAG run activity (task execution, operator calls, connection usage) is not logged in CloudTrail. Management events (CreateEnvironment, DeleteEnvironment) are logged, but DAG execution — which runs arbitrary Python code with the execution role's permissions — is invisible to CloudTrail.
+
+**Remediation:** Enable MWAA task-level logging via the environment's logging configuration (DAG processing, scheduler, task, web server, worker logs to CloudWatch). MWAA execution events cannot be captured via CloudTrail event selectors.
 
 ***
 

@@ -1,4 +1,49 @@
-# VPC controls (90)
+# VPC controls (95)
+
+### CTL.VPC.BPA.BIDIRECTIONAL.001[​](#ctlvpcbpabidirectional001 "Direct link to CTL.VPC.BPA.BIDIRECTIONAL.001")
+
+**VPC Block Public Access Must Block Both Ingress and Egress**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** network
+* **Compliance:** nist\_800\_53\_r5: SC-7; soc2: CC6.6;
+
+VPC Block Public Access is enabled but in ingress-only mode. Ingress-only mode blocks inbound traffic from the internet but still allows outbound internet access via internet gateways. An attacker with code execution can still exfiltrate data or establish reverse shells. Bidirectional mode blocks both directions.
+
+**Remediation:** Switch to bidirectional mode via aws ec2 modify-vpc-block-public-access-options --internet-gateway-block-mode block-bidirectional. Create subnet-level exclusions for subnets that genuinely need outbound internet access.
+
+***
+
+### CTL.VPC.BPA.ENABLED.001[​](#ctlvpcbpaenabled001 "Direct link to CTL.VPC.BPA.ENABLED.001")
+
+**VPC Block Public Access Must Be Enabled at Account Level**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** network
+* **Compliance:** nist\_800\_53\_r5: SC-7; soc2: CC6.6;
+
+VPC Block Public Access (BPA) is not enabled at the account level. BPA shipped November 2024 as the network-perimeter equivalent of S3 Block Public Access — it prevents internet gateways and egress-only internet gateways from providing public connectivity. Without BPA, any VPC with an internet gateway can have public-facing resources. API: ec2:DescribeVpcBlockPublicAccessOptions.
+
+**Remediation:** Enable VPC BPA at the account level via aws ec2 modify-vpc-block-public-access-options --internet-gateway-block-mode block-bidirectional.
+
+***
+
+### CTL.VPC.BPA.EXCLUSION.SUBNET.001[​](#ctlvpcbpaexclusionsubnet001 "Direct link to CTL.VPC.BPA.EXCLUSION.SUBNET.001")
+
+**VPC BPA Exclusions Must Target Subnets Not VPCs**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** network
+* **Compliance:** nist\_800\_53\_r5: SC-7; soc2: CC6.6;
+
+VPC Block Public Access exclusion is scoped to an entire VPC rather than a specific subnet. VPC-level exclusions disable BPA for ALL subnets in the VPC — including subnets that should remain private. Subnet-level exclusions are more precise: only the specific subnet gets public access, and new subnets added to the VPC inherit the BPA block. API: ec2:DescribeVpcBlockPublicAccessExclusions.
+
+**Remediation:** Replace the VPC-level exclusion with subnet-level exclusions targeting only the specific subnets that need public connectivity (e.g., public ALB subnets).
+
+***
 
 ### CTL.VPC.CLIENTVPN.AUTH.001[​](#ctlvpcclientvpnauth001 "Direct link to CTL.VPC.CLIENTVPN.AUTH.001")
 
@@ -117,6 +162,21 @@ A VPC's DHCP option set specifies external public NTP servers (a pool such as po
 VPC does not have DNS hostnames (EnableDnsHostnames) enabled. Without DNS hostnames, EC2 instances do not receive public DNS hostnames, preventing external resolution to their public IPs and breaking patterns that depend on hostname-based identity (ACM certificate validation, some load balancer health checks). Required for VPC endpoints to generate private DNS entries.
 
 **Remediation:** Enable DNS hostnames on the VPC.
+
+***
+
+### CTL.VPC.DNS.ISOLATED.EXFIL.001[​](#ctlvpcdnsisolatedexfil001 "Direct link to CTL.VPC.DNS.ISOLATED.EXFIL.001")
+
+**Isolated VPC Has DNS Exfiltration Path**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SC-7; soc2: CC6.6;
+
+VPC has no Internet Gateway and no NAT Gateway but DNS resolution is enabled. The VPC-provided DNS server at 169.254.169.253 cannot be blocked by Security Groups or NACLs and is invisible to VPC Flow Logs. An attacker with code execution on any instance in this VPC can exfiltrate data via DNS tunneling — the one network path that survives full Security Group and NACL lockdown. For VPCs intended to be network-isolated, disable DNS resolution and configure a private DNS resolver, or enable Route 53 Resolver query logging to gain visibility into DNS traffic.
+
+**Remediation:** Disable DNS resolution on the VPC and configure a private Route 53 Resolver endpoint for internal name resolution. If DNS resolution must remain enabled, enable Route 53 Resolver query logging and DNS Firewall to detect and block DNS tunneling. Monitor for unusually large or high-frequency DNS queries.
 
 ***
 
@@ -821,6 +881,21 @@ VPC peering connection is in pending-acceptance state. The peering request was s
 Route table entries for VPC peering connections must reference specific subnet CIDRs within the peered VPC, not the entire VPC CIDR. A route to the full peer VPC CIDR means any resource in the local VPC can reach any resource in the peered VPC — collapsing the network boundary between VPCs that were segmented for a reason. This is the routing-layer equivalent of east-west security group over-permissiveness (CTL.VPC.SG.EASTWEST.001). Cross-environment peering routes — production routing to development or vice versa — are a finding regardless of route specificity, as they violate environment isolation at the routing layer. CIS 5.5 requires that VPC peering route tables follow least access.
 
 **Remediation:** Replace the broad VPC CIDR route with specific subnet CIDR routes that target only the subnets hosting the services that require cross-VPC connectivity. For example, replace a route to 10.1.0.0/16 (entire peer VPC) with a route to 10.1.2.0/24 (specific application subnet). Remove peering routes that cross environment boundaries (production to development) unless explicitly justified.
+
+***
+
+### CTL.VPC.POLLUTION.ORPHANEDSG.OPEN.001[​](#ctlvpcpollutionorphanedsgopen001 "Direct link to CTL.VPC.POLLUTION.ORPHANEDSG.OPEN.001")
+
+**Orphaned Security Group Has Unrestricted Ingress**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** network
+* **Compliance:** nist\_800\_53\_r5: AC-3; soc2: CC6.6;
+
+Security group has no attached resources AND allows unrestricted ingress (0.0.0.0/0 or ::/0). An orphaned SG with open ingress is not currently exposing anything, but when reattached — which orphaned SGs often are, because developers search for existing SGs rather than creating new ones — the resource inherits the permissive rule immediately. This is a distance-one pattern: the risk is one attachment away. The compound of CTL.EC2.SG.UNUSED.001 (orphaned) and CTL.VPC.SG.UNRESTRICTED.001 (open ingress) — individually these are low and medium severity; together they represent a latent exposure waiting for a trigger.
+
+**Remediation:** Delete the unused security group. If it cannot be deleted (referenced by a launch template or other config), remove all ingress rules to eliminate the latent risk.
 
 ***
 

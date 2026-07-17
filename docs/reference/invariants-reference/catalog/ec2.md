@@ -1,4 +1,4 @@
-# EC2 controls (106)
+# EC2 controls (108)
 
 ### CTL.EC2.AMI.BLOCKPUBLIC.001[​](#ctlec2amiblockpublic001 "Direct link to CTL.EC2.AMI.BLOCKPUBLIC.001")
 
@@ -1212,6 +1212,21 @@ SSM Patch Manager maintenance window has not executed in more than 30 days. The 
 
 ***
 
+### CTL.EC2.POLLUTION.LONGRUNNING.PUBLIC.001[​](#ctlec2pollutionlongrunningpublic001 "Direct link to CTL.EC2.POLLUTION.LONGRUNNING.PUBLIC.001")
+
+**Long-Running Instance on Stale AMI Has Public IP**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SI-2; soc2: CC7.1;
+
+EC2 instance has been running longer than the age threshold AND has a public IP address. This is the pollution compound: an old instance (likely abandoned or forgotten), with accumulated unpatched vulnerabilities from the stale AMI, directly exposed to the internet. Farris: "EC2 instances that have been running since Barack Obama was president." The compound of CTL.EC2.INSTANCE.AGE.001 (instance age) and CTL.EC2.PUBLIC.001 (public IP) — neither alone captures the distinct risk of an abandoned, exposed, unpatched instance.
+
+**Remediation:** Terminate the instance and rebuild from a current AMI in a private subnet. If the instance must remain running, update the AMI, remove the public IP, and place behind a load balancer or NAT gateway.
+
+***
+
 ### CTL.EC2.PROFILE.OVERBROAD.001[​](#ctlec2profileoverbroad001 "Direct link to CTL.EC2.PROFILE.OVERBROAD.001")
 
 **EC2 Instance Profile Must Follow Least Privilege**
@@ -1464,6 +1479,21 @@ EC2 instance is registered with Systems Manager but its agent ping status is `Co
 EC2 instances must be managed by SSM to enable patching, session management, and compliance checking without SSH. Unmanaged instances require bastion hosts or open SSH ports.
 
 **Remediation:** Attach AmazonSSMManagedInstanceCore IAM policy to the instance profile and ensure the SSM agent is installed.
+
+***
+
+### CTL.EC2.SSM.ROLE.001[​](#ctlec2ssmrole001 "Direct link to CTL.EC2.SSM.ROLE.001")
+
+**EC2 Instance Has No SSM Permissions**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** governance
+* **Compliance:** nist\_800\_53\_r5: SI-2; soc2: CC7.1;
+
+Running EC2 instance has no instance profile or the instance profile role lacks the AmazonSSMManagedInstanceCore policy. Without SSM permissions, the SSM agent cannot communicate with the Systems Manager service even if installed, leaving the instance unmanageable for patching, inventory, and Session Manager access.
+
+**Remediation:** Attach an instance profile with the AmazonSSMManagedInstanceCore managed policy to the instance. If an instance profile exists, add the policy to its role.
 
 ***
 

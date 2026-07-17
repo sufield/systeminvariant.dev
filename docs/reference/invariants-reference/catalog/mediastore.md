@@ -1,0 +1,16 @@
+# MEDIASTORE controls (1)
+
+### CTL.MEDIASTORE.POLICY.PUBLIC.001[​](#ctlmediastorepolicypublic001 "Direct link to CTL.MEDIASTORE.POLICY.PUBLIC.001")
+
+**MediaStore Container Policy Must Not Allow Public Access**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AC-3; soc2: CC6.1;
+
+MediaStore container policy grants access to Principal "\*" or external accounts without aws:PrincipalOrgID condition. MediaStore containers hold streaming media assets. A public container policy lets any AWS account (or unauthenticated caller if combined with public endpoint) read, overwrite, or delete media objects. Scott Piper's aws\_exposable\_resources lists mediastore:PutContainerPolicy as a public exposure vector. API: mediastore:GetContainerPolicy.
+
+**Remediation:** Restrict the container policy to specific account IDs or add an aws:PrincipalOrgID condition. For public content delivery, use CloudFront with an origin access identity instead of a public container policy.
+
+***

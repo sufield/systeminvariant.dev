@@ -1,4 +1,19 @@
-# WAF controls (16)
+# WAF controls (17)
+
+### CTL.WAF.CLASSIC.DEPRECATED.001[​](#ctlwafclassicdeprecated001 "Direct link to CTL.WAF.CLASSIC.DEPRECATED.001")
+
+**No Resource Must Use WAF Classic (Retired September 2025)**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SI-2; soc2: CC6.1;
+
+A WAF Classic WebACL exists in the account. AWS retired WAF Classic on September 30, 2025. Resources still associated with WAF Classic WebACLs are running on unsupported infrastructure that receives no rule updates, no new features, and no security patches. WAF Classic resources are invisible to the entire WAFv2 control family — every existing WAF control in the catalog evaluates wafv2: resources only. A WAF Classic WebACL is a SILENT\_RISK: the resource appears to have WAF protection but is excluded from all WAF compliance checks. Source: AWS breaking\_changes repo, WAF Classic retirement announcement (2024).
+
+**Remediation:** Migrate the WebACL to WAFv2 using the AWS WAF Classic migration wizard or manual recreation. Associate the new WAFv2 WebACL with the same resources (ALB, CloudFront, API Gateway). Delete the Classic WebACL after migration.
+
+***
 
 ### CTL.WAF.EVASION.OBSERVE.001[​](#ctlwafevasionobserve001 "Direct link to CTL.WAF.EVASION.OBSERVE.001")
 

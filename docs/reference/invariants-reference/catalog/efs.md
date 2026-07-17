@@ -1,4 +1,4 @@
-# EFS controls (13)
+# EFS controls (14)
 
 ### CTL.EFS.AP.POSIX.001[​](#ctlefsapposix001 "Direct link to CTL.EFS.AP.POSIX.001")
 
@@ -161,6 +161,21 @@ EFS file systems must be Regional type (not One Zone) with mount targets in mult
 EFS file system policies must prevent anonymous (unauthenticated) access. Without this policy, any principal that can reach the mount target can access the file system without IAM authentication, enabling unauthorized data access from within the VPC.
 
 **Remediation:** Apply a file system policy that prevents anonymous access. Run: aws efs put-file-system-policy --file-system-id fs-xxx --policy '{"Statement":\[{"Effect":"Deny","Principal":{"AWS":"*"}, "Action":"*","Condition":{"Bool":{"elasticfilesystem:AccessedViaMountTarget":"true"}}, "Resource":"\*"}]}'
+
+***
+
+### CTL.EFS.POLICY.CROSSACCOUNT.001[​](#ctlefspolicycrossaccount001 "Direct link to CTL.EFS.POLICY.CROSSACCOUNT.001")
+
+**EFS File System Policy Grants Cross-Account Access Without Organizational Boundary**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AC-3; soc2: CC6.1;
+
+EFS file system policy grants actions to principals in external AWS accounts without an aws:PrincipalOrgID condition. Cross-account EFS access enables mounting the file system from EC2 instances or containers in the external account. If the external account is compromised, the attacker can read, modify, or delete all files on the shared file system.
+
+**Remediation:** Add an aws:PrincipalOrgID condition to restrict cross-account access to principals within the organization. Also consider using VPC peering or Transit Gateway conditions to restrict network-level access.
 
 ***
 

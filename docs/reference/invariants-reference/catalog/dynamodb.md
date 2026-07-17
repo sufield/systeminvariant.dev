@@ -1,4 +1,4 @@
-# DYNAMODB controls (37)
+# DYNAMODB controls (38)
 
 ### CTL.DYNAMODB.ACCESS.EXPORT.001[​](#ctldynamodbaccessexport001 "Direct link to CTL.DYNAMODB.ACCESS.EXPORT.001")
 
@@ -476,6 +476,21 @@ DynamoDB Stream is enabled and a Lambda event source mapping (ESM) is configured
 DynamoDB tables must have point-in-time recovery (PITR) enabled. Without PITR, accidental deletes, application bugs, or ransomware that corrupts table data cannot be recovered. PITR provides continuous backups with per-second granularity for the last 35 days.
 
 **Remediation:** Enable PITR using aws dynamodb update-continuous-backups --table-name TABLE --point-in-time-recovery-specification PointInTimeRecoveryEnabled=true.
+
+***
+
+### CTL.DYNAMODB.POLICY.CROSSACCOUNT.001[​](#ctldynamodbpolicycrossaccount001 "Direct link to CTL.DYNAMODB.POLICY.CROSSACCOUNT.001")
+
+**DynamoDB Table Policy Grants Cross-Account Access Without Organizational Boundary**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AC-3; soc2: CC6.1;
+
+DynamoDB table resource policy grants actions to principals in external AWS accounts without an aws:PrincipalOrgID condition. Cross-account access without an org boundary means the external account can read, write, or delete table items. If the external account leaves the organization, access persists. Same risk pattern as CTL.SNS.POLICY.CROSSACCOUNT.001 and CTL.SQS.POLICY.CROSSACCOUNT.001.
+
+**Remediation:** Add an aws:PrincipalOrgID condition to restrict cross-account access to principals within the organization. If cross-account access is not needed, remove the resource policy entirely.
 
 ***
 

@@ -1,4 +1,4 @@
-# NETFIREWALL controls (12)
+# NETFIREWALL controls (13)
 
 ### CTL.NETFIREWALL.DEFAULT.FRAG.001[​](#ctlnetfirewalldefaultfrag001 "Direct link to CTL.NETFIREWALL.DEFAULT.FRAG.001")
 
@@ -42,6 +42,21 @@ Network Firewall stateless default action for full packets must be aws:drop or a
 Network Firewalls must enable deletion protection to prevent accidental or malicious removal. Deleting the firewall removes all traffic inspection from the VPC.
 
 **Remediation:** Enable deletion protection on the firewall.
+
+***
+
+### CTL.NETFIREWALL.DNS.BYPASS.001[​](#ctlnetfirewalldnsbypass001 "Direct link to CTL.NETFIREWALL.DNS.BYPASS.001")
+
+**Network Firewall DNS Filtering Must Cover All Resolution Paths**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** network
+* **Compliance:** nist\_800\_53\_r5: SC-7; soc2: CC6.6;
+
+When Network Firewall uses domain-based filtering, all DNS resolution paths must route through the firewall. If instances can resolve via external DNS servers (e.g., 8.8.8.8), the firewall's domain rules don't apply. The VPC must either use Route 53 Resolver DNS Firewall or restrict outbound UDP/53 to only AWS-provided DNS. Technique: hackingthe.cloud Network Firewall egress filtering bypass.
+
+**Remediation:** Deploy Route 53 Resolver DNS Firewall to enforce DNS filtering regardless of which resolver instances use. Alternatively, restrict security groups to allow outbound UDP/53 only to the VPC-provided DNS resolver (169.254.169.253).
 
 ***
 

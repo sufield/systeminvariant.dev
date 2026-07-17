@@ -1,4 +1,4 @@
-# ELASTICACHE controls (7)
+# ELASTICACHE controls (8)
 
 ### CTL.ELASTICACHE.AUTH.001[​](#ctlelasticacheauth001 "Direct link to CTL.ELASTICACHE.AUTH.001")
 
@@ -27,6 +27,21 @@ ElastiCache Redis clusters must have an AUTH token configured. Without AUTH, any
 ElastiCache Redis replication groups must have automatic backups enabled with a retention period of at least 1 day. Without automatic backups, a node failure, accidental FLUSHALL, or ransomware event destroys all cached data with no recovery path. ElastiCache backups are RDB snapshots stored in S3 — they capture the full dataset at a point in time and can restore to a new replication group. A retention period of 0 disables automatic backups entirely. Every comparable database service (RDS, DocumentDB, Neptune, DynamoDB) enforces automated backups; ElastiCache Redis supports them but does not enable them by default.
 
 **Remediation:** Enable automatic backups by setting the snapshot retention limit to at least 1 day: aws elasticache modify-replication-group --replication-group-id --snapshot-retention-limit 7 --apply-immediately. For compliance workloads, set retention to match your RPO requirement (max 35 days).
+
+***
+
+### CTL.ELASTICACHE.CLUSTER.PUBLIC.001[​](#ctlelasticacheclusterpublic001 "Direct link to CTL.ELASTICACHE.CLUSTER.PUBLIC.001")
+
+**ElastiCache Cluster Must Not Be Publicly Accessible**
+
+* **Severity:** critical
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AC-3, SC-7; soc2: CC6.1, CC6.6;
+
+ElastiCache cluster or replication group is configured as publicly accessible. ElastiCache Redis and Memcached clusters should be VPC-internal only. A publicly accessible cluster exposes cached data (session tokens, API responses, user data) to the internet. Even with AUTH enabled, public network exposure increases the attack surface — brute-force attacks, protocol vulnerabilities, and credential stuffing all become possible. Scott Piper's aws\_exposable\_resources notes ElastiCache as a network-exposable resource type.
+
+**Remediation:** Disable public accessibility on the cluster. Deploy ElastiCache clusters in private subnets only and access via VPC peering or VPN.
 
 ***
 

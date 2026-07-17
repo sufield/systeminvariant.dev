@@ -45,4 +45,4 @@ The table below lists the minimum IAM permissions required to run the AWS CLI co
 
 These are **read-only** permissions. No write, delete, or administrative access is required.
 
-After collecting the AWS CLI output, use `jq` or a custom script to transform it into observation files conforming to the `obs.v0.1` schema. See [S3 Assessment Workflow](/docs/how-to/assessments/s3-assessment.md) for the end-to-end process.
+After collecting the AWS CLI output, use `jq` or a custom script to transform it into observation files conforming to the `obs.v0.1` schema. See [S3 Assessment Workflow](https://www.systeminvariant.dev/docs/how-to/s3-assessment) for the end-to-end process.
