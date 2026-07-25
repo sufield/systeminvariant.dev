@@ -1,4 +1,4 @@
-# EMR controls (6)
+# EMR controls (7)
 
 ### CTL.EMR.ENCRYPT.001[​](#ctlemrencrypt001 "Direct link to CTL.EMR.ENCRYPT.001")
 
@@ -27,6 +27,21 @@ EMR clusters must have a security configuration enabling encryption at rest (EMR
 EMR clusters must enable logging to S3 for cluster events, step execution, and application logs. Without logging, job failures, security events, and data access patterns are invisible.
 
 **Remediation:** Enable logging with an S3 log URI when creating or updating the cluster.
+
+***
+
+### CTL.EMR.PRIVATE.SUBNET.001[​](#ctlemrprivatesubnet001 "Direct link to CTL.EMR.PRIVATE.SUBNET.001")
+
+**EMR Cluster Must Be Provisioned in Private VPC Subnet**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SC-7; pci\_dss\_v4.0: 1.3.1; soc2: CC6.6;
+
+EMR clusters must be provisioned in private VPC subnets (subnets without a route to an internet gateway). A cluster in a public subnet — even without public IPs on nodes — can be reached via the internet gateway if security groups allow it. Private subnets ensure the cluster is reachable only through VPN, Direct Connect, or VPC peering, not from the public internet.
+
+**Remediation:** Recreate the cluster in a private subnet. Configure a NAT gateway or VPC endpoints for S3 and other AWS service access. Use AWS Systems Manager Session Manager or a bastion host for administrative access.
 
 ***
 

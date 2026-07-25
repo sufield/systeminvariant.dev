@@ -1,4 +1,19 @@
-# RECYCLEBIN controls (1)
+# RECYCLEBIN controls (2)
+
+### CTL.RECYCLEBIN.EBS.RETENTION.001[​](#ctlrecyclebinebsretention001 "Direct link to CTL.RECYCLEBIN.EBS.RETENTION.001")
+
+**Recycle Bin Retention Period Below Minimum**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: CP-9, CP-10; soc2: CC6.1;
+
+Recycle Bin retention rule for EBS resources has a retention period below the recommended minimum (7 days). Short retention periods give insufficient time to detect and recover from ransomware or accidental deletion. A 1-day retention period means a Friday deletion is unrecoverable by Monday morning. The retention period should exceed the organization's mean time to detect (MTTD) for data destruction events.
+
+**Remediation:** Update the Recycle Bin retention rule to at least 7 days. For production workloads, consider 30 days to ensure detection and recovery time for sophisticated attacks.
+
+***
 
 ### CTL.RECYCLEBIN.EBS.VOLUME.001[​](#ctlrecyclebinebsvolume001 "Direct link to CTL.RECYCLEBIN.EBS.VOLUME.001")
 

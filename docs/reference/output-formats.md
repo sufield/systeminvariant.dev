@@ -93,6 +93,28 @@ Stave can generate enforcement artifacts from evaluation results:
 | `stave enforce --in eval.json --out ./dir --mode pab` | `dir/enforcement/aws/pab.tf`   |
 | `stave enforce --in eval.json --out ./dir --mode scp` | `dir/enforcement/aws/scp.json` |
 
+## Severity Mapping[​](#severity-mapping "Direct link to Severity Mapping")
+
+| Stave severity | SARIF level | Code Scanning display |
+| -------------- | ----------- | --------------------- |
+| critical       | error       | Error (red)           |
+| high           | error       | Error (red)           |
+| medium         | warning     | Warning (yellow)      |
+| low            | note        | Note (blue)           |
+| info           | note        | Note (blue)           |
+
+## Exit Codes[​](#exit-codes "Direct link to Exit Codes")
+
+| Code | Meaning                                       |
+| ---- | --------------------------------------------- |
+| 0    | Success (no violations, or command completed) |
+| 2    | Invalid input (bad flags, malformed files)    |
+| 3    | Violations found (findings exceed threshold)  |
+| 4    | Internal error                                |
+| 130  | Interrupted (SIGINT)                          |
+
+Exit 3 is a success — it means the tool found what it was looking for.
+
 ## Logging[​](#logging "Direct link to Logging")
 
 Logs go to stderr and are separate from command output:

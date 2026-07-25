@@ -2,8 +2,6 @@
 
 Why Stave evaluates local files rather than querying live cloud APIs.
 
-***
-
 ## The Air-Gap Constraint[​](#the-air-gap-constraint "Direct link to The Air-Gap Constraint")
 
 Stave was designed for environments where the evaluation engine cannot reach the infrastructure it evaluates. Classified networks, regulated healthcare environments, financial institutions with strict network segmentation — these are real deployment contexts, not edge cases.

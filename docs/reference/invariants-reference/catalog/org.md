@@ -1,4 +1,4 @@
-# ORG controls (50)
+# ORG controls (60)
 
 ### CTL.ORG.ACCOUNT.ALTERNATECONTACTS.001[​](#ctlorgaccountalternatecontacts001 "Direct link to CTL.ORG.ACCOUNT.ALTERNATECONTACTS.001")
 
@@ -210,6 +210,51 @@ Organization does not use Identity Center (or an equivalent federated identity m
 
 ***
 
+### CTL.ORG.MEMBERSHIP.001[​](#ctlorgmembership001 "Direct link to CTL.ORG.MEMBERSHIP.001")
+
+**Account Must Be Member of an AWS Organization**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** governance
+* **Compliance:** nist\_800\_53\_r5: AC-2; soc2: CC6.1;
+
+The account is not a member of an AWS Organization. Standalone accounts cannot benefit from SCPs, RCPs, centralized CloudTrail, consolidated billing, or Identity Center. Every security guardrail that operates at the organization level is absent. The account is governed only by its own IAM policies — no external boundary constrains what principals can do.
+
+**Remediation:** Invite the account into the organization via organizations:InviteAccountToOrganization or create a new account within the organization.
+
+***
+
+### CTL.ORG.MGMT.PRINCIPAL.COUNT.001[​](#ctlorgmgmtprincipalcount001 "Direct link to CTL.ORG.MGMT.PRINCIPAL.COUNT.001")
+
+**Management Account Must Minimize IAM Principals**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6(5); soc2: CC6.3;
+
+The management account has more than 10 IAM principals (users + roles). The management account controls the organization's billing, SCPs, and account lifecycle. Every principal in the management account is a potential path to organization-wide compromise. Best practice is to restrict the management account to organization administration only — all workloads belong in member accounts.
+
+**Remediation:** Migrate workloads out of the management account. Delete or disable unused IAM users and roles. Use Identity Center for human access.
+
+***
+
+### CTL.ORG.OU.DEPTH.001[​](#ctlorgoudepth001 "Direct link to CTL.ORG.OU.DEPTH.001")
+
+**OU Hierarchy Must Not Be Excessively Deep**
+
+* **Severity:** low
+* **Type:** unsafe\_state
+* **Domain:** governance
+* **Compliance:** nist\_800\_53\_r5: CM-6; soc2: CC6.1;
+
+The organizational unit hierarchy exceeds 4 levels deep. AWS Organizations supports up to 5 levels of OU nesting. Deep hierarchies make SCP inheritance difficult to reason about — each level can add Deny statements that interact with higher-level SCPs in non-obvious ways. A flatter structure (2-3 levels) is easier to audit and less likely to contain SCP blind spots.
+
+**Remediation:** Flatten the OU hierarchy. Consolidate nested OUs where the SCP distinction between levels is minimal.
+
+***
+
 ### CTL.ORG.OU.STRUCTURE.001[​](#ctlorgoustructure001 "Direct link to CTL.ORG.OU.STRUCTURE.001")
 
 **Organization Must Have OU Structure**
@@ -270,6 +315,36 @@ No RCP enforces aws:SourceOrgID or aws:SourceAccount conditions on resource-faci
 
 ***
 
+### CTL.ORG.RCP.COVERAGE.001[​](#ctlorgrcpcoverage001 "Direct link to CTL.ORG.RCP.COVERAGE.001")
+
+**RCPs Not Attached to All Organizational Units**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** governance
+* **Compliance:** nist\_800\_53\_r5: AC-3, AC-6; soc2: CC6.1;
+
+Resource Control Policies are enabled but not attached to every organizational unit. OUs without RCPs inherit only the default FullAWSAccess policy — resource-based grants in those OUs are unrestricted by the organizational perimeter. An attacker who compromises a workload in an unprotected OU can grant external principals access via resource policies without triggering any RCP deny.
+
+**Remediation:** Attach a restrictive RCP to every OU in the organization. Use aws organizations attach-policy --policy-id --target-id for each uncovered OU. Verify with aws organizations list-policies-for-target --target-id --filter RESOURCE\_CONTROL\_POLICY.
+
+***
+
+### CTL.ORG.RCP.DENY.CONFUSEDDEPUTY.001[​](#ctlorgrcpdenyconfuseddeputy001 "Direct link to CTL.ORG.RCP.DENY.CONFUSEDDEPUTY.001")
+
+**RCP Must Deny Cross-Service Access Without Source Conditions**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-3; soc2: CC6.1;
+
+No RCP denies cross-service resource access when confused deputy conditions (aws:SourceArn, aws:SourceAccount) are absent. This is distinct from CTL.ORG.RCP.CONFUSEDDEPUTY.001 which checks aws:SourceOrgID — this control checks that individual service-to-service calls are scoped to a specific source ARN or account. Without this, any AWS service can access resources on behalf of any principal, enabling cross-service confused deputy attacks.
+
+**Remediation:** Create an RCP that denies resource actions when aws:SourceArn or aws:SourceAccount conditions are absent for service-to-service calls.
+
+***
+
 ### CTL.ORG.RCP.ENABLED.001[​](#ctlorgrcpenabled001 "Direct link to CTL.ORG.RCP.ENABLED.001")
 
 **Resource Control Policies Must Be Enabled as Organization Policy Type**
@@ -282,6 +357,21 @@ No RCP enforces aws:SourceOrgID or aws:SourceAccount conditions on resource-faci
 Resource Control Policies (RCPs) are not enabled as a policy type in the organization. RCPs are the only mechanism that restricts resource-based policy grants at the organizational level — SCPs restrict identity-based policies but do not affect resource-based policies. Without RCPs enabled, a resource policy granting Principal: \* or an external account is effective even if SCPs deny the action.
 
 **Remediation:** Enable RCPs in AWS Organizations via aws organizations enable-policy-type --root-id --policy-type RESOURCE\_CONTROL\_POLICY.
+
+***
+
+### CTL.ORG.RCP.ENFORCE.PRINCIPALORGID.001[​](#ctlorgrcpenforceprincipalorgid001 "Direct link to CTL.ORG.RCP.ENFORCE.PRINCIPALORGID.001")
+
+**RCP Must Enforce PrincipalOrgID on Resource Access**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-3; soc2: CC6.1;
+
+No RCP denies resource actions when aws:PrincipalOrgID does not match the organization. This is the resource-side complement to SCP-based identity perimeter controls. Without this RCP, resources with overly permissive resource policies (Principal: \*) are accessible to any AWS principal, not just org members. The RCP creates a resource perimeter that blocks external principal access regardless of individual resource policy configuration.
+
+**Remediation:** Create an RCP that denies resource actions when aws:PrincipalOrgID does not match the organization ID. Apply to all supported resource types.
 
 ***
 
@@ -372,6 +462,21 @@ No SCP restricts marketplace subscriptions, domain registrations, or AI model ag
 Organization SCPs do not deny Amplify service usage in member accounts. Amplify provisions CloudFront distributions, S3 buckets, Lambda\@Edge functions, and IAM roles behind a separate API surface. These resources are invisible to the standard CloudFront, S3, and Lambda management APIs and run outside the organization's network security monitoring. Without an SCP denying amplify:\*, any IAM principal can deploy internet-facing web applications with their own CDN, storage, and compute layer.
 
 **Remediation:** Add an SCP denying amplify:\* for all principals. Exclude specific accounts if Amplify is intentionally used.
+
+***
+
+### CTL.ORG.SCP.ANTITAKEOVER.001[​](#ctlorgscpantitakeover001 "Direct link to CTL.ORG.SCP.ANTITAKEOVER.001")
+
+**SCP Does Not Deny Organization Takeover Actions**
+
+* **Severity:** critical
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6; soc2: CC6.1;
+
+Organization SCPs do not deny the set of API actions that enable hostile takeover of the organization: organizations:LeaveOrganization (member-side escape), organizations:RemoveAccountFromOrganization (management-side ejection), organizations:InviteAccountToOrganization (rogue member injection), and organizations:CreateAccount (shadow account creation). While individual controls exist for LeaveOrganization (CTL.IAM.SCP.LEAVEORG.001) and CloseAccount (CTL.IAM.SCP.CLOSEACCOUNT.001), this control verifies the complete anti-takeover posture — all four vectors must be denied together. A single missing denial creates a takeover path that the individual controls cannot detect.
+
+**Remediation:** Add an SCP that denies organizations:LeaveOrganization, organizations:RemoveAccountFromOrganization, organizations:InviteAccountToOrganization, and organizations:CreateAccount for all principals except the designated org-admin role.
 
 ***
 
@@ -555,6 +660,21 @@ Organization SCPs do not deny Lightsail service usage in member accounts. Lights
 
 ***
 
+### CTL.ORG.SCP.MARKETPLACE.001[​](#ctlorgscpmarketplace001 "Direct link to CTL.ORG.SCP.MARKETPLACE.001")
+
+**SCP Does Not Restrict AWS Marketplace Subscriptions**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: CM-7; soc2: CC6.1;
+
+Organization SCPs do not deny aws-marketplace:Subscribe and aws-marketplace:AcceptAgreementApprovalRequest in member accounts. Unrestricted Marketplace access allows any member account principal to subscribe to paid AMIs, SaaS products, and data products — creating recurring charges, deploying unvetted software into production accounts, and establishing data-sharing agreements with third parties. In a compromised account, an attacker can use Marketplace to exfiltrate data via a controlled data product subscription or deploy a trojanized AMI.
+
+**Remediation:** Add an SCP that denies aws-marketplace:Subscribe and aws-marketplace:AcceptAgreementApprovalRequest for all principals except a designated procurement role.
+
+***
+
 ### CTL.ORG.SCP.MWAA.DENY.001[​](#ctlorgscpmwaadeny001 "Direct link to CTL.ORG.SCP.MWAA.DENY.001")
 
 **SCP Does Not Deny MWAA Usage**
@@ -660,6 +780,21 @@ No SCP prevents modification of critical security and governance IAM roles in me
 
 ***
 
+### CTL.ORG.SCP.S3EXPRESS.BPA.001[​](#ctlorgscps3expressbpa001 "Direct link to CTL.ORG.SCP.S3EXPRESS.BPA.001")
+
+**No SCP Restricts Directory Bucket Policy Modification**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-3; soc2: CC6.1;
+
+No SCP denies s3express:PutBucketPolicy or s3express:DeleteBucketPolicy. S3 Block Public Access may not cover Directory Buckets because BPA operates in the s3: namespace. If BPA doesn't apply to s3express:, then SCP restriction on policy modification is the only organizational defense against public Directory Bucket policies.
+
+**Remediation:** Add an SCP that denies s3express:PutBucketPolicy and s3express:DeleteBucketPolicy. Exempt a cloud engineering role via aws:PrincipalArn condition for legitimate policy changes. This closes the namespace gap where s3: BPA does not protect s3express: resources.
+
+***
+
 ### CTL.ORG.SCP.S3NAMESPACE.001[​](#ctlorgscps3namespace001 "Direct link to CTL.ORG.SCP.S3NAMESPACE.001")
 
 **SCP Does Not Enforce S3 Account-Regional Namespace**
@@ -732,6 +867,21 @@ A suspended OU exists but has no SCP that denies all actions except billing visi
 No SCP restricts VPC networking mutations to the network engineering role. Without this restriction, any developer can create VPCs, attach internet gateways, create transit gateway attachments, modify route tables, and establish VPC peering connections — bypassing network segmentation. CTL.IAM.SCP.IGW\.001 covers IGW creation specifically; this control covers the broader VPC management surface including CreateVpc, CreateTransitGateway, CreateVpcPeeringConnection, CreateRoute, and ModifyVpcAttribute. Farris: "In an enterprise setting, you typically want your network team to manage VPCs."
 
 **Remediation:** Add an SCP that denies ec2:CreateVpc, ec2:AttachInternetGateway, ec2:CreateTransitGateway, ec2:CreateTransitGatewayVpcAttachment, ec2:CreateVpcPeeringConnection, ec2:AcceptVpcPeeringConnection, ec2:CreateRoute, ec2:ReplaceRoute, ec2:ModifyVpcAttribute, ec2:CreateVpcEndpoint with an exception for the network engineering role via aws:PrincipalArn.
+
+***
+
+### CTL.ORG.TAGPOLICY.ENFORCED.001[​](#ctlorgtagpolicyenforced001 "Direct link to CTL.ORG.TAGPOLICY.ENFORCED.001")
+
+**Organization Must Enforce Tag Policy Keys**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** governance
+* **Compliance:** nist\_800\_53\_r5: CM-8; soc2: CC6.1;
+
+The organization has no tag policy or the tag policy enforces zero keys. Tag policies are the only mechanism to enforce consistent tagging across an organization — without enforced keys, resources are created with arbitrary or missing tags, breaking cost allocation, access control boundaries, and automation that depends on tag values.
+
+**Remediation:** Create an organization tag policy that enforces required keys (e.g., Environment, Owner, CostCenter). Attach it to the organization root or target OUs.
 
 ***
 

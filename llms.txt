@@ -85,14 +85,14 @@
 - [Import AWS Config Snapshots](/docs/how-to/getting-started/import-config-snapshots.md): Use existing AWS Config delivery data as Stave input — no new credentials or collectors needed.
 - [Recipes](/docs/how-to/getting-started/recipes.md): Multi-command workflow recipes for common Stave tasks.
 - [Templates](/docs/how-to/getting-started/templates.md): A template packages a complete security assessment workflow — which controls to evaluate, which compound chains to run, and how to report findings — into a single command. You pick the job, configure your environment, and run.
-- [Verify a Release](/docs/how-to/getting-started/verify-release.md): Step-by-step recipe for verifying Stave release artifacts: checksums, Cosign signatures, SBOM, and build provenance.
+- [Verify a Release](/docs/how-to/getting-started/verify-release.md): Step-by-step guide to verify Stave release integrity using checksums, Cosign, and provenance.
 - [Atlantis Post-Plan Integration](/docs/how-to/integration/atlantis-integration.md): Evaluate Terraform plans for safety violations before atlantis apply.
 - [Breach-Type Routing with Evaluation Context](/docs/how-to/integration/breach-routing.md): How to use the --context flag to filter control evaluation based on incident breach type.
 - [Task: Build a Stave Observation Extractor](/docs/how-to/integration/building-extractors.md): Most users don't need this. For common AWS resources, the built-in
 - [Running in CI/CD](/docs/how-to/integration/ci-cd-integration.md): How to integrate Stave into GitHub Actions, GitLab CI, and Jenkins pipelines.
 - [MCP Server Integration](/docs/how-to/integration/mcp-server.md): Connect an AI agent (Claude Code, Cursor) to Stave via stave-mcp.
 - [How to Block Unsafe Configs with a Pre-Commit Hook](/docs/how-to/integration/pre-commit-hook.md): Prevent unsafe cloud configurations from being committed to version
-- [SARIF and GitHub Code Scanning](/docs/how-to/integration/sarif-code-scanning.md): Upload Stave findings to GitHub code scanning via SARIF output.
+- [SARIF and GitHub Code Scanning](/docs/how-to/integration/sarif-code-scanning.md): Stave outputs SARIF (Static Analysis Results Interchange Format),
 - [Scheduled Operation](/docs/how-to/integration/scheduled-operation.md): Run Stave on a schedule: cron + snapshot capture + diff between consecutive runs.
 - [Integrating with Security Workflows](/docs/how-to/integration/security-workflows.md): How to use Stave alongside other security tools and incident response processes.
 - [Bug Reproduction Guide](/docs/how-to/maintenance/bug-reports.md): How to write a minimal, deterministic bug reproduction for Stave.
@@ -385,7 +385,7 @@
 - [No FULL_CONTROL ACL Grants to Public](/docs/reference/invariants-reference/acl-escalation/inv-s3-acl-fullcontrol-001.md): S3 bucket ACLs must not grant FULL_CONTROL to AllUsers or AuthenticatedUsers.
 - [No Public ACL Readability](/docs/reference/invariants-reference/acl-escalation/inv-s3-acl-recon-001.md): S3 bucket ACLs should not be readable by unauthenticated users.
 - [Full Control Catalog](/docs/reference/invariants-reference/catalog.md): Browse by service
-- [ACCOUNT controls (2)](/docs/reference/invariants-reference/catalog/account.md): CTL.ACCOUNT.DEPRECATED.SERVICE.001
+- [ACCOUNT controls (3)](/docs/reference/invariants-reference/catalog/account.md): CTL.ACCOUNT.DEPRECATED.SERVICE.001
 - [ACM controls (8)](/docs/reference/invariants-reference/catalog/acm.md): CTL.ACM.ACME.SCOPE.WILDCARD.001
 - [ACMPCA controls (1)](/docs/reference/invariants-reference/catalog/acmpca.md): CTL.ACMPCA.CROSSACCOUNT.001
 - [AD controls (40)](/docs/reference/invariants-reference/catalog/ad.md): CTL.AD.ACCOUNT.DELEGATION.001
@@ -408,7 +408,7 @@
 - [CLOUDFLARE controls (29)](/docs/reference/invariants-reference/catalog/cloudflare.md): CTL.CLOUDFLARE.DNS.DANGLING.001
 - [CLOUDFORMATION controls (9)](/docs/reference/invariants-reference/catalog/cloudformation.md): CTL.CLOUDFORMATION.DRIFT.001
 - [CLOUDFRONT controls (72)](/docs/reference/invariants-reference/catalog/cloudfront.md): CTL.CLOUDFRONT.ACCESS.GEORESTRICTION.BLOCKLIST.001
-- [CLOUDTRAIL controls (57)](/docs/reference/invariants-reference/catalog/cloudtrail.md): CTL.CLOUDTRAIL.ACCESS.LOGREAD.BROAD.001
+- [CLOUDTRAIL controls (60)](/docs/reference/invariants-reference/catalog/cloudtrail.md): CTL.CLOUDTRAIL.ACCESS.LOGREAD.BROAD.001
 - [CLOUDWATCH controls (67)](/docs/reference/invariants-reference/catalog/cloudwatch.md): CTL.CLOUDWATCH.ALARM.COMPOSITE.NOACTION.001
 - [CODEBUILD controls (13)](/docs/reference/invariants-reference/catalog/codebuild.md): CTL.CODEBUILD.BUILDSPEC.USERCONTROLLED.001
 - [CODECOMMIT controls (2)](/docs/reference/invariants-reference/catalog/codecommit.md): CTL.CODECOMMIT.ACCESS.001
@@ -422,14 +422,15 @@
 - [DNS controls (3)](/docs/reference/invariants-reference/catalog/dns.md): CTL.DNS.DANGLING.001
 - [DOCUMENTDB controls (18)](/docs/reference/invariants-reference/catalog/documentdb.md): CTL.DOCUMENTDB.AUDIT.PARAM.OFF.001
 - [DYNAMODB controls (38)](/docs/reference/invariants-reference/catalog/dynamodb.md): CTL.DYNAMODB.ACCESS.EXPORT.001
-- [EC2 controls (108)](/docs/reference/invariants-reference/catalog/ec2.md): CTL.EC2.AMI.BLOCKPUBLIC.001
+- [EBS controls (3)](/docs/reference/invariants-reference/catalog/ebs.md): CTL.EBS.AMI.DEREGPROTECTION.001
+- [EC2 controls (110)](/docs/reference/invariants-reference/catalog/ec2.md): CTL.EC2.AMI.BLOCKPUBLIC.001
 - [ECR controls (10)](/docs/reference/invariants-reference/catalog/ecr.md): CTL.ECR.ENCRYPT.CMK.001
-- [ECS controls (52)](/docs/reference/invariants-reference/catalog/ecs.md): CTL.ECS.ALARM.FAILEDLAUNCH.001
+- [ECS controls (53)](/docs/reference/invariants-reference/catalog/ecs.md): CTL.ECS.ALARM.FAILEDLAUNCH.001
 - [EFS controls (14)](/docs/reference/invariants-reference/catalog/efs.md): CTL.EFS.AP.POSIX.001
 - [EKS controls (115)](/docs/reference/invariants-reference/catalog/eks.md): CTL.EKS.ACCESSENTRY.CLUSTERADMIN.BROAD.001
-- [ELASTICACHE controls (8)](/docs/reference/invariants-reference/catalog/elasticache.md): CTL.ELASTICACHE.AUTH.001
+- [ELASTICACHE controls (11)](/docs/reference/invariants-reference/catalog/elasticache.md): CTL.ELASTICACHE.AUTH.001
 - [ELB controls (80)](/docs/reference/invariants-reference/catalog/elb.md): CTL.ELB.ACCESSLOG.PERMISSION.001
-- [EMR controls (6)](/docs/reference/invariants-reference/catalog/emr.md): CTL.EMR.ENCRYPT.001
+- [EMR controls (7)](/docs/reference/invariants-reference/catalog/emr.md): CTL.EMR.ENCRYPT.001
 - [EVENTBRIDGE controls (97)](/docs/reference/invariants-reference/catalog/eventbridge.md): CTL.EVENTBRIDGE.ALARM.APIDEST.5XX.001
 - [EVS controls (1)](/docs/reference/invariants-reference/catalog/evs.md): CTL.EVS.ENVIRONMENT.ACTIVE.001
 - [EXPOSURE controls (11)](/docs/reference/invariants-reference/catalog/exposure.md): CTL.EXPOSURE.ANON.001
@@ -443,14 +444,15 @@
 - [GLOBALACCELERATOR controls (1)](/docs/reference/invariants-reference/catalog/globalaccelerator.md): CTL.GLOBALACCELERATOR.EXISTS.001
 - [GLUE controls (13)](/docs/reference/invariants-reference/catalog/glue.md): CTL.GLUE.CATALOG.ENCRYPT.001
 - [GRAFANA controls (1)](/docs/reference/invariants-reference/catalog/grafana.md): CTL.GRAFANA.AUTH.001
-- [GUARDDUTY controls (18)](/docs/reference/invariants-reference/catalog/guardduty.md): CTL.GUARDDUTY.ECS.RUNTIME.001
+- [GUARDDUTY controls (19)](/docs/reference/invariants-reference/catalog/guardduty.md): CTL.GUARDDUTY.ECS.RUNTIME.001
 - [GUARDRAIL controls (1)](/docs/reference/invariants-reference/catalog/guardrail.md): CTL.GUARDRAIL.INCOMPLETE.001
-- [IAM controls (293)](/docs/reference/invariants-reference/catalog/iam.md): CTL.IAM.ACCOUNT.INACTIVE.001
+- [IAM controls (307)](/docs/reference/invariants-reference/catalog/iam.md): CTL.IAM.ACCOUNT.INACTIVE.001
 - [INSPECTOR controls (3)](/docs/reference/invariants-reference/catalog/inspector.md): CTL.INSPECTOR.COVERAGE.001
 - [K8S controls (68)](/docs/reference/invariants-reference/catalog/k8s.md): CTL.K8S.APISERVER.ADM.CTRL.001
 - [KINESIS controls (4)](/docs/reference/invariants-reference/catalog/kinesis.md): CTL.KINESIS.ENCRYPT.001
 - [KMS controls (47)](/docs/reference/invariants-reference/catalog/kms.md): CTL.KMS.ALARM.CREATEGRANT.001
-- [LAMBDA controls (89)](/docs/reference/invariants-reference/catalog/lambda.md): CTL.LAMBDA.ALARM.DURATION.001
+- [LAKEFORMATION controls (2)](/docs/reference/invariants-reference/catalog/lakeformation.md): CTL.LAKEFORMATION.ADMIN.COUNT.001
+- [LAMBDA controls (91)](/docs/reference/invariants-reference/catalog/lambda.md): CTL.LAMBDA.ALARM.DURATION.001
 - [LIFECYCLE controls (1)](/docs/reference/invariants-reference/catalog/lifecycle.md): CTL.LIFECYCLE.STAGING.STALE.001
 - [LIGHTSAIL controls (5)](/docs/reference/invariants-reference/catalog/lightsail.md): CTL.LIGHTSAIL.ACCESS.KEY.001
 - [M365 controls (73)](/docs/reference/invariants-reference/catalog/m365.md): CTL.M365.ADMIN.CALENDAR.001
@@ -459,19 +461,23 @@
 - [META controls (1)](/docs/reference/invariants-reference/catalog/meta.md): CTL.META.OBSERVATION.STALE.001
 - [MODEL controls (2)](/docs/reference/invariants-reference/catalog/model.md): CTL.MODEL.FORMAT.INSECURE.001
 - [MQ controls (3)](/docs/reference/invariants-reference/catalog/mq.md): CTL.MQ.ACTIVEMQ.EOL.001
-- [MSK controls (9)](/docs/reference/invariants-reference/catalog/msk.md): CTL.MSK.AUTH.MTLS.001
+- [MSK controls (10)](/docs/reference/invariants-reference/catalog/msk.md): CTL.MSK.AUTH.MTLS.001
 - [MWAA controls (2)](/docs/reference/invariants-reference/catalog/mwaa.md): CTL.MWAA.ENV.ACTIVE.001
 - [NEPTUNE controls (20)](/docs/reference/invariants-reference/catalog/neptune.md): CTL.NEPTUNE.AUDIT.PARAM.OFF.001
 - [NETFIREWALL controls (13)](/docs/reference/invariants-reference/catalog/netfirewall.md): CTL.NETFIREWALL.DEFAULT.FRAG.001
 - [OPENSEARCH controls (132)](/docs/reference/invariants-reference/catalog/opensearch.md): CTL.OPENSEARCH.ACCESS.POLICY.001
-- [ORG controls (50)](/docs/reference/invariants-reference/catalog/org.md): CTL.ORG.ACCOUNT.ALTERNATECONTACTS.001
+- [ORG controls (60)](/docs/reference/invariants-reference/catalog/org.md): CTL.ORG.ACCOUNT.ALTERNATECONTACTS.001
+- [QUICKSIGHT controls (2)](/docs/reference/invariants-reference/catalog/quicksight.md): CTL.QUICKSIGHT.DATASOURCE.ENCRYPT.001
 - [RAM controls (3)](/docs/reference/invariants-reference/catalog/ram.md): CTL.RAM.EXTERNAL.001
-- [RDS controls (72)](/docs/reference/invariants-reference/catalog/rds.md): CTL.RDS.ALARM.CONNECTIONS.001
-- [RECYCLEBIN controls (1)](/docs/reference/invariants-reference/catalog/recyclebin.md): CTL.RECYCLEBIN.EBS.VOLUME.001
+- [RDS controls (73)](/docs/reference/invariants-reference/catalog/rds.md): CTL.RDS.ALARM.CONNECTIONS.001
+- [RECYCLEBIN controls (2)](/docs/reference/invariants-reference/catalog/recyclebin.md): CTL.RECYCLEBIN.EBS.RETENTION.001
 - [REDSHIFT controls (26)](/docs/reference/invariants-reference/catalog/redshift.md): CTL.REDSHIFT.AUDIT.LOGDESTINATION.001
 - [ROUTE53 controls (50)](/docs/reference/invariants-reference/catalog/route53.md): CTL.ROUTE53.CROSSACCOUNT.PRIVATEASSOC.001
 - [S3 controls (148)](/docs/reference/invariants-reference/catalog/s3.md): CTL.S3.ACCEL.001
-- [SAGEMAKER controls (36)](/docs/reference/invariants-reference/catalog/sagemaker.md): CTL.SAGEMAKER.DOMAIN.AUTH.001
+- [S3EXPRESS controls (6)](/docs/reference/invariants-reference/catalog/s3express.md): CTL.S3EXPRESS.ACCESS.EXTERNAL.001
+- [S3TABLES controls (3)](/docs/reference/invariants-reference/catalog/s3tables.md): CTL.S3TABLES.ACCESS.EXTERNAL.001
+- [S3VECTORS controls (3)](/docs/reference/invariants-reference/catalog/s3vectors.md): CTL.S3VECTORS.ACCESS.EXTERNAL.001
+- [SAGEMAKER controls (41)](/docs/reference/invariants-reference/catalog/sagemaker.md): CTL.SAGEMAKER.DOMAIN.AUTH.001
 - [SECRET controls (3)](/docs/reference/invariants-reference/catalog/secret.md): CTL.SECRET.BLAST.001
 - [SECRETS controls (31)](/docs/reference/invariants-reference/catalog/secrets.md): CTL.SECRETS.ALARM.ACCESS.FAILURE.001
 - [SECRETSMANAGER controls (5)](/docs/reference/invariants-reference/catalog/secretsmanager.md): CTL.SECRETSMANAGER.ACCESS.001
@@ -487,7 +493,7 @@
 - [STEPFUNCTIONS controls (113)](/docs/reference/invariants-reference/catalog/stepfunctions.md): CTL.STEPFUNCTIONS.ACTIVITY.ZOMBIE.001
 - [TAGS controls (1)](/docs/reference/invariants-reference/catalog/tags.md): CTL.TAGS.CREDENTIAL.PATTERN.001
 - [TRANSFER controls (2)](/docs/reference/invariants-reference/catalog/transfer.md): CTL.TRANSFER.EXTERNAL.DESTINATION.001
-- [VPC controls (95)](/docs/reference/invariants-reference/catalog/vpc.md): CTL.VPC.BPA.BIDIRECTIONAL.001
+- [VPC controls (104)](/docs/reference/invariants-reference/catalog/vpc.md): CTL.VPC.BPA.ACCOUNT.001
 - [VSPHERE controls (35)](/docs/reference/invariants-reference/catalog/vsphere.md): CTL.VSPHERE.ESX.ACCEPTANCE.001
 - [WAF controls (17)](/docs/reference/invariants-reference/catalog/waf.md): CTL.WAF.CLASSIC.DEPRECATED.001
 - [WORKSPACES controls (1)](/docs/reference/invariants-reference/catalog/workspaces.md): CTL.WORKSPACES.ENCRYPT.001
@@ -523,10 +529,10 @@
 - [Protected Prefixes Must Not Be Publicly Readable](/docs/reference/invariants-reference/public-access/inv-s3-public-prefix-001.md): S3 bucket prefixes marked as protected must not be publicly readable.
 - [No Public Website Hosting with Public Read](/docs/reference/invariants-reference/public-access/inv-s3-website-public-001.md): S3 buckets with static website hosting enabled must not also have public read access.
 - [Observation Contract](/docs/reference/observation-contract.md): Stable contract for observation snapshots used by Stave.
-- [Observation Export Schema](/docs/reference/observation-export-schema.md): Field-by-field reference for the S3 observation property groups produced by Stave's export and ingest tooling.
+- [Observation Export Schema](/docs/reference/observation-export-schema.md): Field-by-field reference for the S3 observation property groups produced by Stave's export and transform tooling.
 - [Operator Contract](/docs/reference/operator-contract.md): Three commands verify correctness after any change:
 - [Output and Severity](/docs/reference/output-and-severity.md): How to read evaluation output, severity, remediation, and fix plans.
-- [Output Formats](/docs/reference/output-formats.md): JSON, text, and markdown output options in Stave.
+- [Output Formats](/docs/reference/output-formats.md): Stave supports multiple output formats for different use cases.
 - [Unified Security Record Schema](/docs/reference/schema.md): Version "1" — increment on breaking changes.
 - [Control Schema — ctrl.v1](/docs/reference/schema-ctrl.md): Reference for the ctrl.v1 control definition schema.
 - [Diagnose Schema — diagnose.v1](/docs/reference/schema-diagnose.md): Reference for Stave diagnose output contract diagnose.v1.

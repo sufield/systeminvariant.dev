@@ -32,7 +32,7 @@ DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 SNAPSHOT_DIR="./observations"
 
 # Export current state
-stave ingest --profile mvp1-s3 --input ./aws-snapshot --out "$SNAPSHOT_DIR/$(date -u +%Y-%m-%d).json" --eval-time "$DATE"
+stave transform --in ./aws-snapshot --out "$SNAPSHOT_DIR/$(date -u +%Y-%m-%d).json" --eval-time "$DATE"
 
 # Evaluate all historical snapshots
 rc=0
@@ -64,7 +64,7 @@ After fixing a finding, use `verify` to confirm the fix resolved the issue witho
 
 ```
 # Capture the state after remediation
-stave ingest --profile mvp1-s3 --input ./aws-snapshot-after --out ./observations-after/latest.json
+stave transform --in ./aws-snapshot-after --out ./observations-after/latest.json
 
 # Compare before and after
 stave check \

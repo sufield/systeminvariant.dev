@@ -2,8 +2,6 @@
 
 Why compound risk exists and why chains are separate from controls.
 
-***
-
 ## Single Misconfigurations Are Rarely Catastrophic[​](#single-misconfigurations-are-rarely-catastrophic "Direct link to Single Misconfigurations Are Rarely Catastrophic")
 
 A public S3 bucket with no data is a policy violation, not a breach. An unencrypted RDS database behind a VPC with no internet route is a compliance gap, not a data exposure. Individual misconfigurations create *conditions* for compromise — they are not compromises themselves.

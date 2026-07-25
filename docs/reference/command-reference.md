@@ -2,7 +2,7 @@
 
 All commands ship in the standard `stave` binary. No build tags are required. Descriptions are each command's one-line summary; run `stave <command> --help` for full usage, flags, and exit codes.
 
-*168 commands across 13 groups.*
+*172 commands across 13 groups.*
 
 ## Getting Started[​](#getting-started "Direct link to Getting Started")
 
@@ -45,24 +45,25 @@ All commands ship in the standard `stave` binary. No build tags are required. De
 
 ## Security Analysis[​](#security-analysis "Direct link to Security Analysis")
 
-| Command                 | Description                                              |
-| ----------------------- | -------------------------------------------------------- |
-| `inspect`               | Low-level security analysis primitives                   |
-| `inspect acl`           | Analyze S3 ACL grants                                    |
-| `inspect aliases`       | List predicate aliases with metadata                     |
-| `inspect compliance`    | Resolve compliance framework crosswalk                   |
-| `inspect exposure`      | Classify resource exposure vectors                       |
-| `inspect policy`        | Analyze an S3 bucket policy document                     |
-| `inspect risk`          | Score risk from policy statement context                 |
-| `path`                  | Export attack path graph data from active chain findings |
-| `permissions`           | Query net effective permissions from a snapshot          |
-| `permissions principal` | Resolve permissions for a specific principal ARN         |
-| `permissions resource`  | Show who has effective access to a resource              |
-| `permissions summary`   | Aggregate NEP metrics across all principals              |
-| `prove`                 | Run Z3 SMT queries against a Stave assessment            |
-| `score`                 | Compute security posture score (0-100)                   |
-| `scorecard`             | Multi-framework compliance scorecard                     |
-| `search`                | Find catalog entries matching a free-form intent         |
+| Command                 | Description                                                               |
+| ----------------------- | ------------------------------------------------------------------------- |
+| `inspect`               | Low-level security analysis primitives                                    |
+| `inspect acl`           | Analyze S3 ACL grants                                                     |
+| `inspect aliases`       | List predicate aliases with metadata                                      |
+| `inspect compliance`    | Resolve compliance framework crosswalk                                    |
+| `inspect exposure`      | Classify resource exposure vectors                                        |
+| `inspect policy`        | Analyze an S3 bucket policy document                                      |
+| `inspect risk`          | Score risk from policy statement context                                  |
+| `path`                  | Export attack path graph data from active chain findings                  |
+| `permissions`           | Query net effective permissions from a snapshot                           |
+| `permissions principal` | Resolve permissions for a specific principal ARN                          |
+| `permissions resource`  | Show who has effective access to a resource                               |
+| `permissions summary`   | Aggregate NEP metrics across all principals                               |
+| `prove`                 | Run Z3 SMT queries against a Stave assessment                             |
+| `score`                 | Compute security posture score (0-100)                                    |
+| `scorecard`             | Multi-framework compliance scorecard                                      |
+| `search`                | Find catalog entries matching a free-form intent                          |
+| `toolmap`               | Map offensive tools to configuration prerequisites and find coverage gaps |
 
 ## Compliance & Evidence[​](#compliance--evidence "Direct link to Compliance & Evidence")
 
@@ -70,6 +71,7 @@ All commands ship in the standard `stave` binary. No build tags are required. De
 | ------------------- | ---------------------------------------------------------------------- |
 | `bundle`            | Generate a sealed evidence bundle for air-gap GRC integration          |
 | `bundle audit`      | Assemble a compliance-period evidence package                          |
+| `bundle verify`     | Verify the integrity of a sealed evidence bundle                       |
 | `compare`           | Compare compliance posture between two frameworks                      |
 | `compliance`        | Evaluate a snapshot against a compliance framework and report coverage |
 | `export`            | Export controls and compliance evidence                                |
@@ -140,6 +142,7 @@ All commands ship in the standard `stave` binary. No build tags are required. De
 | `capabilities catalog matrix`   | Show taxonomy × service cross-product with gap cells                                                |
 | `capabilities catalog stats`    | Print aggregate catalog statistics                                                                  |
 | `capabilities catalog taxonomy` | List taxonomy categories with control counts                                                        |
+| `capabilities catalog validate` | Validate the entire control and chain catalog                                                       |
 | `catalog`                       | Print the user-facing capability catalog                                                            |
 | `catalog coverage`              | Show per-service control coverage                                                                   |
 | `catalog gaps`                  | Compare catalog against an external checklist                                                       |
@@ -147,6 +150,7 @@ All commands ship in the standard `stave` binary. No build tags are required. De
 | `catalog matrix`                | Show taxonomy × service cross-product with gap cells                                                |
 | `catalog stats`                 | Print aggregate catalog statistics                                                                  |
 | `catalog taxonomy`              | List taxonomy categories with control counts                                                        |
+| `catalog validate`              | Validate the entire control and chain catalog                                                       |
 | `coverage`                      | Analyze observation field coverage against control predicates                                       |
 | `discover`                      | Resolve AWS services to the data Stave needs (the collection manifest)                              |
 | `gaps`                          | Report which observation properties are absent + what they unlock                                   |

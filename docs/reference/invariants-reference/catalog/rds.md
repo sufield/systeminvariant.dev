@@ -1,4 +1,4 @@
-# RDS controls (72)
+# RDS controls (73)
 
 ### CTL.RDS.ALARM.CONNECTIONS.001[​](#ctlrdsalarmconnections001 "Direct link to CTL.RDS.ALARM.CONNECTIONS.001")
 
@@ -969,6 +969,21 @@ Unencrypted RDS snapshots can be copied to any AWS account and restored without 
 RDS snapshot export converts a database snapshot to Apache Parquet format and stores it in S3 — making the entire database contents accessible as files. An attacker with rds:StartExportTask permission can export any RDS snapshot to an attacker-controlled S3 bucket in any account. This is a complete database exfiltration primitive: no need to query row by row — export the snapshot and read all data as Parquet files.
 
 **Remediation:** Restrict rds:StartExportTask via IAM policy to approved roles. Use a resource condition to limit S3 destination to approved buckets. Monitor for export tasks via CloudTrail alerting.
+
+***
+
+### CTL.RDS.SNAPSHOT.KEYORIGIN.001[​](#ctlrdssnapshotkeyorigin001 "Direct link to CTL.RDS.SNAPSHOT.KEYORIGIN.001")
+
+**RDS Snapshot Must Use AWS-Managed Key Origin**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** resilience
+* **Compliance:** nist\_800\_53\_r5: SC-12, CP-9; soc2: CC6.1;
+
+RDS snapshot is encrypted with a KMS key whose origin is EXTERNAL (imported key material). If the external key material expires or is deleted, the snapshot becomes unrestorable. In a ransomware scenario, revoking external key material renders all encrypted snapshots permanently inaccessible — destroying the backup of last resort.
+
+**Remediation:** Copy the snapshot using a KMS key with AWS\_KMS origin. Delete the original snapshot after verifying the copy.
 
 ***
 

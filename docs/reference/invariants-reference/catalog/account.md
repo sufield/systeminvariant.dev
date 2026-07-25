@@ -1,4 +1,4 @@
-# ACCOUNT controls (2)
+# ACCOUNT controls (3)
 
 ### CTL.ACCOUNT.DEPRECATED.SERVICE.001[​](#ctlaccountdeprecatedservice001 "Direct link to CTL.ACCOUNT.DEPRECATED.SERVICE.001")
 
@@ -27,5 +27,20 @@ Resources exist for an AWS service that has been deprecated or announced for end
 Account-level default encryption is enabled for some storage services but not all. EBS default encryption may be on (CTL.EC2.EBS.DEFAULT.001) while RDS and EFS storage created in the same account is not encrypted by default. This is a PART OF gap: the account enforces encryption-at-rest defaults for one storage type but not others, so new resources created in unprotected services are unencrypted unless the creator explicitly enables encryption. The fix is to enable default encryption for all storage services at the account level so no new resource can be created without encryption.
 
 **Remediation:** Enable default encryption for all storage services: - EBS: aws ec2 enable-ebs-encryption-by-default - RDS: aws rds modify-certificates (ensure new instances default to encryption) - EFS: enforce encryption via SCP or IaC policy Verify with aws ec2 get-ebs-encryption-by-default for EBS.
+
+***
+
+### CTL.ACCOUNT.POLLUTION.RATIO.001[​](#ctlaccountpollutionratio001 "Direct link to CTL.ACCOUNT.POLLUTION.RATIO.001")
+
+**Account Has High Resource Pollution Ratio**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** hygiene
+* **Compliance:** nist\_800\_53\_r5: CM-8, SI-12; soc2: CC7.1;
+
+Account has a high ratio of unused or orphaned resources to active resources. Cloud pollution — stale access keys, orphaned security groups, unattached volumes, dormant Lambda functions — expands the attack surface without serving any workload. A high pollution ratio indicates insufficient lifecycle governance and increases the probability that an attacker finds an exploitable resource that no one is monitoring.
+
+**Remediation:** Run a cloud pollution audit to identify stale access keys, orphaned security groups, unattached EBS volumes, dormant Lambda functions, and other unused resources. Delete resources that have no business justification. Implement lifecycle policies (DLM, Config rules) to prevent future accumulation.
 
 ***

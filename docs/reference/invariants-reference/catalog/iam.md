@@ -1,4 +1,4 @@
-# IAM controls (293)
+# IAM controls (307)
 
 ### CTL.IAM.ACCOUNT.INACTIVE.001[​](#ctliamaccountinactive001 "Direct link to CTL.IAM.ACCOUNT.INACTIVE.001")
 
@@ -225,6 +225,36 @@ Permission boundary in the management account does not deny sts:AssumeRoot for n
 
 ***
 
+### CTL.IAM.BOUNDARY.PAYER.CONTROLTOWER.001[​](#ctliamboundarypayercontroltower001 "Direct link to CTL.IAM.BOUNDARY.PAYER.CONTROLTOWER.001")
+
+**Payer Permission Boundary Must Deny Control Tower Configuration Changes**
+
+* **Severity:** critical
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6(1); soc2: CC6.1;
+
+Permission boundary in the management account does not deny controltower:DeregisterOrganizationalUnit, controltower:DisableControl, controltower:DeleteLandingZone, and controltower:UpdateLandingZone. Control Tower enforces guardrails across the organization via managed SCPs and Config rules. If the management account is compromised, an attacker can deregister OUs (removing all managed guardrails), disable individual controls, or delete the landing zone entirely — undermining all governance without touching the SCPs directly. The drift check (CTL.ORG.CONTROLTOWER.DRIFT.001) detects after-the-fact drift but does not prevent the mutation.
+
+**Remediation:** Add an explicit Deny for controltower:DeregisterOrganizationalUnit, controltower:DisableControl, controltower:DeleteLandingZone, and controltower:UpdateLandingZone to the permission boundary. Only the governance-admin break-glass role should have these permissions.
+
+***
+
+### CTL.IAM.BOUNDARY.PAYER.IDENTITYCENTER.001[​](#ctliamboundarypayeridentitycenter001 "Direct link to CTL.IAM.BOUNDARY.PAYER.IDENTITYCENTER.001")
+
+**Payer Permission Boundary Must Deny IAM Identity Center Configuration Changes**
+
+* **Severity:** critical
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6(1); soc2: CC6.1;
+
+Permission boundary in the management account does not deny sso:CreateInstance, sso:DeleteInstance, sso-directory:\*, and sso:UpdateInstanceAccessControlAttributeConfiguration. IAM Identity Center is the primary identity federation surface for AWS Organizations. If the management account is compromised, an attacker can create a new Identity Center instance with their own identity store, provision admin access to every member account, and delete the original instance — replacing the entire identity plane. The enablement check (CTL.ORG.IDENTITYCENTER.ENABLED.001) verifies Identity Center is ON, but does not prevent unauthorized reconfiguration.
+
+**Remediation:** Add an explicit Deny for sso:CreateInstance, sso:DeleteInstance, sso-directory:\*, and sso:UpdateInstanceAccessControlAttributeConfiguration to the permission boundary. Only the identity-admin break-glass role should have these permissions.
+
+***
+
 ### CTL.IAM.BOUNDARY.PAYER.ORGMUTATION.001[​](#ctliamboundarypayerorgmutation001 "Direct link to CTL.IAM.BOUNDARY.PAYER.ORGMUTATION.001")
 
 **Payer Permission Boundary Must Deny Organization Mutation Actions**
@@ -237,6 +267,21 @@ Permission boundary in the management account does not deny sts:AssumeRoot for n
 Permission boundary in the management account does not deny organizations mutation actions (organizations:Create\*, organizations:Delete\*, organizations:Update\*, organizations:Move\*, organizations:Leave\*). If the management account is compromised, the attacker can restructure the organization — moving accounts between OUs to escape SCPs, removing accounts from the org, or creating new OUs without governance.
 
 **Remediation:** Add an explicit Deny for organizations:Create\*, organizations:Delete\*, organizations:Update\*, organizations:Move\*, organizations:Leave\* to the permission boundary. Only the org-admin break-glass role should have these permissions.
+
+***
+
+### CTL.IAM.BOUNDARY.PAYER.SELFMODIFY.001[​](#ctliamboundarypayerselfmodify001 "Direct link to CTL.IAM.BOUNDARY.PAYER.SELFMODIFY.001")
+
+**Payer Permission Boundary Must Deny Self-Modification of Boundary Policies**
+
+* **Severity:** critical
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6(1); soc2: CC6.1;
+
+Permission boundary in the management account does not deny iam:CreatePolicy, iam:CreatePolicyVersion, and iam:DeletePolicyVersion on its own boundary policy ARN. A boundary that allows self-modification is advisory — the bounded principal can rewrite the boundary to remove all restrictions while keeping it attached. Unlike boundary removal (CTL.IAM.BOUNDARY.PAYER.SELFREMOVAL.001), this attack leaves the boundary attached but hollow, evading detection that monitors for boundary detachment events.
+
+**Remediation:** Add an explicit Deny for iam:CreatePolicyVersion and iam:DeletePolicyVersion to the boundary policy, scoped to the boundary policy's own ARN. This prevents the bounded principal from rewriting the boundary while it remains attached.
 
 ***
 
@@ -559,21 +604,6 @@ IAM roles in non-production environments (test, staging, QA) must not have acces
 Production resources must have no transitive access path from non-production environments. The extractor traces sts:AssumeRole chains and resource policy grants from non-production accounts to production resources. A direct cross-account role is one hop; a chain through an intermediate shared-services account is two or more. Each hop widens the attack surface — a compromised dev credential becomes a production breach when bridge roles exist.
 
 **Remediation:** Remove cross-account trust relationships that bridge non-prod to prod. Use separate deployment pipelines per environment. Enforce environment isolation via SCPs that deny non-prod accounts from assuming prod roles.
-
-***
-
-### CTL.IAM.CROSSCLOUD.ADMIN.001[​](#ctliamcrosscloudadmin001 "Direct link to CTL.IAM.CROSSCLOUD.ADMIN.001")
-
-**No Full Admin Policies Across Any Cloud Provider**
-
-* **Severity:** critical
-* **Type:** unsafe\_state
-* **Domain:** identity
-* **Compliance:** nist\_800\_53\_r5: AC-6; owasp\_nhi: NHI5; soc2: CC6.1;
-
-No IAM policy on any cloud provider should grant unrestricted administrative access (Action: \*, Resource: \* or equivalent). This control extends CTL.IAM.POLICY.ADMIN.001 beyond AWS to Azure (Contributor/Owner at subscription scope) and GCP (roles/owner, roles/editor at project scope). The same least-privilege principle applies regardless of cloud provider.
-
-**Remediation:** Replace admin policies with scoped policies granting only required permissions. Use cloud-specific access analyzers to identify unused permissions.
 
 ***
 
@@ -2211,6 +2241,21 @@ IAM user console passwords must be rotated per organizational policy (typically 
 
 ***
 
+### CTL.IAM.POLICY.ABAC.UNSUPPORTED.001[​](#ctliampolicyabacunsupported001 "Direct link to CTL.IAM.POLICY.ABAC.UNSUPPORTED.001")
+
+**ABAC Condition Used on Service That Does Not Support It**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-3, AC-6; soc2: CC6.1;
+
+IAM policy uses tag-based condition keys (aws:ResourceTag, aws:RequestTag, aws:TagKeys) on actions for an AWS service that does not support ABAC. When the service ignores tag conditions, the policy silently grants broader access than intended — the condition is syntactically valid but semantically inert. AWS documents which services support ABAC; policies referencing tag conditions on non-supporting services must use resource ARN restrictions instead.
+
+**Remediation:** Replace ABAC conditions with resource ARN restrictions for services that do not support tag-based authorization. Consult the AWS ABAC support matrix for each service in the policy.
+
+***
+
 ### CTL.IAM.POLICY.ADMIN.001[​](#ctliampolicyadmin001 "Direct link to CTL.IAM.POLICY.ADMIN.001")
 
 **No Full Admin Policies Attached**
@@ -2388,6 +2433,21 @@ A policy has a date condition (aws:CurrentTime) with a DateGreaterThan start bou
 KMS actions (kms:Decrypt, kms:GenerateDataKey, kms:Encrypt) are allowed without a kms:ViaService condition. Without this condition, the KMS key can be used by any AWS service or directly via the KMS API — not just the intended service. An attacker with kms:Decrypt can decrypt data from any service that uses the key.
 
 **Remediation:** Add a kms:ViaService condition to restrict KMS Decrypt and GenerateDataKey to the intended service (e.g., s3.us-east-1.amazonaws.com).
+
+***
+
+### CTL.IAM.POLICY.CREDENTIALEXPOSURE.001[​](#ctliampolicycredentialexposure001 "Direct link to CTL.IAM.POLICY.CREDENTIALEXPOSURE.001")
+
+**Policy Grants Credential-Exposure Actions**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6, IA-5; owasp\_nhi: NHI1; soc2: CC6.1;
+
+IAM policy grants actions classified as credential-exposure in the AWS sensitive action registry: sts:GetFederationToken, sts:GetSessionToken, iam:CreateAccessKey, iam:CreateLoginProfile, ssm:GetParameter (SecureString), secretsmanager:GetSecretValue, and similar. These actions let an attacker mint or extract credentials from within the account, enabling persistence and lateral movement that survives credential rotation. Principals should only have credential-exposure actions when their function explicitly requires them.
+
+**Remediation:** Remove credential-exposure actions from the policy or scope them with resource and condition constraints. Use the sensitive action registry to audit which credential-exposure actions the principal actually invokes.
 
 ***
 
@@ -2586,6 +2646,21 @@ IAM policies granting iam:PassRole must include an iam:PassedToService condition
 
 ***
 
+### CTL.IAM.POLICY.READONLYACCESS.001[​](#ctliampolicyreadonlyaccess001 "Direct link to CTL.IAM.POLICY.READONLYACCESS.001")
+
+**ReadOnlyAccess Managed Policy Grants Excessive Read Scope**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6; soc2: CC6.1;
+
+IAM entity has the AWS-managed ReadOnlyAccess policy attached. ReadOnlyAccess grants Get/List/Describe on every AWS service, exposing secrets (Secrets Manager GetSecretValue), credentials (SSM GetParameter for SecureString), database contents (DynamoDB GetItem, S3 GetObject), and billing data. It is routinely treated as "safe" but functionally grants read access to every data store in the account. Principals needing read access should use scoped policies limited to their operational services.
+
+**Remediation:** Replace ReadOnlyAccess with scoped read-only policies for the specific services the principal needs. Use Access Analyzer to generate least-privilege policies from CloudTrail activity.
+
+***
+
 ### CTL.IAM.POLICY.RESOURCE.WILDCARD.001[​](#ctliampolicyresourcewildcard001 "Direct link to CTL.IAM.POLICY.RESOURCE.WILDCARD.001")
 
 **Sensitive Actions Must Not Use Resource Wildcard**
@@ -2598,6 +2673,21 @@ IAM policies granting iam:PassRole must include an iam:PassedToService condition
 IAM policies granting sensitive actions (s3:*, kms:Decrypt, dynamodb:*, secretsmanager:GetSecretValue, rds:*, ec2:*, lambda:InvokeFunction, sts:AssumeRole) must scope the Resource element to specific ARNs. Resource "\*" on sensitive actions grants the action on every resource in the account, vastly exceeding least privilege. CTL.IAM.POLICY.PASSROLE.001 and CTL.IAM.POLICY.ASSUMEROLE.001 enforce resource scoping for PassRole and AssumeRole specifically; this control generalizes the pattern to all sensitive actions.
 
 **Remediation:** Scope the Resource element to specific ARNs or ARN patterns. For example, restrict s3:\* to specific bucket ARNs, kms:Decrypt to specific key ARNs, and lambda:InvokeFunction to specific function ARNs.
+
+***
+
+### CTL.IAM.POLICY.SENSITIVE.GRANTS.001[​](#ctliampolicysensitivegrants001 "Direct link to CTL.IAM.POLICY.SENSITIVE.GRANTS.001")
+
+**IAM Principal Must Not Have Unreviewed Sensitive Action Grants**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6(5); soc2: CC6.3;
+
+IAM principal has policies granting actions from the sensitive action registry without compensating controls. Sensitive actions include iam:CreateUser, iam:AttachRolePolicy, sts:AssumeRole with broad scope, kms:Decrypt on shared keys, and similar privilege-escalation vectors. The sensitive action registry cross-references granted actions against known escalation patterns.
+
+**Remediation:** Review attached policies and remove sensitive action grants. Use permission boundaries to restrict access to sensitive actions. Prefer task-specific roles over broadly-scoped principals.
 
 ***
 
@@ -2653,6 +2743,21 @@ IAM policies using NotAction that allow IAM write actions (iam:PutRolePolicy, ia
 
 ***
 
+### CTL.IAM.POLICY.SHADOW\.DENY.001[​](#ctliampolicyshadowdeny001 "Direct link to CTL.IAM.POLICY.SHADOW.DENY.001")
+
+**Policy Deny Statement Shadowed by Broader Allow**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** fedramp\_moderate: AC-3; nist\_800\_53\_r5: AC-3; soc2: CC6.1;
+
+A Deny statement is bypassed by an Allow statement with non-overlapping conditions. The Deny appears protective but does not fully block the action. Detected by the Z3 shadow query which asserts Allow(request) ∧ ¬Deny(request) and produces a concrete witness when satisfiable.
+
+**Remediation:** Extend the Deny statement's condition keys to cover the same scope as the Allow, or narrow the Allow to respect the Deny's intended restriction.
+
+***
+
 ### CTL.IAM.POLICY.SOD.001[​](#ctliampolicysod001 "Direct link to CTL.IAM.POLICY.SOD.001")
 
 **IAM Roles Must Not Combine Data Access and IAM Management**
@@ -2665,6 +2770,21 @@ IAM policies using NotAction that allow IAM write actions (iam:PutRolePolicy, ia
 No single IAM role should have both data access permissions (s3:GetObject, dynamodb:GetItem, rds:\*, secretsmanager:GetSecretValue) and IAM management permissions (iam:CreateRole, iam:AttachPolicy, iam:CreateUser, iam:PutRolePolicy). Combining these creates a privilege escalation path — a compromised role with data access can grant itself additional permissions. Separation of privileged access is required by IAM-09 in CCM v4.1.
 
 **Remediation:** Split into two roles: one for data access (application role) and one for IAM management (admin role). Use separate assume-role policies for each. Apply the principle of least privilege — data-path roles should never modify IAM.
+
+***
+
+### CTL.IAM.POLICY.THIRDPARTY.DATAACCESS.001[​](#ctliampolicythirdpartydataaccess001 "Direct link to CTL.IAM.POLICY.THIRDPARTY.DATAACCESS.001")
+
+**Third-Party Role Has Data-Plane Access**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6, AC-17; pci\_dss\_v4.0: 7.2.1; soc2: CC6.1;
+
+IAM role assumed by a third-party principal (cross-account trust outside the organization) has policies granting data-plane access to S3 (GetObject, PutObject), DynamoDB (GetItem, PutItem, Query), Secrets Manager (GetSecretValue), or similar data-reading actions. Third-party integrations should use scoped read-only access to metadata (ListBuckets, DescribeTable) unless data access is an explicit, documented requirement. Unintentional data-plane grants to vendor roles are a common root cause of data breaches via supply-chain compromise.
+
+**Remediation:** Restrict the role's policies to metadata-only actions unless data access is an explicit integration requirement. Document the business justification and apply conditions (source IP, VPC endpoint, external ID) to limit scope.
 
 ***
 
@@ -2818,6 +2938,21 @@ An IAM role trusted by three or more distinct compute service principals (lambda
 
 ***
 
+### CTL.IAM.ROLE.DANGEROUS.MANAGED.001[​](#ctliamroledangerousmanaged001 "Direct link to CTL.IAM.ROLE.DANGEROUS.MANAGED.001")
+
+**IAM Roles Must Not Use Managed Policies Granting Dangerous Actions**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6(1); soc2: CC6.3;
+
+No IAM role should have a managed policy that grants actions classified as dangerous in the sensitive action registry. Unlike FULLACCESS.MANAGED.001 (which matches policy names ending in \*FullAccess), this control matches policy ACTIONS against the registry — catching dangerous policies with innocuous names like AWSManagedBudgetsSpendLimitManagementAccess (which grants organizations:AttachPolicy/DetachPolicy for SCP mutation). The name check is a fast heuristic; this action check is the ground truth.
+
+**Remediation:** Replace the managed policy with a scoped policy that does not grant dangerous actions. If the workload genuinely requires organizations:AttachPolicy or similar, document the exception and scope it to the minimum required resources.
+
+***
+
 ### CTL.IAM.ROLE.ENTROPY.INCOMPLETE.001[​](#ctliamroleentropyincomplete001 "Direct link to CTL.IAM.ROLE.ENTROPY.INCOMPLETE.001")
 
 **Complete Data Required for Entitlement Entropy Assessment**
@@ -2937,6 +3072,21 @@ IAM role has not been assumed in 90 or more days. The role exists with attached 
 
 ***
 
+### CTL.IAM.ROLECHAIN.DEPTH.001[​](#ctliamrolechaindepth001 "Direct link to CTL.IAM.ROLECHAIN.DEPTH.001")
+
+**Role Chain Depth Exceeds Threshold**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-6, AU-3; soc2: CC6.1;
+
+IAM role participates in an assume-role chain deeper than the recommended threshold. AWS allows role chaining up to the session duration limit, but deep chains (3+ hops) obscure the original principal's identity in CloudTrail, complicate access reviews, and create fragile dependency chains where revoking one role breaks downstream automation. Each hop reduces the maximum session duration (capped at 1 hour for chained sessions), signaling that the architecture relies on transitive trust rather than direct grants.
+
+**Remediation:** Flatten the role chain by granting direct trust relationships where possible. If chaining is required for cross-account patterns, limit depth to 2 hops and ensure each hop is logged and auditable.
+
+***
+
 ### CTL.IAM.ROLESANYWHERE.CRL.001[​](#ctliamrolesanywherecrl001 "Direct link to CTL.IAM.ROLESANYWHERE.CRL.001")
 
 **IAM Roles Anywhere Trust Anchor Has No CRL Configured**
@@ -3009,6 +3159,21 @@ IAM Roles Anywhere trust anchors must reference only approved certificate author
 The AWS root account must not have active access keys. Root access keys provide unrestricted programmatic access. Use IAM users or roles for programmatic access instead.
 
 **Remediation:** Delete the root access keys. Create IAM users or roles with least-privilege policies for programmatic access.
+
+***
+
+### CTL.IAM.ROOT.CENTRALIZED.001[​](#ctliamrootcentralized001 "Direct link to CTL.IAM.ROOT.CENTRALIZED.001")
+
+**Centralized Root Management Not Enabled**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** cis\_aws\_v3.0: 1.1; fedramp\_moderate: AC-6(5); nist\_800\_53\_r5: AC-6(5); soc2: CC6.1;
+
+AWS Organizations centralized root management (AssumeRoot) is not enabled. Without centralized root management, each member account retains its own root credentials that must be individually secured with MFA, password rotation, and access key removal. Centralized root management eliminates member-account root credentials entirely — the management account uses sts:AssumeRoot to perform root-privileged operations in member accounts on demand, creating an auditable, time-limited session instead of a persistent credential. This is the strongest root security posture available in AWS Organizations.
+
+**Remediation:** Enable centralized root management in the Organizations console or via the EnableRoot API. Then remove root credentials (access keys, passwords, MFA) from member accounts — they are no longer needed.
 
 ***
 
@@ -3129,6 +3294,21 @@ IAM role's S3 actions (s3:\*, s3:GetObject, s3:PutObject, etc.) use Resource: \*
 An IAM principal has a policy granting sagemaker:CreateNotebookInstance or sagemaker:CreateDomain. SageMaker notebook instances and Studio domains provision EC2 compute with EBS storage, optional internet access, and IAM execution roles that typically have broad S3 and KMS permissions for training data access.
 
 **Remediation:** Remove sagemaker:CreateNotebookInstance and sagemaker:CreateDomain from the principal's policies.
+
+***
+
+### CTL.IAM.SAML.ENTITYID.001[​](#ctliamsamlentityid001 "Direct link to CTL.IAM.SAML.ENTITYID.001")
+
+**SAML Provider Must Have Tracked Entity ID**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: IA-8; soc2: CC6.1;
+
+IAM SAML provider has no tracked entity ID (Issuer). The entity ID identifies which external identity provider is federated into the AWS account. Without tracking the entity ID, changes to the SAML metadata (provider replacement, IdP migration, entity ID rotation) go undetected. An attacker who replaces the SAML metadata with their own IdP gains federated access to the account.
+
+**Remediation:** Record the SAML entity ID and monitor for changes. Set up CloudTrail alerts for iam:UpdateSAMLProvider events.
 
 ***
 
@@ -4272,6 +4452,21 @@ IAM roles assumed via OIDC federation (CI/CD pipelines) must have scoped permiss
 
 ***
 
+### CTL.IAM.TRUST.OIDC.AUDIENCE.001[​](#ctliamtrustoidcaudience001 "Direct link to CTL.IAM.TRUST.OIDC.AUDIENCE.001")
+
+**OIDC Federation Trust Must Restrict Audience Claim**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-3; owasp\_nhi: NHI3; soc2: CC6.1;
+
+IAM roles that trust OIDC identity providers must include an audience (aud) condition in the trust policy. Without an audience restriction, any OIDC token issued by the provider — regardless of the intended relying party — can be used to assume the role. An attacker who obtains a token meant for a different AWS account or a non-AWS service can replay it against this role.
+
+**Remediation:** Add a StringEquals condition on the aud claim in the trust policy. For GitHub Actions use "token.actions.githubusercontent.com:aud": "sts.amazonaws.com".
+
+***
+
 ### CTL.IAM.TRUST.ORGBOUNDARY.001[​](#ctliamtrustorgboundary001 "Direct link to CTL.IAM.TRUST.ORGBOUNDARY.001")
 
 **Cross-Account Trust Must Restrict to Organization via PrincipalOrgID**
@@ -4329,6 +4524,21 @@ IAM roles trusted by AWS service principals (\*.amazonaws.com) must include aws:
 IAM role trust policies must not use Principal "*" or Principal: {AWS: "*"}. A wildcard principal allows any AWS principal in any account to attempt role assumption. This is the most dangerous trust configuration — the role is effectively public to the entire AWS ecosystem.
 
 **Remediation:** Replace Principal "\*" with specific account ARNs or role ARNs. Add aws:PrincipalOrgID to restrict to the organization. Add sts:ExternalId for third-party integrations.
+
+***
+
+### CTL.IAM.USER.NEWSERVICE.001[​](#ctliamusernewservice001 "Direct link to CTL.IAM.USER.NEWSERVICE.001")
+
+**IAM User Created Instead of Federated Identity**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** cis\_aws\_v3.0: 1.1; nist\_800\_53\_r5: AC-2, IA-2; soc2: CC6.1;
+
+A new IAM user was created in an account that uses federated identity (SSO/Identity Center). IAM users in federated environments indicate shadow access paths: they bypass MFA enforcement, session policies, and central identity governance. New IAM users should not be created when Identity Center is the designated identity provider — all human access should route through federation.
+
+**Remediation:** Delete the IAM user and provision access through Identity Center instead. If the user is for automation, convert to an IAM role with a service trust policy.
 
 ***
 

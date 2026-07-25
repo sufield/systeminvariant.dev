@@ -6,7 +6,7 @@ For the field-by-field spec of the S3 property groups these recipes populate, se
 
 ## From a Live AWS Environment[​](#from-a-live-aws-environment "Direct link to From a Live AWS Environment")
 
-Use the AWS CLI to query your S3 configuration, then convert the output to observation format using `stave ingest --profile mvp1-s3`.
+Use the AWS CLI to query your S3 configuration, then convert the output to observation format using `stave transform`.
 
 ### Step 1: Export raw AWS data[​](#step-1-export-raw-aws-data "Direct link to Step 1: Export raw AWS data")
 
@@ -59,26 +59,13 @@ aws-snapshot-2026-01-15/
 ### Step 2: Convert to observation format[​](#step-2-convert-to-observation-format "Direct link to Step 2: Convert to observation format")
 
 ```
-stave ingest --profile mvp1-s3 \
-  --input ./aws-snapshot-2026-01-15 \
-  --output observations/2026-01-15.json \
-  --include-all \
+stave transform \
+  --in ./aws-snapshot-2026-01-15 \
+  --out observations/2026-01-15.json \
   --eval-time 2026-01-15T00:00:00Z
 ```
 
-`ingest --profile mvp1-s3` reads the raw AWS CLI JSON and produces a single observation file that conforms to the `obs.v0.1` schema. It maps each AWS API response to the property groups described in the [Observation Export Schema](/docs/reference/observation-export-schema.md).
-
-By default, `ingest --profile mvp1-s3` filters to buckets tagged with `DataDomain=health` or `containsPHI=true`. To change this:
-
-```
-# Extract all buckets (no filtering)
-stave ingest --profile mvp1-s3 --input ./aws-snapshot-2026-01-15 --out obs.json --include-all
-
-# Extract specific buckets by name
-stave ingest --profile mvp1-s3 --input ./aws-snapshot-2026-01-15 --out obs.json \
-  --bucket-allowlist acme-patient-records \
-  --bucket-allowlist acme-audit-logs
-```
+`transform` reads the raw AWS CLI JSON and produces a single observation file that conforms to the `obs.v0.1` schema. It maps each AWS API response to the property groups described in the [Observation Export Schema](/docs/reference/observation-export-schema.md). Run with `--coverage` to list the recognized input shapes.
 
 ### How AWS API responses map to properties[​](#how-aws-api-responses-map-to-properties "Direct link to How AWS API responses map to properties")
 
@@ -90,7 +77,7 @@ stave ingest --profile mvp1-s3 --input ./aws-snapshot-2026-01-15 --out obs.json 
 | `get-bucket-tagging`      | `tags`                                                                                                                                                                                                         |
 | Derived from above        | `visibility.public_read`, `visibility.public_list` (union of policy and ACL signals)                                                                                                                           |
 
-Additional AWS API calls for complete coverage (not required by `ingest --profile mvp1-s3` but can be included in custom exporters):
+Additional AWS API calls for complete coverage (not required by `transform` but can be included in custom exporters):
 
 | AWS API call                         | Properties populated                                                          |
 | ------------------------------------ | ----------------------------------------------------------------------------- |

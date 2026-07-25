@@ -1,4 +1,4 @@
-# ELASTICACHE controls (8)
+# ELASTICACHE controls (11)
 
 ### CTL.ELASTICACHE.AUTH.001[​](#ctlelasticacheauth001 "Direct link to CTL.ELASTICACHE.AUTH.001")
 
@@ -75,6 +75,21 @@ ElastiCache clusters must not run engine versions that have reached end-of-life.
 
 ***
 
+### CTL.ELASTICACHE.IAM.AUTH.001[​](#ctlelasticacheiamauth001 "Direct link to CTL.ELASTICACHE.IAM.AUTH.001")
+
+**ElastiCache Redis Must Use IAM Authentication**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** identity
+* **Compliance:** nist\_800\_53\_r5: AC-3; pci\_dss\_v4.0: 7.2.1; soc2: CC6.1;
+
+ElastiCache Redis 7+ clusters should use IAM authentication instead of static AUTH tokens. IAM auth provides automatic credential rotation, fine-grained access control per user, and CloudTrail audit of authentication events. Static AUTH tokens require manual rotation and provide only cluster-level access control — any client with the token has full read/write access.
+
+**Remediation:** Enable IAM authentication on the replication group. Create ElastiCache users with IAM authentication type and associate them with a user group attached to the cluster. Update application connection code to use IAM-generated auth tokens.
+
+***
+
 ### CTL.ELASTICACHE.INCOMPLETE.001[​](#ctlelasticacheincomplete001 "Direct link to CTL.ELASTICACHE.INCOMPLETE.001")
 
 **Complete Data Required for ElastiCache Assessment**
@@ -101,6 +116,36 @@ The observation snapshot is missing required ElastiCache properties.
 ElastiCache Memcached clusters must not run engine versions that have reached end-of-life. Memcached 1.5.x and earlier are EOL and no longer receive security patches from AWS. Unlike Redis, Memcached has no authentication layer — the only protection is network isolation, making patch currency critical. A Memcached cluster on an EOL version processes cached data (session tokens, API responses) with unmaintained code. AWS will eventually force-upgrade clusters on deprecated versions during a maintenance window the operator did not schedule.
 
 **Remediation:** Upgrade the cluster to Memcached 1.6.x. Use aws elasticache modify-cache-cluster --engine-version 1.6.22 with a scheduled maintenance window. Memcached major version upgrades are generally backward compatible — test your application's cache client against 1.6.x before upgrading production.
+
+***
+
+### CTL.ELASTICACHE.RENAME.COMMANDS.001[​](#ctlelasticacherenamecommands001 "Direct link to CTL.ELASTICACHE.RENAME.COMMANDS.001")
+
+**ElastiCache Redis Must Rename Dangerous Commands**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: CM-7; soc2: CC6.1;
+
+ElastiCache Redis clusters must rename or disable dangerous commands (FLUSHALL, FLUSHDB, CONFIG, DEBUG, KEYS). These commands allow any authenticated client to wipe all data, reconfigure the server, or enumerate all keys. An attacker who gains cache access — through a compromised application or broad security group — can use these commands for data destruction or reconnaissance. Renaming them to unpredictable strings mitigates this without breaking normal operations.
+
+**Remediation:** Set the rename-commands parameter in the Redis parameter group to rename FLUSHALL, FLUSHDB, CONFIG, DEBUG, and KEYS to empty strings or random values.
+
+***
+
+### CTL.ELASTICACHE.SG.BROAD.001[​](#ctlelasticachesgbroad001 "Direct link to CTL.ELASTICACHE.SG.BROAD.001")
+
+**ElastiCache Cluster Security Group Must Not Allow Broad Ingress**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SC-7; pci\_dss\_v4.0: 1.3.1; soc2: CC6.6;
+
+ElastiCache cluster security group must restrict ingress to specific application security groups or CIDR blocks. A security group allowing 0.0.0.0/0 on the Redis/Memcached port exposes the cache to any host with network access. Even with AUTH enabled, broad ingress increases the attack surface for brute- force and network-level exploits.
+
+**Remediation:** Restrict the security group to allow ingress only from application security groups or specific CIDR blocks that need cache access. Remove 0.0.0.0/0 rules on ports 6379 (Redis) and 11211 (Memcached).
 
 ***
 

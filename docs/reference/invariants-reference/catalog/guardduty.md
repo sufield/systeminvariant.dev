@@ -1,4 +1,4 @@
-# GUARDDUTY controls (18)
+# GUARDDUTY controls (19)
 
 ### CTL.GUARDDUTY.ECS.RUNTIME.001[​](#ctlguarddutyecsruntime001 "Direct link to CTL.GUARDDUTY.ECS.RUNTIME.001")
 
@@ -57,6 +57,21 @@ GuardDuty must be enabled to provide continuous threat detection. It analyzes Cl
 GuardDuty retains findings for 90 days by default. Without export to S3, findings older than 90 days are permanently deleted — making it impossible to review historical threat activity during long-running investigations or compliance audits. Exporting to S3 with Object Lock provides an immutable, long-term record of all GuardDuty findings.
 
 **Remediation:** aws guardduty create-publishing-destination --detector-id --destination-type S3 --destination-properties DestinationArn=arn:aws:s3:::,KmsKeyArn=
+
+***
+
+### CTL.GUARDDUTY.FINDING.CONSISTENCY.001[​](#ctlguarddutyfindingconsistency001 "Direct link to CTL.GUARDDUTY.FINDING.CONSISTENCY.001")
+
+**GuardDuty Detection Method Coverage Must Be Sufficient**
+
+* **Severity:** medium
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: SI-4; soc2: CC7.1;
+
+GuardDuty detector has fewer than 3 active detection methods. GuardDuty correlates findings across VPC Flow Logs, DNS logs, CloudTrail management events, CloudTrail data events, S3 data events, EKS audit logs, and Lambda network activity. Each disabled data source creates blind spots where threat activity goes undetected. A detector with fewer than 3 methods lacks the cross-signal correlation needed to distinguish true threats from noise.
+
+**Remediation:** Enable additional GuardDuty data sources: S3 protection, EKS audit logs, Lambda network activity, RDS login monitoring, and runtime monitoring.
 
 ***
 

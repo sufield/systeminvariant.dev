@@ -1,4 +1,4 @@
-# CLOUDTRAIL controls (57)
+# CLOUDTRAIL controls (60)
 
 ### CTL.CLOUDTRAIL.ACCESS.LOGREAD.BROAD.001[​](#ctlcloudtrailaccesslogreadbroad001 "Direct link to CTL.CLOUDTRAIL.ACCESS.LOGREAD.BROAD.001")
 
@@ -420,6 +420,21 @@ CloudTrail trails should use advanced event selectors instead of basic event sel
 
 ***
 
+### CTL.CLOUDTRAIL.EVENTSELECTORS.EXCLUSION.001[​](#ctlcloudtraileventselectorsexclusion001 "Direct link to CTL.CLOUDTRAIL.EVENTSELECTORS.EXCLUSION.001")
+
+**CloudTrail Must Not Exclude Management Events**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** exposure
+* **Compliance:** nist\_800\_53\_r5: AU-3; soc2: CC7.2;
+
+CloudTrail trail has event selector exclusion patterns that suppress logging of specific management event sources. Exclusions create gaps in the audit trail — an attacker who knows which events are excluded can operate undetected within those blind spots. AWS added exclusion selectors to reduce noise from high-volume read services, but any exclusion reduces forensic coverage.
+
+**Remediation:** Review and remove event selector exclusions. If exclusions are needed for cost, ensure they only apply to read-only events from known high-volume sources and never to write events.
+
+***
+
 ### CTL.CLOUDTRAIL.EVS.BLIND.001[​](#ctlcloudtrailevsblind001 "Direct link to CTL.CLOUDTRAIL.EVS.BLIND.001")
 
 **CloudTrail Does Not Log EVS Management Events**
@@ -671,6 +686,36 @@ CloudTrail trails must be configured as AWS Organizations trails covering all me
 No Service Control Policy prevents organization member accounts from calling cloudtrail:StopLogging or cloudtrail:DeleteTrail. Even with an organization trail in place, a compromised member-account admin can disable their local trail copy or — if the account has its own trail — disable audit logging for that account entirely. An SCP with Deny on these actions (excluding a break-glass security-admin role) is the only way to prevent member-account principals from disabling logging.
 
 **Remediation:** Attach an SCP to the organization (or the relevant OU) that denies cloudtrail:StopLogging, cloudtrail:DeleteTrail, cloudtrail:UpdateTrail, and cloudtrail:PutEventSelectors with a NotPrincipal excluding the security-admin role and the management account. Verify by attempting StopLogging from a member account's admin role — the call must fail with an SCP-denied error before reaching the API.
+
+***
+
+### CTL.CLOUDTRAIL.ORG.TRAIL.001[​](#ctlcloudtrailorgtrail001 "Direct link to CTL.CLOUDTRAIL.ORG.TRAIL.001")
+
+**Organization Does Not Have a Centralized CloudTrail Trail**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** audit
+* **Compliance:** cis\_aws\_v3.0: 3.1; fedramp\_moderate: AU-6; nist\_800\_53\_r5: AU-6, AU-12; soc2: CC7.1;
+
+The AWS Organization does not have at least one organization-level CloudTrail trail. Organization trails deliver management events from every member account to a central S3 bucket in the logging account. Without an org trail, audit coverage depends on each member account maintaining its own trail — one misconfigured or deleted account-level trail creates a blind spot that the security team cannot detect from the central account. CTL.CLOUDTRAIL.ORG.001 checks that individual trails ARE org trails; this control checks that the organization HAS one.
+
+**Remediation:** Create an organization trail in the management account targeting a central logging bucket. Enable management events for all member accounts. Consider enabling data events for S3 and Lambda for forensic coverage.
+
+***
+
+### CTL.CLOUDTRAIL.REGIONAL.COVERAGE.001[​](#ctlcloudtrailregionalcoverage001 "Direct link to CTL.CLOUDTRAIL.REGIONAL.COVERAGE.001")
+
+**CloudTrail Not Configured as Multi-Region Trail**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** audit
+* **Compliance:** cis\_aws\_v3.0: 3.1; fedramp\_moderate: AU-2; nist\_800\_53\_r5: AU-2, AU-12; soc2: CC7.1;
+
+CloudTrail trail is not configured as a multi-region trail. Single-region trails only capture events in the region where they are created, leaving API activity in other regions invisible. An attacker operating in an unmonitored region (e.g., spinning up resources in ap-southeast-1 while the trail covers only us-east-1) has no audit trail. Multi-region trails capture events across all AWS regions, including regions where no infrastructure is intentionally deployed.
+
+**Remediation:** Enable multi-region logging on the trail. In the console, edit the trail and set "Apply trail to all regions" to Yes. Via CLI: aws cloudtrail update-trail --name --is-multi-region-trail.
 
 ***
 

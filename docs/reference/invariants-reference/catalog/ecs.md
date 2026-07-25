@@ -1,4 +1,4 @@
-# ECS controls (52)
+# ECS controls (53)
 
 ### CTL.ECS.ALARM.FAILEDLAUNCH.001[​](#ctlecsalarmfailedlaunch001 "Direct link to CTL.ECS.ALARM.FAILEDLAUNCH.001")
 
@@ -57,6 +57,21 @@ ECS cluster's EC2 launch type configuration permits tasks to mount the Docker so
 An ECS task definition sets the seccomp profile to Unconfined, explicitly disabling syscall filtering. Unlike omitting the profile (which uses the runtime default on Fargate), setting Unconfined is a deliberate opt-out that removes all kernel-level syscall restrictions. The container can make any kernel syscall, including those used in container-escape exploits (unshare, ptrace, mount). This is a semantic inversion: the presence of a seccomp configuration looks like hardening, but the Unconfined value does the opposite — it weakens the security posture below even the default.
 
 **Remediation:** Set the seccomp profile type to RuntimeDefault (uses the container runtime's default profile) or a custom restrictive profile. On Fargate, omitting the profile entirely also applies the default.
+
+***
+
+### CTL.ECS.EPHEMERAL.KMS.001[​](#ctlecsephemeralkms001 "Direct link to CTL.ECS.EPHEMERAL.KMS.001")
+
+**ECS Fargate Ephemeral Storage Must Be Encrypted with KMS**
+
+* **Severity:** high
+* **Type:** unsafe\_state
+* **Domain:** encryption
+* **Compliance:** nist\_800\_53\_r5: SC-28; pci\_dss\_v4.0: 3.5.1; soc2: CC6.1;
+
+ECS Fargate tasks with ephemeral storage must encrypt that storage with a customer-managed KMS key. Fargate encrypts ephemeral storage by default with an AWS-managed key, but a CMK provides key policy control, decrypt audit trail, and revocation capability. Without CMK encryption, data written to ephemeral storage during task execution (temp files, intermediate processing data, model artifacts) is encrypted but the account has no independent control over the key lifecycle.
+
+**Remediation:** Set ephemeralStorage.kmsKeyId in the task definition to a customer-managed KMS key ARN. Update the task execution role to allow kms:GenerateDataKey and kms:Decrypt on the key.
 
 ***
 

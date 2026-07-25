@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">Output Formats | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" property="og:url" content="https://www.systeminvariant.dev/docs/reference/output-formats"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="twitter:card" content="summary"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Output Formats | Stave"><meta data-rh="true" name="description" content="JSON, text, and markdown output options in Stave."><meta data-rh="true" property="og:description" content="JSON, text, and markdown output options in Stave."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.systeminvariant.dev/docs/reference/output-formats"><link data-rh="true" rel="alternate" href="https://www.systeminvariant.dev/docs/reference/output-formats" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.systeminvariant.dev/docs/reference/output-formats" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Reference","item":"https://www.systeminvariant.dev/docs/reference"},{"@type":"ListItem","position":2,"name":"Output Formats","item":"https://www.systeminvariant.dev/docs/reference/output-formats"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
+<title data-rh="true">Output Formats | Stave</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" property="og:url" content="https://www.systeminvariant.dev/docs/reference/output-formats"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="twitter:card" content="summary"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Output Formats | Stave"><meta data-rh="true" name="description" content="Stave supports multiple output formats for different use cases."><meta data-rh="true" property="og:description" content="Stave supports multiple output formats for different use cases."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.systeminvariant.dev/docs/reference/output-formats"><link data-rh="true" rel="alternate" href="https://www.systeminvariant.dev/docs/reference/output-formats" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.systeminvariant.dev/docs/reference/output-formats" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Reference","item":"https://www.systeminvariant.dev/docs/reference"},{"@type":"ListItem","position":2,"name":"Output Formats","item":"https://www.systeminvariant.dev/docs/reference/output-formats"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Stave RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Stave Atom Feed"><link rel="stylesheet" href="/assets/css/styles.fda54c7d.css">
-<script src="/assets/js/runtime~main.8b6c1d7c.js" defer="defer"></script>
-<script src="/assets/js/main.6ca4496c.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d4d324e4.js" defer="defer"></script>
+<script src="/assets/js/main.360f229f.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -58,8 +58,77 @@
 
 
 <table><thead><tr><th>Command</th><th>Output</th></tr></thead><tbody><tr><td><code>stave enforce --in eval.json --out ./dir --mode pab</code></td><td><code>dir/enforcement/aws/pab.tf</code></td></tr><tr><td><code>stave enforce --in eval.json --out ./dir --mode scp</code></td><td><code>dir/enforcement/aws/scp.json</code></td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="severity-mapping">Severity Mapping<a href="#severity-mapping" class="hash-link" aria-label="Direct link to Severity Mapping" title="Direct link to Severity Mapping" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Stave severity</th><th>SARIF level</th><th>Code Scanning display</th></tr></thead><tbody><tr><td>critical</td><td>error</td><td>Error (red)</td></tr><tr><td>high</td><td>error</td><td>Error (red)</td></tr><tr><td>medium</td><td>warning</td><td>Warning (yellow)</td></tr><tr><td>low</td><td>note</td><td>Note (blue)</td></tr><tr><td>info</td><td>note</td><td>Note (blue)</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="exit-codes">Exit Codes<a href="#exit-codes" class="hash-link" aria-label="Direct link to Exit Codes" title="Direct link to Exit Codes" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td>0</td><td>Success (no violations, or command completed)</td></tr><tr><td>2</td><td>Invalid input (bad flags, malformed files)</td></tr><tr><td>3</td><td>Violations found (findings exceed threshold)</td></tr><tr><td>4</td><td>Internal error</td></tr><tr><td>130</td><td>Interrupted (SIGINT)</td></tr></tbody></table>
+<p>Exit 3 is a success — it means the tool found what it was looking for.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="logging">Logging<a href="#logging" class="hash-link" aria-label="Direct link to Logging" title="Direct link to Logging" translate="no">​</a></h2>
 <p>Logs go to stderr and are separate from command output:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain"># Verbose logging</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls ./ctl --observations ./obs -v</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># Debug logging</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls ./ctl --observations ./obs -vv</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># JSON logs to file</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls ./ctl --observations ./obs --log-format json --log-file run.log</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># Include timestamps (breaks determinism)</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls ./ctl --observations ./obs --log-timestamps</span><br></span></code></pre></div></div></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/fact-export"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Fact Export</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/output-and-severity"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Output &amp; Severity</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#json-default-for-apply" class="table-of-contents__link toc-highlight">JSON (Default for <code>apply</code>)</a></li><li><a href="#text" class="table-of-contents__link toc-highlight">Text</a></li><li><a href="#quiet-mode" class="table-of-contents__link toc-highlight">Quiet Mode</a></li><li><a href="#writing-output-to-a-directory" class="table-of-contents__link toc-highlight">Writing Output to a Directory</a></li><li><a href="#validation-output" class="table-of-contents__link toc-highlight">Validation Output</a></li><li><a href="#coverage-graph-output" class="table-of-contents__link toc-highlight">Coverage Graph Output</a></li><li><a href="#downstream-artifacts" class="table-of-contents__link toc-highlight">Downstream Artifacts</a></li><li><a href="#logging" class="table-of-contents__link toc-highlight">Logging</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"></div></footer></div>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain"># Verbose logging</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls ./ctl --observations ./obs -v</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># Debug logging</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls ./ctl --observations ./obs -vv</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># JSON logs to file</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls ./ctl --observations ./obs --log-format json --log-file run.log</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain"># Include timestamps (breaks determinism)</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">stave apply --controls ./ctl --observations ./obs --log-timestamps</span><br></span></code></pre></div></div></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/fact-export"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Fact Export</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/output-and-severity"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Output &amp; Severity</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#json-default-for-apply" class="table-of-contents__link toc-highlight">JSON (Default for <code>apply</code>)</a></li><li><a href="#text" class="table-of-contents__link toc-highlight">Text</a></li><li><a href="#quiet-mode" class="table-of-contents__link toc-highlight">Quiet Mode</a></li><li><a href="#writing-output-to-a-directory" class="table-of-contents__link toc-highlight">Writing Output to a Directory</a></li><li><a href="#validation-output" class="table-of-contents__link toc-highlight">Validation Output</a></li><li><a href="#coverage-graph-output" class="table-of-contents__link toc-highlight">Coverage Graph Output</a></li><li><a href="#downstream-artifacts" class="table-of-contents__link toc-highlight">Downstream Artifacts</a></li><li><a href="#severity-mapping" class="table-of-contents__link toc-highlight">Severity Mapping</a></li><li><a href="#exit-codes" class="table-of-contents__link toc-highlight">Exit Codes</a></li><li><a href="#logging" class="table-of-contents__link toc-highlight">Logging</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"></div></footer></div>
 </body>
 </html>

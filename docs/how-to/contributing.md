@@ -335,7 +335,7 @@ All AWS account IDs, ARNs, and bucket names under `testdata/` and `case-studies/
 
 ## Reporting Bugs[​](#reporting-bugs "Direct link to Reporting Bugs")
 
-When filing a bug report, include a minimal, deterministic reproduction. See the [Bug Reproduction Guide](https://www.systeminvariant.dev/docs/how-to/maintenance/bug-reports) for how to write one, and the [Bug Reproduction Template](https://github.com/sufield/stave/blob/main/docs/contrib/bug-repro-template.md) for a copy-paste starting point.
+When filing a bug report, include a minimal, deterministic reproduction. See the [Bug Reproduction Guide](https://www.systeminvariant.dev/docs/how-to/maintenance/bug-reports) for how to write one, and the [Bug Reproduction Template](https://www.systeminvariant.dev/docs/how-to/maintenance/bug-reports) for a copy-paste starting point.
 
 ## Getting Help[​](#getting-help "Direct link to Getting Help")
 
